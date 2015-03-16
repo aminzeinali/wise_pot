@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+
 <p>
   <strong>User:</strong>
   <%= @profile.user_id %>
@@ -13,6 +15,18 @@
 <p>
   <strong>Cover photo:</strong>
   <%= @profile.cover_photo %>
+</p>
+<p>
+  <strong>First Name:</strong>
+<%= @profile.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+<%= @profile.last_name %>
+</p>
+<p>
+  <strong>Gender:</strong>
+<%= @profile.gender %>
 </p>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |

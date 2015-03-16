@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   def new
     @profile = Profile.new
+    @profile.user_id = current_user.id
   end
 
   # GET /profiles/1/edit
@@ -69,6 +70,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:user_id, :profile_photo, :cover_photo)
+      params.require(:profile).permit(:user_id, :profile_photo, :cover_photo ,
+       :first_name , :last_name , :gender)
     end
 end
