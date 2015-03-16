@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Plants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Race</th>
+      <th>Age</th>
+      <th>Height</th>
+      <th>Temperature</th>
+      <th>Humidity soil</th>
+      <th>Humidity air</th>
+      <th>Light degree</th>
+      <th>Health factor</th>
+      <th>Image</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plants.each do |plant| %>
+      <tr>
+        <td><%= plant.name %></td>
+        <td><%= plant.race %></td>
+        <td><%= plant.age %></td>
+        <td><%= plant.height %></td>
+        <td><%= plant.temperature %></td>
+        <td><%= plant.humidity_soil %></td>
+        <td><%= plant.humidity_air %></td>
+        <td><%= plant.light_degree %></td>
+        <td><%= plant.health_factor %></td>
+        <td><%= plant.image %></td>
+        <td><%= plant.description %></td>
+        <td><%= link_to 'Show', plant %></td>
+        <td><%= link_to 'Edit', edit_plant_path(plant) %></td>
+        <td><%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plant', new_plant_path %>
