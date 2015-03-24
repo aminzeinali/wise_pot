@@ -60,9 +60,10 @@
  	height: 300px;
  }
  .wrap_size{
- 	height: auto;
+ 	height: 500px;
  }
  .lol{
- 	border: solid 200px white;
+ 	border-right: solid 205px white;
+ 	border-left: solid 205px white;
  	background-position: center;
  }
