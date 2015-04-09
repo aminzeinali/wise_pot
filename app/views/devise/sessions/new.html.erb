@@ -1,10 +1,18 @@
   <body class = "init_body">
+
+
   <div class="log_components">
+  
+  <div class="logo_story">
+  
+  </div>
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class= "email_box field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
+
 
   <div class="pass_box field">
     <%= f.label :password %><br />
@@ -31,7 +39,7 @@
 
 
 <div class="col-md-12 slider_box_size">
-<div id="carousel-example-generic" class="size_slide carousel slide" data-ride="carousel" data-interval="15000">
+<div id="carousel-example-generic" class="size_slide carousel slide" data-ride="carousel" data-interval="10000">
   <!-- Indicators -->
   <ol class = "slider_me carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>

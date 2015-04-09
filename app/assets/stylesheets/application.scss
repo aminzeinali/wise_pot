@@ -27,7 +27,7 @@
  }
  div.log_in_button{
  	float: right;
- 	margin-top: 55px;
+ 	margin-top: 70px;
  	margin-right: -200px;
  }
  div.forgot{
@@ -41,7 +41,7 @@
  div.forgot_link> a:hover{
  	color: #252525;
  	text-decoration: none;
- 	background-color: gray;
+ 	background-color: #252512;
  }
  
  div.log_components{
@@ -49,7 +49,15 @@
  	width: 100%;
  	height: auto;
  	float: right;
- 	margin-top: -70px;
+ 	margin-top:-45px;
+ 	background-color:#252512;
+ }
+ div.log_components> .logo_story{
+ 	margin:-10px;
+ 	width: 50%;
+ 	height:120px;
+ 	border-right:solid 1px white;
+ 	float:left;
  }
  .init_body{
  	margin-top: 10px;
@@ -59,12 +67,12 @@
  .slider_box_size{
  	margin: 0;
  	padding: 0;
- 	margin-top: -10px;
+ 	margin-top: 20px;
  	width: 100%;
  	height: 300px;
  }
  .wrap_size{
- 	height: 500px;
+ 	height: auto;
  	background-color: gray;
  }
  .lol{
@@ -82,3 +90,28 @@
  	background-color:gray;
  	border:solid 2px #252525;
  }
+
+ .sign_up_css> a{
+ 	color:white;
+ }
+
+ .sign_up_css> a:hover{
+ 	text-decoration:none;
+ 	color:black;
+ }
+
+ .sign_up_box{
+ 	width: 50%;
+ 	height:auto;
+ 	background-color:gray;
+ 	margin: 0 auto;
+ }
+ .sign_up_box>div{
+ 	background-color:red;
+ }
+
+
+
+
+
+
