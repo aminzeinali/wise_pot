@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -11,7 +11,7 @@ gem 'sass-rails', '~> 5.0'
 
 
 #my additional gem
-gem 'bootstrap-sass', '~> 3.3.4'
+# gem 'bootstrap-sass', '~> 3.3.4'
 #end my additional gem
 
 
@@ -42,7 +42,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
-
+gem 'carrierwave'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

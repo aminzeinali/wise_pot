@@ -10,6 +10,7 @@ class GardensController < ApplicationController
   # GET /gardens/1
   # GET /gardens/1.json
   def show
+
   end
 
   # GET /gardens/new
@@ -28,7 +29,7 @@ class GardensController < ApplicationController
 
     respond_to do |format|
       if @garden.save
-        format.html { redirect_to @garden, notice: 'Garden was successfully created.' }
+        format.html { redirect_to profile_path(current_user.profile), notice: 'Garden was successfully created.' }
         format.json { render :show, status: :created, location: @garden }
       else
         format.html { render :new }
@@ -56,7 +57,7 @@ class GardensController < ApplicationController
   def destroy
     @garden.destroy
     respond_to do |format|
-      format.html { redirect_to gardens_url, notice: 'Garden was successfully destroyed.' }
+      format.html { redirect_to profile_path(current_user.profile), notice: 'Garden was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

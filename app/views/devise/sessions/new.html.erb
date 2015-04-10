@@ -1,7 +1,7 @@
   <body class = "init_body">
 
 
-  <div class="log_components">
+  <div class = "log_components">
   
   <div class="logo_story">
   
@@ -9,20 +9,20 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class= "email_box field">
-    <%= f.label :email %><br />
+    <%= f.label :email, :class=>"label_color" %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
 
   <div class="pass_box field">
-    <%= f.label :password %><br />
+    <%= f.label :password, :class=>"label_color" %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class= "rem_box field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :remember_me, :class=>"label_color" %>
     </div>
   <% end -%>
 
@@ -37,8 +37,8 @@
 
 </div>
 
-
-<div class="col-md-12 slider_box_size">
+<div class="col-md-12">
+<div class=" slider_box_size">
 <div id="carousel-example-generic" class="size_slide carousel slide" data-ride="carousel" data-interval="10000">
   <!-- Indicators -->
   <ol class = "slider_me carousel-indicators">
@@ -113,43 +113,6 @@
 
 
   </div>
-
-
-
-<div class="end_box">
-    <div class="sign_up_box sign_up_in_rout">
-
-    <h2 class="center_box">Sign up</h2>
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
-      <div class="center_box field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true%>
-      </div>
-
-      <div class="center_box field">
-        <%= f.label :password %>
-        <% if @validatable %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-      </div>
-
-      <div class="center_box field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
-
-      <div class="center_box actions">
-        <%= f.submit "Sign up", :class=>"btn btn-default bb"%>
-      </div>
-    <% end %>
-    </div>  
-</div>
-
-
-
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -159,6 +122,44 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>  
+</div>
+
+
+<div class="end_box">
+    <div class="sign_up_box sign_up_in_rout">
+
+    <h2 class="center_box label_color">Sign up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="center_box field">
+        <%= f.label :email, :class=>"label_color" %><br />
+        <%= f.email_field :email, autofocus: true%>
+      </div>
+
+      <div class="center_box field">
+        <%= f.label :password, :class=>"label_color" %>
+        <% if @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="center_box field">
+        <%= f.label :password_confirmation, :class=>"label_color" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="center_box actions">
+        <%= f.submit "Sign up", :class=>"btn btn-default"%>
+      </div>
+    <% end %>
+    </div>  
+</div>
+
+
+
+  
 </div>
 </div>
 

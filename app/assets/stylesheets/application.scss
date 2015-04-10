@@ -9,9 +9,11 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
+ *= require_self
+ *= require_tree
+ *= require profiles
  */ 
-@import "bootstrap-sprockets";
-@import "bootstrap"; 
+
  
  div.email_box{
  	float: right;
@@ -39,7 +41,7 @@
  	color: white;
  }
  div.forgot_link> a:hover{
- 	color: black;
+ 	color: #337ab7;
  	text-decoration: none;
  	background-color: #252512;
  }
@@ -97,7 +99,7 @@
 
  .sign_up_css> a:hover{
  	text-decoration:none;
- 	color:black;
+ 	color:#337ab7;
  }
 
  .sign_up_box{
@@ -112,9 +114,11 @@
  }
  .sign_up_in_rout{
  	float:right;
+ 	padding-bottom:10px;
  	background-color:#252512;
  	margin-top:10px;
+ 	width:40%;
  }
-
-
-
+ .label_color{
+ 	color:white;
+ }
