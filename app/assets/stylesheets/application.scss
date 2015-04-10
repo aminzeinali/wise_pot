@@ -27,7 +27,7 @@
  }
  div.log_in_button{
  	float: right;
- 	margin-top: 70px;
+ 	margin-top: 60px;
  	margin-right: -200px;
  }
  div.forgot{
@@ -39,7 +39,7 @@
  	color: white;
  }
  div.forgot_link> a:hover{
- 	color: #252525;
+ 	color: black;
  	text-decoration: none;
  	background-color: #252512;
  }
@@ -106,12 +106,15 @@
  	background-color:gray;
  	margin: 0 auto;
  }
- .sign_up_box>div{
- 	background-color:red;
+ .center_box{
+ 	padding-left: 37%;
+ 	margin-top:10px;
  }
-
-
-
+ .sign_up_in_rout{
+ 	float:right;
+ 	background-color:#252512;
+ 	margin-top:10px;
+ }
 
 
 

@@ -27,7 +27,7 @@
   <% end -%>
 
   <div class="log_in_button actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", :class=>"btn btn-default" %>
   </div>
 <% end %>
 
@@ -117,8 +117,39 @@
 
 
 <div class="end_box">
-  
+    <div class="sign_up_box sign_up_in_rout">
+
+    <h2 class="center_box">Sign up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="center_box field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true%>
+      </div>
+
+      <div class="center_box field">
+        <%= f.label :password %>
+        <% if @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="center_box field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="center_box actions">
+        <%= f.submit "Sign up", :class=>"btn btn-default bb"%>
+      </div>
+    <% end %>
+    </div>  
 </div>
+
+
+
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
