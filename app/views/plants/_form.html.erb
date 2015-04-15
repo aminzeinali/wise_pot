@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+
+  <div>
+    <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name") %> 
+  </div>
+
+
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -27,6 +33,7 @@
     <%= f.label :height %><br>
     <%= f.number_field :height %>
   </div>
+  <!--
   <div class="field">
     <%= f.label :temperature %><br>
     <%= f.text_field :temperature %>
@@ -47,6 +54,7 @@
     <%= f.label :health_factor %><br>
     <%= f.text_field :health_factor %>
   </div>
+  -->
   <div class="field">
     <%= f.label :image %><br>
     <%= f.text_field :image %>

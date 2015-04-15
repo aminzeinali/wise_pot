@@ -25,10 +25,13 @@ class PlantsController < ApplicationController
   # POST /plants.json
   def create
     @plant = Plant.new(plant_params)
-
+    @plant.save
+    plant_garden = PlantOnGarden.new
+    plant_garden.garden_id = params[:garden_id]
+    plant_garden.plant_id = @plant.id
     respond_to do |format|
-      if @plant.save
-        format.html { redirect_to @plant, notice: 'Plant was successfully created.' }
+      if plant_garden.save
+        format.html { redirect_to profile_path(current_user.profile), notice: 'Plant was successfully created.' }
         format.json { render :show, status: :created, location: @plant }
       else
         format.html { render :new }
