@@ -55,6 +55,9 @@ class GardensController < ApplicationController
   # DELETE /gardens/1
   # DELETE /gardens/1.json
   def destroy
+    @garden.plants.each do |p_clean|
+      p_clean.destroy
+    end
     @garden.destroy
     respond_to do |format|
       format.html { redirect_to profile_path(current_user.profile), notice: 'Garden was successfully destroyed.' }

@@ -1,15 +1,21 @@
 <!--<p id="notice"><%= notice %></p>-->
-
-<div class="col-md-12">
+<div class="row">
+  <%if @profile.cover_photo.present? %>
   <%=image_tag @profile.cover_photo_url, :class=>"img_cover_photo"%>
+  <%else%>
+  <%=image_tag "slide1.jpg", :class=>"img_cover_photo"%>
+  <%end%>
 </div>
   
 <div class="col-md-6">
 
-  <%=image_tag @profile.profile_photo_url , :class=>"img_profile img-circle" %> 
+  <% if @profile.profile_photo.present? %>
+    <%=image_tag @profile.profile_photo_url , :class=>"img-circle img_profile_pos" %>
+    <%else %>
+    <%=image_tag "default_profile.png" , :class=>"img-circle img_profile_pos" %>
+  <%end%>
 
-  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-
+<!--
   <p>
     <strong>User:</strong>
     <%= @profile.user_id %>
@@ -24,7 +30,9 @@
     <strong>Cover photo:</strong>
     <%= @profile.cover_photo %>
   </p>
+-->
   <p>
+    </br>
     <strong>First Name:</strong>
     <%= @profile.first_name %>
   </p>
@@ -37,53 +45,76 @@
     <%= @profile.gender %>
   </p>
 
-  <%= link_to 'Edit', edit_profile_path(@profile) %> |
-  <%= link_to 'Back', profiles_path %>
 
-  <h1>Garden list</h1>
-  <% @profile.gardens.each do |k|  %>
-    
-    <%= k.name %> <%= link_to ' Edit', edit_garden_path(k) %>  <%= link_to ' Destroy', garden_path(k), method: :delete, data: { confirm: 'Are you sure?' } %>
-  
-    </br>
-    
-    <% k.plants.each do |p| %>
-      <%=p.name%>
-      </br>
-    <%end%>
-    
-    </br>
-    
-  <% end %>
-
-
-</div>
-
-<div class="col-md-6 well">
-  
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  add new garden
-</button>
-
-</br>
-</br>
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal_1">
-  add new plant
-</button>
-  <!--@garden ro too controller tarif kardam , chon inja darim form garden ro seda mikonim bayad behesh ye
-  object e new az garden tarif konim inja behesh pass bedim ke too profiles#show kardam in karo -->
-</div>
-
-<div class="col-md-12 well">
   number of Your gardens :
   <%= current_user.profile.gardens.count %>
-<br>
+  </br>
   number of total plants in your gardens :
   <% number=0 %>
   <% current_user.profile.gardens.each do |g| %>
     <% number += g.plants.count %>
   <% end %>
   <%= number %>
+  </br>
+
+  <%= link_to 'Edit Profile', edit_profile_path(@profile), :class=>"btn btn-default"%> |
+  <%= link_to 'Back', profiles_path, :class=>"btn btn-default"%>
+
+</div>
+
+<div class="col-md-6 well">
+  
+  <button type="button" class="btn btn-primary btn-sm darkcyan" data-toggle="modal" data-target="#myModal">
+    Create New Garden
+  </button>
+
+  <%= link_to "Sign out", destroy_user_session_path,:method => :delete, :class => "btn btn-danger pull-right inner_text" %>
+
+  </br>
+  </br>
+  <button type="button" class="btn btn-success btn-sm darkcyan" data-toggle="modal" data-target="#myModal_1">
+    Add New Plant to your Desired Garden
+  </button>
+
+
+</div>
+
+
+</div>
+
+<div class="col-md-12">
+
+  <% @profile.gardens.each do |k|  %>
+    
+    <div class="col-md-8 col-md-push-2 well">
+    <%= k.name %>
+    <%= link_to ' Edit', edit_garden_path(k) , :class => "btn btn-success pull-right" %>
+
+    <%= link_to ' Destroy', garden_path(k), method: :delete, data: { confirm: 'Are you sure?' }  , :class => "btn btn-danger pull-right" %>
+    </br>    
+    <% k.plants.each do |p| %>
+    <div class="col-sm-2 col-xs-2 col-md-3 alert alert-success">
+      
+      <div class="col-md-6 text-center">
+        <%= image_tag("flower.png" , :class => "img-circle img-responsive") %> 
+        <%=link_to p.name , p %>
+      </div>
+      <div class="col-md-6">
+        <%= p.temperature %>
+        <p>  Temperature: <%=p.temperature %></p>
+        <p>  Soil Humidity: <%=p.humidity_soil %></p>
+        <p>  Air Humidity: <%=p.humidity_air %></p>
+        <p>  Light: <%=p.light_degree %></p>
+      </div>
+
+    </div>
+    <%end%>
+    </div>
+  <% end %>
+
+</div>
+
+  
 </div>
 
 
@@ -99,15 +130,14 @@
         <%= render "gardens/form" , :object => @garden %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modal for Creating Plant-->
-<div class="modal fade" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade " id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -118,8 +148,7 @@
         <%= render "plants/form" , :object => @plant %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

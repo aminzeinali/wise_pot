@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <%= form_for(@plant) do |f| %>
   <% if @plant.errors.any? %>
     <div id="error_explanation">
@@ -11,48 +12,48 @@
     </div>
   <% end %>
 
-
-  <div>
-    <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name") %> 
+<div class="col-md-7">
+  <div class="form-group">
+    <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name") , :class => "form-control" %> 
   </div>
 
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name , :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :race %><br>
-    <%= f.text_field :race %>
+    <%= f.text_field :race , :class => "form-control"%>
   </div>
   <div class="field">
     <%= f.label :age %><br>
-    <%= f.number_field :age %>
+    <%= f.number_field :age , :class => "form-control"%>
   </div>
   <div class="field">
     <%= f.label :height %><br>
-    <%= f.number_field :height %>
+    <%= f.number_field :height , :class => "form-control"%>
   </div>
   <!--
   <div class="field">
     <%= f.label :temperature %><br>
-    <%= f.text_field :temperature %>
+    <%= f.text_field :temperature , :class => "form-control"%>
   </div>
   <div class="field">
     <%= f.label :humidity_soil %><br>
-    <%= f.text_field :humidity_soil %>
+    <%= f.text_field :humidity_soil , :class => "form-control"%>
   </div>
   <div class="field">
     <%= f.label :humidity_air %><br>
-    <%= f.text_field :humidity_air %>
+    <%= f.text_field :humidity_air , :class => "form-control"%>
   </div>
   <div class="field">
     <%= f.label :light_degree %><br>
-    <%= f.text_field :light_degree %>
+    <%= f.text_field :light_degree , :class => "form-control"%>
   </div>
   <div class="field">
     <%= f.label :health_factor %><br>
-    <%= f.text_field :health_factor %>
+    <%= f.text_field :health_factor , :class => "form-control"%>
   </div>
   -->
   <div class="field">
@@ -61,9 +62,15 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description , :class => "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>"btn btn-default" %>
   </div>
 <% end %>
+</div>
+
+<div class="col-md-5">
+<%= image_tag("") %>
+</div>
+</div>
