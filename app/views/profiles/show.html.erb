@@ -30,6 +30,12 @@
     <strong>Cover photo:</strong>
     <%= @profile.cover_photo %>
   </p>
+
+  <p>
+    <strong>Gender:</strong>
+    <%= @profile.gender %>
+  </p>
+
 -->
   <p>
     </br>
@@ -40,11 +46,7 @@
     <strong>Last Name:</strong>
     <%= @profile.last_name %>
   </p>
-  <p>
-    <strong>Gender:</strong>
-    <%= @profile.gender %>
-  </p>
-
+  
 
   number of Your gardens :
   <%= current_user.profile.gardens.count %>
@@ -64,7 +66,7 @@
 
 <div class="col-md-6 well">
   
-  <button type="button" class="btn btn-primary btn-sm darkcyan" data-toggle="modal" data-target="#myModal">
+  <button type="button" class="btn btn-success btn-sm darkcyan" data-toggle="modal" data-target="#myModal">
     Create New Garden
   </button>
 

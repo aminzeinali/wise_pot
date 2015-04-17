@@ -39,10 +39,18 @@ class ProfilesController < ApplicationController
       end
     end
   end
-
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+   if params[:profile][:remove_profile_photo] == "1" 
+    @profile.remove_profile_photo = nil
+    @profile.save
+   end
+   if params[:profile][:remove_cover_photo] == "1"
+    @profile.remove_cover_photo = nil
+    @profile.save
+   end
+    
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -73,6 +81,6 @@ class ProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:profile).permit(:user_id, :profile_photo, :cover_photo ,
-       :first_name , :last_name , :gender)
+       :first_name , :last_name , :gender , :remove_cover_photo , :remove_profile_photo)
     end
 end

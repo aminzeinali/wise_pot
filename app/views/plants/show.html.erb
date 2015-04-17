@@ -1,7 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<div class="col-md-6 col-md-offset-4"></div>
+<% if @plant.image.present? %>
+    <%=image_tag @plant.image_url , :class=>"img_plant_pos img-circle" %>
+    <%else %>
+    <%=image_tag "default_plant.png" , :class=>"img_plant_pos img-circle" %>
+<%end%>
+</div>
 
-<div class="col-md-6 col-md-offset-3 well">
+
+<div class="col-md-6 col-md-offset-3 well alert-success">
 
 <div class="well">
 <p>

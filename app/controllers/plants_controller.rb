@@ -43,6 +43,10 @@ class PlantsController < ApplicationController
   # PATCH/PUT /plants/1
   # PATCH/PUT /plants/1.json
   def update
+  if params[:plant][:remove_image] == "1"
+    @plant.image = nil
+    @plant.save
+  end
     respond_to do |format|
       if @plant.update(plant_params)
         format.html { redirect_to @plant, notice: 'Plant was successfully updated.' }
@@ -72,6 +76,7 @@ class PlantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plant_params
-      params.require(:plant).permit(:name, :race, :age, :height, :temperature, :humidity_soil, :humidity_air, :light_degree, :health_factor, :image, :description)
+      params.require(:plant).permit(:name, :race, :age, :height, :temperature, :humidity_soil, :humidity_air, :light_degree, :health_factor, 
+        :remove_image, :description, :image)
     end
 end

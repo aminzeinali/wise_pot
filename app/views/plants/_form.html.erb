@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<%= form_for(@plant) do |f| %>
+<%= form_for @plant , html: { multipart: true } do |f| %>
   <% if @plant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
@@ -58,7 +58,15 @@
   -->
   <div class="field">
     <%= f.label :image %><br>
-    <%= f.text_field :image %>
+    <%= f.file_field :image , :class => "form-control"%>
+  
+  <p>
+    <label>
+      <%= f.check_box :remove_image %>
+      Remove avatar
+      </label>
+  </p>
+
   </div>
   <div class="field">
     <%= f.label :description %><br>
