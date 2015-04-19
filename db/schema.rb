@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316113541) do
+ActiveRecord::Schema.define(version: 20150419131228) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -46,8 +46,14 @@ ActiveRecord::Schema.define(version: 20150316113541) do
 
   create_table "planters", force: :cascade do |t|
     t.text     "brief_desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.float    "humidity_soil"
+    t.float    "humidity_air"
+    t.float    "temperature"
+    t.float    "light_degree"
+    t.string   "race"
+    t.string   "name"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -64,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150316113541) do
     t.text     "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "planter_id"
   end
 
   create_table "posts", force: :cascade do |t|

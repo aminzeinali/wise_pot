@@ -11,6 +11,28 @@
     </div>
   <% end %>
 
+    <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+    <div class="field">
+    <%= f.label :humidity_soil %><br>
+    <%= f.number_field :humidity_soil %>
+  </div>
+  <div class="field">
+    <%= f.label :humidity_air %><br>
+    <%= f.number_field :humidity_air %>
+  </div>
+  <div class="field">
+    <%= f.label :temperature %><br>
+    <%= f.number_field :temperature %>
+  </div>
+  <div class="field">
+    <%= f.label :light_degree %><br>
+    <%= f.number_field :light_degree %>
+  </div>
+
   <div class="field">
     <%= f.label :brief_desc %><br>
     <%= f.text_area :brief_desc %>
