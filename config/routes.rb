@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'initial/home'
+
   devise_for :users
 
   devise_scope :user do
