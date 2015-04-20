@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-6 col-md-offset-4"></div>
+<% if @plant.image.present? %>
+    <%=image_tag @plant.image_url , :class=>"img_plant_pos img-circle" %>
+    <%else %>
+    <%=image_tag "default_plant.png" , :class=>"img_plant_pos img-circle" %>
+<%end%>
+</div>
+
+
+<div class="col-md-6 col-md-offset-3 well alert-success">
+
+<div class="well">
+<p>
+  <strong>Name:</strong>
+  <%= @plant.name %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Race:</strong>
+  <%= @plant.race %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Age:</strong>
+  <%= @plant.age %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Height:</strong>
+  <%= @plant.height %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Temperature:</strong>
+  <%= @plant.temperature %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Humidity soil:</strong>
+  <%= @plant.humidity_soil %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Humidity air:</strong>
+  <%= @plant.humidity_air %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Light degree:</strong>
+  <%= @plant.light_degree %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Health factor:</strong>
+  <%= @plant.health_factor %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Image:</strong>
+  <%= @plant.image %>
+</p>
+</div>
+
+<div class="well">
+<p>
+  <strong>Description:</strong>
+  <%= @plant.description %>
+</p>
+</div>
+
+<%= link_to 'Edit', edit_plant_path(@plant) ,:class=>"btn btn-default"%> |
+<%= link_to 'Back', plants_path ,:class=>"btn btn-default"%>
+
+</div>

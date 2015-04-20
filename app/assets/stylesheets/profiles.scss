@@ -1,0 +1,31 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ .img_profile{
+ 	width:200px;
+ 	height:200px;
+ 	background-image:url('default_profile.png');
+ 	background-size:contain;
+ }
+ .img_cover_photo{
+ 	height:300px;
+ 	width:100%;
+ 	border:none;
+ }
+ .sign_up_in_dashbord{
+ 	float:right;
+ 	margin-top:2px;
+ }
+ .inner_text{
+ 	color:white !important;
+ }
+ .inner_text:hover{
+ 	color:#252525 !important;
+ }
+ .img_profile_pos{
+ 	margin-top:-100px;
+ 	margin-left:10%;
+ 	width:180px;
+ 	height:180px;
+ 	background-color:#e3e3e3;
+ }

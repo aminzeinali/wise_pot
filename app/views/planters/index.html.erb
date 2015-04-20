@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Planters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brief desc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @planters.each do |planter| %>
+      <tr>
+        <td><%= planter.brief_desc %></td>
+        <td><%= link_to 'Show', planter %></td>
+        <td><%= link_to 'Edit', edit_planter_path(planter) %></td>
+        <td><%= link_to 'Destroy', planter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Planter', new_planter_path %>

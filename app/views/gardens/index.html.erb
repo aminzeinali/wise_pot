@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Gardens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gardens.each do |garden| %>
+      <tr>
+        <td><%= garden.profile_id %></td>
+        <td><%= garden.name %></td>
+        <td><%= garden.description %></td>
+        <td><%= garden.location %></td>
+        <td><%= link_to 'Show', garden %></td>
+        <td><%= link_to 'Edit', edit_garden_path(garden) %></td>
+        <td><%= link_to 'Destroy', garden, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Garden', new_garden_path %>

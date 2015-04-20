@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-2 ">
+
+  <%=image_tag "roz.jpg" , :class => "img-circle" , :width => "75%"  %>
+
+</div>
+
+<p>
+  <strong>Brief desc:</strong>
+  <%= @planter.brief_desc %>
+</p>
+
+<%= link_to 'Edit', edit_planter_path(@planter) %> |
+<%= link_to 'Back', planters_path %>
