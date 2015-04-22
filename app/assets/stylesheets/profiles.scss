@@ -29,3 +29,34 @@
  	height:180px;
  	background-color:#e3e3e3;
  }
+ .plant_in_garden{
+ 	width:150px;
+ 	height:100px;
+ }
+ .gardens_box{
+ 	background-color:white;
+ 	padding:1%;
+ 	margin:1%;
+ }
+ .garden_name{
+ 	color:white;
+ 	font-weight:bold;
+ }
+ .edit_style{
+ 	font-weight:bold;
+ 	color:black;
+ }
+
+ .destroy_style{
+ 	font-weight:bold;
+ 	color:red;
+ }
+ .make_bold{
+ 	font-weight:bold;
+ }
+ .my_button_in_profile{
+ 	color:white;
+ }
+ .my_button_in_profile:hover{
+ 	color:gray;
+ }

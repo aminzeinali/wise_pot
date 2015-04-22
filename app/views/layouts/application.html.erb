@@ -14,8 +14,6 @@
 	
 	<title>SocialChef</title>
 	
-
-	<link rel="shortcut icon" href="assets/favicon.ico" />
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -62,6 +60,13 @@
 						</ul>
 					</li>
 					<li><a href="contact.html" title="Contact"><span>Contact</span></a></li><li><a href="http://themeforest.net/item/socialchef-social-recipe-html-template/8568727?ref=themeenergy" title="Buy now"><span>Buy now</span></a></li>
+
+
+					<li>
+				       	<% if user_signed_in? %>
+				       	<%= link_to "Sign out", destroy_user_session_path ,:method => :delete, :class =>"my_button_in_profile" %>
+				       	<% end %>
+					</li>
 				</ul>
 			</nav>
 			
@@ -80,7 +85,7 @@
 
 </head>
 
-<body>
+<body class="home">
 <%if notice.present?%>
 	<p class="notice"><%= notice %></p>
 <%end%>
