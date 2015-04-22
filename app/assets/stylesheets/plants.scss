@@ -2,10 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.darkcyan{
-	background-color: darkcyan;
+.plant_profile_pic{
+	width: 200px;
+	height: 200px;
 }
-.img_plant_pos{
-	width: 230px;
-	height:230px;
+.info_component{
+	background-color:white;
+	padding:5%;
+}
+.for_inner_text{
+	text-align:center;
 }

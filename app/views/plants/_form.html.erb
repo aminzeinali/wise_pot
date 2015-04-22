@@ -1,4 +1,7 @@
-<div class="container-fluid">
+</br>
+
+<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<div class="modal container new_forms">
 <%= form_for @plant , html: { multipart: true } do |f| %>
   <% if @plant.errors.any? %>
     <div id="error_explanation">
@@ -82,3 +85,4 @@
 <%= image_tag("") %>
 </div>
 </div>
+</section>

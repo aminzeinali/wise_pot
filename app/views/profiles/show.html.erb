@@ -1,12 +1,7 @@
 <!--<p id="notice"><%= notice %></p>-->
 <!DOCTYPE html>
 <!-- saved from url=(0066)http://www.themeenergy.com/themes/html/social-chef/my_profile.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<meta name="keywords" content="SocialChef - Social Recipe HTML Template">
-<meta name="description" content="SocialChef - Social Recipe HTML Template">
-<meta name="author" content="themeenergy.com">
+
 
 <title>Profile</title>
 
@@ -18,7 +13,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body><div class="slicknav_menu"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" aria-haspopup="true" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+  <body class=""><div class="slicknav_menu"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" aria-haspopup="true" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
     <ul>
       <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home" role="menuitem"><span>Home</span></a></li>
       <li class="slicknav_collapsed slicknav_parent"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="http://www.themeenergy.com/themes/html/social-chef/recipes.html" title="Recipes"><span>Recipes</span></a>
@@ -73,7 +68,7 @@
       <div class="row">
         <!--profile left part-->
         <div class="my_account one-fourth wow fadeInLeft animated" style="visibility: visible;">
-<!--           <button>
+<!--  <button>
             <%= link_to "Sign out", destroy_user_session_path ,:method => :delete,
             :class=>"my_button_in_profile" %>
           </button> -->
@@ -86,8 +81,12 @@
             <%=image_tag "default_profile.png"%>
             <%end%>
           </figure>
+          <div class="container center">
+            <h2><%= @profile.first_name%></h2> 
+          </div>
           <div class="container">
-            <h2>Anabelle Q.</h2> 
+            <%= link_to 'Edit Profile', edit_profile_path(@profile), :class=>""%> |
+<%= link_to 'Back', profiles_path, :class=>""%>
           </div>
         </div>
         <!--//profile left part-->
@@ -360,7 +359,7 @@
 
     <div class="row">
     <% @profile.gardens.each do |k|  %>
-    <div class = "one-sixth gardens_box" >
+    <div class = "one-sixth gardens_box wow fadeInDown animated animated" >
         <p class="garden_name"><%= k.name%></p>
         <%= link_to ' Edit', edit_garden_path(k) , :class=>"edit_style"%>
 

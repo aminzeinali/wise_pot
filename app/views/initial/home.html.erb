@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html>
 	<!--main-->
 	<main class="main" role="main">
@@ -15,8 +17,7 @@
 						<h1>گلدان هوشمند</h1>
 						<p>SocialChef is the ultimate <strong>cooking social community</strong>, where recipes come to life. Wanna know what you will gain by joining us? Lorem ipsum dolor sit amet, this is some teaser text.</p>
 						<p>You will win awesome prizes, make new friends and share delicious recipes. </p>
-						<a href="register.html" class="button white more medium">Join our community</a>
-						<p>Already a member? Click <a href="login.html">here</a> to login.</p>
+						<a href="users/sign_up" class="button white more medium">ثبت نام</a>
 					</article>
 					
 					<!--search recipes widget-->
@@ -33,11 +34,14 @@
 								<%= form_for("user", :url => user_session_path) do |f| %>
 								  <%= f.text_field :email %>
 								  <%= f.password_field :password %>
+								  </br>
+								  </br>
 								  <%= f.check_box :remember_me %>
 								  <%= f.label :remember_me %>
 								  <%= f.submit 'Sign in' %>
 								  <%= link_to "Forgot your password?", new_password_path('user') %>
 								<% end %>
+								</br>
 
 
 						</div>
@@ -49,9 +53,12 @@
 			<!--//wrap-->
 		</div>
 		<!--//intro-->
-		
+
+			<!--//breadcrumbs-->
+
 		<!--wrap-->
 		<div class="wrap clearfix">
+
 			<!--row-->
 			<div class="row">
 				<!--content-->
@@ -132,6 +139,7 @@
 				</section>
 				<!--//content-->
 			
+
 				<!--content-->
 				<section class="content three-fourth">
 					<!--cwrap-->

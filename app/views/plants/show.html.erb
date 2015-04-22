@@ -1,94 +1,90 @@
 <p id="notice"><%= notice %></p>
+</br>
+</br>
+</br>
+</br>
+</br>
 
-<div class="col-md-6 col-md-offset-4"></div>
-<% if @plant.image.present? %>
-    <%=image_tag @plant.image_url , :class=>"img_plant_pos img-circle" %>
-    <%else %>
-    <%=image_tag "default_plant.png" , :class=>"img_plant_pos img-circle" %>
-<%end%>
+<div class="row">
+  <% if @plant.image.present? %>
+      <%=image_tag @plant.image_url, :class=>"modal plant_profile_pic content center full-width wow fadeInDown animated"%>
+      <%else %>
+      <%=image_tag "default_plant.png", :class=>"plant_profile_pic content center full-width wow fadeInDown animated"%>
+  <%end%>  
 </div>
+<section class="modal info_component content center wow fadeInDown animated style="visibility: visible;"">
 
-
-<div class="col-md-6 col-md-offset-3 well alert-success">
-
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Name:</strong>
   <%= @plant.name %>
 </p>
 </div>
 
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Race:</strong>
   <%= @plant.race %>
 </p>
 </div>
 
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Age:</strong>
   <%= @plant.age %>
 </p>
 </div>
 
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Height:</strong>
   <%= @plant.height %>
 </p>
 </div>
 
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Temperature:</strong>
   <%= @plant.temperature %>
 </p>
 </div>
 
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Humidity soil:</strong>
   <%= @plant.humidity_soil %>
 </p>
 </div>
 
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Humidity air:</strong>
   <%= @plant.humidity_air %>
 </p>
 </div>
 
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Light degree:</strong>
   <%= @plant.light_degree %>
 </p>
 </div>
 
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Health factor:</strong>
   <%= @plant.health_factor %>
 </p>
 </div>
 
-<div class="well">
-<p>
-  <strong>Image:</strong>
-  <%= @plant.image %>
-</p>
-</div>
-
-<div class="well">
-<p>
+<div>
+<p class="for_inner_text">
   <strong>Description:</strong>
   <%= @plant.description %>
 </p>
 </div>
 
-<%= link_to 'Edit', edit_plant_path(@plant) ,:class=>"btn btn-default"%> |
-<%= link_to 'Back', plants_path ,:class=>"btn btn-default"%>
+<%= link_to 'Edit', edit_plant_path(@plant) ,:class=>"for_inner_text"%> |
+<%= link_to 'Back', profile_path(current_user) ,:class=>"for_inner_text"%>
 
-</div>
+</section>

@@ -1,15 +1,21 @@
-<div class="sign_up_box">
+</br>
+</br>
+</br>
+</br>
+</br>
 
-<h2 class="center_box">Sign up</h2>
+<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<div class="modal container new_forms">
+<h2 class="center">Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  <div class="center_box field">
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true%>
   </div>
 
-  <div class="center_box field">
+  <div class="field">
     <%= f.label :password %>
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -17,18 +23,18 @@
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
-  <div class="center_box field">
+  <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
-  <div class="center_box actions">
+  </br>
+  <div class="actions">
     <%= f.submit "Sign up", :class=>"btn btn-default"%>
   </div>
 <% end %>
 
-<div class="center_box">
+<div>
 <%= render "devise/shared/links"%>
 </div>
-
 </div>
+</section>

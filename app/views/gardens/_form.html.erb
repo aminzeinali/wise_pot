@@ -1,4 +1,7 @@
-<div class="container-fluid">
+</br>
+
+<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<div class="modal container new_forms">
 <%= form_for(@garden) do |f| %>
   <% if @garden.errors.any? %>
     <div id="error_explanation">
@@ -18,18 +21,20 @@
   </div>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name , :class => "form-control"%>
+    <%= f.text_field :name%>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description , :class => "form-control"%>
+    <%= f.text_area :description%>
   </div>
   <div class="field">
     <%= f.label :location %><br>
-    <%= f.text_field :location , :class => "form-control"%>
+    <%= f.text_field :location%>
   </div>
+  </br>
   <div class="actions">
-    <%= f.submit :class=>"btn btn-default"%>
+    <%= f.submit %>
   </div>
 <% end %>
 </div>
+</section>
