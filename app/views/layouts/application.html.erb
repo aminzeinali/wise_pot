@@ -30,7 +30,12 @@
 
 	  		<nav class="main-nav" role="navigation" id="menu">
 	  			<ul>
-	  				<li class="current-menu-item"><a href="index.html" title="Home"><span>Home</span></a></li>
+	  				<li class="current-menu-item">
+	  				<a href="/" title="Home">
+	  				<span>خانه</span>
+	  				</a>
+	  				</li>
+	  				
 	  				<li><a href="recipes.html" title="Recipes"><span>Recipes</span></a>
 	  					<ul>
 	  						<li><a href="recipes2.html" title="Recipes 2">Recipes 2</a></li><li><a href="recipe.html" title="Recipe">Recipe</a></li>
@@ -62,19 +67,52 @@
 	  				<li><a href="contact.html" title="Contact"><span>Contact</span></a></li><li><a href="http://themeforest.net/item/socialchef-social-recipe-html-template/8568727?ref=themeenergy" title="Buy now"><span>Buy now</span></a></li>
 
 
-	  				<li>
-	  					<% if user_signed_in? %>
-	  					<%= link_to "Sign out", destroy_user_session_path ,:method => :delete, :class =>"my_button_in_profile" %>
-	  					<% end %>
-	  				</li>
+	  				<!-- <li>
+	  					<%# if user_signed_in? %>
+	  					<%#= link_to "Sign out", destroy_user_session_path ,:method => :delete, :class =>"my_button_in_profile" %>
+	  					<%# end %>
+	  				</li> -->
 	  			</ul>
 	  		</nav>
 
 	  		<nav class="user-nav" role="navigation">
 	  			<ul>
-	  				<li class="light"><a href="find_recipe.html" title="Search for recipes"><i class="ico i-search"></i> <span>Search for recipes</span></a></li>
-	  				<li class="medium"><a href="my_profile.html" title="My account"><i class="ico i-account"></i> <span>My account</span></a></li>
-	  				<li class="dark"><a href="submit_recipe.html" title="Submit a recipe"><i class="ico i-submitrecipe"></i> <span>Submit a recipe</span></a></li>
+	  				
+	  				<li class="dark">
+	  				<a href="find_recipe.html" title="Search for recipes">
+	  				<i class="ico i-search"></i> 
+	  				<span>جستجوی گل ها</span></a>
+	  				</li>
+	  				
+
+
+
+	  				<li class="medium">
+	  				<%if current_user.present?%>	
+	  				<%= link_to profile_path(current_user) do%>
+	  				<i class="ico i-account"></i> 
+	  				<span>حساب کاربری</span></a>
+	  				<% end %>
+
+	  				<%else%>
+	  				 <%= link_to new_registration_path(User.new) do%>
+	  				<i class="ico i-account"></i> 
+	  				<span>حساب کاربری</span></a>
+	  				<% end %>
+
+	  				<% end %>
+	  				</li>
+	  				
+					<li class="dark">
+	  					<% if user_signed_in? %>
+	  					<%= link_to destroy_user_session_path ,:method => :delete,:class =>"" do %>
+	  					<i class="ico i-submitrecipe"></i>
+	  					<span>خروج</span>
+	  					<%end%>
+	  					<% end %>
+	  				</li>
+
+
 	  			</ul>
 	  		</nav>
 	  	</div>

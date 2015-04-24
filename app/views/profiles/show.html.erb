@@ -53,10 +53,10 @@
   <!--wrap-->
   <div class="wrap clearfix">
     <!--breadcrumbs-->
-    <nav class="breadcrumbs">
+    <nav class="breadcrumbs fasele_az_bala">
       <ul>
-        <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home">Home</a></li>
-        <li>My account</li>
+        <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home">خانه</a></li>
+        <li>حساب کاربری من</li>
       </ul>
     </nav>
     <!--//breadcrumbs-->
@@ -68,10 +68,6 @@
       <div class="row">
         <!--profile left part-->
         <div class="my_account one-fourth wow fadeInLeft animated" style="visibility: visible;">
-<!--  <button>
-            <%= link_to "Sign out", destroy_user_session_path ,:method => :delete,
-            :class=>"my_button_in_profile" %>
-          </button> -->
             </br>
             </br>
           <figure>
@@ -86,7 +82,7 @@
           </div>
           <div class="container">
             <%= link_to 'Edit Profile', edit_profile_path(@profile), :class=>""%> |
-<%= link_to 'Back', profiles_path, :class=>""%>
+          <%= link_to 'Back', profiles_path, :class=>""%>
           </div>
         </div>
         <!--//profile left part-->
@@ -107,9 +103,9 @@
               <dl class="basic two-third">
 
 
-                <dt>First Name</dt>
+                <dt style="text-align:center">نام</dt>
                 <dd><%= @profile.first_name%></dd>
-                <dt>Last Name</dt>
+                <dt style="text-align:center">نام خانوادگی</dt>
                 <dd><%= @profile.last_name%></dd>
                 <dt>Favorite appliances</dt>
                 <dd>Blender, sharp knife</dd>
@@ -346,20 +342,16 @@
 
 
     <div class="one">
-    <button>  
-    <%= link_to "Create New Garden", new_garden_path,:class=>"my_button_in_profile"%>
-    </button>
+    <%= link_to "ساخت باغچه", new_garden_path,:class=>"button"%>
     </br>
     </br>
-    <button>
-      <%= link_to "Add New Plant to your Desired Garden", new_plant_path, :class=>"my_button_in_profile" %>
-    </button>
+      <%= link_to "اضافه کردن گل جدید", new_plant_path, :class=>"button" %>
     </div>
 
 
     <div class="row">
     <% @profile.gardens.each do |k|  %>
-    <div class = "one-sixth gardens_box wow fadeInDown animated animated" >
+    <div class = "one-sixth gardens_box wow zoomIn animated animated" >
         <p class="garden_name"><%= k.name%></p>
         <%= link_to ' Edit', edit_garden_path(k) , :class=>"edit_style"%>
 
