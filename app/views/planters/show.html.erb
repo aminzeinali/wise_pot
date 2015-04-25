@@ -1,14 +1,32 @@
 <p id="notice"><%= notice %></p>
-<div class="col-md-2 ">
+</br>
+</br>
+</br>
+</br>
+</br>
+<div class="one-third wow fadeInDown animated modal">
+  <%if @planter.image_1.present?%>
+  <%=image_tag @planter.image_1_url , :width => "48%", :class=>"image_in_planter"  %>
+  <% end %>
 
-  <%=image_tag "roz.jpg" , :class => "img-circle" , :width => "75%"  %>
+  <%if @planter.image_2.present?%>
+  <%=image_tag @planter.image_2_url , :width => "48%", :class=>"image_in_planter"  %>
+  <% end %>
 
-</div>
+  <%if @planter.image_3.present?%>
+  <%=image_tag @planter.image_3_url , :width => "48%", :class=>"image_in_planter"  %>
+  <% end %>
 
-<p>
-  <strong>Brief desc:</strong>
+  <%if @planter.image_4.present?%>
+  <%=image_tag @planter.image_4_url , :width => "48%", :class=>"image_in_planter"  %>
+  <% end %>
+  </div>
+
+<p class="make_bold">
+  <strong>:درباره ی این گل</strong>
+  </br>
   <%= @planter.brief_desc %>
 </p>
 
-<%= link_to 'Edit', edit_planter_path(@planter) %> |
-<%= link_to 'Back', planters_path %>
+<%= link_to 'Edit', edit_planter_path(@planter) %> 
+<%= link_to '<<بازگشت', profile_path(current_user),:class=>"button" %>

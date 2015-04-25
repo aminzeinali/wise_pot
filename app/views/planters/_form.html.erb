@@ -1,4 +1,8 @@
-<%= form_for(@planter) do |f| %>
+</br>
+
+<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<div class="modal container new_forms">
+<%= form_for @planter, html: { multipart: true } do |f| %>
   <% if @planter.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@planter.errors.count, "error") %> prohibited this planter from being saved:</h2>
@@ -37,7 +41,77 @@
     <%= f.label :brief_desc %><br>
     <%= f.text_area :brief_desc %>
   </div>
+
+
+  <div class="field">
+    <%= f.label :image_1 %><br>
+    <%= f.file_field :image_1%>
+  
+    <p>
+      <label>
+      <%= f.check_box :remove_image_1 %>
+      Remove image 1
+      </label>
+    </p>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :image_2 %><br>
+    <%= f.file_field :image_2%>
+  
+    <p>
+      <label>
+      <%= f.check_box :remove_image_2 %>
+      Remove image 2
+      </label>
+    </p>
+
+  </div>
+
+
+  <div class="field">
+    <%= f.label :image_3 %><br>
+    <%= f.file_field :image_3%>
+  
+    <p>
+      <label>
+      <%= f.check_box :remove_image_3 %>
+      Remove image 3
+      </label>
+    </p>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :image_4 %><br>
+    <%= f.file_field :image_4%>
+  
+    <p>
+      <label>
+      <%= f.check_box :remove_image_4 %>
+      Remove image 4
+      </label>
+    </p>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :additional_image %><br>
+    <%= f.file_field :additional_image%>
+  
+    <p>
+      <label>
+      <%= f.check_box :remove_additional_image %>
+      Remove additional image
+      </label>
+    </p>
+
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
+</section>

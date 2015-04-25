@@ -70,6 +70,7 @@ class PlantersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def planter_params
       params.require(:planter).permit(:brief_desc ,:plant_id , :humidity_soil, :humidity_air ,  
-        :temperature, :light_degree , :name )
+        :temperature, :light_degree , :name, :image_1, :image_2, :image_3,
+        :image_4, :additional_image )
     end
 end
