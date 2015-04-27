@@ -1,0 +1,21 @@
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+<div class="modal one-fourth wow fadeInDown animated">
+
+<%= form_tag({controller: "initial", action: "do_search"}, method: "get", remote: true) do %>
+	<%= text_field_tag(:query) %>
+	<%= submit_tag("جستجو") %>
+<%end%>
+
+
+<div id="result">
+	
+</div>
+
+
+</div>

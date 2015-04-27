@@ -16,4 +16,14 @@ class InitialController < ApplicationController
     @devise_mapping ||= Devise.mappings[:user]
   end
   
+  def search
+    
+  end
+
+  def do_search
+    q = params[:query]
+    @result = Planter.find_by_name(q);
+  end
+
+
 end

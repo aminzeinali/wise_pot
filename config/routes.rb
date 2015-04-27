@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-  root :to =>"initial#home"
-end
+    root :to =>"initial#home"
+  end
 
   resources :images
 
@@ -19,6 +19,9 @@ end
   resources :gardens
 
   resources :profiles
+
+  get '/search' , to: 'initial#search'
+  get '/dosearch' , to: 'initial#do_search'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
