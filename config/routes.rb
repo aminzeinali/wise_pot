@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :data_logs
+
   devise_for :users
 
   devise_scope :user do
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   resources :profiles do 
     member do
       get :my_flowers
+      get :my_gardens
     end
   end
 

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  plant_id: 1
+  humidity_soil: 1.5
+  humidity_air: 1.5
+  light: 1.5
+  temperature: 1.5
+
+two:
+  user_id: 1
+  plant_id: 1
+  humidity_soil: 1.5
+  humidity_air: 1.5
+  light: 1.5
+  temperature: 1.5

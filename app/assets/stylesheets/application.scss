@@ -13,6 +13,21 @@
  *= require_tree
  *= require profiles
  */ 
+
+@font-face {
+ font-family: 'BYekan';
+ src: url('BYekan.eot');
+ src: local('b BYekan'), url('BYekan.woff') format('woff'), url('BYekan.ttf') format('truetype'), url('BYekan.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+
+.b_farsi{
+	font-family: Byekan;
+}
+body{
+	font-family: Byekan !important;
+}
  div.email_box{
  	float: right;
  }

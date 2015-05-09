@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @data_log.user_id %>
+</p>
+
+<p>
+  <strong>Plant:</strong>
+  <%= @data_log.plant_id %>
+</p>
+
+<p>
+  <strong>Humidity soil:</strong>
+  <%= @data_log.humidity_soil %>
+</p>
+
+<p>
+  <strong>Humidity air:</strong>
+  <%= @data_log.humidity_air %>
+</p>
+
+<p>
+  <strong>Light:</strong>
+  <%= @data_log.light %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @data_log.temperature %>
+</p>
+
+<%= link_to 'Edit', edit_data_log_path(@data_log) %> |
+<%= link_to 'Back', data_logs_path %>
