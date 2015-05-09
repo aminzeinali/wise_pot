@@ -1,6 +1,15 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
+
+
+  def my_flowers
+  respond_to do |format|
+      format.js
+    end
+  end
+
+
   # GET /profiles
   # GET /profiles.json
   def index

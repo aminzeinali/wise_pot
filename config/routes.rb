@@ -18,7 +18,12 @@ Rails.application.routes.draw do
 
   resources :gardens
 
-  resources :profiles
+  resources :profiles do 
+    member do
+      get :my_flowers
+    end
+  end
+
 
   get '/search' , to: 'initial#search'
   get '/dosearch' , to: 'initial#do_search'
