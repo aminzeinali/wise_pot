@@ -1,24 +1,76 @@
-<p id="notice"><%= notice %></p>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div class = "modal one-third gardens_box wow zoomIn animated animated" >
+        <p class="garden_name"><%= @garden.name%></p>
+        <div class="setting_option">
+          <%= link_to 'تنظیمات', edit_garden_path(@garden) , :class=>"edit_style"%> |
 
-<p>
-  <strong>Profile:</strong>
-  <%= @garden.profile_id %>
+          <%= link_to 'حذف باغچه', garden_path(@garden), :class=>"destroy_style", method: :delete, data: { confirm: 'Are you sure?' }%>
+        </div>
+      </br>    
+      <% @garden.plants.each do |p| %>
+      <div class="border_plant">
+        <div>
+          <%= image_tag("img11.jpg", :class=>"plant_in_garden") %> 
+          <%=link_to p.name , p ,:class=>"make_bold" %>
+        </div>
+        <div>
+          <p class="make_bold">  Temperature: <%=p.temperature %></p>
+          <p class="make_bold">  Soil Humidity: <%=p.humidity_soil %></p>
+          <p class="make_bold">  Air Humidity: <%=p.humidity_air %></p>
+          <p class="make_bold">  Light: <%=p.light_degree %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <!--//content-->
+</div>
+</div>
+<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<div class="modal container new_forms">
+
+<% @garden.comments.each do |cmnt| %>
+
+<div class="comment_box">
+<p class="make_bold">
+  <%= cmnt.content %>
 </p>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @garden.name %>
-</p>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @garden.description %>
-</p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @garden.location %>
-</p>
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-<%= link_to 'Edit', edit_garden_path(@garden) %> |
-<%= link_to 'Back', gardens_path %>
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :commentable_id , :value => @garden.id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :commentable_type  , :value =>"Garden"%>
+  </div>
+  <div class="field  make_center">
+    <%= f.label :نظرات , :class=>"make_bold"%><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
+  </div>
+<% end %>
+</div>
+</section>

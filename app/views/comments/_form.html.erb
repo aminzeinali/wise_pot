@@ -1,3 +1,8 @@
+</br>
+
+<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<div class="modal container new_forms">
+
 <%= form_for(@comment) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
@@ -12,8 +17,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :post_id %><br>
-    <%= f.number_field :post_id %>
+    <%= f.hidden_field :commentable_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :commentable_type %>
   </div>
   <div class="field">
     <%= f.label :content %><br>
@@ -23,3 +30,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>
+</section>

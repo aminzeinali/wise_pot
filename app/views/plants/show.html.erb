@@ -4,7 +4,6 @@
 </br>
 </br>
 </br>
-
 <div class="row">
   <% if @plant.image.present? %>
       <%=image_tag @plant.image_url, :class=>"modal plant_profile_pic content center full-width wow fadeInDown animated"%>
@@ -88,4 +87,51 @@
 <%= link_to 'Edit', edit_plant_path(@plant) ,:class=>"for_inner_text"%> |
 <%= link_to 'Back', profile_path(current_user) ,:class=>"for_inner_text"%>
 
+</section>
+<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<div class="modal container new_forms">
+
+<% @plant.comments.each do |cmnt| %>
+<div class="comment_box">
+<p class="make_bold">
+  <%= cmnt.content %>
+</p>
+
+<p class="user_name_cm">
+  <%= cmnt.user.profile.first_name %>
+</p>
+
+</div>
+
+<% end %>
+
+
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :commentable_id , :value => @plant.id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :commentable_type  , :value =>"Plant"%>
+  </div>
+  <div class="field  make_center">
+    <%= f.label :نظرات , :class=>"make_bold"%><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
+  </div>
+<% end %>
+</div>
 </section>

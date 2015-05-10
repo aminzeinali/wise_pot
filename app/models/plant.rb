@@ -5,4 +5,5 @@ class Plant < ActiveRecord::Base
 	has_many :data_logs
 	belongs_to :planter
 	mount_uploader :image , AvatarUploader
+	has_many :comments , :as => :commentable
 end

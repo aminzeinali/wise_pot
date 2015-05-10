@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :comments
+
   resources :data_logs
 
   devise_for :users
@@ -9,8 +11,6 @@ Rails.application.routes.draw do
   end
 
   resources :images
-
-  resources :comments
 
   resources :posts
 

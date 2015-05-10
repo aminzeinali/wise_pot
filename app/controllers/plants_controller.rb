@@ -10,6 +10,7 @@ class PlantsController < ApplicationController
   # GET /plants/1
   # GET /plants/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /plants/new
