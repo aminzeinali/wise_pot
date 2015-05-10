@@ -1,32 +1,50 @@
-<div class = "tab-content" style="display: block;">
-<div class="row">
+<div class ="entries row" >
 <% @profile.gardens.each do |k|  %>
-    <div class = "one-third gardens_box wow zoomIn animated animated" >
-        <p class="garden_name"><%= k.name%></p>
-        <div class="setting_option">
-          <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"edit_style"%> |
+    <div class = "cwrap gardens_box wow zoomIn animated animated" >
 
-          <%= link_to 'حذف باغچه', garden_path(k), :class=>"destroy_style", method: :delete, data: { confirm: 'Are you sure?' }%>
-        </div>
+        <h3 class="garden_name">
+          <%= k.name%><br>
+          <small>
+          <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"edit_style"%> |
+          <%= link_to 'حذف باغچه', garden_path(k), :class=>"destroy_style", method: :delete, data: { confirm: 'Are you sure?' }%>            
+          </small>
+        </h3>
+
       </br>    
       <% k.plants.each do |p| %>
-      <div class="border_plant">
-        <div>
-          <%= image_tag("img11.jpg", :class=>"plant_in_garden") %> 
-          <%=link_to p.name , p ,:class=>"make_bold" %>
+      <div class="entry one-third">
+        <figure>
+          <% if p.image.present? %>
+            <%=image_tag p.image_url , :width => "270" , :height => "203" %>
+          <% else %>
+          <%= image_tag("img11.jpg", :class=>"") %> 
+          <% end %>
+          <figcaption>
+            <%=link_to p ,:class=>"make_bold"  do %>
+            <!-- <a href="recipe.html"> -->
+              <i class="ico i-view"></i> 
+                <span><%= p.name %> </span>
+            <!-- </a> -->
+            <% end %>
+          </figcaption>
+        </figure>  
+        <div class="container">        
+          <p class="ssmal">  Temperature: <%=p.temperature %></p>
+          <p class="ssmal">  Soil Humidity: <%=p.humidity_soil %></p>
+          <p class="ssmal">  Air Humidity: <%=p.humidity_air %></p>
+          <p class="ssmal">  Light: <%=p.light_degree %></p>  
         </div>
-        <div>
-          <p class="make_bold">  Temperature: <%=p.temperature %></p>
-          <p class="make_bold">  Soil Humidity: <%=p.humidity_soil %></p>
-          <p class="make_bold">  Air Humidity: <%=p.humidity_air %></p>
-          <p class="make_bold">  Light: <%=p.light_degree %></p>
-        </div>
+        <div class="actions">
+          <div>
+            <div class="difficulty"><i class="ico i-medium"></i><a href="#">medium</a></div>
+            <div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
+            <div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">27</a></div>
+          </div>
+        </div>      
       </div>
       <% end %>
     </div>
       <% end %>
-  </div>
   <!--//content-->
 </div>
-</div>
-</div>
+

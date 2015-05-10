@@ -41,6 +41,10 @@
             <%= link_to 'تنظیمات حساب', edit_profile_path(@profile), :class=>"b_farsi"%> |
           <%= link_to 'بازگشت', profiles_path, :class=>"b_farsi"%>
           </div>
+          <div class="one action">
+           <%= link_to "ساخت باغچه", new_garden_path , :class => "button" %>
+            <%= link_to "اضافه کردن گل جدید", new_plant_path , :class => "button" %>
+          </div>
         </div>
         <!--//profile left part-->
 
@@ -316,16 +320,6 @@
       </div>
       <!--//row-->
     </section>
-
-
-    <div class="one">
-    <%= link_to "ساخت باغچه", new_garden_path,:class=>"button b_farsi"%>
-    </br>
-    </br>
-      <%= link_to "اضافه کردن گل جدید", new_plant_path, :class=>"button b_farsi" %>
-    </div>
-
-
    
   <!--//content-->
 </div>
