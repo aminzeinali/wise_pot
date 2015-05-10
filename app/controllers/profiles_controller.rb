@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy,:my_gardens]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy,:my_gardens, :about_me]
 
 
 
@@ -16,6 +16,11 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def about_me
+    respond_to do |format|
+      format.js
+    end
+  end
   # GET /profiles
   # GET /profiles.json
   def index

@@ -47,12 +47,15 @@
         <div class="three-fourth wow fadeInRight animated" style="visibility: visible;">
           <nav class="tabs">
             <ul>
-              <li class="active"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#about" title="About me">About me</a></li>
               <li class="">
-                  <%= link_to raw('my friends'), my_flowers_profile_path(current_user), :class => '', :remote => true, :title => 'my flowers', :id => "flowers" %>
+                  <%= link_to raw('درباره ی من'), about_me_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'about_me', :id => "about_me2" %>
+              </li>
+              <!-- <li class="active"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#about" title="About me">درباره ی من</a></li>
+               --><li class="">
+                  <%= link_to raw('دوستان من'), my_flowers_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
               </li>
               <li class="">
-               <%= link_to raw('my gardens'), my_gardens_profile_path(current_user), :class => '', :remote => true, :title => 'my gardens', :id => "gardens" %>
+               <%= link_to raw('باغچه های من'), my_gardens_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
               <!-- <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#favorites" title="My favorites">My favorites -->
               <!-- </a> -->
               </li>
@@ -61,7 +64,10 @@
           </nav>
 
           <!--about-->
-          <div class="tab-content" id="about" style="display: block;">
+          <!-- <div class="tab-content" id="about_me">
+            
+          </div>
+           --><div class="tab-content" id="about" style="display: block;">
             <div class="row">
               <dl class="basic two-third">
 
@@ -102,6 +108,9 @@
           </div>
           <!--//about-->
           <div class="tab-content" id="my_flowers" >
+          </div>
+
+          <div class="tab-content" id="about_me" >
           </div>
 
           <div class="tab-content" id="my_gardens" >

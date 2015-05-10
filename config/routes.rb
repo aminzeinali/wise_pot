@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     member do
       get :my_flowers
       get :my_gardens
+      get :about_me
     end
   end
 

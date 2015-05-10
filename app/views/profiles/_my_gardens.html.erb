@@ -1,12 +1,13 @@
-            <div class="entries row">
-              <!--item-->
-              <div class="row">
-    <% @profile.gardens.each do |k|  %>
+<div class = "tab-content" style="display: block;">
+<div class="row">
+<% @profile.gardens.each do |k|  %>
     <div class = "one-third gardens_box wow zoomIn animated animated" >
         <p class="garden_name"><%= k.name%></p>
-        <%= link_to ' Edit', edit_garden_path(k) , :class=>"edit_style"%>
+        <div class="setting_option">
+          <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"edit_style"%> |
 
-        <%= link_to ' Destroy', garden_path(k), :class=>"destroy_style", method: :delete, data: { confirm: 'Are you sure?' }%>
+          <%= link_to 'حذف باغچه', garden_path(k), :class=>"destroy_style", method: :delete, data: { confirm: 'Are you sure?' }%>
+        </div>
       </br>    
       <% k.plants.each do |p| %>
       <div class="border_plant">
@@ -27,4 +28,5 @@
   </div>
   <!--//content-->
 </div>
-      
+</div>
+</div>
