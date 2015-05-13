@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :data_logs
+  resources :data_logs do
+    collection do
+      get :reciever
+    end
+  end
 
   devise_for :users
 

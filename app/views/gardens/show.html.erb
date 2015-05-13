@@ -40,6 +40,12 @@
 <p class="make_bold">
   <%= cmnt.content %>
 </p>
+<p class="user_name_cm">
+  <%= cmnt.user.profile.first_name %>
+  <%= cmnt.user.profile.last_name %>
+</p>
+<p class="make_right"><%= cmnt.created_at %></p>
+
 </div>
 
 <% end %>

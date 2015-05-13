@@ -16,82 +16,83 @@
 
 <div>
 <p class="for_inner_text">
-  <strong>Name:</strong>
+  <h3>نام گیاه:</h3>
   <%= @plant.name %>
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
-  <strong>Race:</strong>
+  <h3>نژاد:</h3>
   <%= @plant.race %>
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
-  <strong>Age:</strong>
+  <h3>سن:</h3>
   <%= @plant.age %>
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
-  <strong>Height:</strong>
+  <h3>قد:</h3>
   <%= @plant.height %>
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
-  <strong>Temperature:</strong>
+  <h3>دمای فعلی:</h3>
   <%= @plant.temperature %>
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
-  <strong>Humidity soil:</strong>
+  <h3>رطوبت خاک:</h3>
   <%= @plant.humidity_soil %>
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
-  <strong>Humidity air:</strong>
+  <h3>رطوبت محیط:</h3>
   <%= @plant.humidity_air %>
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
-  <strong>Light degree:</strong>
+  <h3>نور محیط:</h3>
   <%= @plant.light_degree %>
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
-  <strong>Health factor:</strong>
+  <h3>میزان سلامت:</h3>
   <%= @plant.health_factor %>
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
-  <strong>Description:</strong>
+  <h3>توضیحات:</h3>
   <%= @plant.description %>
 </p>
 </div>
 
-<%= link_to 'Edit', edit_plant_path(@plant) ,:class=>"for_inner_text"%> |
-<%= link_to 'Back', profile_path(current_user) ,:class=>"for_inner_text"%>
+<%= link_to 'تنظیمات', edit_plant_path(@plant) ,:class=>"for_inner_text"%> |
+<%= link_to 'بازگشت', profile_path(current_user) ,:class=>"for_inner_text"%>
 
 </section>
 <section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
 <div class="modal container new_forms">
 
 <% @plant.comments.each do |cmnt| %>
+
 <div class="comment_box">
 <p class="make_bold">
   <%= cmnt.content %>
@@ -99,7 +100,9 @@
 
 <p class="user_name_cm">
   <%= cmnt.user.profile.first_name %>
+  <%= cmnt.user.profile.last_name %>
 </p>
+<p class="make_right"><%= cmnt.created_at %></p>
 
 </div>
 

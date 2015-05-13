@@ -1,5 +1,21 @@
 class DataLogsController < ApplicationController
+  before_action :authenticate_user! , :except => [:reciever]
+
   before_action :set_data_log, only: [:show, :edit, :update, :destroy]
+  #protect_from_forgery with: :null
+
+  def reciever
+    @new_data = DataLog.new
+    @new_data.humidity_air = params[:hm] 
+    @new_data.temperature = params[:tm]
+    @new_data.light = params[:l]
+    @new_data.save
+    render :layout => false     
+  end
+
+
+
+
 
   # GET /data_logs
   # GET /data_logs.json

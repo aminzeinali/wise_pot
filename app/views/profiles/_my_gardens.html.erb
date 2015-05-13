@@ -3,7 +3,7 @@
     <div class = "cwrap gardens_box wow zoomIn animated animated" >
 
         <h3 class="garden_name">
-          <%= k.name%><br>
+          <%= link_to k.name , k %><br>
           <small>
           <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"edit_style"%> |
           <%= link_to 'حذف باغچه', garden_path(k), :class=>"destroy_style", method: :delete, data: { confirm: 'Are you sure?' }%>            
@@ -29,10 +29,10 @@
           </figcaption>
         </figure>  
         <div class="container">        
-          <p class="ssmal">  Temperature: <%=p.temperature %></p>
-          <p class="ssmal">  Soil Humidity: <%=p.humidity_soil %></p>
-          <p class="ssmal">  Air Humidity: <%=p.humidity_air %></p>
-          <p class="ssmal">  Light: <%=p.light_degree %></p>  
+          <p class="ssmal make_right">  :دما <%=p.temperature %></p>
+          <p class="ssmal make_right">  :رطوبت خاک <%=p.humidity_soil %></p>
+          <p class="ssmal make_right">  :رطوبت هوا <%=p.humidity_air %></p>
+          <p class="ssmal make_right">  :نور <%=p.light_degree %></p>  
         </div>
         <div class="actions">
           <div>
