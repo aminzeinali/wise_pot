@@ -29,9 +29,9 @@
             </br>
           <figure>
             <% if @profile.profile_photo.present? %>
-            <%=image_tag @profile.profile_photo_url%>
+            <%=image_tag @profile.profile_photo_url , :class=>"stretch_img"%>
             <%else %>
-            <%=image_tag "default_profile.png"%>
+            <%=image_tag "default_profile.png" , :class=>"stretch_img"%>
             <%end%>
           </figure>
           <div class="container center">

@@ -17,24 +17,26 @@
 
 <div class="col-md-7">
   <div class="form-group">
+
+    <p class="make_right">باغچه مورد نظر</p>
     <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name") %> 
   </div>
 
 
   <div class="field">
-    <%= f.label :name%><br>
+    <p class="make_right">نام</p>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :race %><br>
+    <p class="make_right">نژاد گیاه</p>
     <%= f.text_field :race%>
   </div>
   <div class="field">
-    <%= f.label :age %><br>
+    <p class="make_right">سن گیاه</p>
     <%= f.number_field :age%>
   </div>
   <div class="field">
-    <%= f.label :height %><br>
+    <p class="make_right">ارتفاع گیاه</p>
     <%= f.number_field :height%>
   </div>
   <!--
@@ -60,7 +62,7 @@
   </div>
   -->
   <div class="field">
-    <%= f.label :image %><br>
+    <p class="make_right">یک تصویر از گیاه</p>
     <%= f.file_field :image%>
   
   <p>
@@ -72,11 +74,11 @@
 
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <p class="make_right">توضیحاتی مختصر برای گیاه</p>
     <%= f.text_area :description %>
   </div>
   <div class="actions">
-    <%= f.submit%>
+    <%= f.submit 'اضافه کردن گیاه به باغچه' , :class=>"far_class b_farsi tool_plant_creat"%>
   </div>
 <% end %>
 </div>
