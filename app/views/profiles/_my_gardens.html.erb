@@ -1,38 +1,103 @@
-<div class ="entries row" >
+<div class="entries row">
+  <!--item-->
+  <div class="entry one-third">
+    <figure>
+      <img src="/assets/img5.jpg" alt="">
+      <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
+    </figure>
+    <div class="container">
+      <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">!گیاهان به موسیقی گوش می دهند</a></h2>
+      <div class="actions">
+        <div>
+          <div class="difficulty"><i class="ico i-medium"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">medium</a></div>
+          <div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>
+          <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--item-->
+
+  <!--item-->
+  <div class="entry one-third">
+    <figure>
+      <img src="/assets/img6.jpg" alt="">
+      <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
+    </figure>
+    <div class="container make_right">
+      <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">!چگونه تراس خانه ام را به باغچه تبدیل کردم
+      </a></h2>
+      <div class="actions">
+        <div>
+          <div class="difficulty"><i class="ico i-hard"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">hard</a></div>
+          <div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>
+          <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--item-->
+
+  <!--item-->
+  <div class="entry one-third">
+    <figure>
+      <img src="/assets/img7.jpg" alt="">
+      <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
+    </figure>
+    <div class="container make_right">
+      <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">نکاتی جالب در مورد نگهداری گل های آبی
+      </a></h2>
+      <div class="actions">
+        <div>
+          <div class="difficulty"><i class="ico i-easy"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">easy</a></div>
+          <div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>
+          <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% @profile.gardens.each do |k|  %>
-    <div class = "cwrap gardens_box wow zoomIn animated animated" >
+    <div class = "cwrap gardens_box wow zoomIn animated entry" >
+
+      <small class="right">
+        <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"btn btn-default btn-xs"%> |
+        <%= link_to 'حذف باغچه', garden_path(k), :class=>"btn btn-warning btn-xs", method: :delete, data: { confirm: 'Are you sure?' }%>
+      </small>
+      <small class="left">
+        <%= link_to " گل جدید", new_plant_path(garden_id: k) , :class => "btn btn-default btn-xs" %>
+
+      </small>
+
 
         <h3 class="garden_name">
           <%= link_to k.name , k %><br>
-          <small>
-          <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"edit_style"%> |
-          <%= link_to 'حذف باغچه', garden_path(k), :class=>"destroy_style", method: :delete, data: { confirm: 'Are you sure?' }%>            
-          </small>
         </h3>
 
-      </br>    
+<!---->
+      </br>
       <% k.plants.each do |p| %>
       <div class="entry one-third">
         <figure>
           <% if p.image.present? %>
             <%=image_tag p.image_url , :width => "270" , :height => "203" %>
           <% else %>
-          <%= image_tag("img11.jpg", :class=>"") %> 
+          <%= image_tag("img11.jpg", :class=>"") %>
           <% end %>
           <figcaption>
             <%=link_to p ,:class=>"make_bold"  do %>
             <!-- <a href="recipe.html"> -->
-              <i class="ico i-view"></i> 
+              <i class="ico i-view"></i>
                 <span><%= p.name %> </span>
             <!-- </a> -->
             <% end %>
           </figcaption>
-        </figure>  
-        <div class="container">        
+        </figure>
+        <div class="container">
+          <p class="make_center"><%= p.name %></p>
           <p class="ssmal make_right">  :دما <%=p.temperature %></p>
           <p class="ssmal make_right">  :رطوبت خاک <%=p.humidity_soil %></p>
           <p class="ssmal make_right">  :رطوبت هوا <%=p.humidity_air %></p>
-          <p class="ssmal make_right">  :نور <%=p.light_degree %></p>  
+          <p class="ssmal make_right">  :نور <%=p.light_degree %></p>
         </div>
         <div class="actions">
           <div>
@@ -40,11 +105,10 @@
             <div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
             <div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">27</a></div>
           </div>
-        </div>      
+        </div>
       </div>
       <% end %>
     </div>
       <% end %>
   <!--//content-->
 </div>
-

@@ -42,6 +42,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+
   end
 
   # POST /profiles
@@ -101,6 +102,6 @@ class ProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:profile).permit(:user_id, :profile_photo, :cover_photo ,
-       :first_name , :last_name , :gender , :remove_cover_photo , :remove_profile_photo)
+       :first_name , :last_name , :gender , :remove_cover_photo , :remove_profile_photo )
     end
 end

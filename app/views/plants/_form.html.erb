@@ -19,7 +19,12 @@
   <div class="form-group">
 
     <p class="make_right">باغچه مورد نظر</p>
-    <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name") %> 
+    <% if @garden.present?%>
+        <%= hidden_field_tag :garden_id , @garden.id %>
+        <span> <%= @garden.name %> </span>
+    <% else %>
+    <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name") %>
+        <% end %>
   </div>
 
 

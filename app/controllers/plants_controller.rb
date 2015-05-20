@@ -15,7 +15,11 @@ class PlantsController < ApplicationController
 
   # GET /plants/new
   def new
+
+    @garden = Garden.find(params[:garden_id]) if params[:garden_id].present?
+
     @plant = Plant.new
+
   end
 
   # GET /plants/1/edit

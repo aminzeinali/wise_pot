@@ -19,10 +19,10 @@
           <%=link_to p.name , p ,:class=>"make_bold" %>
         </div>
         <div>
-          <p class="make_bold">  Temperature: <%=p.temperature %></p>
-          <p class="make_bold">  Soil Humidity: <%=p.humidity_soil %></p>
-          <p class="make_bold">  Air Humidity: <%=p.humidity_air %></p>
-          <p class="make_bold">  Light: <%=p.light_degree %></p>
+          <p class="make_bold make_right">  :دما <%=p.temperature %></p>
+          <p class="make_bold make_right">  :رطوبت خاک <%=p.humidity_soil %></p>
+          <p class="make_bold make_right">  :رطوبت هوا <%=p.humidity_air %></p>
+          <p class="make_bold make_right">  :نور <%=p.light_degree %></p>
         </div>
       </div>
       <% end %>

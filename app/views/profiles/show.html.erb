@@ -34,17 +34,17 @@
             <%=image_tag "default_profile.png" , :class=>"stretch_img"%>
             <%end%>
           </figure>
-          <div class="container center">
-            <h2><%= @profile.first_name%></h2> 
-          </div>
-          <div class="container">
+          <div class="container make_center">
             <%= link_to 'تنظیمات حساب', edit_profile_path(@profile), :class=>"b_farsi"%> |
-          <%= link_to 'بازگشت', profiles_path, :class=>"b_farsi"%>
+            <%= link_to 'بازگشت', profiles_path, :class=>"b_farsi"%>
           </div>
-          <div class="one action">
-           <%= link_to "ساخت باغچه", new_garden_path , :class => "button" %>
-            <%= link_to "اضافه کردن گل جدید", new_plant_path , :class => "button" %>
+          <div class="container make_center">
+            <h2><%= @profile.first_name%></h2>
+              <%= link_to "ساخت باغچه", new_garden_path , :class => "button btn" %>
+              <%= link_to "اضافه کردن گل جدید", new_plant_path , :class => "button btn" %>
+            <br></br>
           </div>
+
         </div>
         <!--//profile left part-->
 
