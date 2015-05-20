@@ -1,10 +1,11 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy,:my_gardens, :about_me]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy,:my_gardens, :about_me,:my_flowers]
 
 
 
   def my_flowers
-  respond_to do |format|
+    @tempeople = Profile.all.where.not(user_id: current_user.id).first(3)
+    respond_to do |format|
       format.js
     end
   end
