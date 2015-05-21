@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :data_logs
   has_many :comments
+  acts_as_voter
 end

@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -8,7 +8,14 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
+gem "chartkick"
 #gem 'ancestry'
+
+gem 'groupdate'
+
+gem 'mysql2'
+
+gem 'acts_as_votable', '~> 0.10.0'
 
 #my additional gem
 # gem 'bootstrap-sass', '~> 3.3.4'

@@ -1,5 +1,16 @@
 class PlantsController < ApplicationController
-  before_action :set_plant, only: [:show, :edit, :update, :destroy]
+  before_action :set_plant, only: [:show, :edit, :update, :destroy, :vote_up,:del_vote_up]
+
+
+  def vote_up
+    @plant.liked_by current_user
+  end
+
+
+  def del_vote_up
+    @plant.unliked_by current_user
+  end
+
 
   # GET /plants
   # GET /plants.json
