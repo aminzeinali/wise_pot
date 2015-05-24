@@ -4,6 +4,14 @@
 </br>
 </br>
 </br>
+</br>
+</br>
+</br>
+<p class="make_center make_bold">
+<%= @planter.name%>
+</p>
+
+
 <div class="one-third wow fadeInDown animated modal">
   <%if @planter.image_1.present?%>
   <%=image_tag @planter.image_1_url , :width => "48%", :class=>"image_in_planter"  %>
@@ -22,8 +30,10 @@
   <% end %>
   </div>
 
-<p class="make_bold">
-  <strong>:درباره ی این گل</strong>
+<p class="make_bold" style="direction:rtl; color:rgb(169, 52, 52); margin:10%;text-align: justify;">
+  <strong style="color:rgb(17, 45, 76); font-size:25px;">درباره ی این گل:</strong>
+  </br>
+  </br>
   </br>
   <%= @planter.brief_desc %>
 </p>

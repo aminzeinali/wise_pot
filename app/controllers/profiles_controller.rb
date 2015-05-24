@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy,:my_gardens, :about_me]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy,:my_gardens, :about_me,:my_posts]
 
 
 
@@ -10,6 +10,13 @@ class ProfilesController < ApplicationController
   end
 
   def my_gardens
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def my_posts
 
     respond_to do |format|
       format.js

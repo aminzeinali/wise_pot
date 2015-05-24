@@ -16,29 +16,29 @@
   <% end %>
 
     <div class="field">
-    <%= f.label :name %><br>
+    <p class="make_right">نام</p>
     <%= f.text_field :name %>
   </div>
 
     <div class="field">
-    <%= f.label :humidity_soil %><br>
+    <p class="make_right">میزان رطوبت خاک</p>
     <%= f.number_field :humidity_soil %>
   </div>
   <div class="field">
-    <%= f.label :humidity_air %><br>
+    <p class="make_right">میزان رطوبت هوا</p>
     <%= f.number_field :humidity_air %>
   </div>
   <div class="field">
-    <%= f.label :temperature %><br>
+    <p class="make_right">میزان دما</p>
     <%= f.number_field :temperature %>
   </div>
   <div class="field">
-    <%= f.label :light_degree %><br>
+    <p class="make_right">میزان نور</p>
     <%= f.number_field :light_degree %>
   </div>
 
   <div class="field">
-    <%= f.label :brief_desc %><br>
+    <p class="make_right">درباره این گیاه</p>
     <%= f.text_area :brief_desc %>
   </div>
 
@@ -110,7 +110,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  'اضافه کردن این گیاه' , :class=>"far_class tool_plant_creat  make_dir_right b_farsi button"%>
   </div>
 <% end %>
 </div>
