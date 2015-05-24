@@ -17,10 +17,11 @@ class ProfilesController < ApplicationController
   end
 
   def my_posts
-
+    @comments = current_user.comments
     respond_to do |format|
       format.js
     end
+
   end
 
   def about_me

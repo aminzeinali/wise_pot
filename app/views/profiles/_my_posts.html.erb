@@ -1,0 +1,135 @@
+        <%@comments.each do |cm| %>
+          <div class="modal container entry one-third animated wow zoomIn ">
+            <%if cm.commentable_type == "Garden"%>
+              
+              <figure>
+                  <%=image_tag "default_garden.jpg" %>
+                <figcaption>
+                  <%=link_to(cm.commentable ,:class=>"make_bold")  do %>
+                  <!-- <a href="recipe.html"> -->
+                    <i class="ico i-view"></i>
+                      <span><%= cm.commentable.name %> </span>
+                  <!-- </a> -->
+                  <% end %>
+                </figcaption>
+              </figure>
+                    <p class="make_center make_bold modal"><%=cm.content%></p>
+
+              <div class="actions #">
+                <div>
+                  <div class="difficulty">
+                  <!-- <i class="ico i-medium"></i><a href="#">medium</a> -->
+                  </div>
+                  <div class="likes">
+
+                  <!-- <i class="ico i-likes"></i> -->
+                  </i>
+
+                  </div>
+                </div>
+              </div>
+            <%end%>
+
+            <%if cm.commentable_type == "Plant"%>
+
+              <figure>
+                  <% if cm.commentable.image_url.present? %>
+                    <%=image_tag cm.commentable.image_url %>
+                  <%else%>
+                    <%=image_tag "img10.jpg" %>
+                  <%end%>
+                <figcaption>
+                  <%=link_to(cm.commentable ,:class=>"make_bold")  do %>
+                  <!-- <a href="recipe.html"> -->
+                    <i class="ico i-view"></i>
+                      <span><%= cm.commentable.name %> </span>
+                  <!-- </a> -->
+                  <% end %>
+                </figcaption>
+              </figure>
+                    <p class="make_center make_bold modal"><%=cm.content%></p>
+
+              <div class="actions #">
+                <div>
+                  <div class="difficulty">
+                  <!-- <i class="ico i-medium"></i><a href="#">medium</a> -->
+                  </div>
+                  <div class="likes">
+
+                  <!-- <i class="ico i-likes"></i> -->
+                  </i>
+
+                  </div>
+                </div>
+              </div>
+
+
+
+
+            <%end%>
+
+            <% if cm.commentable_type == "Planter"%>
+              <figure>
+              <%= image_tag cm.commentable.image_1%>
+                <figcaption>
+                  <%=link_to(cm.commentable ,:class=>"make_bold")  do %>
+                  <!-- <a href="recipe.html"> -->
+                    <i class="ico i-view"></i>
+                      <span><%= cm.commentable.name %> </span>
+                  <!-- </a> -->
+                  <% end %>
+                </figcaption>
+              </figure>
+                    <p class="make_center make_bold modal"><%=cm.content%></p>
+
+              <div class="actions #">
+                <div>
+                  <div class="difficulty">
+                  <!-- <i class="ico i-medium"></i><a href="#">medium</a> -->
+                  </div>
+                  <div class="likes">
+
+                  <!-- <i class="ico i-likes"></i> -->
+                  </i>
+
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+            <% end %>
+
+
+
+
+
+
+          </div>
+        <%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
