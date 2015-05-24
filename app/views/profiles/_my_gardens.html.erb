@@ -58,15 +58,15 @@
   </div>
 <% @profile.gardens.each do |k|  %>
     <div class = "cwrap gardens_box wow zoomIn animated entry" >
-
+    <% if can_edit %>
       <small class="right">
         <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"btn btn-default btn-xs"%> |
         <%= link_to 'حذف باغچه', garden_path(k), :class=>"btn btn-warning btn-xs", method: :delete, data: { confirm: 'Are you sure?' }%>
       </small>
       <small class="left">
         <%= link_to " گل جدید", new_plant_path(garden_id: k) , :class => "btn btn-default btn-xs" %>
-
       </small>
+      <% end %>
 
 
         <h3 class="garden_name">

@@ -5,17 +5,18 @@
 </br>
 </br>
 
-<div class="modal one-fourth wow fadeInDown animated">
+<div class="modal wow fadeInDown animated">
 
 <%= form_tag({controller: "initial", action: "do_search"}, method: "get", remote: true) do %>
 	<%= text_field_tag(:query) %>
-	<%= submit_tag("جستجو") %>
+	</br></br>
+	<%= submit_tag("جستجو", class: "btn btn-primary btn-block")%>
 <%end%>
 
 
-<div id="result">
+<ul id="result">
 	
-</div>
+</ul>
 
 
 </div>

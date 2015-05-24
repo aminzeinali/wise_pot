@@ -1,9 +1,8 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy,:my_gardens, :about_me,:my_flowers]
-
-
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def my_flowers
+    @profile = Profile.find(params[:id])
     @tempeople = Profile.all.where.not(user_id: current_user.id).first(3)
     respond_to do |format|
       format.js
@@ -11,13 +10,14 @@ class ProfilesController < ApplicationController
   end
 
   def my_gardens
-
+    @profile = Profile.find(params[:id])
     respond_to do |format|
       format.js
     end
   end
 
   def about_me
+    @profile = Profile.find(params[:id])
     respond_to do |format|
       format.js
     end

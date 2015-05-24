@@ -1,6 +1,6 @@
 class CreateComments < ActiveRecord::Migration
   def change
-  	drop_table :comments
+  	# drop_table :comments
   	
     create_table :comments do |t|
       t.integer :commentable_id

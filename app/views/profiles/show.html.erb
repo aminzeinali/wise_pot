@@ -34,13 +34,17 @@
             <%end%>
           </figure>
           <div class="container make_center">
+          <% if can_edit %>
             <%= link_to 'تنظیمات حساب', edit_profile_path(@profile), :class=>"b_farsi"%> |
             <%= link_to 'بازگشت', profiles_path, :class=>"b_farsi"%>
+          <% end %>
           </div>
           <div class="container make_center">
             <h2><%= @profile.first_name%></h2>
+              <% if can_edit %>
               <%= link_to "ساخت باغچه", new_garden_path , :class => "button btn" %>
               <%= link_to "اضافه کردن گل جدید", new_plant_path , :class => "button btn" %>
+              <% end %>
             <br></br>
           </div>
 
@@ -50,15 +54,29 @@
         <div class="three-fourth wow fadeInRight animated" style="visibility: visible;">
           <nav class="tabs">
             <ul>
-              <li class="">
-                  <%= link_to raw('درباره ی من'), about_me_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'about_me', :id => "about_me2" %>
+              <li class="" style="direction: rtl;">
+                  <%if current_user==@profile.user%>
+                    <%= link_to raw('اطلاعات من'), about_me_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'about_me', :id => "about_me2" %>
+                    <% else %>
+
+                  <%= link_to raw("اطلاعات #{@profile.first_name}"), about_me_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'about_me', :id => "about_me2" %>
+                  <% end %>
+
               </li>
               <!-- <li class="active"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#about" title="About me">درباره ی من</a></li>
                --><li class="">
-                  <%= link_to raw('دوستان من'), my_flowers_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
+               <% if current_user == @profile.user %>
+                  <%= link_to raw('دوستان من'), my_flowers_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
+                  <% else %>
+                  <%= link_to raw('دوستان او'), my_flowers_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
+                  <% end %>
               </li>
               <li class="">
-               <%= link_to raw('باغچه های من'), my_gardens_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
+              <% if current_user == @profile.user %>
+                <%= link_to raw('باغچه های من'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
+                <% else %>
+                <%= link_to raw('اطلاعات باغچه هایش'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
+                <% end %>
               <!-- <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#favorites" title="My favorites">My favorites -->
               <!-- </a> -->
               </li>
