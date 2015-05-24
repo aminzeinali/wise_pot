@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get :my_flowers
       get :my_gardens
       get :about_me
+      get :my_posts
     end
   end
 

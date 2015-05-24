@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy,:my_gardens, :about_me,:my_posts, :my_flowers]
 
   def my_flowers
     @profile = Profile.find(params[:id])
@@ -11,6 +11,13 @@ class ProfilesController < ApplicationController
 
   def my_gardens
     @profile = Profile.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def my_posts
+
     respond_to do |format|
       format.js
     end

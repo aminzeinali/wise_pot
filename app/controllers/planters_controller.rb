@@ -26,7 +26,6 @@ class PlantersController < ApplicationController
   # POST /planters.json
   def create
     @planter = Planter.new(planter_params)
-
     respond_to do |format|
       if @planter.save
         format.html { redirect_to @planter, notice: 'Planter was successfully created.' }

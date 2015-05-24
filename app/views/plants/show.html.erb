@@ -4,7 +4,12 @@
 </br>
 </br>
 </br>
+
+<%= link_to 'صفحه ی گیاه شمعدانی' , planter_path(Planter.find(2) , :class=>"button")%>
+
 <div class="row">
+
+
   <% if @plant.image.present? %>
       <%=image_tag @plant.image_url, :class=>"modal plant_profile_pic content center full-width wow fadeInDown animated"%>
       <%else %>
@@ -12,6 +17,7 @@
        center full-width wow fadeInDown animated"%>
   <%end%>  
 </div>
+
 <section class="modal info_component content center wow fadeInDown animated style="visibility: visible;"">
 
 <div>
@@ -59,14 +65,14 @@
 <div>
 <p class="for_inner_text">
   <h3>رطوبت محیط:</h3>
-  <%= @plant.humidity_air %>
+  <%= @plant.humidity_air %> %
 </p>
 </div>
 
 <div>
 <p class="for_inner_text">
   <h3>نور محیط:</h3>
-  <%= @plant.light_degree %>
+  <%= @plant.light_degree %> 
 </p>
 </div>
 

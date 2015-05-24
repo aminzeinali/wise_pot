@@ -81,9 +81,10 @@
               <!-- </a> -->
               </li>
               <li class="">
-                <a href="#" class="make_bold" title="My posts">نوشته های من</a>
+               <%= link_to raw('نوشته های من'), my_posts_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'my posts', :id => "posts" %>
+              <!-- <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#favorites" title="My favorites">My favorites -->
+              <!-- </a> -->
               </li>
-            </ul>
           </nav>
 
           <!--about-->
@@ -139,6 +140,8 @@
           <div class="tab-content" id="my_gardens" >
           </div>
           
+          <div class="tab-content" id="my_posts" >
+          </div>
           <!--my recipes-->
           <div class="tab-content" id="recipes" style="display: none;">
             <div class="entries row">

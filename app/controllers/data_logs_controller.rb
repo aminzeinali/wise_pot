@@ -9,7 +9,9 @@ class DataLogsController < ApplicationController
     @new_data.humidity_air = params[:hm] 
     @new_data.temperature = params[:tm]
     @new_data.light = params[:l]
+    @new_data.humidity_soil = params[:mo]
     @new_data.save
+    puts params[:hm]
     render :layout => false     
   end
 

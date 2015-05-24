@@ -27,15 +27,12 @@
         <% end %>
   </div>
 
+  <div class="form-group">
 
-  <div class="field">
-    <p class="make_right">نام</p>
-    <%= f.text_field :name %>
+  <p class="make_right">نام گیاه</p>
+    <%= select_tag :planter_id ,options_from_collection_for_select(Planter.all,"id" , "name") %> 
   </div>
-  <div class="field">
-    <p class="make_right">نژاد گیاه</p>
-    <%= f.text_field :race%>
-  </div>
+
   <div class="field">
     <p class="make_right">سن گیاه</p>
     <%= f.number_field :age%>

@@ -22,6 +22,12 @@ class PlantsController < ApplicationController
   # GET /plants/1.json
   def show
     @comment = Comment.new
+    @plant.humidity_soil = DataLog.last.humidity_soil
+    @plant.humidity_air = 8#DataLog.last.humidity_air
+    @plant.temperature = 27 #DataLog.last.temperature
+    @plant.light_degree = DataLog.last.light
+
+    @plant.save
   end
 
   # GET /plants/new
@@ -41,6 +47,11 @@ class PlantsController < ApplicationController
   # POST /plants.json
   def create
     @plant = Plant.new(plant_params)
+    @plant.name = Planter.find(params[:planter_id]).name
+    @plant.humidity_soil = DataLog.last.humidity_soil
+    @plant.humidity_air = DataLog.last.humidity_air
+    @plant.temperature = DataLog.last.temperature
+    @plant.light_degree = DataLog.last.light
     @plant.save
     plant_garden = PlantOnGarden.new
     plant_garden.garden_id = params[:garden_id]
@@ -59,6 +70,7 @@ class PlantsController < ApplicationController
   # PATCH/PUT /plants/1
   # PATCH/PUT /plants/1.json
   def update
+    @plant.name = Planter.find(params[:planter_id]).name
   if params[:plant][:remove_image] == "1"
     @plant.image = nil
     @plant.save
