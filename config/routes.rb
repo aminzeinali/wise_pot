@@ -20,7 +20,12 @@ Rails.application.routes.draw do
 
   resources :planters
 
-  resources :plants
+  resources :plants do 
+    member do
+      get :vote_up
+      get :del_vote_up
+    end
+  end
 
   resources :gardens
 
