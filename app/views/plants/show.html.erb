@@ -1,3 +1,4 @@
+<div style="padding:4%;">
 <p id="notice"><%= notice %></p>
 </br>
 </br>
@@ -5,98 +6,19 @@
 </br>
 </br>
 
-<%= link_to 'صفحه ی گیاه شمعدانی' , planter_path(Planter.find(2) , :class=>"button")%>
-
-<div class="row">
-
-
+<div class="one-third">
   <% if @plant.image.present? %>
-      <%=image_tag @plant.image_url, :class=>"modal plant_profile_pic content center full-width wow fadeInDown animated"%>
+      <%=image_tag @plant.image_url, :class=>"modal plant_profile_pic content center full-width wow fadeInLeft animated"%>
       <%else %>
       <%=image_tag "default_plant.png", :class=>"plant_profile_pic 
        center full-width wow fadeInDown animated"%>
-  <%end%>  
-</div>
+  <%end%>
 
-<section class="modal info_component content center wow fadeInDown animated style="visibility: visible;"">
 
-<div>
-<p class="for_inner_text">
-  <h3>نام گیاه:</h3>
-  <%= @plant.name %>
-</p>
-</div>
 
-<div>
-<p class="for_inner_text">
-  <h3>نژاد:</h3>
-  <%= @plant.race %>
-</p>
-</div>
-
-<div>
-<p class="for_inner_text">
-  <h3>سن:</h3>
-  <%= @plant.age %>
-</p>
-</div>
-
-<div>
-<p class="for_inner_text">
-  <h3>قد:</h3>
-  <%= @plant.height %>
-</p>
-</div>
-
-<div>
-<p class="for_inner_text">
-  <h3>دمای فعلی:</h3>
-  <%= @plant.temperature %>
-</p>
-</div>
-
-<div>
-<p class="for_inner_text">
-  <h3>رطوبت خاک:</h3>
-  <%= @plant.humidity_soil %>
-</p>
-</div>
-
-<div>
-<p class="for_inner_text">
-  <h3>رطوبت محیط:</h3>
-  <%= @plant.humidity_air %> %
-</p>
-</div>
-
-<div>
-<p class="for_inner_text">
-  <h3>نور محیط:</h3>
-  <%= @plant.light_degree %> 
-</p>
-</div>
-
-<div>
-<p class="for_inner_text">
-  <h3>میزان سلامت:</h3>
-  <%= @plant.health_factor %>
-</p>
-</div>
-
-<div>
-<p class="for_inner_text">
-  <h3>توضیحات:</h3>
-  <%= @plant.description %>
-</p>
-</div>
-
-<%= link_to 'تنظیمات', edit_plant_path(@plant) ,:class=>"for_inner_text"%> |
-<%= link_to 'بازگشت', profile_path(current_user) ,:class=>"for_inner_text"%>
-
-</section>
-<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
-<div class="modal container new_forms">
-
+<section class=" center wow one-one fadeInLeft animated style="visibility: visible;"">
+<div class=" container new_forms">
+<p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
 <% @plant.comments.each do |cmnt| %>
 
 <div class="comment_box">
@@ -139,7 +61,6 @@
     <%= f.hidden_field :commentable_type  , :value =>"Plant"%>
   </div>
   <div class="field  make_center">
-    <%= f.label :نظرات , :class=>"make_bold"%><br>
     <%= f.text_area :content %>
   </div>
   <div class="actions">
@@ -148,3 +69,43 @@
 <% end %>
 </div>
 </section>
+
+
+
+
+
+</div>
+
+<dl class="basic two-third">
+  <dt style="text-align:center"><span class="tb_in_plant">نام</span></dt>
+  <dd ><%= @plant.name%></dd>
+  <dt style="text-align:center" > <span class="tb_in_plant">
+    نژاد
+  </span>
+  </dt>
+  <dd><%= @plant.race%></dd>
+  <dt class="make_center"><span class="tb_in_plant">سن</span></dt>
+  <dd><%= @plant.age%></dd>
+  <dt class="make_center"><span class="tb_in_plant">قد</span></dt>
+  <dd><%= @plant.height%></dd>
+  <dt class="make_center"><span class="tb_in_plant">دمای فعلی</span></dt>
+  <dd><%= @plant.temperature%></dd>
+  <dt class="make_center"><span class="tb_in_plant">رطوبت خاک</span></dt>
+  <dd><%= @plant.humidity_soil%></dd>
+  <dt class="make_center"><span class="tb_in_plant">رطوبت محیط</span></dt>
+  <dd><%= @plant.humidity_air%></dd>
+  <dt class="make_center"><span class="tb_in_plant">نور محیط</span></dt>
+  <dd><%= @plant.light_degree%></dd>
+  <dt class="make_center"><span class="tb_in_plant">میزان سلامت</span></dt>
+  <dd><%= @plant.health_factor%></dd>
+  <dt class="make_center"><span class="tb_in_plant">در مورد این گیاه</span></dt>
+  <dd><%= @plant.description%></dd>
+  <dt class="make_center"><span class="tb_in_plant">صفحه اصلی این گیاه</span></dt>
+  <dd><%= link_to 'صفحه ی گیاه شمعدانی' , planter_path(Planter.find(2) , :class=>"button")%></dd>
+</dl>
+</section>
+
+
+<%= link_to 'تنظیمات', edit_plant_path(@plant) ,:class=>"for_inner_text"%> |
+<%= link_to 'بازگشت', profile_path(current_user) ,:class=>"for_inner_text"%>
+</div>

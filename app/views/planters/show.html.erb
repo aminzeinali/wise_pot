@@ -7,11 +7,9 @@
 </br>
 </br>
 </br>
-<p class="make_center make_bold">
+<p class="make_center make_bold" style="">
 <%= @planter.name%>
 </p>
-
-
 <div class="one-third wow fadeInDown animated modal">
   <%if @planter.image_1.present?%>
   <%=image_tag @planter.image_1_url , :width => "48%", :class=>"image_in_planter"  %>
@@ -30,7 +28,8 @@
   <% end %>
   </div>
 
-<p class="make_bold" style="direction:rtl; color:rgb(169, 52, 52); margin:10%;text-align: justify;">
+
+<p class="make_bold" style="direction:rtl; color:rgb(169, 52, 52); margin:0 5% 0 5%;text-align: justify;">
   <strong style="color:rgb(17, 45, 76); font-size:25px;">درباره ی این گل:</strong>
   </br>
   </br>
@@ -38,8 +37,33 @@
   <%= @planter.brief_desc %>
 </p>
 
-<%= link_to 'Edit', edit_planter_path(@planter) %> 
-<%= link_to '<<بازگشت', profile_path(current_user),:class=>"button" %>
+<div class="wow animated fadeInRight" style="padding:0 5% 0 5%;">
+
+<p class="make_bold make_right" style="color:rgb(17, 45, 76);; font-size:20px; ">اطلاعات تخصصی گیاه</p>
+
+<dl class="basic fullWidth">
+  <dt style="text-align:center"><span class="tb_in_plant">نام</span></dt>
+  <dd ><%= @planter.name%></dd>
+  <dt style="text-align:center" > <span class="tb_in_plant">
+    نژاد
+  </span>
+  </dt>
+  <dd><%= @planter.race%></dd>
+  <dt class="make_center"><span class="tb_in_plant">دمای فعلی</span></dt>
+  <dd><%= @planter.temperature%></dd>
+  <dt class="make_center"><span class="tb_in_plant">رطوبت خاک</span></dt>
+  <dd><%= @planter.humidity_soil%></dd>
+  <dt class="make_center"><span class="tb_in_plant">رطوبت محیط</span></dt>
+  <dd><%= @planter.humidity_air%></dd>
+  <dt class="make_center"><span class="tb_in_plant">نور محیط</span></dt>
+  <dd><%= @planter.light_degree%></dd>
+  <dt class="make_center"><span class="tb_in_plant">صفحه اصلی این گیاه</span></dt>
+  <dd><%= link_to 'صفحه ی گیاه شمعدانی' , planter_path(Planter.find(2) , :class=>"button")%></dd>
+</dl>
+</div>
+
+
+
 
 
 
@@ -49,7 +73,7 @@
 <% @planter.comments.each do |cmnt| %>
 
 <div class="comment_box">
-<p class="make_bold">
+<p class="make_bold make_right">
   <%= cmnt.content %>
 </p>
 <p class="user_name_cm">
@@ -94,3 +118,6 @@
   </div><% end %>
 </div>
 </section>
+
+<%= link_to 'Edit', edit_planter_path(@planter) %> 
+<%= link_to '<<بازگشت', profile_path(current_user),:class=>"button" %>

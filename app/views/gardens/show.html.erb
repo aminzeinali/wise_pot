@@ -37,13 +37,16 @@
 <% @garden.comments.each do |cmnt| %>
 
 <div class="comment_box">
-<p class="make_bold">
+<p class="make_bold" style="text-align:right; color:#0A034F">
   <%= cmnt.content %>
 </p>
 <p class="user_name_cm">
   <%= cmnt.user.profile.first_name %>
   <%= cmnt.user.profile.last_name %>
 </p>
+<%if has_auth(cmnt)%>
+  <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
+<%end%>
 <p class="make_right"><%= cmnt.created_at %></p>
 
 </div>

@@ -17,14 +17,22 @@
 .tool_plant_creat{
 	width:200px;
 }
-
-
-
-
 .lost{
 	display: none;
 }
 
 .showw{
 	display: block;
+}
+.field_in_plant{	
+	border:dashed 1px #F4716A;
+	margin:10px;
+}
+.whole_box_in_plant{
+	border:solid 1px #F4716A;
+}
+.tb_in_plant{
+	 color:rgb(244, 113, 106);
+	 font-weight:bold;
+	 font-size:18px; 
 }
