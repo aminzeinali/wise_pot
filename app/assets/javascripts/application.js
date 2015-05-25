@@ -14,3 +14,53 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+
+// $(document).ready(function(){
+// 	$('#main_search #query').bind('keyup', function() { 
+// 	    $('#main_search').delay(200).submit();
+// 	});
+// });	
+
+
+
+$(document).ready(function() {
+	$('#main_search #query').keyup(function (e) {
+		$.get($("#main_search").attr("action"), $("#main_search").serialize(), null, 'script');
+		return false;
+	});
+
+
+	$('html').click(function() {
+		$('#result').css('display','none');
+
+	//Hide the menus if visible
+	});
+});
+
+
+
+	// $('#main_search #query').keyup(function(e){
+		// $.get($("#main_search").serialize() , null , 'script');
+		// e.preventDefault();
+		// return false;
+		// });
+	// });
+
+
+// 		$("#main_search").submit(function (event) {
+// 		    event.preventDefault();
+// 		    $.ajax({
+// 		        type: "get",
+// 		        dataType: "json",
+// 		        url: '/initial/do_search',
+// 		        data: $("#query").serialize(),
+// 		        success: function (response) {
+// 		            //write here any code needed for handling success         
+// 		        }
+// 		    });
+// 		});
+// 	});
+// });	

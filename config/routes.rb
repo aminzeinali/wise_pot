@@ -38,9 +38,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :initial do 
+    collection do
+      get :do_search
+    end
+  end
+
 
   get '/search' , to: 'initial#search'
-  get '/dosearch' , to: 'initial#do_search'
+  # get '/dosearch' , to: 'initial#do_search'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

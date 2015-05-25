@@ -9,13 +9,24 @@
 <main class="main" role="main">
   <!--wrap-->
   <div class="wrap clearfix">
+
     <!--breadcrumbs-->
     <nav class="breadcrumbs fasele_az_bala">
       <ul>
+        <li class="search-div">
+          <%=form_tag({controller: "initial" , action: "do_search" },:format => "js",method: "get" , id:"main_search") do %>
+            <%= text_field_tag :query,nil,placeholder:"جستجوی همه چیز",:style =>"text-align: center; " , autocomplete: :off %>
+            </br></br>
+          <%end%>
+        <ul id="result" class="mylist">
+        </ul>
+        </li>
         <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home">خانه</a></li>
         <li>حساب کاربری من</li>
+        
       </ul>
     </nav>
+
     <!--//breadcrumbs-->
     
     <!--content-->

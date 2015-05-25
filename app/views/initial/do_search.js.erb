@@ -1,4 +1,8 @@
-// var result = document.getElementById("result");
-// # result.appendChild(<%#=@result%>);
+$('#result').css('display','block');
+$('#result').empty();
 
-// $('#result').append("<li>    </li>")
+<%# byebug %>
+
+<% @result.each do |res| %>
+	$('#result').append('<li class="myli wrap content container"><%=link_to  profile_path(res) do %><%=res.first_name%> &nbsp <%=res.last_name%><% end %><div style="float: right;"><%=image_tag res.profile_photo_url,:height=>"50"%></div></li>')
+<% end %>
