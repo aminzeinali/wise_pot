@@ -10,8 +10,7 @@ class ApplicationController < ActionController::Base
 			profile_path(user)
 		else
 			new_profile_path
-		end
-			
+		end		
 	end
 
 	def after_sign_up_path_for(user)

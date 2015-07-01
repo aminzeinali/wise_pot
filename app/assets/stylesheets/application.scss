@@ -149,7 +149,7 @@ audio, canvas, video { display: inline-block; *display: inline; *zoom: 1;max-wid
 
 /*LAYOUT*/
 .head 		{float:left;width:100%;position:relative;z-index:2;height:90px;}
-.home .head 	{position:absolute;}
+.home .head 	{margin-bottom: 1%;}
 .head .wrap 	{height:100%;background:#fff;-webkit-box-shadow:0 1px 4px rgba(0,0,0,.2);-moz-box-shadow:0 1px 4px rgba(0,0,0,.2);box-shadow:0 1px 4px rgba(0,0,0,.2);display:inline-block;}
 .main		{float:left;width:100%;display:block;min-height:500px;padding:45px 0 120px;}
 .foot		{float:left;width:100%;}

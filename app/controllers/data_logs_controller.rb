@@ -6,6 +6,8 @@ class DataLogsController < ApplicationController
 
   def reciever
     @new_data = DataLog.new
+
+    
     @new_data.humidity_air = params[:hm] 
     @new_data.temperature = params[:tm]
     @new_data.light = params[:l]
