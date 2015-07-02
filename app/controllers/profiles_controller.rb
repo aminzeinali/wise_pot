@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
 
   def my_gardens
     @profile = Profile.find(params[:id])
+    @planters = @profile.user.following_by_type('Planter')
     respond_to do |format|
       format.js
     end

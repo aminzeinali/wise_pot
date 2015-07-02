@@ -1,12 +1,4 @@
 <p id="notice"><%= notice %></p>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
 <p class="make_center make_bold" style="">
 <%= @planter.name%>
 </p>
@@ -28,6 +20,15 @@
   <% end %>
   </div>
 
+<div class="one-sixth">
+<a href="/planters/<%=@planter.id%>/follow" class="btn btn-info <% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" data-remote="true" id="follow_butt" 
+             <i class="">این گیاه را دنبال کن</i>
+</a>
+
+<a href="/planters/<%=@planter.id%>/unfollow" class=" button <% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" data-remote="true"  id="unfollow_butt" class="button"
+             <i class="">این گیاه را دنبال نکن</i>
+</a>
+</div>
 
 <p class="make_bold" style="direction:rtl; color:rgb(169, 52, 52); margin:0 5% 0 5%;text-align: justify;">
   <strong style="color:rgb(17, 45, 76); font-size:25px;">درباره ی این گل:</strong>

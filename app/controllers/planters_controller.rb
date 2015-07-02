@@ -7,6 +7,28 @@ class PlantersController < ApplicationController
     @planters = Planter.all
   end
 
+  def follow
+
+    @planter = Planter.find(params[:id])
+    @follow = Follow.new
+
+    if not current_user.following?(@planter)
+      @follow.followable_id=@planter.id
+      @follow.followable_type=@planter.class
+      @follow.follower_id=current_user.id
+      @follow.follower_type=current_user.class
+      @follow.created_at=Time.now
+      @follow.save
+    end
+
+  end
+
+
+  def unfollow
+    @planter = Planter.find(params[:id])
+    current_user.stop_following(@planter)
+  end
+
   # GET /planters/1
   # GET /planters/1.json
   def show

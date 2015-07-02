@@ -1,9 +1,7 @@
 <!--<p id="notice"><%= notice %></p>-->
 <!DOCTYPE html>
 <!-- saved from url=(0066)http://www.themeenergy.com/themes/html/social-chef/my_profile.html -->
-
-
-<title>Profile</title>
+<title>حساب کاربری <%= @profile.last_name %></title>
 
 <!--main-->
 <main class="main" role="main">
@@ -11,7 +9,7 @@
   <div class="wrap clearfix">
 
     <!--breadcrumbs-->
-    <nav class="breadcrumbs fasele_az_bala">
+    <nav class="breadcrumbs">
       <ul>
         <li class="search-div">
           <%=form_tag({controller: "initial" , action: "do_search" },:format => "js",method: "get" , id:"main_search") do %>
@@ -23,7 +21,6 @@
         </li>
         <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home">خانه</a></li>
         <li>حساب کاربری من</li>
-        
       </ul>
     </nav>
 
@@ -84,7 +81,7 @@
               </li>
               <li class="">
               <% if current_user == @profile.user %>
-                <%= link_to raw('باغچه های من'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
+                <%= link_to raw('گیاهان مورد علاقه'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
                 <% else %>
                 <%= link_to raw('اطلاعات باغچه هایش'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
                 <% end %>
@@ -350,6 +347,76 @@
           </div>
           <!--//my posts-->
         </div>
+      </div>
+      <div class="entry">
+      <% @profile.gardens.each do |k|  %>
+    <div class = "cwrap gardens_box wow zoomIn animated entry" >
+    <% if can_edit %>
+      <small class="right">
+        <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"btn btn-default btn-xs"%> |
+        <%= link_to 'حذف باغچه', garden_path(k), :class=>"btn btn-warning btn-xs", method: :delete, data: { confirm: 'Are you sure?' }%>
+      </small>
+      <small class="left">
+        <%= link_to " گل جدید", new_plant_path(garden_id: k) , :class => "btn btn-default btn-xs" %>
+      </small>
+      <% end %>
+
+
+        <h3 class="garden_name">
+          <%= link_to k.name , k %><br>
+        </h3>
+
+<!---->
+      </br>
+      <% k.plants.each do |p| %>
+      <div class="entry one-fourth">
+        <figure>
+          <% if p.image.present? %>
+            <%=image_tag p.image_url , :width => "270" , :height => "203" %>
+          <% else %>
+          <%= image_tag("img11.jpg", :class=>"") %>
+          <% end %>
+          <figcaption>
+            <%=link_to p ,:class=>"make_bold"  do %>
+            <!-- <a href="recipe.html"> -->
+              <i class="ico i-view"></i>
+                <span><%= p.name %> </span>
+            <!-- </a> -->
+            <% end %>
+          </figcaption>
+        </figure>
+        <div class="container">
+          <p class="make_center"><%= p.name %></p>
+          <p class="ssmal make_right">  :دما <%=p.temperature %></p>
+          <p class="ssmal make_right">  :رطوبت خاک <%=p.humidity_soil %></p>
+          <p class="ssmal make_right">  :رطوبت هوا <%=p.humidity_air %></p>
+          <p class="ssmal make_right">  :نور <%=p.light_degree %></p>
+        </div>
+        <div class="actions #">
+          <div>
+            <div class="difficulty"><i class="ico i-medium"></i><a href="#">medium</a></div>
+            <div class="likes">
+
+            <i class="ico i-likes"></i>
+            <i id=<%="likes_"+p.id.to_s%> >
+                     <%= p.votes_for.size %>
+            </i>
+            <a href="/plants/<%=p.id%>/vote_up" class="<% if current_user.voted_for? p%>lost <%else%> showw <%end%>" data-remote="true" id=<%="vote_up_"+p.id.to_s%>
+             <i class="">like</i>
+            </a>
+
+            <a href="/plants/<%=p.id%>/del_vote_up" class="<% if current_user.voted_for? p %> showw <%else%> lost <%end%>" data-remote="true"  id=<%="del_vote_up_"+p.id.to_s%>
+             <i class="">unlike</i>
+            </a>
+
+            </div>
+            <div class="comments"><i class="ico i-comments"></i><%= link_to p.comments.count , plant_path(p) %></div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+      <% end %>
       </div>
       <!--//row-->
     </section>

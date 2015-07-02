@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -20,6 +20,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 #my additional gem
 # gem 'bootstrap-sass', '~> 3.3.4'
 #end my additional gem
+gem "acts_as_follower", :git => 'git://github.com/tcocca/acts_as_follower.git', :branch => 'rails_3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

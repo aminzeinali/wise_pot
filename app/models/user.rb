@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   has_many :data_logs
   has_many :comments
   acts_as_voter
+  acts_as_follower
+  acts_as_followable
 end

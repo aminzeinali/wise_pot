@@ -18,7 +18,12 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  resources :planters
+  resources :planters do
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
 
   resources :plants do 
     member do

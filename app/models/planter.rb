@@ -7,4 +7,5 @@ class Planter < ActiveRecord::Base
 	mount_uploader :image_4, AvatarUploader
 	mount_uploader :additional_image, AvatarUploader	
 	has_many :comments , :as => :commentable
+	acts_as_followable
 end
