@@ -1,11 +1,4 @@
 <div style="padding:4%;">
-<p id="notice"><%= notice %></p>
-</br>
-</br>
-</br>
-</br>
-</br>
-
 <div class="one-third">
   <% if @plant.image.present? %>
       <%=image_tag @plant.image_url, :class=>"modal plant_profile_pic content center full-width wow fadeInLeft animated"%>
@@ -13,69 +6,9 @@
       <%=image_tag "default_plant.png", :class=>"plant_profile_pic 
        center full-width wow fadeInDown animated"%>
   <%end%>
-
-
-
-<section class=" center wow one-one fadeInLeft animated style="visibility: visible;"">
-<div class=" container new_forms">
-<p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
-<% @plant.comments.each do |cmnt| %>
-
-<div class="comment_box">
-<p class="make_bold">
-  <%= cmnt.content %>
-</p>
-
-<p class="user_name_cm">
-  <%= cmnt.user.profile.first_name %>
-  <%= cmnt.user.profile.last_name %>
-</p>
-
-<%if has_auth(cmnt)%>
-  <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
-<%end%>
-<p class="make_right"><%= cmnt.created_at %></p>
-
 </div>
 
-<% end %>
-
-
-<%= form_for(@comment) do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.hidden_field :commentable_id , :value => @plant.id %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :commentable_type  , :value =>"Plant"%>
-  </div>
-  <div class="field  make_center">
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
-  </div>
-<% end %>
-</div>
-</section>
-
-
-
-
-
-</div>
-
+<!-- table of plant element-->
 <dl class="basic two-third">
   <dt style="text-align:center"><span class="tb_in_plant">نام</span></dt>
   <dd ><%= @plant.name%></dd>
@@ -103,9 +36,108 @@
   <dt class="make_center"><span class="tb_in_plant">صفحه اصلی این گیاه</span></dt>
   <dd><%= link_to 'صفحه ی گیاه شمعدانی' , planter_path(Planter.find(2) , :class=>"button")%></dd>
 </dl>
+
+
+
+
+
+<section class="modal wow one-one fadeInLeft animated style="visibility: visible;"">
+<div class=" container new_forms">
+  <p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
+
+  <%= form_for(@comment) do |f| %>
+    <% if @comment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+        <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.hidden_field :commentable_id , :value => @plant.id %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :commentable_type  , :value =>"Plant"%>
+    </div>
+    <div class="field  make_center">
+      <%= f.text_area :content %>
+    </div>
+    <div class="actions">
+      <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
+    </div>
+  <% end %>
+</div>
 </section>
 
 
-<%= link_to 'تنظیمات', edit_plant_path(@plant) ,:class=>"for_inner_text"%> |
-<%= link_to 'بازگشت', profile_path(current_user) ,:class=>"for_inner_text"%>
+
+<div class="comments">
+<br>
+<% @plant.comments.each do |cmnt| %>
+
+<ol class="commetn-list three-fourth">
+
+  <li class="comment byuser comment-author-test99899 even thread-even depth-1 clearfix">
+    
+    <div class="avatar">
+      <!-- user profile picture must set in here -->
+      <% if cmnt.user.profile.profile_photo.present?%>
+      <%=image_tag cmnt.user.profile.profile_photo_url%>
+      <%else %>
+      <%=image_tag "default_plant.png"%>
+      <%end%>
+    </div>
+    <div class="comment-box" style="padding:1%">
+
+      <div class="comment-author meta make_right">
+        <!-- info about commenter-->
+        <%= cmnt.user.profile.first_name %>
+        <%= cmnt.user.profile.last_name %>
+        <%if has_auth(cmnt)%>
+        <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
+        <%end%>
+        <p class="make_right"><%= cmnt.created_at %></p>
+      </div>
+      
+      <div class="comment-text">
+      <!-- comment content must set here-->
+            <p><%= cmnt.content %></p>  
+      </div>
+      
+    </div>
+    
+  </li>
+  
+</ol>
+  <% end %>  
 </div>
+
+
+
+<%#= link_to 'تنظیمات', edit_plant_path(@plant) ,:class=>"for_inner_text"%>
+<%#= link_to 'بازگشت', profile_path(current_user) ,:class=>"for_inner_text"%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
