@@ -8,7 +8,11 @@ class InitialController < ApplicationController
 
   def mail_new_pass
       @email_address = params[:address]
-      ForgotPasswordMailer.forgot_mail_sender(@email_address).deliver
+      if User.find_by_email(@email_address).present?
+        ForgotPasswordMailer.forgot_mail_sender(@email_address).deliver
+      else
+        redirect_to new_user_registration_path , :alert => "شما قبلا ثبت نام نکرده اید، از طریق فورم زیر عضو گلایت شوید"
+      end
   end
     
   def home
