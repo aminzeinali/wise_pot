@@ -1,8 +1,16 @@
 class InitialController < ApplicationController
-  before_action :authenticate_user! , except: :home
+  before_action :authenticate_user! , except: [:home, :forgot_password, :mail_new_pass]
 
   # protect_from_forgery with: :null_session
+  def forgot_password
 
+  end
+
+  def mail_new_pass
+      @email_address = params[:address]
+      ForgotPasswordMailer.forgot_mail_sender(@email_address).deliver
+  end
+    
   def home
   end
 

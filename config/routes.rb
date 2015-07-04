@@ -46,10 +46,10 @@ Rails.application.routes.draw do
   resources :initial do 
     collection do
       get :do_search
+      get :forgot_password
+      get :mail_new_pass
     end
   end
-
-
   get '/search' , to: 'initial#search'
   # get '/dosearch' , to: 'initial#do_search'
 
