@@ -8,12 +8,12 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
-gem "chartkick"
+#gem "chartkick"
 #gem 'ancestry'
 
-gem 'groupdate'
+#gem 'groupdate'
 
-gem 'mysql2'
+#gem 'mysql2'
 
 gem 'acts_as_votable', '~> 0.10.0'
 
