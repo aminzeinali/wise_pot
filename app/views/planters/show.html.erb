@@ -72,6 +72,26 @@
 
               </dl>
 
+              <dl class="user">
+                    <dt class="make_center">تعداد کامنت ها</dt>
+                    <dd class="make_center"><%=@planter.comments.count%></dd>
+                    <dt class="make_center">علاقه مندان</dt>
+                    <dd><!--followers count must put here--></dd>
+              </dl>
+              <h2 class="make_center">نفرات برتر در نگهداری <%=@planter.name%></h2>
+              <dl class="ingredients">
+                    <dt calss="make_center">میزان سلامت</dt>
+                    <dd ><p calss="make_center"><%=@planter.name%> کاربران برتر</p></dd>
+                    <dt>80%</dt>
+                    <dd>user_profile_link0</dd>
+                    <dt>50%</dt>
+                    <dd>user_profile_link1</dd>
+                    <dt>42%</dt>
+                    <dd>user_profile_link2</dd>
+                    <dt>33.1%</dt>
+                    <dd>user_profile_link3</dd>
+              </dl>
+
             </article>
             <!--//one-third-->
           </div>
@@ -81,6 +101,100 @@
           
       </section>
       <!--//content-->
+
+      <!--right sidebar-->
+      <aside class="sidebar one-fourth wow fadeInRight animated" style="visibility: visible;">
+        <div class="widget nutrition">
+          <h3 class="make_right">
+            اطلاعات تکمیلی گیاه
+          </h3>
+          <table>
+            <tbody>
+              <tr>
+                <td>میزان PH</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td>میزان PH</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td>میزان PH</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td>میزان PH</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td>میزان PH</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td>میزان PH</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td>میزان PH</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td>میزان PH</td>
+                <td>120</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="widget share">
+          <ul class="boxed">
+            <li class="light">
+              <a href="#" title="Facebook"><i class="ico i-facebook"></i> <span>Share on Facebook</span></a>
+            </li>
+            <li class="medium">
+              <a href="#" title="Twitter"><i class="ico i-twitter"></i> <span>Share on Twitter</span></a>
+            </li>
+            <li class="dark">
+              <a href="#" title="Favourites"><i class="ico i-favourites"></i> <span>Add to Favourites</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="widget members">
+          <h3 class="make_right">افراد دنبال کننده ی این گیاه</h3>
+          <ul class="boxed"> 
+              <li><div class="avatar"><a href="my_profile.html">
+              <%= image_tag "avatar1.jpg" %>
+              <span>Kimberly C.</span></a></div></li>
+              <li><div class="avatar"><a href="my_profile.html">
+              <%= image_tag "avatar2.jpg" %>
+              <span>Alex J.</span></a></div></li>
+              <li><div class="avatar"><a href="my_profile.html">
+              <%= image_tag "avatar3.jpg" %>
+              <span>Denise M.</span></a></div></li>
+              <li><div class="avatar"><a href="my_profile.html">
+              <%= image_tag "avatar9.jpg" %>
+              <span>Jason H.</span></a></div></li>
+              <li><div class="avatar"><a href="my_profile.html">
+              <%= image_tag "avatar8.jpg" %>
+              <span>Jennifer W.</span></a></div></li>
+              <li><div class="avatar"><a href="my_profile.html">
+              <%= image_tag "avatar4.jpg" %>
+              <span>Anabelle Q.</span></a></div></li>
+              <li><div class="avatar"><a href="my_profile.html">
+              <%= image_tag "avatar7.jpg" %>
+              <span>Thomas M.</span></a></div></li>
+              <li><div class="avatar"><a href="my_profile.html">
+              <%= image_tag "avatar5.jpg" %>
+              <span>Michelle S.</span></a></div></li>
+              <li><div class="avatar"><a href="my_profile.html">
+              <%= image_tag "avatar6.jpg" %>
+              <span>Bryan A.</span></a></div></li>
+          </ul>
+        </div>
+
+      </aside>
+      <!--//right sidebar-->
     </div>
 
     <!--comments-->
@@ -161,170 +275,47 @@
   </div>
 </div> <!--end of main-->
 
+<!--footer-->
+<footer class="foot" role="contentinfo">
+  <div class="wrap clearfix make_right">
+    <div class="row">
+      <article class="one-half">
+        <h5>چرا گلدان هوشمند</h5>
+        <p>گلدانی که پیش روی شماست امکان تعامل با گیاه را در هر لحظه فراهم می سازد.شما با این گلدان می توانید شرایط محیط رشد گیاه اعم از نور - دمای محیط  و رطوبت گیاه را رصد کنید .در واقع ما حرف دل گیاه شما را روی گوشی موبایل و یا صفحه ی شخصی شما نمایش خواهیم داد و مزیت این خواهد بود که  قبل از پژمردن گیاه متوجه نا به سامانی شرایط شوید و در نتیجه همیشه گیاهانی شاد و سالم داشته باشید. </p>
+      </article>
+      <article class="one-fourth">
+        <p class="make_right">ارتباط با ما از طریق تلفن یا ایمیل</p>
+        <p class="make_right"><em>تلفن: </em>09368055268<br>nooramin_co@outlook.com<em> :ایمیل</em></p>
+      </article>
+      <article class="one-fourth">
+        <h5>گلدان هوشمند در شبکه های اجتماعی</h5>
+        <ul class="social">
+          <li class="facebook"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="facebook">facebook</a></li>
+          <li class="youtube"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="youtube">youtube</a></li>
+          <li class="rss"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="rss">rss</a></li>
+          <li class="gplus"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="gplus">google plus</a></li>
+          <li class="linkedin"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="linkedin">linkedin</a></li>
+          <li class="twitter"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="twitter">twitter</a></li>
+          <li class="pinterest"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="pinterest">pinterest</a></li>
+          <li class="vimeo"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="vimeo">vimeo</a></li>
+        </ul>
+      </article>
 
+      <div class="bottom">
+        <p class="copy">University of Tehran All rights reserved</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p class="make_center make_bold" style="">
-<%= @planter.name%>
-</p>
-<div class="one-third wow fadeInDown animated modal">
-  <%if @planter.image_1.present?%>
-  <%=image_tag @planter.image_1_url , :width => "48%", :class=>"image_in_planter"  %>
-  <% end %>
-
-  <%if @planter.image_2.present?%>
-  <%=image_tag @planter.image_2_url , :width => "48%", :class=>"image_in_planter"  %>
-  <% end %>
-
-  <%if @planter.image_3.present?%>
-  <%=image_tag @planter.image_3_url , :width => "48%", :class=>"image_in_planter"  %>
-  <% end %>
-
-  <%if @planter.image_4.present?%>
-  <%=image_tag @planter.image_4_url , :width => "48%", :class=>"image_in_planter"  %>
-  <% end %>
-  </div>
-
-<div class="one-sixth">
-  <a href="/planters/<%=@planter.id%>/follow" class="btn btn-info <% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" data-remote="true" id="follow_butt" 
-               <i class="">این گیاه را دنبال کن</i>
-  </a>
-
-  <a href="/planters/<%=@planter.id%>/unfollow" class=" btn btn-warning <% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" data-remote="true"  id="unfollow_butt"
-               <i class="">این گیاه را دنبال نکن</i>
-  </a>
-</div>
-
-<p class="make_bold" style="direction:rtl; color:rgb(169, 52, 52); margin:0 5% 0 5%;text-align: justify;">
-  <strong style="color:rgb(17, 45, 76); font-size:25px;">درباره ی این گل:</strong>
-  </br>
-  </br>
-  </br>
-  <%= @planter.brief_desc %>
-</p>
-
-<div class="wow animated fadeInRight" style="padding:0 5% 0 5%;">
-
-<p class="make_bold make_right" style="color:rgb(17, 45, 76);; font-size:20px; ">اطلاعات تخصصی گیاه</p>
-
-<dl class="basic fullWidth">
-  <dt style="text-align:center"><span class="tb_in_plant">نام</span></dt>
-  <dd ><%= @planter.name%></dd>
-  <dt style="text-align:center" > <span class="tb_in_plant">
-    نژاد
-  </span>
-  </dt>
-  <dd><%= @planter.race%></dd>
-  <dt class="make_center"><span class="tb_in_plant">دمای فعلی</span></dt>
-  <dd><%= @planter.temperature%></dd>
-  <dt class="make_center"><span class="tb_in_plant">رطوبت خاک</span></dt>
-  <dd><%= @planter.humidity_soil%></dd>
-  <dt class="make_center"><span class="tb_in_plant">رطوبت محیط</span></dt>
-  <dd><%= @planter.humidity_air%></dd>
-  <dt class="make_center"><span class="tb_in_plant">نور محیط</span></dt>
-  <dd><%= @planter.light_degree%></dd>
-  <dt class="make_center"><span class="tb_in_plant">صفحه اصلی این گیاه</span></dt>
-  <dd><%= link_to 'صفحه ی گیاه شمعدانی' , planter_path(Planter.find(2) , :class=>"button")%></dd>
-</dl>
-</div>
-
-
-
-<%= link_to 'Edit', edit_planter_path(@planter)%> 
-<%= link_to '<<بازگشت', profile_path(current_user),:class=>"button" %>
-
-<section class="modal wow one-one fadeInLeft animated style="visibility: visible;"">
-  <div class=" container new_forms">
-    <p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
-
-    <%= form_for(@comment) do |f| %>
-      <% if @comment.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
+        <nav class="foot-nav">
           <ul>
-          <% @comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home">Home</a></li>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/recipes.html" title="Recipes">Recipes</a></li>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/blog.html" title="Blog">Blog</a></li>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/contact.html" title="Contact">Contact</a></li>    
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/find_recipe.html" title="Search for recipes">Search for recipes</a></li>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/login.html" title="Login">Login</a></li>  <li><a href="http://www.themeenergy.com/themes/html/social-chef/register.html" title="Register">Register</a></li>                         
           </ul>
-        </div>
-      <% end %>
-
-      <div class="field">
-        <%= f.hidden_field :commentable_id , :value => @planter.id %>
+        </nav>
       </div>
-      <div class="field">
-        <%= f.hidden_field :commentable_type  , :value =>"Planter"%>
-      </div>
-      <div class="field  make_center">
-        <%= f.text_area :content %>
-      </div>
-      <div class="actions">
-        <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
-      </div>
-    <% end %>
+    </div>
   </div>
-</section>
-<div class="comments">
-  <br>
-  <% @planter.comments.each do |cmnt| %>
-
-    <ol class="commetn-list three-fourth">
-
-      <li class="comment byuser comment-author-test99899 even thread-even depth-1 clearfix">
-        
-        <div class="avatar">
-          <!-- user profile picture must set in here -->
-          <% if cmnt.user.profile.profile_photo.present?%>
-          <%=image_tag cmnt.user.profile.profile_photo_url%>
-          <%else %>
-          <%=image_tag "default_plant.png"%>
-          <%end%>
-        </div>
-        <div class="comment-box" style="padding:1%">
-
-          <div class="comment-author meta make_right">
-            <!-- info about commenter-->
-            <%= cmnt.user.profile.first_name %>
-            <%= cmnt.user.profile.last_name %>
-            <%if has_auth(cmnt)%>
-            <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
-            <%end%>
-            <p class="make_right"><%= cmnt.created_at %></p>
-          </div>
-          
-          <div class="comment-text">
-          <!-- comment content must set here-->
-                <p><%= cmnt.content %></p>  
-          </div>
-          
-        </div>
-        
-      </li>
-      
-    </ol>
-  <% end %>  
-</div>
+</footer>
+<!--//footer-->
