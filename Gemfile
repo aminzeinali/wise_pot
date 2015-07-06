@@ -10,9 +10,8 @@ gem 'sass-rails', '~> 5.0'
 
 #gem "chartkick"
 #gem 'ancestry'
-
 #gem 'groupdate'
-
+gem 'simple_captcha2', require: 'simple_captcha'
 #gem 'mysql2'
 
 gem 'acts_as_votable', '~> 0.10.0'

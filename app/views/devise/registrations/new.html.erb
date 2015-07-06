@@ -1,9 +1,3 @@
-</br>
-</br>
-</br>
-</br>
-</br>
-
 <section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
 <div class="modal container new_forms">
 <h2 class="center">ثبت نام در گلدان هوشمند</h2>
@@ -28,7 +22,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
   </br>
-  <div class="actions">
+  <div style="display:table; margin:0 auto;">
+    <%=show_simple_captcha %>
+  </div>
+  <div class="center">
     <%= f.submit "ثبت نام", :class=>"b_farsi sign_in_bt modal far_class"%>
   </div>
 <% end %>

@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   acts_as_voter
   acts_as_follower
   acts_as_followable
+  apply_simple_captcha
 end

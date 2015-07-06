@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   resources :comments
 
   resources :data_logs do
@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
-
+  devise_for :users, controllers: { registrations: 'user_registrations' }
   devise_scope :user do
     root :to =>"initial#home"
   end
