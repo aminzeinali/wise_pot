@@ -1,3 +1,192 @@
+
+<div class="main" role="main">
+  <div class="wrap clearfix">
+    <div class="row">
+      
+      <head class="s-title wow fadeInLeft animated" style="visibility: visible;">
+        <h1 class="make_center"> <%=@planter.name%></h1>
+      </head>
+
+      <!--content-->
+      <section class="content three-fourth">
+
+        <!--pot-->
+        <div class="recipe">
+
+          <div class="row">
+            <!--two-third-->
+            <article class="two-third wow fadeInLeft animated" style="visibility: visible;">
+              <div class="image">
+                  <%=image_tag @planter.image_1_url%>
+              </div>
+              
+              <div class="intro">
+                <p class="make_right">:در مورد این گیاه</p>
+                <p class="make_right"><%= @planter.brief_desc %></p>
+              </div>
+              
+              <div class="one-third">
+                <%=image_tag @planter.image_2_url%>
+              </div>
+
+              <div class="one-third">
+                <%=image_tag @planter.image_3_url%>
+              </div>
+
+              <div class="one-third">
+                <%=image_tag @planter.image_4_url%>
+              </div>
+            </article>
+            <!--//two-third-->
+
+            <!--one-third-->
+            <article class="one-third wow fadeInDown animated" style="visibility: visible;">
+              
+              <div class="one-one">
+                <a href="/planters/<%=@planter.id%>/follow" class="btn btn-info <% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" data-remote="true" id="follow_butt" 
+                             <i class="">این گیاه را دنبال کن</i>
+                </a>
+
+                <a href="/planters/<%=@planter.id%>/unfollow" class=" btn btn-warning <% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" data-remote="true"  id="unfollow_butt"
+                             <i class="">این گیاه را دنبال نکن</i>
+                </a>
+              </div>
+
+              <br>
+
+              <dl class="basic">
+                <dt class="make_center">رطوبت هوا</dt>
+                <dd><%= @planter.humidity_air%></dd>
+
+                <dt class="make_center">رطوبت خاک</dt>
+                <dd><%= @planter.humidity_soil%></dd>
+
+                <dt class="make_center">دما</dt>
+                <dd><%= @planter.temperature%></dd>
+
+                <dt class="make_center">نور</dt>
+                <dd><%= @planter.light_degree%></dd>
+
+                <dt class="make_center">نژاد</dt>
+                <dd><%= @planter.race%></dd>
+
+              </dl>
+
+            </article>
+            <!--//one-third-->
+          </div>
+            
+        </div>
+        <!--//pot-->
+          
+      </section>
+      <!--//content-->
+    </div>
+
+    <!--comments-->
+    <section class="modal wow one-one fadeInLeft animated style="visibility: visible;"">
+      <div class=" container new_forms">
+        <p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
+
+        <%= form_for(@comment) do |f| %>
+          <% if @comment.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+              <ul>
+              <% @comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= f.hidden_field :commentable_id , :value => @planter.id %>
+          </div>
+          <div class="field">
+            <%= f.hidden_field :commentable_type  , :value =>"Planter"%>
+          </div>
+          <div class="field  make_center">
+            <%= f.text_area :content %>
+          </div>
+          <div class="actions">
+            <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+    <div class="comments">
+      <br>
+      <% @planter.comments.each do |cmnt| %>
+
+        <ol class="commetn-list three-fourth">
+
+          <li class="comment byuser comment-author-test99899 even thread-even depth-1 clearfix">
+            
+            <div class="avatar">
+              <!-- user profile picture must set in here -->
+              <% if cmnt.user.profile.profile_photo.present?%>
+              <%=image_tag cmnt.user.profile.profile_photo_url%>
+              <%else %>
+              <%=image_tag "default_plant.png"%>
+              <%end%>
+            </div>
+            <div class="comment-box" style="padding:1%">
+
+              <div class="comment-author meta make_right">
+                <!-- info about commenter-->
+                <%= cmnt.user.profile.first_name %>
+                <%= cmnt.user.profile.last_name %>
+                <%if has_auth(cmnt)%>
+                <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
+                <%end%>
+                <p class="make_right"><%= cmnt.created_at %></p>
+              </div>
+              
+              <div class="comment-text">
+              <!-- comment content must set here-->
+                    <p><%= cmnt.content %></p>  
+              </div>
+              
+            </div>
+            
+          </li>
+          
+        </ol>
+      <% end %>  
+    </div>
+    <!--//comments-->
+
+  </div>
+</div> <!--end of main-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p class="make_center make_bold" style="">
 <%= @planter.name%>
 </p>
@@ -68,77 +257,74 @@
 <%= link_to '<<بازگشت', profile_path(current_user),:class=>"button" %>
 
 <section class="modal wow one-one fadeInLeft animated style="visibility: visible;"">
-<div class=" container new_forms">
-  <p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
+  <div class=" container new_forms">
+    <p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
 
-  <%= form_for(@comment) do |f| %>
-    <% if @comment.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+    <%= form_for(@comment) do |f| %>
+      <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-        <ul>
-        <% @comment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
+          <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.hidden_field :commentable_id , :value => @planter.id %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :commentable_type  , :value =>"Planter"%>
+      </div>
+      <div class="field  make_center">
+        <%= f.text_area :content %>
+      </div>
+      <div class="actions">
+        <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
       </div>
     <% end %>
-
-    <div class="field">
-      <%= f.hidden_field :commentable_id , :value => @planter.id %>
-    </div>
-    <div class="field">
-      <%= f.hidden_field :commentable_type  , :value =>"Planter"%>
-    </div>
-    <div class="field  make_center">
-      <%= f.text_area :content %>
-    </div>
-    <div class="actions">
-      <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
-    </div>
-  <% end %>
-</div>
+  </div>
 </section>
-
-
-
 <div class="comments">
-<br>
-<% @planter.comments.each do |cmnt| %>
+  <br>
+  <% @planter.comments.each do |cmnt| %>
 
-<ol class="commetn-list three-fourth">
+    <ol class="commetn-list three-fourth">
 
-  <li class="comment byuser comment-author-test99899 even thread-even depth-1 clearfix">
-    
-    <div class="avatar">
-      <!-- user profile picture must set in here -->
-      <% if cmnt.user.profile.profile_photo.present?%>
-      <%=image_tag cmnt.user.profile.profile_photo_url%>
-      <%else %>
-      <%=image_tag "default_plant.png"%>
-      <%end%>
-    </div>
-    <div class="comment-box" style="padding:1%">
+      <li class="comment byuser comment-author-test99899 even thread-even depth-1 clearfix">
+        
+        <div class="avatar">
+          <!-- user profile picture must set in here -->
+          <% if cmnt.user.profile.profile_photo.present?%>
+          <%=image_tag cmnt.user.profile.profile_photo_url%>
+          <%else %>
+          <%=image_tag "default_plant.png"%>
+          <%end%>
+        </div>
+        <div class="comment-box" style="padding:1%">
 
-      <div class="comment-author meta make_right">
-        <!-- info about commenter-->
-        <%= cmnt.user.profile.first_name %>
-        <%= cmnt.user.profile.last_name %>
-        <%if has_auth(cmnt)%>
-        <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
-        <%end%>
-        <p class="make_right"><%= cmnt.created_at %></p>
-      </div>
+          <div class="comment-author meta make_right">
+            <!-- info about commenter-->
+            <%= cmnt.user.profile.first_name %>
+            <%= cmnt.user.profile.last_name %>
+            <%if has_auth(cmnt)%>
+            <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
+            <%end%>
+            <p class="make_right"><%= cmnt.created_at %></p>
+          </div>
+          
+          <div class="comment-text">
+          <!-- comment content must set here-->
+                <p><%= cmnt.content %></p>  
+          </div>
+          
+        </div>
+        
+      </li>
       
-      <div class="comment-text">
-      <!-- comment content must set here-->
-            <p><%= cmnt.content %></p>  
-      </div>
-      
-    </div>
-    
-  </li>
-  
-</ol>
+    </ol>
   <% end %>  
 </div>
