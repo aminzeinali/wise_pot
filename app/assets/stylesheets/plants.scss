@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.plant_profile_pic{
-	width: 350px;
-	height: 300px;
-}
 .info_component{
 	background-color:white;
 	padding:5%;
@@ -32,7 +28,7 @@
 	border:solid 1px #F4716A;
 }
 .tb_in_plant{
-	 color:rgb(244, 113, 106);
-	 font-weight:bold;
-	 font-size:18px; 
+	 color:rgb(244, 113, 106) !important;
+	 font-weight:bold !important;
+	 font-size:18px !important; 
 }

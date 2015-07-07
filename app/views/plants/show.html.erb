@@ -1,15 +1,14 @@
-<div style="padding:4%;">
+<div style="padding:1.6%;">
 <div class="one-third">
   <% if @plant.image.present? %>
-      <%=image_tag @plant.image_url, :class=>"modal plant_profile_pic content center full-width wow fadeInLeft animated"%>
+      <%=image_tag @plant.image_url, :class=>"image full-width wow fadeInLeft animated"%>
       <%else %>
-      <%=image_tag "default_plant.png", :class=>"plant_profile_pic 
-       center full-width wow fadeInDown animated"%>
+      <%=image_tag "default_plant.png", :class=>"image full-width wow fadeInDown animated"%>
   <%end%>
 </div>
 
-<!-- table of plant element-->
-<dl class="basic two-third">
+<!--table of plant element-->
+<dl class="basic one-third wow zoomIn animated">
   <dt style="text-align:center"><span class="tb_in_plant">نام</span></dt>
   <dd ><%= @plant.name%></dd>
   <dt style="text-align:center" > <span class="tb_in_plant">
@@ -29,15 +28,57 @@
   <dd><%= @plant.humidity_air%></dd>
   <dt class="make_center"><span class="tb_in_plant">نور محیط</span></dt>
   <dd><%= @plant.light_degree%></dd>
-  <dt class="make_center"><span class="tb_in_plant">میزان سلامت</span></dt>
-  <dd><%= @plant.health_factor%></dd>
   <dt class="make_center"><span class="tb_in_plant">در مورد این گیاه</span></dt>
   <dd><%= @plant.description%></dd>
   <dt class="make_center"><span class="tb_in_plant">صفحه اصلی این گیاه</span></dt>
   <dd><%= link_to 'صفحه ی گیاه شمعدانی' , planter_path(Planter.find(2) , :class=>"button")%></dd>
 </dl>
+<!--//table of plant element-->
 
 
+<!--table of additional element of plant-->
+<div class="widget nutrition one-third">
+    <h3 class="make_right tb_in_plant">
+      اطلاعات تکمیلی گیاه شما
+    </h3>
+    <table>
+      <tbody>
+        <tr>
+          <td>میزان سلامت گیاه</td>
+          <td><%=@plant.health_factor%></td>
+        </tr>
+        <tr>
+          <td>میزان PH</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <td>میزان PH</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <td>میزان PH</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <td>میزان PH</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <td>میزان PH</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <td>میزان PH</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <td>میزان PH</td>
+          <td>120</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+        <!--//table of additional element of plant-->
 
 
 
