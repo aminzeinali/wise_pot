@@ -40,8 +40,6 @@ $(document).ready(function() {
 	});
 });
 
-
-
 	// $('#main_search #query').keyup(function(e){
 		// $.get($("#main_search").serialize() , null , 'script');
 		// e.preventDefault();

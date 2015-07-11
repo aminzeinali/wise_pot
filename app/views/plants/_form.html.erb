@@ -1,5 +1,3 @@
-</br>
-
 <section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
 <div class="modal container new_forms">
 <%= form_for @plant , html: { multipart: true } do |f| %>
@@ -43,38 +41,43 @@
   </div>
   <!--
   <div class="field">
-    <%= f.label :temperature %><br>
-    <%= f.text_field :temperature%>
+    <%#= f.label :temperature %><br>
+    <%#= f.text_field :temperature%>
   </div>
   <div class="field">
-    <%= f.label :humidity_soil %><br>
-    <%= f.text_field :humidity_soil%>
+    <%#= f.label :humidity_soil %><br>
+    <%#= f.text_field :humidity_soil%>
   </div>
   <div class="field">
-    <%= f.label :humidity_air %><br>
-    <%= f.text_field :humidity_air%>
+    <%#= f.label :humidity_air %><br>
+    <%#= f.text_field :humidity_air%>
   </div>
   <div class="field">
-    <%= f.label :light_degree %><br>
-    <%= f.text_field :light_degree%>
+    <%#= f.label :light_degree %><br>
+    <%#= f.text_field :light_degree%>
   </div>
   <div class="field">
-    <%= f.label :health_factor %><br>
-    <%= f.text_field :health_factor%>
+    <%#= f.label :health_factor %><br>
+    <%#= f.text_field :health_factor%>
   </div>
   -->
+
   <div class="field">
     <p class="make_right">یک تصویر از گیاه</p>
-    <%= f.file_field :image%>
-  
+    <form id="form1" runat="server">
+      <div style="display:table; margin:0 auto; width:50%; height:auto;">
+          <img id="blah" src="/assets/default_plant.png" alt="your image" />
+          <%= f.file_field :image , :id=>"imgInp"%>  
+      </div>
+    </form>
   <p>
     <label>
       <%= f.check_box :remove_image %>
       Remove avatar
       </label>
   </p>
-
   </div>
+
   <div class="field">
     <p class="make_right">توضیحاتی مختصر برای گیاه</p>
     <%= f.text_area :description %>
@@ -86,3 +89,24 @@
 </div>
 </div>
 </section>
+
+
+<script type="text/javascript">
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
+
+</script>
