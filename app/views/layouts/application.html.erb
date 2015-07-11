@@ -1,146 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>WisePot</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
-	<%= csrf_meta_tags %>
-    <%= favicon_link_tag 'flower.png' %>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<meta name="keywords" content="SocialChef - Social Recipe HTML Template" />
-	<meta name="description" content="SocialChef - Social Recipe HTML Template">
-	<meta name="author" content="themeenergy.com">
-	
-	<title>گلدان هوشمند</title>
-	
-	
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	  <![endif]-->
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'flower.png' %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="keywords" content="WisePot- Social wise pot" />
+  <meta name="description" content="SocialPot - Social Pot">
+  <meta name="author" content="rasadpot.ir">
 
-	  <!--header-->
-	  <header class="head" role="banner">
-	  	<!--wrap-->
-	  	<div class="wrap clearfix">
-	  		<a href="index.html" title="SocialChef" class="logo">
-	  		<img src="/assets/logo.png" width="180px" alt="SocialChef logo" /></a>
+  <title>گلدان هوشمند</title>
 
-	  		<nav class="main-nav" role="navigation" id="menu">
-	  			<ul>
-	  				<li class="current-menu-item">
-	  				<a href="/" title="Home">
-	  				<span>خانه</span>
-	  				</a>
-	  				</li>
-	  				
-	  				<li><a href="recipes.html" title="Recipes"><span>معرفی</span></a>
-	  					<ul>
-	  						<li><a href="recipes2.html" title="Recipes 2">Recipes 2</a></li><li><a href="recipe.html" title="Recipe">Recipe</a></li>
-	  					</ul>
-	  				</li>
-	  				<li><a href="blog.html" title="Blog"><span>محصولات</span></a>
-	  					<ul>
-	  						<li><a href="blog_single.html" title="Blog post">Blog post</a></li>
-	  					</ul>
-	  				</li>
-	  				<li><a href="#" title="Pages"><span>خدمات</span></a>
-	  					<ul>
-	  						<li><a href="left_sidebar.html" title="Left sidebar page">Left sidebar page</a></li>
-	  						<li><a href="right_sidebar.html" title="Right sidebar page">Right sidebar page</a></li>
-	  						<li><a href="two_sidebars.html" title="Both sidebars page">Both sidebars page</a></li>
-	  						<li><a href="full_width.html" title="Full width page">Full width page</a></li>
-	  						<li><a href="login.html" title="Login page">Login page</a></li><li><a href="register.html" title="Register page">Register page</a></li>
-	  						<li><a href="error404.html" title="Error page">Error page</a></li>
-	  					</ul>
-	  				</li>
-	  				<li><a href="#" title="Features"><span>وبلاگ</span></a>
-	  					<ul>
-	  						<li><a href="animations.html" title="Animations">Animations</a></li>
-	  						<li><a href="grid.html" title="Grid">Grid</a></li>
-	  						<li><a href="shortcodes.html" title="Shortcodes">Shortcodes</a></li>
-	  						<li><a href="pricing.html" title="Pricing tables">Pricing tables</a></li>
-	  					</ul>
-	  				</li>
-	  				<li>
-	  				<!-- <a href="contact.html" title="Contact"><span>فروشگاه</span></a> -->
-	  				<%#= link_to shop_initial_index_path do %>
-	  				<!-- <span>فروشگاه</span> -->
-	  				<%# end %>
-	  				</li>
-	  				<li>
-	  				<a href="http://themeforest.net/item/socialchef-social-recipe-html-template/8568727?ref=themeenergy" title="Buy now"><span>ارتباط با ما</span></a></li>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
 
+    <%= render 'shared/header' %>
+</head>
+<body class="home">
+    <%if notice.present?%>
+        <p class="notice"><%= notice %></p>
+    <%end%>
 
-	  				<!-- <li>
-	  					<%# if user_signed_in? %>
-	  					<%#= link_to "Sign out", destroy_user_session_path ,:method => :delete, :class =>"my_button_in_profile" %>
-	  					<%# end %>
-	  				</li> -->
-	  			</ul>
-	  		</nav>
+    <%if alert.present?%>
+        <p class="alert"><%= alert %></p>
+    <%end%>
 
-	  		<nav class="user-nav" role="navigation">
-	  			<ul>
-	  				
-	  				<li class="dark">
-	  				<a href="/search" title="Search for recipes">
-	  				<i class="ico i-search"></i> 
-	  				<span>جستجو</span></a>
-	  				</li>
-	  				
+<%= yield %>
 
-
-
-	  				<li class="medium">
-	  				<%if current_user.present?%>	
-	  				<%= link_to profile_path(current_user) do%>
-	  				<i class="ico i-account"></i> 
-	  				<span>حساب کاربری</span></a>
-	  				<% end %>
-
-	  				<%else%>
-	  				 <%= link_to new_registration_path(User.new) do%>
-	  				<i class="ico i-account"></i> 
-	  				<span>حساب کاربری</span></a>
-	  				<% end %>
-
-	  				<% end %>
-	  				</li>
-	  				
-					<li class="dark">
-	  					<% if user_signed_in? %>
-	  					<%= link_to destroy_user_session_path ,:method => :delete,:class =>"" do %>
-	  					<i class="ico i-submitrecipe"></i>
-	  					<span>خروج</span>
-	  					<%end%>
-	  					<% end %>
-	  				</li>
-
-
-	  			</ul>
-	  		</nav>
-	  	</div>
-	  	<!--//wrap-->
-	  </header>
-	  <!--//header-->
-	</head>
-
-	<body class="home">
-		<%if notice.present?%>
-		<p class="notice"><%= notice %></p>
-		<%end%>
-
-		<%if alert.present?%>
-		<p class="alert"><%= alert %></p>
-		<%end%>
-
-		<%= yield %>
-
-	</body>
-	</html>
+</body>
+</html>

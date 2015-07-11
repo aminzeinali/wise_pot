@@ -1,5 +1,5 @@
 class InitialController < ApplicationController
-  before_action :authenticate_user! , except: [:home, :forgot_password, :mail_new_pass]
+  before_action :authenticate_user! , except: [:home, :forgot_password, :mail_new_pass, :shop]
 
   # protect_from_forgery with: :null_session
   def forgot_password
@@ -16,6 +16,10 @@ class InitialController < ApplicationController
   end
     
   def home
+  end
+
+  def shop
+    @products = Shoppe::Product.active.featured.includes(:default_image, :product_categories, :variants).root
   end
 
   def resource_name
