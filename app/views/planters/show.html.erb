@@ -43,11 +43,11 @@
             <article class="one-third wow fadeInDown animated" style="visibility: visible;">
               
               <div class="one-one">
-                <a href="/planters/<%=@planter.id%>/follow" class="btn btn-info <% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" data-remote="true" id="follow_butt" 
+                <a href="/planters/<%=@planter.id%>/follow" class=" btn btn-info<% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" data-remote="true" id="follow_butt" 
                              <i class="">این گیاه را دنبال کن</i>
                 </a>
 
-                <a href="/planters/<%=@planter.id%>/unfollow" class=" btn btn-warning <% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" data-remote="true"  id="unfollow_butt"
+                <a href="/planters/<%=@planter.id%>/unfollow" class="btn btn-warning <% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" data-remote="true"  id="unfollow_butt"
                              <i class="">این گیاه را دنبال نکن</i>
                 </a>
               </div>

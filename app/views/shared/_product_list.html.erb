@@ -1,0 +1,26 @@
+<% for product in products.includes(:default_image, :product_categories) %>
+    <li >
+      <%=link_to product_path(product.product_category.permalink, product.permalink) do %>
+          <!--<span class="onsale">فروش!</span>-->
+          <% if product.default_image.present? %>
+              <%= image_tag product.default_image.path , class: "attachment-shop_thumbnail wp-post-image" %>
+              <span class="product-title ">
+                <%= link_to product.name, product_path(product.product_category.permalink, product.permalink) ,
+                style: "color: #F4716A !important; font-weight: 700;" %>
+              </span>
+          <% else %>
+              <img width="300" height="300" src="assets/slide2.jpg" class="attachment-shop_catalog wp-post-image">
+              <span class="product-title">
+                <%= link_to product.name, product_path(product.product_category.permalink, product.permalink)%>
+              </span>
+          <% end %>
+      <% end %>
+      <br>
+      <span class="amount">
+        <%= number_to_currency product.price%>
+      </span>
+      <%= link_to "اضافه به سبد", buy_product_path(product.product_category.permalink, product.permalink), :class => 'btn btn-xs btn-link pull-right', :method => :post %>
+    </li>
+<% end %>
+
+

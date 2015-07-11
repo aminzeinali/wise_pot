@@ -10,24 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require_self
- *= require bootstrap.min
  *= require comments
  *= require gardens
  *= require initial
  *= require planters
  *= require plants
  *= require profiles
+ *= require style1
+ *= require bootstrap.min
 
 
  */ 
 
-
-.visible{
-	display: block;
-}
-.invis{
-	display: none;
-}
 
 @font-face {
  font-family: 'BYekan';
@@ -43,115 +37,7 @@
 body{
 	font-family: Byekan !important;
 }
-.far_class{
-	float:right !important;
-}
- div.email_box{
- 	float: right;
- }
- div.pass_box{
- 	float: right;
- 	margin-right:5px;
- }
- div.rem_box{
- 	float: right;
- 	margin-top: 50px;
- 	margin-right: -112px;
- }
- div.log_in_button{
- 	float: right;
- 	margin-top: 60px;
- 	margin-right: -200px;
- }
- div.forgot{
- 	float: right;
- 	margin-top: 58px;
- 	margin-right: -350px;
- }
- div.forgot_link> a{
- 	color: white;
- }
- div.forgot_link> a:hover{
- 	color: #337ab7;
- 	text-decoration: none;
- 	background-color: #252512;
- }
 
- div.log_components{
- 	padding: 10px;
- 	width: 100%;
- 	height: auto;
- 	float: right;
- 	background-color:#252512;
- }
- div.log_components> .logo_story{
- 	margin:-10px;
- 	width: 50%;
- 	height:120px;
- 	border-right:solid 1px white;
- 	float:left;
- }
- .init_body{
- 	margin-top: 10px;
- 	background-color: gray;
- }
-
- .slider_box_size{
- 	margin: 0;
- 	padding: 0;
- 	margin-top: 20px;
- 	width: 100%;
- 	height: 300px;
- }
- .wrap_size{
- 	height: auto;
- 	background-color: gray;
- }
- .lol{
- 	border-right: solid 205px white;
- 	border-left: solid 205px white;
- 	background-position: center;
- }
- .end_box{
- 	width: 100%;
- 	height: 380px;
- 	background-color: gray;
- 	float: left;
- }
- .slider_me> li:hover{
- 	background-color:gray;
- 	border:solid 2px #252525;
- }
-
- .sign_up_css> a{
- 	color:white;
- }
-
- .sign_up_css> a:hover{
- 	text-decoration:none;
- 	color:#337ab7;
- }
-
- .sign_up_box{
- 	width: 50%;
- 	height:auto;
- 	background-color:gray;
- 	margin: 0 auto;
- }
- .center_box{
- 	padding-left: 37%;
- 	margin-top:10px;
- }
- .sign_up_in_rout{
- 	float:right;
- 	padding-bottom:10px;
- 	background-color:#252512;
- 	margin-top:10px;
- 	width:40%;
- }
- .label_color{
- 	color:white;
- }
 
  /////////////////////////////////////////copy template css files////////////////////
  * {box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
@@ -367,17 +253,7 @@ tr:nth-child(2n+1) td{background:#f6f6f6;}
 
 /*HOME*/
 .home .main 	{padding-top:0;}
-.intro 		
-{
-width: 100%;
-height: 100vh;
-margin: -120px 0 30px;
-overflow: hidden;
-min-height: 768px;
-background-position: 50% 100%;
-background-repeat: no-repeat;
-background-size: cover;
-}
+.intro 		{position:relative;top:0;left:0;width:100%;height:100vh;margin:0 0 30px;overflow:hidden;}
 .bg img		{position:absolute;left:0;bottom:0;}
 .intro .wrap {margin-top:180px;}
 
