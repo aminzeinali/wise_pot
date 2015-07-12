@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html, :js
   # GET /posts
   # GET /posts.json
   def index
@@ -15,20 +15,22 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @planter_id = params[:planter_id]
   end
 
   # GET /posts/1/edit
   def edit
+    @planter_id = params[:planter_id]
   end
 
   # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to planter_path(@post.planter_id) }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -69,6 +71,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :planter_id, :title, :content)
+      params.require(:post).permit(:user_id, :planter_id, :title, :content, :image)
     end
 end

@@ -1,5 +1,4 @@
 class Plant < ActiveRecord::Base
-
 	acts_as_votable
 	has_many :plant_on_gardens
 	has_many :gardens , :through => :plant_on_gardens

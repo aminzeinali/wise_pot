@@ -1,9 +1,7 @@
-</br>
-
-<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<section class="content center full-width wow fadeInRight animated style="visibility: visible;"">
 <div class="modal container new_forms">
 
-<%= form_for(@post) do |f| %>
+<%= form_for @post , html: { multipart: true } do |f|  %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -17,25 +15,53 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%#= f.label :user_id %><br>
+    <%#= f.hidden_field :user_id%>
   </div>
   <div class="field">
-    <%= f.label :planter_id %><br>
-    <%= f.number_field :planter_id %>
+    <%= f.hidden_field :planter_id , :value=>@planter_id %>
   </div>
   <div class="field">
-    <%= f.label :title %><br>
+    <p class="make_right">عنوان</p>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :content %><br>
+    <p class="make_right">متن پست</p>
     <%= f.text_area :content %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <div class="field">
+    <p class="make_right">یک تصویر برای ارسال</p>
+    <form id="form1" runat="server">
+      <div style="display:table; margin:0 auto; width:50%; height:auto;">
+          <img id="blah" src="/assets/default_plant.png" alt="your image" />
+          <%= f.file_field :image , :id=>"imgInp"%>
+          <%= f.submit 'پست', :class=>"b_farsi button sign_in_bt" %>  
+      </div>
+    </form>
   </div>
+
 <% end %>
 
 </div>
 </section>
+
+<script type="text/javascript">
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
+
+</script>

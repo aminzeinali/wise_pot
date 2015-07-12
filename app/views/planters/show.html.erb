@@ -1,4 +1,3 @@
-
 <div class="main" role="main">
   <div class="wrap clearfix">
     <div class="row">
@@ -7,6 +6,8 @@
         <h1 class="make_center"> <%=@planter.name%></h1>
       </head>
 
+      <div id="post-form" style="display:none;"></div>
+      
       <!--content-->
       <section class="content three-fourth">
 
@@ -40,6 +41,7 @@
             <!--//two-third-->
 
             <!--one-third-->
+
             <article class="one-third wow fadeInDown animated" style="visibility: visible;">
               
               <div class="one-one">
@@ -51,6 +53,13 @@
                              <i class="">این گیاه را دنبال نکن</i>
                 </a>
               </div>
+              <!--make post-->
+              <br>
+              <div class="one-one">
+                <%=link_to "پست در مورد این گیاه" , new_post_path(:planter_id=>@planter.id), :class=>"button", :remote=>true%>
+              </div>
+
+              <!--//make post-->
 
               <br>
 
@@ -91,6 +100,30 @@
                     <dt>33.1%</dt>
                     <dd>user_profile_link3</dd>
               </dl>
+
+              <!--posts table-->
+                <li class="widget widget-sidebar">
+                  <!--cwrap-->
+                  <div class="cwrap">
+                    <h5 class="make_center">پست های اخیر</h5>
+                    <%@planter.posts.each do |pos|%>
+                    <ul class="articles_latest">
+                      <li>
+                        <a>
+                        <%if pos.image_url.present?%>
+                          <%=image_tag(pos.image_url)%>
+                        <%else%>
+                          <%=image_tag("img11.jpg")%>
+                        <%end%>
+                        <%=link_to pos.title , pos%>
+                        </a>
+                      </li>
+                    </ul>
+                    <%end%>
+                  </div>
+                  <!--//cwrap-->
+                </li>
+              <!--//posts table-->
 
             </article>
             <!--//one-third-->
@@ -198,7 +231,7 @@
     </div>
 
     <!--comments-->
-    <section class="modal wow one-one fadeInLeft animated style="visibility: visible;"">
+    <section class="modal wow one-one fadeInLeft animated" style="visibility: visible; display:table; margin:0 auto;">
       <div class=" container new_forms">
         <p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
 

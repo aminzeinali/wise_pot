@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :data_logs
   has_many :comments
+  has_many :posts
   acts_as_voter
   acts_as_follower
   acts_as_followable

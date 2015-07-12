@@ -5,7 +5,6 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :planter_id
       t.string :title
       t.text :content
-
       t.timestamps null: false
     end
   end

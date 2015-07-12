@@ -8,6 +8,10 @@ module ApplicationHelper
 		current_user == comment.user
 	end
 
+  def has_auth_post(post)
+    current_user.id == post.user_id
+  end
+
 	
   def nested_product_category_spacing_adjusted_for_depth(category, relative_depth)
     depth = category.depth - relative_depth
