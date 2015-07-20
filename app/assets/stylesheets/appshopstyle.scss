@@ -17,9 +17,10 @@
  *= require plants
  *= require profiles
  *= require style1
+ *= require woocommerce
+ *= require theme-default
+
  *= require bootstrap.min
-
-
  */ 
 
 
@@ -743,7 +744,7 @@ div.uploader.disabled.active span.action 		{}
 .social .pinterest a:before  		{background:url(/assets/icons.png) -201px -33px no-repeat;width:13px;height:16px;top:8px;left:10px;}
 .social .vimeo a:before  			{background:url(/assets/icons.png) -234px -34px no-repeat;width:17px;height:16px;top:8px;left:7px;}
 
-.bottom		 	{float:left;width:100%;border-top:1px solid #ddd;padding:20px 0 0;color:#888;}
+.bottom		 	{float:right;width:100%;border-top:1px solid #ddd;padding:20px 0 0;color:#888;}
 .foot .bottom 	{padding:20px 0 5px;margin:0 15px;width:1170px;max-width:100%;}
 .copy 			{float:left;max-width:30%;}
 .foot-nav		{float:right;max-width:70%;}

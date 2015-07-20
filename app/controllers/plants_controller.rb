@@ -1,4 +1,6 @@
 class PlantsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_plant, only: [:show, :edit, :update, :destroy, :vote_up,:del_vote_up]
 
 

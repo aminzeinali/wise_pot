@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'store/show'
 
-  mount Shoppe::Engine => "/shoppe"
+  mount Shoppe::Engine => "/store"
 
   resources :comments
 
@@ -52,6 +52,8 @@ Rails.application.routes.draw do
       get :forgot_password
       get :mail_new_pass
       get :shop
+      get :introduce
+      get :services
     end
   end
   get '/search' , to: 'initial#search'

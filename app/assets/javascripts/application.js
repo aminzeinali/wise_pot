@@ -32,7 +32,6 @@ $(document).ready(function() {
 		return false;
 	});
 
-
 	$('html').click(function() {
 		$('#result').css('display','none');
 

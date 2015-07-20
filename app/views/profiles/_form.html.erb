@@ -1,6 +1,5 @@
 <section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
 <div class="modal container new_forms">
-
 <%= form_for @profile , html: { multipart: true }  do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
@@ -27,26 +26,19 @@
     <%= f.text_field :gender, :class => "form-control"  %>
   </div>
 
-  
-  <form id="form1" runat="server">
-      <div style="display:table; margin:0 auto; width:50%; height:auto;">
           <img id="blah1" src="/assets/default_plant.png" alt="your image" />
           <%= f.file_field :profile_photo , :id=>"imgInp1"%>  
-      </div>
-  </form>
 
 
-  <form id="form1" runat="server">
-      <div style="display:table; margin:0 auto; width:50%; height:auto;">
           <img id="blah2" src="/assets/default_plant.png" alt="your image" />
           <%= f.file_field :cover_photo , :id=>"imgInp2"%>  
-      </div>
-  </form>
+
 
   </br>
   <div class="actions">
     <%= f.submit 'ساخت پروفایل',:class=>"b_farsi button make_dir_right"%>
   </div>
+
 <% end %>
 </section>
 </div>
