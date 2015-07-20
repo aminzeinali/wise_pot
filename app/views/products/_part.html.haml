@@ -1,0 +1,48 @@
+- active_nav_item :catalogue
+- @page_title = @product.name + " - " + @product.product_category.name
+-#- if @product.default_image
+  .img{:style => "background-image:url(#{@product.default_image.path})"}
+-#%h2= @product.name
+-#%p.intro= @product.short_description
+- if @product.has_variants?
+  %table.variants
+    - for variant in @product.variants
+      %tr
+        %td
+          - if variant.in_stock?
+            %p.stock.yes In stock
+          - else
+            %p.stock.no Out of stock
+          %h4= variant.name
+          %p.price= number_to_currency variant.price
+        %td.make_center
+          = form_tag buy_product_path(@product.product_category.permalink, @product.permalink, :variant => variant.id), :class => (variant.in_stock? ? 'in-stock cart' : 'no-stock') do
+            = select_tag 'quantity', options_for_select([1,2,3,4,5,6,7,8,9]), :disabled => !variant.in_stock?
+            = submit_tag 'اضافه به سبد خرید', :disabled => !variant.in_stock? , class: "button"
+- else
+  .optionsBox
+    .bottom
+    .stock
+      -if @product.in_stock?
+        %p.text-success موجود
+        %p.time سفارش در <b>#{hour_until_next_delivery}</b> ساعت و <b>#{minute_until_next_delivery}</b> دقیقه بعدی برای ارسال آماده است
+      -else
+        %p.no تمام شده
+        %p.time متاسفیم - به تعداد کافی از این کالا در انبار موجود نیست.
+      %ul
+        - if @product.data_sheet
+          %li.item.datasheet= link_to "Read product datasheet", @product.data_sheet.path
+      = form_tag buy_product_path(@product.product_category.permalink, @product.permalink), :class => (@product.in_stock? ? 'in-stock cart' : 'no-stock') do
+        .one-half
+          = submit_tag 'اضافه به سبد خرید', :disabled => !@product.in_stock?, class: ""
+        .make_center.one-half
+          = select_tag 'quantity', options_for_select([1,2,3,4,5,6,7,8,9]), :disabled => !@product.in_stock?
+          %span{:style=>"color: #F4716A !important"}
+            تعداد مورد نیاز شما
+- unless @attributes.empty?
+  %table.attributes
+    - for attribute in @attributes
+      %tr
+        %th= attribute.key
+        %td= link_to attribute.value, product_filter_path(:key => attribute.key, :value => attribute.value)
+

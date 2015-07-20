@@ -1,4 +1,137 @@
-<p id="notice"><%= notice %></p>
+<!--main-->
+<main class="main" role="main">
+	<!--wrap-->
+	<div class="wrap clearfix">
+		<!--row-->
+		<nav class="breadcrumbs">
+				<ul>
+					<li><a href="index.html" title="Home">Home</a></li>
+					<li><a href="#" title="Blog">Blog</a></li>
+					<li>Post</li>
+				</ul>
+		</nav>
+
+		<div class="row">
+			<header class="s-title wow fadeInLeft animated" style="visibility: visible;">
+					<h2 class="make_center"><%= @post.title%></h2>
+			</header>
+
+			<!--content-->
+			<section class="content three-fourth wow fadeInLeft animated" style="visibility: visible;">
+				<!--blog entry-->
+				<article class="post single">
+					
+
+					<div class="entry-meta">
+						<div class="date">
+							<span class="day"><%=@post.created_at.day%></span>
+							<span class="my"><%=@post.created_at.month%>, <%=@post.created_at.year%></span>
+						</div>
+						<div class="avatar">
+							<%=image_tag(@post_user.profile.profile_photo_url)%>
+						</div>
+					</div>
+
+
+					<div class="container">
+						<div class="entry-featured">
+							<%=image_tag (@post.image_url)%>
+						</div>
+						<div class="entry-content">
+							<p class="make_right"><%=@post.title%></p>
+							<p class="make_right"><%=@post.content%></p>
+						</div>
+					</div>
+
+				</article>
+				<!--//blog entry-->
+			</section>
+			<!--//content-->
+		</div>
+		<!--//row-->
+	</div>
+	<!--//wrap-->
+</main>
+<!--//main-->
+
+<!--comments-->
+<section class="modal wow one-one fadeInLeft animated" style="visibility: visible; display:table; margin:0 auto;">
+  <div class=" container new_forms">
+    <p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
+
+    <%= form_for(@comment) do |f| %>
+      <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.hidden_field :commentable_id , :value => @post.id %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :commentable_type  , :value =>"Post"%>
+      </div>
+      <div class="field  make_center">
+        <%= f.text_area :content %>
+      </div>
+      <div class="actions">
+        <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
+      </div>
+    <% end %>
+  </div>
+</section>
+<div class="comments">
+  <br>
+  <% @post.comments.each do |cmnt| %>
+
+    <ol class="commetn-list three-fourth">
+
+      <li class="comment byuser comment-author-test99899 even thread-even depth-1 clearfix">
+        
+        <div class="avatar">
+          <!-- user profile picture must set in here -->
+          <% if cmnt.user.profile.profile_photo.present?%>
+          <%=image_tag cmnt.user.profile.profile_photo_url%>
+          <%else %>
+          <%=image_tag "default_plant.png"%>
+          <%end%>
+        </div>
+        <div class="comment-box" style="padding:1%">
+
+          <div class="comment-author meta make_right">
+            <!-- info about commenter-->
+            <%= cmnt.user.profile.first_name %>
+            <%= cmnt.user.profile.last_name %>
+            <%if has_auth(cmnt)%>
+            <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
+            <%end%>
+            <p class="make_right"><%= cmnt.created_at %></p>
+          </div>
+          
+          <div class="comment-text">
+          <!-- comment content must set here-->
+                <p><%= cmnt.content %></p>  
+          </div>
+          
+        </div>
+        
+      </li>
+      
+    </ol>
+  <% end %>  
+</div>
+<!--//comments-->
+
+
+
+
 
 <p>
   <strong>User:</strong>

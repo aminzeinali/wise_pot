@@ -1,4 +1,6 @@
 class PlantersController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_planter, only: [:show, :edit, :update, :destroy]
 
   # GET /planters
@@ -8,7 +10,6 @@ class PlantersController < ApplicationController
   end
 
   def follow
-
     @planter = Planter.find(params[:id])
     @follow = Follow.new
 

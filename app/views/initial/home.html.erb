@@ -12,7 +12,7 @@
 				<div class="row">
 					<article class="three-fourth text wow zoomIn" data-wow-delay=".2s">
 
-						<h1 style="margin-right:21%;text-align:center; color:#C31108;">گلدان هوشمند</h1>
+						<h3 style="margin-right:21%;text-align:center; color:#C31108;">گلدان هوشمند</h3>
 						<p class="bold_main make_right main_text main_text_margin">...این ها احساسات گیاه شماست</p>
 						<p class="make_right main_text main_text_margin">   !من تشنه ام</p>
 						<p class="make_right main_text main_text_margin">  !نور محیط مناسب من نیست</p>
@@ -21,7 +21,6 @@
 						
 						<a href="users/sign_up" class="button white  medium">!راه حل اینجاست</a>
 					</article>
-					
 					<!--search recipes widget-->
 					<div class="one-fourth wow fadeInDown" data-wow-delay=".5s">
 						<div class="widget container">
@@ -29,21 +28,21 @@
 								<h3 class="make_center">گلدان هوشمند</h3>
 								<img src="assets/img11.jpg">
 								</br>
-					
 							</div>
-
 								<%= form_for("user", :url => user_session_path) do |f| %>
-								  <%= f.text_field :email %>
-								  <%= f.password_field :password %>
+                                    <%= f.text_field :email , :placeholder => "ایمیل"  , class: "make_center" %>
+                                    </br>
+                                    <%= f.password_field :password , :placeholder => "رمز عبور", class: "make_center" %>
 								  </br>
 								  </br>
 								  <%#= f.label :remember_me %>
 								  <%#= f.check_box :remember_me %>
 								  <%= f.submit 'ورود به حساب کاربری', :class=>"b_farsi button sign_in_bt" %>
 								  </br>
-								  <div class="forget_text">
-								  </br>
-								  <%= link_to "!فراموشی رمز عبور",forgot_password_initial_index_path %>
+								  <div class="forget_text make_center">
+								  </br>								  </br>
+
+                                    <%= link_to "!رمز عبورم را فراموش کرده ام",forgot_password_initial_index_path %>
 								  </div>
 								<% end %>
 								</br>
@@ -74,7 +73,7 @@
 							<div class="one-sixth">
 								<div class="container">
 									<i class="ico i-members"></i>
-									<span class="title dynamic-number" data-dnumber="1730">0</span>
+									<span class="title dynamic-number" data-dnumber="<%=User.all.count%>">0</span>
 									<span class="subtitle">اعضاء</span>
 								</div>
 							</div>
@@ -84,8 +83,9 @@
 							<div class="one-sixth">
 								<div class="container">
 									<i class="ico i-recipes"></i>
-									<span class="title dynamic-number" data-dnumber="1250">0</span>
-									<span class="subtitle">کتاب ها</span>
+									<span class="title dynamic-number"
+									 data-dnumber="<%= Planter.all.count %>">0</span>
+									<span class="subtitle">گیاهان</span>
 								</div>
 							</div>
 							<!--//item-->
@@ -94,7 +94,8 @@
 							<div class="one-sixth">
 								<div class="container">
 									<i class="ico i-photos"></i>
-									<span class="title dynamic-number" data-dnumber="5300">0</span>
+									<span class="title dynamic-number" 
+									data-dnumber="">0</span>
 									<span class="subtitle">تصاویر</span>
 								</div>
 							</div>
@@ -104,8 +105,12 @@
 							<div class="one-sixth">
 								<div class="container">
 									<i class="ico i-posts"></i>
-									<span class="title dynamic-number" data-dnumber="2300">0</span>
-									<span class="subtitle">‍‍‍ گزارش ها</span>
+									<span 
+									class="title dynamic-number" 
+									data-dnumber="<%=Post.all.count%>">0</span>
+									<span class="subtitle">‍‍‍
+									سوالات
+									</span>
 								</div>
 							</div>
 							<!--//item-->
@@ -114,7 +119,8 @@
 							<div class="one-sixth">
 								<div class="container">
 									<i class="ico i-comment"></i>
-									<span class="title dynamic-number" data-dnumber="7400">0</span>
+									<span class="title dynamic-number" 
+									data-dnumber="<%=Comment.all.count%>">0</span>
 									<span class="subtitle">نظرات</span>
 								</div>
 							</div>
@@ -124,8 +130,10 @@
 							<div class="one-sixth">
 								<div class="container">
 									<i class="ico i-articles"></i>
-									<span class="title dynamic-number" data-dnumber="1700">0</span>
-									<span class="subtitle">مقالات</span>
+									<span 
+									class="title dynamic-number"
+									 data-dnumber="<%=Shoppe::Order.all.count %>">0</span>
+									<span class="subtitle">خرید ها</span>
 								</div>
 							</div>
 							<!--//item-->
@@ -138,8 +146,6 @@
 					</div>
 				</section>
 				<!--//content-->
-			
-
 				<!--content-->
 				<section class="content fullWidth">
 					<!--cwrap-->
@@ -183,8 +189,12 @@
 								</header>
 								<article class="entry">
 									<figure>
-										<img src="/assets/avatar5.jpg" alt="" />
-										<figcaption><a href="my_profile.html"><i class="ico i-view"></i> <span>View member</span></a></figcaption>
+										<img src="/assets/avatar6.jpg" alt=""  width="100%"/>
+										<figcaption><a href="my_profile.html">
+                                          <i class="ico i-view">
+
+                                          </i>
+                                          <span>View member</span></a></figcaption>
 									</figure>
 									<div class="container">
 										<h2 class="make_right"><a href="my_profile.html">علیرضا پاک نیت</a></h2>
@@ -211,128 +221,53 @@
 					<!--cwrap-->
 					<div class="cwrap">
 						<header class="s-title">
-							<h2 class="make_right title_in_middle">بهترین پست ها از نگاه کاربران</h2>
+							<h2 class="make_right title_in_middle">
+							پر بازدید ترین سوالات
+							</h2>
 						</header>
 						
 						<!--entries-->
 						<div class="entries row">
 							<!--item-->
+							<% Post.all.each do |post| %>
 							<div class="entry one-fourth wow fadeInLeft">
 								<figure>
-									<img src="/assets/img6.jpg" alt="" />
-									<figcaption><a href="recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
+									<!-- <img src="/assets/img6.jpg" alt="" /> -->
+									<% if post.image.present? %>
+									<%= image_tag post.image_url , style: "width: 100%;max-height: 225px; height: 225px;" %>
+									<% else %>
+									<img src="/assets/default_plant.png" alt="" />
+									<% end %>
+									<figcaption>
+									<%= link_to post do %>
+									<i class="ico i-view"></i> <span>
+									<%= post.title %>
+									</span>
+									<% end %>
+									</figcaption>
 								</figure>
 								<div class="container make_right">
-									<h2><a href="recipe.html">!گیاهان به موسیقی گوش می دهند</a></h2> 
+									<h2>
+									<%= link_to post do %>
+									<%= post.content %>
+									<% end %>
+									</h2> 
 									<div class="actions">
 										<div>
 											<div class="difficulty"><i class="ico i-medium"></i><a href="#">medium</a></div>
 											<div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
-											<div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">27</a></div>
+											<div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">
+											<%= post.comments.count %>
+											</a></div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<!--item-->
-							
-							<!--item-->
-							<div class="entry one-fourth wow fadeInLeft" data-wow-delay=".2s">
-								<figure>
-									<img src="/assets/img5.jpg" alt="" />
-									<figcaption><a href="recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-								</figure>
-								<div class="container make_right">
-									<h2><a href="recipe.html">!چگونه تراس خانه ام را به باغچه تبدیل کردم</a></h2>
-
-									<div class="actions">
-										<div>
-											<div class="difficulty"><i class="ico i-hard"></i><a href="#">hard</a></div>
-											<div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
-											<div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">27</a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--item-->
-							
-							<!--item-->
-							<div class="entry one-fourth wow fadeInLeft" data-wow-delay=".4s">
-								<figure>
-									<img src="/assets/img8.jpg" alt="" />
-									<figcaption><a href="recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-								</figure>
-								<div class="container make_right">
-									<h2><a href="recipe.html">شرایط مناسب دمایی برای رشد داوودی ها</a></h2> 
-									<div class="actions">
-										<div>
-											<div class="difficulty"><i class="ico i-easy"></i><a href="#">easy</a></div>
-											<div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
-											<div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">27</a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--item-->
-							
-							<!--item-->
-							<div class="entry one-fourth wow fadeInLeft" data-wow-delay=".6s">
-								<figure>
-									<img src="/assets/img7.jpg" alt="" />
-									<figcaption><a href="recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-								</figure>
-								<div class="container make_right">
-									<h2><a href="recipe.html">نکاتی جالب در مورد نگهداری گل های آبی</a></h2> 
-									<div class="actions">
-										<div>
-											<div class="difficulty"><i class="ico i-hard"></i><a href="#">hard</a></div>
-											<div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
-											<div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">27</a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--item-->
-							
-							<!--item-->
-							<div class="entry one-fourth wow fadeInLeft" data-wow-delay=".8s">
-								<figure>
-									<img src="/assets/img3.jpg" alt="" />
-									<figcaption><a href="recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-								</figure>
-								<div class="container make_right">
-									<h2><a href="recipe.html">پیچک ها نور را دوست دارند</a></h2> 
-									<div class="actions">
-										<div>
-											<div class="difficulty"><i class="ico i-easy"></i><a href="#">easy</a></div>
-											<div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
-											<div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">27</a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--item-->
-							
-							<!--item-->
-							<div class="entry one-fourth wow fadeInLeft" data-wow-delay="1s">
-								<figure>
-									<img src="/assets/img4.jpg" alt="" />
-									<figcaption><a href="recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-								</figure>
-								<div class="container make_right">
-									<h2><a href="recipe.html">دسته گل های خانگی</a></h2> 
-									<div class="actions">
-										<div>
-											<div class="difficulty"><i class="ico i-hard"></i><a href="#">hard</a></div>
-											<div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
-											<div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">27</a></div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<% end %>
 							<!--item-->
 							
 							<div class="quicklinks">
-								<a href="#" class="button">پست های بیستر</a>
+							<%= link_to "همه سوالات" , posts_path , class: "button" %>
 								<a href="javascript:void(0)" class="button scroll-to-top">برگشت به بالا</a>
 							</div>
 						</div>
@@ -343,72 +278,63 @@
 					<!--cwrap-->
 					<div class="cwrap">
 						<header class="s-title">
-							<h2 class="make_right title_in_middle">مقاله های اخیر</h2>
+							<h2 class="make_right title_in_middle">
+							محصولات اخیر
+							<%= link_to "فروشگاه" , store_show_path%>
+							</h2>
 						</header>
 						<!--entries-->
 						<div class="entries row">
+						<% Shoppe::Product.all.each do |prod| %>
 							<!--item-->
 							<div class="entry one-fourth wow fadeInLeft">
 								<figure>
+								<% if prod.default_image.present? %>
+									<%= image_tag prod.default_image.path , style: "width: 100%;max-height: 225px; height: 225px;" %>
+								<% else %>
 									<img src="/assets/img12.jpg" alt="" />
-									<figcaption><a href="blog_single.html"><i class="ico i-view"></i> <span>View post</span></a></figcaption>
+								<% end %>
+									<figcaption>
+									<%= link_to product_path(prod.product_category.permalink, prod.permalink) do %>
+									<i class="ico i-view">'
+									</i>
+									<span>
+									<%= prod.name %>
+									</span>
+									<% end %>
+									</figcaption>
 								</figure>
 								<div class="container make_center">
-									<h2><a href="blog_single.html">گل باد</a></h2> 
+									<h2>
+									<%= link_to prod.name , product_path(prod.product_category.permalink, prod.permalink)%>
+									</h2> 
 									<div class="actions">
 										<div>
-											<div class="date"><i class="ico i-date"></i><a href="#">22 Dec 2014</a></div>
-											<div class="comments"><i class="ico i-comments"></i><a href="blog_single.html#comments">27</a></div>
+											<div class="date">
+											<i class="ico i-date">	
+											</i>
+											<b>
+											<% cat = Shoppe::ProductCategorization.where(:product_id => prod.id).first.product_category %>
+											<%= link_to cat.name , products_path(cat.permalink) %>
+											</b>
+											<a href="#">
+											</a>
+											</div>
+											<div class="comments">
+											<i class="ico i-comments"></i>
+											<%=number_to_currency prod.price%>
+											</div>
 										</div>
 									</div>
 									<div class="excerpt make_center">
-										<p>Anemone Coronaria </p>
-										<p>با نام بین المللی "گل باد" و با نام های متفرقه دیگری چون شقایق خشخاش، گل همیشه بهار اسپانیایی، خشخاش هلندی ...و</p>
+										<p></p>
+										<p>
+										<%= prod.description %>
+										</p>
 									</div>
 								</div>
 							</div>
-							<!--item-->
-							
-							<!--item-->
-							<div class="entry one-fourth wow fadeInLeft" data-wow-delay=".2s">
-								<figure>
-									<img src="/assets/img11.jpg" alt="" />
-									<figcaption><a href="blog_single.html"><i class="ico i-view"></i> <span>View post</span></a></figcaption>
-								</figure>
-								<div class="container make_center">
-									<h2><a href="blog_single.html">آلاله صحرایی</a></h2> 
-									<div class="actions">
-										<div>
-											<div class="date"><i class="ico i-date"></i><a href="#">22 Dec 2014</a></div>
-											<div class="comments"><i class="ico i-comments"></i><a href="blog_single.html#comments">27</a></div>
-										</div>
-									</div>
-									<div class="excerpt make_center">
-										<p>آلاله صحرایی دارای ریشه ضخیم فیبری است و از گره های پایین ساقه ریشه تولید می کند.</p>
-									</div>
-								</div>
-							</div>
-							<!--item-->
-							
-							<!--item-->
-							<div class="entry one-fourth wow fadeInLeft" data-wow-delay=".4s">
-								<figure>
-									<img src="/assets/img10.jpg" alt="" />
-									<figcaption><a href="blog_single.html"><i class="ico i-view"></i> <span>View post</span></a></figcaption>
-								</figure>
-								<div class="container make_center">
-									<h2><a href="blog_single.html">آکونتیوم واریگاتوم</a></h2> 
-									<div class="actions">
-										<div>
-											<div class="date"><i class="ico i-date"></i><a href="#">22 Dec 2014</a></div>
-											<div class="comments"><i class="ico i-comments"></i><a href="blog_single.html#comments">27</a></div>
-										</div>
-									</div>
-									<div class="excerpt make_center">
-										<p>دارای برگ های قرمز تیره بوده و گسترده هستند و 5_7 لوب دارند.و هر بخش دوباره دارای 3 لوب است با دندانه های نوک تیز و برگ ها با آرایشی مارپیچ یا متناوب قرار گرفته اند و برگ های پایینی دم برگ بلند دارند.</p>
-									</div>
-								</div>
-							</div>
+						<% end %>
 							<!--item-->
 							
 							<div class="quicklinks">
@@ -428,106 +354,6 @@
 	</main>
 	<!--//main-->
 
-	<!--call to action-->
-	<section class="cta">
-		<div class="wrap clearfix make_center">
-			<a href="http://themeforest.net/item/socialchef-social-recipe-html-template/8568727?ref=themeenergy" class="button big white right">خرید گلدان هوشمند</a>
-			<h2 style="color:white">اگر به گل و گیاه خود اهمیت می دهید پیشنهاد  ما پرستار هوشمند است</h2>
-		</div>
-	</section>
-	<!--//call to action-->
-	
-	<!--footer-->
-<footer class="foot" role="contentinfo">
-  <div class="wrap clearfix make_right">
-    <div class="row">
-      <article class="one-half">
-        <h5>چرا گلدان هوشمند</h5>
-        <p>گلدانی که پیش روی شماست امکان تعامل با گیاه را در هر لحظه فراهم می سازد.شما با این گلدان می توانید شرایط محیط رشد گیاه اعم از نور - دمای محیط  و رطوبت گیاه را رصد کنید .در واقع ما حرف دل گیاه شما را روی گوشی موبایل و یا صفحه ی شخصی شما نمایش خواهیم داد و مزیت این خواهد بود که  قبل از پژمردن گیاه متوجه نا به سامانی شرایط شوید و در نتیجه همیشه گیاهانی شاد و سالم داشته باشید. </p>
-      </article>
-      <article class="one-fourth">
-        <p class="make_right">ارتباط با ما از طریق تلفن یا ایمیل</p>
-        <p class="make_right"><em>تلفن: </em>09368055268<br>nooramin_co@outlook.com<em> :ایمیل</em></p>
-      </article>
-      <article class="one-fourth">
-        <h5>گلدان هوشمند در شبکه های اجتماعی</h5>
-        <ul class="social">
-          <li class="facebook"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="facebook">facebook</a></li>
-          <li class="youtube"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="youtube">youtube</a></li>
-          <li class="rss"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="rss">rss</a></li>
-          <li class="gplus"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="gplus">google plus</a></li>
-          <li class="linkedin"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="linkedin">linkedin</a></li>
-          <li class="twitter"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="twitter">twitter</a></li>
-          <li class="pinterest"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="pinterest">pinterest</a></li>
-          <li class="vimeo"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="vimeo">vimeo</a></li>
-        </ul>
-      </article>
-
-      <div class="bottom">
-        <p class="copy">University of Tehran All rights reserved</p>
-
-        <nav class="foot-nav">
-          <ul>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home">Home</a></li>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/recipes.html" title="Recipes">Recipes</a></li>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/blog.html" title="Blog">Blog</a></li>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/contact.html" title="Contact">Contact</a></li>    
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/find_recipe.html" title="Search for recipes">Search for recipes</a></li>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/login.html" title="Login">Login</a></li>  <li><a href="http://www.themeenergy.com/themes/html/social-chef/register.html" title="Register">Register</a></li>                         
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-</footer>
-<!--//footer-->
-
-	<!--preloader-->
-	<!-- <div class="preloader"> -->
-		<!-- <div class="spinner"></div> -->
-	<!-- </div> -->
-	<!--//preloader-->
-	<!--  
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/jquery.uniform.min.js"></script>
-	<script src="js/wow.min.js"></script>
-	<script src="js/jquery.slicknav.min.js"></script>
-	<script src="js/scripts.js"></script>
-	-->
-	<script>
-		window.dynamicNumbersBound = false;
-		var wow = new WOW();
-		WOW.prototype.show = function(box) {
-			wow.applyStyle(box);
-			if (typeof box.parentNode !== 'undefined' && hasClass(box.parentNode, 'dynamic-numbers') && !window.dynamicNumbersBound) {
-				bindDynamicNumbers();
-				window.dynamicNumbersBound = true;
-			}
-			return box.className = "" + box.className + " " + wow.config.animateClass;
-		};
-		wow.init();
-		
-		function hasClass(element, cls) {
-			return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
-		}
-		
-		function bindDynamicNumbers() {
-			$('.dynamic-number').each(function() {				
-				var startNumber = $(this).text();
-				var endNumber = $(this).data('dnumber');
-				var dynamicNumberControl = $(this);
-				
-				$({numberValue: startNumber}).animate({numberValue: endNumber}, {
-					duration: 4000,
-					easing: 'swing',
-					step: function() { 
-						$(dynamicNumberControl).text(Math.ceil(this.numberValue)); 
-					}
-				});
-			});	
-		}
-		
-	</script>
 </html>
 
 

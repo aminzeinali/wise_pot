@@ -1,4 +1,6 @@
 class PlantsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_plant, only: [:show, :edit, :update, :destroy, :vote_up,:del_vote_up]
 
 
@@ -22,12 +24,12 @@ class PlantsController < ApplicationController
   # GET /plants/1.json
   def show
     @comment = Comment.new
-    @plant.humidity_soil = DataLog.last.humidity_soil
-    @plant.humidity_air = 8#DataLog.last.humidity_air
-    @plant.temperature = 27 #DataLog.last.temperature
-    @plant.light_degree = DataLog.last.light
+    # @plant.humidity_soil = DataLog.last.humidity_soil
+    # @plant.humidity_air = 8#DataLog.last.humidity_air
+    # @plant.temperature = 27 #DataLog.last.temperature
+    # @plant.light_degree = DataLog.last.light
 
-    @plant.save
+    #@plant.save
   end
 
   # GET /plants/new

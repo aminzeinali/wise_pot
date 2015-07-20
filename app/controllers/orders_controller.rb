@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   layout "store"
+
+  
   before_filter(:except => :status) { redirect_to root_path unless has_order? }
   
   def status
@@ -10,7 +12,7 @@ class OrdersController < ApplicationController
     current_order.destroy
     session[:order_id] = nil
     respond_to do |wants|
-      wants.html { redirect_to root_path, :notice => "Your basket has been emptied successfully."}
+      wants.html { redirect_to root_path , :notice => "Your basket has been emptied successfully."}
       wants.json do
         flash[:notice] = "Your shopping bag is now empty."
         render :json => {:status => 'complete', :redirect => root_path}
@@ -25,7 +27,7 @@ class OrdersController < ApplicationController
     else
       item.remove
       respond_to do |wants|
-        wants.html { redirect_to request.referer, :notice => "Item has been removed from your basket successfully"}
+        wants.html { redirect_to request.referer, :notice => "کالای مورد نظر از سبد خرید حذف شد"}
         wants.json do
           current_order.reload
           render :json => {:status => 'complete', :items => render_to_string(:partial => 'shared/order_items.html', :locals => {:order => current_order})}
@@ -75,7 +77,6 @@ class OrdersController < ApplicationController
   
   def checkout
     @order = Shoppe::Order.find(current_order.id)
-    
     if request.patch?
       @order.attributes = params[:order].permit(:first_name, :last_name, :company, :billing_address1, :billing_address2, :billing_address3, :billing_address4, :billing_country_id, :billing_postcode, :email_address, :phone_number, :delivery_name, :delivery_address1, :delivery_address2, :delivery_address3, :delivery_address4, :delivery_postcode, :delivery_country_id, :separate_delivery_address)
       @order.ip_address = request.ip
@@ -118,7 +119,7 @@ class OrdersController < ApplicationController
         # we are adding a payment to the order straight away.
         #current_order.payments.create(:method => "Credit Card", :amount => current_order.total, :reference => rand(10000) + 10000, :refundable => true)
         session[:order_id] = nil
-        redirect_to root_path, :notice => "سفارش شما ثبت شد! قاصدک با شما تماس خواهد گرفت "
+        redirect_to store_show_path , :notice => "سفارش شما ثبت شد! قاصدک با شما تماس خواهد گرفت "
       rescue Shoppe::Errors::PaymentDeclined => e
         flash[:alert] = "Payment was declined by the bank. #{e.message}"
         redirect_to checkout_path

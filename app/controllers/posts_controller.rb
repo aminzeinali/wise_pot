@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
   # GET /posts
@@ -10,6 +13,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment = Comment.new
+    @post_user = @post.user
   end
 
   # GET /posts/new

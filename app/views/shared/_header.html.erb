@@ -3,7 +3,7 @@
   <!--wrap-->
   <div class="wrap clearfix">
     <a href="/" title="SocialChef" class="logo">
-      <img src="/assets/logo.png" width="180px" alt="SocialChef logo" />
+      <img src="/assets/logo.png" width="180px" alt="" />
     </a>
 
     <nav class="main-nav" role="navigation" id="menu">
@@ -14,27 +14,47 @@
           </a>
         </li>
 
-        <li><a href="recipes.html" title="Recipes"><span>معرفی</span></a>
+        <li>
+          <%= link_to introduce_initial_index_path do %>
+            <span>
+              معرفی‌
+            </span>
+          <% end %>
           <ul>
-            <li><a href="recipes2.html" title="Recipes 2">Recipes 2</a></li><li><a href="recipe.html" title="Recipe">Recipe</a></li>
+            <li>
+              <a href="https://www.linkedin.com/profile/view?id=211213437&trk=nav_responsive_tab_profile_pic" title="Recipes 2">
+                Amir Mahdi Valeh
+              </a></li>
+            <li>
+              <a href="#" title="Recipe">
+                Mohamad Amin Zeinali
+              </a>
+            </li>
           </ul>
         </li>
         <li>
-         <%= link_to store_show_path do  %>
-         <span>فروشگاه</span>
-         <% end %>
+          <%= link_to store_show_path do  %>
+              <span>فروشگاه</span>
+          <% end %>
           <ul>
-            <li><a href="blog_single.html" title="Blog post">Blog post</a></li>
+            <% for cat in Shoppe::ProductCategory.all.each do %>
+                <li class="make_center">
+                  <%= link_to cat.name , products_path(cat.permalink) %>
+                </li>
+            <% end %>
           </ul>
         </li>
-        <li><a href="#" title="Pages"><span>خدمات</span></a>
+        <li>
+          <%= link_to services_initial_index_path  do %> <span>خدمات</span> <% end %>
           <ul>
             <li><a href="left_sidebar.html" title="Left sidebar page">Left sidebar page</a></li>
             <li><a href="right_sidebar.html" title="Right sidebar page">Right sidebar page</a></li>
             <li><a href="two_sidebars.html" title="Both sidebars page">Both sidebars page</a></li>
             <li><a href="full_width.html" title="Full width page">Full width page</a></li>
             <li><a href="login.html" title="Login page">Login page</a></li><li><a href="register.html" title="Register page">Register page</a></li>
-            <li><a href="error404.html" title="Error page">Error page</a></li>
+            <li>
+            <a href="error404.html" title="Error page">Error page</a>
+            </li>
           </ul>
         </li>
         <li><a href="#" title="Features"><span>وبلاگ</span></a>
@@ -46,57 +66,45 @@
           </ul>
         </li>
         <li>
-          <!-- <a href="contact.html" title="Contact"><span>فروشگاه</span></a> -->
-          <%#= link_to shop_initial_index_path do %>
-          <!-- <span>فروشگاه</span> -->
-          <%# end %>
         </li>
         <li>
           <a href="http://themeforest.net/item/socialchef-social-recipe-html-template/8568727?ref=themeenergy" title="Buy now"><span>ارتباط با ما</span></a></li>
-        <!-- <li>
-	  					<%# if user_signed_in? %>
-	  					<%#= link_to "Sign out", destroy_user_session_path ,:method => :delete, :class =>"my_button_in_profile" %>
-	  					<%# end %>
-	  				</li> -->
+
       </ul>
     </nav>
 
     <nav class="user-nav" role="navigation">
       <ul>
-
-          <% if user_signed_in? %>
-        <li class="dark">
-
+        <% if user_signed_in? %>
+            <li class="dark">
               <%= link_to destroy_user_session_path ,:method => :delete,:class =>"" do %>
-                  <i class="ico i-submitrecipe"></i>
-                  <span>خروج</span>
+                  <i class="ico i-kids"></i>
+              <span>
+                                خروج
+              </span>
+
               <%end%>
-          <% else %>          
-        </li>
-          <% end %>
+        <% else %>
+            </li>
+        <% end %>
         <li class="medium">
           <%if user_signed_in? %>
               <%= link_to profile_path(current_user) do%>
                   <i class="ico i-account"></i>
-                  <span>حساب کاربری</span></a>
+                  <span>حساب کاربری</span>
               <% end %>
-
           <%else%>
               <%= link_to new_registration_path(User.new) do%>
                   <i class="ico i-account"></i>
-                  <span>عضویت</span></a>
+                  <span>عضویت</span>
               <% end %>
-
           <% end %>
         </li>
-
         <li class="dark">
           <a href="/search" title="Search for recipes">
             <i class="ico i-search"></i>
             <span>جستجو</span></a>
         </li>
-
-
       </ul>
     </nav>
   </div>

@@ -1,5 +1,6 @@
 class InitialController < ApplicationController
-  before_action :authenticate_user! , except: [:home, :forgot_password, :mail_new_pass, :shop]
+
+  before_action :authenticate_user! , except: [:home, :forgot_password, :mail_new_pass, :shop, :introduce]
 
   # protect_from_forgery with: :null_session
   def forgot_password
@@ -35,7 +36,14 @@ class InitialController < ApplicationController
   end
   
   def search
-    
+  end
+
+  def introduce
+
+  end
+
+  def services
+
   end
 
   def do_search

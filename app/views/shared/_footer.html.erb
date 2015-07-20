@@ -1,0 +1,107 @@
+
+<!--call to action-->
+<section class="cta">
+  <div class="wrap clearfix make_center">
+    <a href="/users/sign_up" class="btn btn-lg left" style="color: #000000">
+      عضوی از گیاه داران شو
+    </a>
+    <h2 style="color:white" class="make_center">
+      ...
+    اگر شما هم مثل ما زنده ماندن گیاه برایتان مهم است
+      ، ما راه حلی برای شما داریم
+    </h2>
+  </div>
+</section>
+<!--//call to action-->
+
+<!--footer-->
+<footer class="foot" role="contentinfo">
+  <div class="wrap clearfix make_right">
+    <div class="row">
+      <article class="one-half">
+        <h5>چرا گلدان هوشمند</h5>
+        <p>گلدانی که پیش روی شماست امکان تعامل با گیاه را در هر لحظه فراهم می سازد.شما با این گلدان می توانید شرایط محیط رشد گیاه اعم از نور - دمای محیط  و رطوبت گیاه را رصد کنید .در واقع ما حرف دل گیاه شما را روی گوشی موبایل و یا صفحه ی شخصی شما نمایش خواهیم داد و مزیت این خواهد بود که  قبل از پژمردن گیاه متوجه نا به سامانی شرایط شوید و در نتیجه همیشه گیاهانی شاد و سالم داشته باشید. </p>
+      </article>
+      <article class="one-fourth">
+        <p class="make_right">ارتباط با ما از طریق تلفن یا ایمیل</p>
+        <p class="make_right"><em>تلفن: </em>09368055268<br>nooramin_co@outlook.com<em> :ایمیل</em></p>
+      </article>
+      <article class="one-fourth">
+        <h5>گلدان هوشمند در شبکه های اجتماعی</h5>
+        <ul class="social">
+          <li class="facebook"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="facebook">facebook</a></li>
+          <li class="youtube"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="youtube">youtube</a></li>
+          <li class="rss"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="rss">rss</a></li>
+          <li class="gplus"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="gplus">google plus</a></li>
+          <li class="linkedin"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="linkedin">linkedin</a></li>
+          <li class="twitter"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="twitter">twitter</a></li>
+          <li class="pinterest"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="pinterest">pinterest</a></li>
+          <li class="vimeo"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="vimeo">vimeo</a></li>
+        </ul>
+      </article>
+
+      <div class="bottom">
+        <p class="copy">University of Tehran All rights reserved</p>
+
+        <nav class="foot-nav">
+          <ul>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home">Home</a></li>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/recipes.html" title="Recipes">Recipes</a></li>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/blog.html" title="Blog">Blog</a></li>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/contact.html" title="Contact">Contact</a></li>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/find_recipe.html" title="Search for recipes">Search for recipes</a></li>
+            <li><a href="http://www.themeenergy.com/themes/html/social-chef/login.html" title="Login">Login</a></li>  <li><a href="http://www.themeenergy.com/themes/html/social-chef/register.html" title="Register">Register</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--//footer-->
+
+<!--preloader-->
+<!-- <div class="preloader"> -->
+<!-- <div class="spinner"></div> -->
+<!-- </div> -->
+<!--//preloader-->
+<!--
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.uniform.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/jquery.slicknav.min.js"></script>
+<script src="js/scripts.js"></script>
+-->
+<script>
+    window.dynamicNumbersBound = false;
+    var wow = new WOW();
+    WOW.prototype.show = function(box) {
+        wow.applyStyle(box);
+        if (typeof box.parentNode !== 'undefined' && hasClass(box.parentNode, 'dynamic-numbers') && !window.dynamicNumbersBound) {
+            bindDynamicNumbers();
+            window.dynamicNumbersBound = true;
+        }
+        return box.className = "" + box.className + " " + wow.config.animateClass;
+    };
+    wow.init();
+
+    function hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+
+    function bindDynamicNumbers() {
+        $('.dynamic-number').each(function() {
+            var startNumber = $(this).text();
+            var endNumber = $(this).data('dnumber');
+            var dynamicNumberControl = $(this);
+
+            $({numberValue: startNumber}).animate({numberValue: endNumber}, {
+                duration: 4000,
+                easing: 'swing',
+                step: function() {
+                    $(dynamicNumberControl).text(Math.ceil(this.numberValue));
+                }
+            });
+        });
+    }
+
+</script>

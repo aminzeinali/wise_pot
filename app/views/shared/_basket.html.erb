@@ -1,27 +1,27 @@
 <%if has_order? && current_order.has_items? %>
     <ul class="cart_list product_list_widget ">
-
       <% for item in order.order_items %>
           <li>
-            <!--<a href="http://www.themeenergy.com/themes/wordpress/social-chef/cart/?remove_item=d82c8d1619ad8176d665453cfb2e55f0&amp;_wpnonce=277cff52ce" class="remove" title="Remove this item"></a>-->
-            <%= link_to(remove_basket_item_path(item), :method => :delete, :class => 'delete ajax remove')do %>
-                ×
-            <% end %>
-
             <% prod = Shoppe::Product.find(item.ordered_item_id) %>
-            <%= link_to item.ordered_item.full_name ,
-                        product_path(prod.product_category.permalink, prod.permalink) %>
 
             <% if prod.default_image.present? %>
                 <%= image_tag prod.default_image.path , :class => "attachment-shop_thumbnail wp-post-image" , :width => "90" , :height => "90"%>
             <% else %>
                 <img width="90" height="90" src="//www.themeenergy.com/themes/wordpress/social-chef/wp-content/uploads/2013/06/hoodie_4_front-90x90.jpg" class="attachment-shop_thumbnail wp-post-image" alt="hoodie_4_front">Happy Ninja&nbsp;
             <% end %>
+            <%= link_to(remove_basket_item_path(item), :method => :delete, :class => 'delete ajax remove')do %>
+                <small>×</small>
+            <% end %>
+
+            <%= link_to item.ordered_item.full_name ,
+                        product_path(prod.product_category.permalink, prod.permalink) %>
             <br>
             <span class="quantity">
               <%= item.quantity%>
               × <span class="amount">
-              <%= number_to_currency item.total %>
+              <small>
+                <%= number_to_currency item.total %>
+              </small>
             </span>
             </span>
             <!--<span class="quantity">-->
@@ -36,21 +36,24 @@
       <% end %>
 
     </ul>
-    <p class="total make_center">
-      <strong> جمعا </strong>
-            <span class="amount" style="direction: rtl;">
+    <div class="total make_center">
+      <strong> جمعا :</strong>
+      <h3>
           <%=number_to_currency current_order.total_before_tax %>
-            </span>
-    </p>
+      </h3>
+    </div>
 
-    <p class="buttons">
+    <p class="buttons make_center">
       <%=link_to "سبد خرید من", basket_path , :class => 'button' %>
       <%= link_to "پرداخت", checkout_path, :class => 'button' %>
     </p>
 
 <% else %>
-    <b>سبد خرید شما خالی است </b>
-
+    <div style="text-align:center;">
+        <small>
+          سبد خرید شما خالی است
+        </small>
+    </div>
 <% end %>
 
 
