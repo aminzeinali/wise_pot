@@ -3,7 +3,6 @@ class PlantsController < ApplicationController
 
   before_action :set_plant, only: [:show, :edit, :update, :destroy, :vote_up,:del_vote_up]
 
-
   def vote_up
     @plant.liked_by current_user
   end
@@ -34,11 +33,8 @@ class PlantsController < ApplicationController
 
   # GET /plants/new
   def new
-
     @garden = Garden.find(params[:garden_id]) if params[:garden_id].present?
-
     @plant = Plant.new
-
   end
 
   # GET /plants/1/edit
@@ -102,7 +98,12 @@ class PlantsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_plant
       @plant = Plant.find(params[:id])
+      @page_title = "گیاه"
+      if @plant.present?
+        @page_title = @page_title + " " + @plant.name
+      end
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plant_params

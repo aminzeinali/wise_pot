@@ -91,6 +91,10 @@ class PlantersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_planter
       @planter = Planter.find(params[:id])
+      @page_title = "باغ"
+      if @planter.present?
+        @page_title = @page_title + " " + @planter.name
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
