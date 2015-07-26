@@ -40,26 +40,26 @@
 body{
 	font-family: Byekan !important;
 }
+
+.notification {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  z-index: 1050;
+  min-height: 45px;
+  background-color: #F05757;
+  border-radius: 2px;
+  color: white;
+  /* display: hidden; */
+  padding: 13px 15px 10px 15px;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
 .far_class{
 	float:right !important;
 }
- div.email_box{
- 	float: right;
- }
- div.pass_box{
- 	float: right;
- 	margin-right:5px;
- }
- div.rem_box{
- 	float: right;
- 	margin-top: 50px;
- 	margin-right: -112px;
- }
- div.log_in_button{
- 	float: right;
- 	margin-top: 60px;
- 	margin-right: -200px;
- }
  div.forgot{
  	float: right;
  	margin-top: 58px;
@@ -370,7 +370,7 @@ width: 100%;
 height: 100vh;
 margin: -120px 0 30px;
 overflow: hidden;
-min-height: 768px;
+//min-height: 768px;
 background-position: 50% 100%;
 background-repeat: no-repeat;
 background-size: cover;
@@ -402,7 +402,7 @@ background-size: cover;
 .cta .button			{min-width:170px;}
 
 .featured		{float:left;max-width:100%;position:relative;}
-h2.ribbon 		{background:url(../images/bgr/ribbons.png) -216px -61px no-repeat;padding:0 !important;width:189px;height:44px;text-align:center;font-size:16px;line-height:40px;font-weight:700;color:#fff !important;position:absolute;top:20px;left:35px;z-index:9999;display:inline-block;overflow:hidden;margin:0 0 30px;max-width:100%;}
+h2.ribbon 		{background:url() -216px -61px no-repeat;padding:0 !important;width:189px;height:44px;text-align:center;font-size:16px;line-height:40px;font-weight:700;color:#fff !important;position:absolute;top:20px;left:35px;z-index:9999;display:inline-block;overflow:hidden;margin:0 0 30px;max-width:100%;}
 h2.star			{background-position:-408px -61px;width:50px;height:60px;text-indent:-99999px;top:0;}
 h2.bright		{background-position:0 -60px;width:210px;height:45px;position:static;font-size:22px;line-height:43px;font-weight:600;margin:0 0 26px;}
 h2.large		{background-position:0 0;width:572px;height:58px;position:static;font-size:27px;line-height:56px;font-weight:600;max-width:100%;}

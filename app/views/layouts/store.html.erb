@@ -12,20 +12,23 @@
   <meta name="description" content="SocialPot - Social Pot">
   <meta name="author" content="rasadpot.ir">
 
-  <title>گلدان هوشمند</title>
+  <!--<title>-->
+  <!--فروشگاه گل و گیاه-->
+  <!--</title>-->
+  <title>
+    <%= @page_title %> - <%=Shoppe.settings.store_name %>
+    </title>
   <%= render 'shared/header' %>
 
 
 </head>
 <body class="home single single-product woocommerce woocommerce-page js">
-<%if notice.present?%>
-    <p class="notice"><%= notice %></p>
-<%end%>
 
-<%if alert.present?%>
-    <p class="alert"><%= alert %></p>
-<%end%>
-
+<% if notice %>
+    <div id ="my_notice" class="notification">
+      <%= notice %>
+    </div>
+<% end %>
 
 <main class="main" role="main">
   <!--wrap-->
@@ -46,7 +49,6 @@
         <li>فروشگاه</li>
       </ul>
     </nav>
-
 
     <aside id="secondary-left" class="left-sidebar sidebar widget-area one-fourth" role="complementary">
       <ul>
@@ -93,4 +95,10 @@
 </main>
 </body>
 <%= render 'shared/footer' %>
-</html>
+
+
+
+<script type="application/javascript">
+    $("#my_notice").delay(5000).show(10000).hide(1000);
+</script>
+

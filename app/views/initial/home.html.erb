@@ -22,7 +22,8 @@
 						<a href="users/sign_up" class="button white  medium">!راه حل اینجاست</a>
 					</article>
 					<!--search recipes widget-->
-					<div class="one-fourth wow fadeInDown" data-wow-delay=".5s">
+				<% if not user_signed_in? %>
+                  <div class="one-fourth wow fadeInDown" data-wow-delay=".5s">
 						<div class="widget container">
 							<div class="textwrap">
 								<h3 class="make_center">گلدان هوشمند</h3>
@@ -49,6 +50,7 @@
 
 						</div>
 					</div>
+                      <% end %>
 			</div>
 			<!--//wrap-->
 		</div>

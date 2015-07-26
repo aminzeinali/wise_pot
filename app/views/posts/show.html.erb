@@ -109,7 +109,7 @@
             <!-- info about commenter-->
             <%= cmnt.user.profile.first_name %>
             <%= cmnt.user.profile.last_name %>
-            <%if has_auth(cmnt)%>
+            <%if signed_in and has_auth(cmnt)%>
             <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
             <%end%>
             <p class="make_right"><%= cmnt.created_at %></p>
@@ -152,7 +152,7 @@
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
-<%if has_auth_post(@post)%>
+<%if signed_in? and has_auth_post(@post)%>
 <%= link_to 'ویرایش پست', edit_post_path(@post , :planter_id=>@post.planter_id) , :class=>"button" %> |
 <%end%>
 <%= link_to 'بازگشت به صفحه گیاه', planter_path(@post.planter_id) , :class=>"button" %>

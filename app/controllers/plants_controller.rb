@@ -3,7 +3,6 @@ class PlantsController < ApplicationController
 
   before_action :set_plant, only: [:show, :edit, :update, :destroy, :vote_up,:del_vote_up]
 
-
   def vote_up
     @plant.liked_by current_user
   end
@@ -34,11 +33,8 @@ class PlantsController < ApplicationController
 
   # GET /plants/new
   def new
-
     @garden = Garden.find(params[:garden_id]) if params[:garden_id].present?
-
     @plant = Plant.new
-
   end
 
   # GET /plants/1/edit
@@ -60,7 +56,7 @@ class PlantsController < ApplicationController
     plant_garden.plant_id = @plant.id
     respond_to do |format|
       if plant_garden.save
-        format.html { redirect_to profile_path(current_user.profile), notice: 'Plant was successfully created.' }
+        format.html { redirect_to profile_path(current_user.profile), notice: 'گیاه شما اضافه شد لطفا صحت انرا بررسی کنید' }
         format.json { render :show, status: :created, location: @plant }
       else
         format.html { render :new }
@@ -93,7 +89,7 @@ class PlantsController < ApplicationController
   def destroy
     @plant.destroy
     respond_to do |format|
-      format.html { redirect_to plants_url, notice: 'Plant was successfully destroyed.' }
+      format.html { redirect_to :back , notice: 'Plant was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -102,7 +98,12 @@ class PlantsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_plant
       @plant = Plant.find(params[:id])
+      @page_title = "گیاه"
+      if @plant.present?
+        @page_title = @page_title + " " + @plant.name
+      end
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plant_params

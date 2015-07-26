@@ -18,6 +18,11 @@
     <%= f.text_field :name %>
   </div>
 
+      <div class="field">
+    <p class="make_right">ارتفاع</p>
+    <%= f.text_field :height %>
+  </div>
+
     <div class="field">
     <p class="make_right">میزان رطوبت خاک</p>
     <%= f.number_field :humidity_soil %>
@@ -40,46 +45,31 @@
     <%= f.text_area :brief_desc %>
   </div>
 
+          <img id="blah1" src="/assets/default_plant.png" alt="your image" , width="150px" />
 
-
-    <form id="form1" runat="server">
-      <div style="display:table; margin:0 auto; width:50%; height:auto;">
-          <img id="blah1" src="/assets/default_plant.png" alt="your image" />
           <%= f.file_field :image_1 , :id=>"imgInp1"%>  
-      </div>
-    </form>
 
-    <form id="form1" runat="server">
-      <div style="display:table; margin:0 auto; width:50%; height:auto;">
-          <img id="blah2" src="/assets/default_plant.png" alt="your image" />
+          <img id="blah2" src="/assets/default_plant.png" alt="your image", width="150px" />
           <%= f.file_field :image_2 , :id=>"imgInp2"%>  
-      </div>
-    </form>
 
-    <form id="form1" runat="server">
-      <div style="display:table; margin:0 auto; width:50%; height:auto;">
-          <img id="blah3" src="/assets/default_plant.png" alt="your image" />
+          <img id="blah3" src="/assets/default_plant.png" alt="your image", width="150px" />
           <%= f.file_field :image_3 , :id=>"imgInp3"%>  
-      </div>
-    </form>
 
-    <form id="form1" runat="server">
-      <div style="display:table; margin:0 auto; width:50%; height:auto;">
-          <img id="blah4" src="/assets/default_plant.png" alt="your image" />
+          <img id="blah4" src="/assets/default_plant.png" alt="your image" , width="150px"/>
           <%= f.file_field :image_4 , :id=>"imgInp4"%>  
-      </div>
-    </form>
 
-    <form id="form1" runat="server">
-      <div style="display:table; margin:0 auto; width:50%; height:auto;">
-          <img id="blah5" src="/assets/default_plant.png" alt="your image" />
+
+          <img id="blah5" src="/assets/default_plant.png" alt="your image" , width="150px" />
           <%= f.file_field :additional_image , :id=>"imgInp5"%>  
-      </div>
-    </form>
 
+
+</br>
   <div class="actions">
     <%= f.submit  'اضافه کردن این گیاه' , :class=>"far_class tool_plant_creat  make_dir_right b_farsi button"%>
+<%= link_to 'بازگشت', planters_path , class: "button pull-left"%>
+
   </div>
+
 <% end %>
 </div>
 </section>

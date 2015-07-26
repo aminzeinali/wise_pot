@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   before_action :authenticate_user!
+
   before_action :set_profile, only: [:show, :edit, :update, :destroy,:my_gardens, :about_me,:my_posts, :my_flowers]
 
   def my_flowers
@@ -110,6 +111,14 @@ class ProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.find(params[:id])
+      if @profile.gender == "male"
+      @page_title = "آقای"
+      else
+        @page_title = "خانم"
+      end
+      if @profile.present?
+        @page_title = @page_title + " " + @profile.first_name + " " + @profile.last_name
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

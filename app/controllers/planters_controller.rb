@@ -34,11 +34,14 @@ class PlantersController < ApplicationController
   # GET /planters/1.json
   def show
     @comment = Comment.new
+    @followers = Follow.where(:followable_type => "Planter" , :followable_id => @planter.id)
+
   end
 
   # GET /planters/new
   def new
     @planter = Planter.new
+
   end
 
   # GET /planters/1/edit
@@ -88,11 +91,15 @@ class PlantersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_planter
       @planter = Planter.find(params[:id])
+      @page_title = "باغ"
+      if @planter.present?
+        @page_title = @page_title + " " + @planter.name
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def planter_params
-      params.require(:planter).permit(:brief_desc ,:plant_id , :humidity_soil, :humidity_air ,  
+      params.require(:planter).permit(:height , :brief_desc ,:plant_id , :humidity_soil, :humidity_air ,  
         :temperature, :light_degree , :name, :image_1, :image_2, :image_3,
         :image_4, :additional_image )
     end
