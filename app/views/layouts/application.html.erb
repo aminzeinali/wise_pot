@@ -13,7 +13,7 @@
   <meta name="description" content="SocialPot - Social Pot">
   <meta name="author" content="rasadpot.ir">
 
-  <title>گلدان هوشمند</title>
+  <!-- <title>گلدان هوشمند</title> -->
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,8 +25,14 @@
     <%= render 'shared/header' %>
 </head>
 <body class="home">
-        <!-- <p class="notice"><%#= notice %></p> -->
 
+<% if notice %>
+    <div id ="my_notice" class="notification">
+      <%= notice %>
+    </div>
+<% end %>
+
+        <!-- <p class="notice"><%#= notice %></p> -->
         <!-- <p class="alert"><%#= alert %></p> -->
 
 <%= yield %>
@@ -36,3 +42,8 @@
 <%= render 'shared/footer' %>
 
 </html>
+
+<script type="application/javascript">
+        $("#my_notice").delay(5000).show(10000).hide(1000);
+</script>
+

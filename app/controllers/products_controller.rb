@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
     product_to_order = params[:variant] ? @product.variants.find(params[:variant].to_i) : @product
     current_order.order_items.add_item(product_to_order, params[:quantity].blank? ? 1 : params[:quantity].to_i)
     respond_to do |wants|
-      wants.html { redirect_to request.referer }
+      wants.html { redirect_to request.referer , :notice => "کالای مورد نظر به سبد خرید شما اضافه شد " }
       wants.json { render :json => {:added => true} }
     end
   rescue Shoppe::Errors::NotEnoughStock => e

@@ -60,7 +60,7 @@ class PlantsController < ApplicationController
     plant_garden.plant_id = @plant.id
     respond_to do |format|
       if plant_garden.save
-        format.html { redirect_to profile_path(current_user.profile), notice: 'Plant was successfully created.' }
+        format.html { redirect_to profile_path(current_user.profile), notice: 'گیاه شما اضافه شد لطفا صحت انرا بررسی کنید' }
         format.json { render :show, status: :created, location: @plant }
       else
         format.html { render :new }
@@ -93,7 +93,7 @@ class PlantsController < ApplicationController
   def destroy
     @plant.destroy
     respond_to do |format|
-      format.html { redirect_to plants_url, notice: 'Plant was successfully destroyed.' }
+      format.html { redirect_to :back , notice: 'Plant was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

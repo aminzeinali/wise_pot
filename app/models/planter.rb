@@ -8,4 +8,9 @@ class Planter < ActiveRecord::Base
 	mount_uploader :additional_image, AvatarUploader	
 	has_many :comments , :as => :commentable
 	acts_as_followable
+
+
+	validates :name, presence: true
+	validates :brief_desc, presence: true
+	
 end
