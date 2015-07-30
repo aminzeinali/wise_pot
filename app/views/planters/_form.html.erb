@@ -1,5 +1,5 @@
 <section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
-<div class="modal container new_forms">
+<div class=" container new_forms" style="direction: rtl;">
 <%= form_for @planter, html: { multipart: true } do |f| %>
   <% if @planter.errors.any? %>
     <div id="error_explanation">
@@ -13,56 +13,84 @@
     </div>
   <% end %>
 
-    <div class="field">
+    <div class="field one-third pull-right">
     <p class="make_right">نام</p>
     <%= f.text_field :name %>
   </div>
 
-      <div class="field">
+
+    <div class="field one-third pull-right">
+    <p class="make_right">نام لاتین</p>
+    <%= f.text_field :latin_name %>
+  </div>
+
+
+    <div class="field one-third pull-right">
+    <p class="make_right">نام دیگر</p>
+    <%= f.text_field :second_name %>
+  </div>
+
+    <div class="field one-third pull-right">
+    <p class="make_right">نحوه تکثیر</p>
+    <%= f.text_field :germination %>
+  </div>
+
+  <div class="field one-third pull-right">
+    <p class="make_right">آفت ها</p>
+    <%= f.text_field :plague %>
+  </div>
+
+  <div class="field one-third pull-right">
+    <p class="make_right">نحوه نگهداری</p>
+    <%= f.text_field :keeping %>
+  </div>
+
+      <div class="field one-third pull-right">
     <p class="make_right">ارتفاع</p>
     <%= f.text_field :height %>
   </div>
 
-    <div class="field">
+    <div class="field one-third pull-right">
     <p class="make_right">میزان رطوبت خاک</p>
     <%= f.number_field :humidity_soil %>
   </div>
-  <div class="field">
+  <div class="field one-third pull-right">
     <p class="make_right">میزان رطوبت هوا</p>
     <%= f.number_field :humidity_air %>
   </div>
-  <div class="field">
+  <div class="field one-third pull-right">
     <p class="make_right">میزان دما</p>
     <%= f.number_field :temperature %>
   </div>
-  <div class="field">
+  <div class="field one-third pull-right">
     <p class="make_right">میزان نور</p>
     <%= f.number_field :light_degree %>
   </div>
 
-  <div class="field">
+  <div class="field one-third pull-right">
     <p class="make_right">درباره این گیاه</p>
     <%= f.text_area :brief_desc %>
   </div>
+  <div class="modal">
 
-          <img id="blah1" src="/assets/default_plant.png" alt="your image" , width="150px" />
+          <img id="blah1" src="/assets/default_plant.png" alt="your image" , width="200px" />
 
           <%= f.file_field :image_1 , :id=>"imgInp1"%>  
 
-          <img id="blah2" src="/assets/default_plant.png" alt="your image", width="150px" />
+          <img id="blah2" src="/assets/default_plant.png" alt="your image", width="200px" />
           <%= f.file_field :image_2 , :id=>"imgInp2"%>  
 
-          <img id="blah3" src="/assets/default_plant.png" alt="your image", width="150px" />
+          <img id="blah3" src="/assets/default_plant.png" alt="your image", width="200px" />
           <%= f.file_field :image_3 , :id=>"imgInp3"%>  
 
-          <img id="blah4" src="/assets/default_plant.png" alt="your image" , width="150px"/>
+          <img id="blah4" src="/assets/default_plant.png" alt="your image" , width="200px"/>
           <%= f.file_field :image_4 , :id=>"imgInp4"%>  
 
 
-          <img id="blah5" src="/assets/default_plant.png" alt="your image" , width="150px" />
+          <img id="blah5" src="/assets/default_plant.png" alt="your image" , width="200px" />
           <%= f.file_field :additional_image , :id=>"imgInp5"%>  
 
-
+ </div>
 </br>
   <div class="actions">
     <%= f.submit  'اضافه کردن این گیاه' , :class=>"far_class tool_plant_creat  make_dir_right b_farsi button"%>

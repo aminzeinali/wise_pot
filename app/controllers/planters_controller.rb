@@ -22,20 +22,26 @@ class PlantersController < ApplicationController
       @follow.save
     end
 
+    respond_to do |format|
+      format.html { redirect_to @planter , notice: 'این باغ به علاقه های شما اضافه شد' }
+    end
   end
 
 
   def unfollow
     @planter = Planter.find(params[:id])
     current_user.stop_following(@planter)
+
+    respond_to do |format|
+      format.html { redirect_to @planter , notice: 'این باغ از علاقه های شما حذف شد' }
+    end
   end
 
   # GET /planters/1
   # GET /planters/1.json
   def show
     @comment = Comment.new
-    @followers = Follow.where(:followable_type => "Planter" , :followable_id => @planter.id)
-
+    @followers = Follow.where(:followable_type => "Planter" , :followable_id => @planter.id).order("created_at")
   end
 
   # GET /planters/new
@@ -101,6 +107,6 @@ class PlantersController < ApplicationController
     def planter_params
       params.require(:planter).permit(:height , :brief_desc ,:plant_id , :humidity_soil, :humidity_air ,  
         :temperature, :light_degree , :name, :image_1, :image_2, :image_3,
-        :image_4, :additional_image )
+        :image_4, :additional_image,:latin_name,:second_name,:germination,:plague,:keeping )
     end
 end
