@@ -109,7 +109,7 @@
             <!-- info about commenter-->
             <%= cmnt.user.profile.first_name %>
             <%= cmnt.user.profile.last_name %>
-            <%if signed_in and has_auth(cmnt)%>
+            <%if user_signed_in? and has_auth(cmnt)%>
             <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
             <%end%>
             <p class="make_right"><%= cmnt.created_at %></p>

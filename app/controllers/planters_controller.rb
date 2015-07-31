@@ -24,6 +24,8 @@ class PlantersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @planter , notice: 'این باغ به علاقه های شما اضافه شد' }
+      format.json { render :show, status: :created, location: @planter }
+      
     end
   end
 

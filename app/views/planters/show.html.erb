@@ -21,32 +21,38 @@
           <div class="row">
             <!--two-third-->
             <article class="two-third wow fadeInLeft animated" style="visibility: visible;">
-              <div class="image">
-                <%=image_tag @planter.image_1_url%>
+
+              <!-- Place somewhere in the <body> of your page -->
+              <div style="background: #ffffff;">
+                <div class="flexslider">
+                  <ul class="slides">
+                    <li data-thumb= <%=@planter.image_1_url(:thumb)%> >
+                      <%=image_tag @planter.image_1_url%>
+                    </li>
+                    <li data-thumb= <%=@planter.image_2_url(:thumb)%>>
+                      <%=image_tag @planter.image_2_url%>
+
+                    </li>
+                    <li data-thumb=<%=@planter.image_3_url(:thumb)%>>
+                      <%=image_tag @planter.image_3_url%>
+                    </li>
+                    <li data-thumb=<%=@planter.image_4_url(:thumb)%>>
+                      <%=image_tag @planter.image_4_url%>
+                    </li>
+                  </ul>
+                </div>
+                <div class="intro make_right">
+                  <p >:در مورد این گیاه</p>
+                  <p style="direction: rtl;"><%= @planter.brief_desc %></p>
+                </div>
               </div>
 
-              <div class="intro make_right">
-                <p >:در مورد این گیاه</p>
-                <p style="direction: rtl;"><%= @planter.brief_desc %></p>
-              </div>
-
-              <div class="one-third">
-                <%=image_tag @planter.image_2_url%>
-              </div>
-
-              <div class="one-third">
-                <%=image_tag @planter.image_3_url%>
-              </div>
-
-              <div class="one-third">
-                <%=image_tag @planter.image_4_url%>
-              </div>
             </article>
             <!--//two-third-->
 
             <!--one-third-->
             <article class="one-third wow fadeInDown animated" style="visibility: visible;">
-<!--               <div class="one-one">
+              <!--               <div class="one-one">
                 
                 <a href="/planters/<%=@planter.id%>/follow" class=" btn btn-info<% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" data-remote="true" id="follow_butt"
                 <i class="">این گیاه را دنبال کن</i>
@@ -69,35 +75,35 @@
 
               <dl class="basic make_center">
 
-              <% if @planter.latin_name.present? %>
-                <dt><%= @planter.latin_name%></dt>
-                <dd>نام لاتین</dd>
-              <% end %>
+                <% if @planter.latin_name.present? %>
+                    <dt><%= @planter.latin_name%></dt>
+                    <dd>نام لاتین</dd>
+                <% end %>
 
-              <% if @planter.second_name.present? %>
-                <dt><%= @planter.second_name%></dt>
-                <dd>نام دیگر</dd>
-              <% end %>
+                <% if @planter.second_name.present? %>
+                    <dt><%= @planter.second_name%></dt>
+                    <dd>نام دیگر</dd>
+                <% end %>
 
                 <% if @planter.humidity_air.present?  %>
-                <dt><%= @planter.humidity_air%></dt>
-                <dd>رطوبت هوا</dd>
+                    <dt><%= @planter.humidity_air%></dt>
+                    <dd>رطوبت هوا</dd>
                 <% end %>
 
                 <% if @planter.humidity_soil.present? %>
-                <dt><%= @planter.humidity_soil%></dt>
-                <dd>رطوبت خاک</dd>
+                    <dt><%= @planter.humidity_soil%></dt>
+                    <dd>رطوبت خاک</dd>
                 <% end %>
 
                 <% if @planter.temperature.present? %>
-                <dt><%= @planter.temperature%></dt>
-                <dd>دما</dd>
+                    <dt><%= @planter.temperature%></dt>
+                    <dd>دما</dd>
                 <% end %>
 
 
                 <% if @planter.light_degree.present? %>
-                <dt><%= @planter.light_degree%></dt>
-                <dd>نور</dd>
+                    <dt><%= @planter.light_degree%></dt>
+                    <dd>نور</dd>
                 <% end %>
 
               </dl>
@@ -112,8 +118,8 @@
               <dl class="ingredients make_center">
                 <dt>میزان سلامت</dt>
                 <dd>
-                <p calss="make_center">
-                 کاربران برتر</p></dd>
+                  <p calss="make_center">
+                    کاربران برتر</p></dd>
                 <dt>80%</dt>
                 <dd>user_profile_link0</dd>
                 <dt>50%</dt>
@@ -213,32 +219,32 @@
       <!--right sidebar-->
       <aside class="sidebar one-fourth wow fadeInRight animated" style="visibility: visible;">
         <div class="widget nutrition">
-          <h3 class="make_right">
+          <h3 class="make_center">
             اطلاعات تکمیلی گیاه
           </h3>
           <table class="make_right">
             <tbody>
             <% if @planter.germination.present? %>
-            <tr>
-              <td style="direction:rtl;">
-                <%= @planter.germination %>
-              </td>
-              <td>نحوه تکثیر</td>
-            </tr>
+                <tr>
+                  <td style="direction:rtl;">
+                    <%= @planter.germination %>
+                  </td>
+                  <td>نحوه تکثیر</td>
+                </tr>
             <% end %>
 
             <% if @planter.plague.present? %>
-            <tr>
-              <td style="direction:rtl;"><%= @planter.plague%></td>
-              <td>آفت ها</td>
-            </tr>
+                <tr>
+                  <td style="direction:rtl;"><%= @planter.plague%></td>
+                  <td>آفت ها</td>
+                </tr>
 
             <% end %>
             <% if @planter.keeping.present? %>
-            <tr>
-              <td style="direction:rtl;"><%=@planter.keeping %></td>
-              <td>نحوه نگهداری</td>
-            </tr>
+                <tr>
+                  <td style="direction:rtl;"><%=@planter.keeping %></td>
+                  <td>نحوه نگهداری</td>
+                </tr>
             <% end %>
 
 
@@ -256,13 +262,13 @@
             </li>
             <li class="dark">
               <a href="/planters/<%=@planter.id%>/follow" class="<% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" title="Favourites">
-              <i class="ico i-favourites "></i>
-               <span>اضافه به علاقه ها</span>
+                <i class="ico i-favourites "></i>
+                <span>اضافه به علاقه ها</span>
               </a>
 
               <a href="/planters/<%=@planter.id%>/unfollow" class="<% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" title="Favourites">
-              <i class="ico i-favourites"></i>
-               <span>حذف از علاقه ها</span>
+                <i class="ico i-favourites"></i>
+                <span>حذف از علاقه ها</span>
               </a>
 
             </li>
@@ -270,45 +276,50 @@
         </div>
 
         <% if @followers.present? %>
-        <div class="widget members">
-          <h3 class="make_right">افراد دنبال کننده ی این گیاه</h3>
-          <ul class="boxed">
-            <% @followers.first(15).each do |x| %>
-                <li>
-                  <div class="avatar">
-                    <% prof = User.find(x.follower_id).profile %>
-                    <%= link_to profile_path(prof) do %>
-                        <%= image_tag prof.profile_photo_url %>
-                        <span>
+            <div class="widget members">
+              <h3 class="make_center">افراد دنبال کننده ی این گیاه</h3>
+              <ul class="boxed">
+                <% @followers.first(15).each do |x| %>
+                    <li>
+                      <div class="avatar">
+                        <% prof = User.find(x.follower_id).profile %>
+                        <%= link_to profile_path(prof) do %>
+                            <%= image_tag prof.profile_photo_url %>
+                            <span>
                         <%= prof.first_name %>
                       </span>
-                        <!--<a href="my_profile.html">-->
-                        <!--<%= image_tag "avatar1.jpg" %>-->
-                        <!--<span>Kimberly C.</span>-->
-                        <!--</a>-->
-                    <% end %>
-                  </div>
-                </li>
-            <% end %>
-          </ul>
-        </div>
+                        <% end %>
+                      </div>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
         <% end %>
         <!--posts table-->
         <div class="widget widget-sidebar">
           <!--cwrap-->
           <div class="cwrap">
-            <h5 class="make_center">پست های اخیر</h5>
+            <h3 class="make_center" style="direction: rtl;">
+            سوالات و مطالب در مورد <%= @planter.name %>
+            </h3>
             <%@planter.posts.each do |pos|%>
                 <ul class="articles_latest">
-                  <li>
-                    <a>
-                      <%if pos.image_url.present?%>
-                          <%=image_tag(pos.image_url)%>
-                      <%else%>
-                          <%=image_tag("img11.jpg")%>
-                      <%end%>
-                    </a>
-                    <%=link_to pos.title , pos%>
+                  <li style="direction: rtl;">
+                    <%=link_to  pos do%>
+                        <%if pos.image_url.present?%>
+                            <%=image_tag(pos.image_url)%>
+                        <%else%>
+                            <%=image_tag("img11.jpg")%>
+                        <%end%>
+                        <p class="make_right">
+                          <%= pos.user.profile.first_name %>:
+
+                        </br>
+                          <small>
+                            <%= pos.title %>
+                          </small>
+                        </p>
+                    <% end %>
                   </li>
                 </ul>
             <%end%>
@@ -323,3 +334,4 @@
 
   </div>
 </div> <!--end of main-->
+
