@@ -18,9 +18,8 @@
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
+  <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+  <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>-->
 
     <%= render 'shared/header' %>
   <title>
@@ -37,8 +36,6 @@
     </div>
 <% end %>
 
-        <!-- <p class="notice"><%#= notice %></p> -->
-        <!-- <p class="alert"><%#= alert %></p> -->
 
 <%= yield %>
 
@@ -52,3 +49,51 @@
         $("#my_notice").delay(5000).show(10000).hide(1000);
 </script>
 
+<script>
+    window.dynamicNumbersBound = false;
+    var wow = new WOW();
+    WOW.prototype.show = function(box) {
+        wow.applyStyle(box);
+        if (typeof box.parentNode !== 'undefined' && hasClass(box.parentNode, 'dynamic-numbers') && !window.dynamicNumbersBound) {
+            bindDynamicNumbers();
+            window.dynamicNumbersBound = true;
+        }
+        return box.className = "" + box.className + " " + wow.config.animateClass;
+    };
+    wow.init();
+
+    function hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+
+    function bindDynamicNumbers() {
+        $('.dynamic-number').each(function() {
+            var startNumber = $(this).text();
+            var endNumber = $(this).data('dnumber');
+            var dynamicNumberControl = $(this);
+
+            $({numberValue: startNumber}).animate({numberValue: endNumber}, {
+                duration: 4000,
+                easing: 'swing',
+                step: function() {
+                    $(dynamicNumberControl).text(Math.ceil(this.numberValue));
+                }
+            });
+        });
+    }
+
+</script>
+
+
+<script src="/assets/jquery.flexslider.js"></script>
+
+
+
+<script type="application/javascript">
+    $(window).load(function() {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
+</script>

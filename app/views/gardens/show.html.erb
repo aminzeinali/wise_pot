@@ -8,16 +8,47 @@
       </br>    
       <% @garden.plants.each do |p| %>
       <div class="border_plant">
-        <div>
-          <%= image_tag("img11.jpg", :class=>"plant_in_garden") %> 
+        <p class="make_center"> 
           <%=link_to p.name , p ,:class=>"make_bold" %>
-        </div>
+        </p>
         <div>
+        <%if p.image_url.present?%>
+          <%= image_tag(p.image_url, :class=>"plant_in_garden") %>
+        <%else%>
+          <%= image_tag("img11.jpg", :class=>"plant_in_garden") %>
+        <%end%>
+        </div>
+        <!-- <div>
           <p class="make_bold make_right">  :دما <%=p.temperature %></p>
           <p class="make_bold make_right">  :رطوبت خاک <%=p.humidity_soil %></p>
           <p class="make_bold make_right">  :رطوبت هوا <%=p.humidity_air %></p>
           <p class="make_bold make_right">  :نور <%=p.light_degree %></p>
-        </div>
+        </div> -->
+
+      <dl class="basic">
+
+        <dt class="make_center">نژاد</dt>
+        <dd><%= p.race%></dd>
+
+        <dt class="make_center">ارتفاع</dt>
+        <dd><%= p.height %></dd>
+
+        <dt class="make_center">رطوبت هوا</dt>
+        <dd><%= p.humidity_air%></dd>
+
+        <dt class="make_center">رطوبت خاک</dt>
+        <dd><%= p.humidity_soil%></dd>
+
+        <dt class="make_center">دما</dt>
+        <dd><%= p.temperature%></dd>
+
+        <dt class="make_center">نور</dt>
+        <dd><%= p.light_degree%></dd>
+
+
+
+      </dl>
+
       </div>
       <% end %>
     </div>
