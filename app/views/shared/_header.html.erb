@@ -47,11 +47,11 @@
         <li>
           <%= link_to services_initial_index_path  do %> <span>خدمات</span> <% end %>
           <ul>
-            <li><%=link_to "پشتیبانی گلینو", services_initial_index_path , :class=>"make_right"%></li>
-            <li><a class="make_right" href="right_sidebar.html" title="Right sidebar page">فروش گل و گیاه و محصولات جانبی</a></li>
-            <li><a class="make_right" href="two_sidebars.html" title="Both sidebars page">خدمات باغیار</a></li>
-            <li><a class="make_right" href="full_width.html" title="Full width page">گلوگرافی</a></li>
-            <li><a class="make_right" href="full_width.html" title="Full width page">تبلیغات</a></li>
+            <li><%=link_to "پشتیبانی گلینو", services_initial_index_path(:section=>1) , :class=>"make_right"%></li>
+            <li><%=link_to "فروش گل و گیاه و محصولات جانبی", services_initial_index_path(:section=>2) , :class=>"make_right"%></li>
+            <li><%=link_to "خدمات باغیار", services_initial_index_path(:section=>3) , :class=>"make_right"%></li>
+            <li><%=link_to "گلوگرافی", services_initial_index_path(:section=>4) , :class=>"make_right"%></li>
+            <li><%=link_to "تبلیغات", services_initial_index_path(:section=>5) , :class=>"make_right"%></li>
           </ul>
         </li>
         <li><a href="#" title="Features"><span>وبلاگ</span></a>

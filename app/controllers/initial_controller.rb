@@ -43,7 +43,23 @@ class InitialController < ApplicationController
   end
 
   def services
-
+    @section = 0;
+    page_state = params[:section]
+    if page_state == 1.to_s
+      @section = 1
+    end
+    if page_state == 2.to_s
+      @section = 2
+    end
+    if page_state == 3.to_s
+      @section = 3
+    end
+    if page_state == 4.to_s
+      @section = 4
+    end
+    if page_state == 5.to_s
+      @section = 5
+    end
   end
 
   def do_search
