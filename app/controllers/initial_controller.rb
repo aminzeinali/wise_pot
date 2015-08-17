@@ -1,7 +1,7 @@
 class InitialController < ApplicationController
 
   before_action :authenticate_user! , except: [:home, :forgot_password, :mail_new_pass, :shop, :introduce]
-
+  respond_to :html, :js
   # protect_from_forgery with: :null_session
   def forgot_password
 
