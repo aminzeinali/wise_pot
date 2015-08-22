@@ -60,6 +60,9 @@ class InitialController < ApplicationController
     if page_state == 5.to_s
       @section = 5
     end
+    if page_state == 6.to_s
+      @section = 6
+    end
   end
 
   def do_search
