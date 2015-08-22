@@ -2,6 +2,7 @@ class InitialController < ApplicationController
 
   before_action :authenticate_user! , except: [:home, :forgot_password, :mail_new_pass, :shop, :introduce]
 
+  respond_to :html, :js
   # protect_from_forgery with: :null_session
   def forgot_password
 
@@ -43,7 +44,26 @@ class InitialController < ApplicationController
   end
 
   def services
-
+    @section = 0;
+    page_state = params[:section]
+    if page_state == 1.to_s
+      @section = 1
+    end
+    if page_state == 2.to_s
+      @section = 2
+    end
+    if page_state == 3.to_s
+      @section = 3
+    end
+    if page_state == 4.to_s
+      @section = 4
+    end
+    if page_state == 5.to_s
+      @section = 5
+    end
+    if page_state == 6.to_s
+      @section = 6
+    end
   end
 
   def do_search
@@ -52,6 +72,7 @@ class InitialController < ApplicationController
     # @result = Profile.find_by_first_name(q);
     # @result = Profile.where('first_name LIKE ?' , '%params[:query]%')
     @result = Profile.where("first_name LIKE :name1 OR last_name LIKE :cityId1", {:name1 => "#{params[:query]}%", :cityId1 => "#{params[:query]}%"})
+    # @result = @result + Planter.where("name LIKE :name1 OR latin_name LIKE :cityId1 OR second_name LIKE :name3", {:name1 => "#{params[:query]}%", :cityId1 => "#{params[:query]}%", :name3 => "#{params[:query]}" } )
     # byebug
     # respond_to do |f|
       # f.js

@@ -11,49 +11,49 @@
     <!--breadcrumbs-->
     <nav class="breadcrumbs">
       <ul>
-        <li class="search-div">
-          <%=form_tag({controller: "initial" , action: "do_search" },:format => "js",method: "get" , id:"main_search") do %>
-            <%= text_field_tag :query,nil,placeholder:"جستجوی همه چیز",:style =>"text-align: center; " , autocomplete: :off %>
-            </br></br>
-          <%end%>
-        <ul id="result" class="mylist">
-        </ul>
-        </li>
-        <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home">خانه</a></li>
-        <li>حساب کاربری من</li>
+        <li class="pull_left">حساب کاربری من</li>
       </ul>
     </nav>
 
     <!--//breadcrumbs-->
-    
+
     <!--content-->
     <section class="content">
       <!--row-->
       <div class="row">
         <!--profile left part-->
         <div class="my_account one-fourth wow fadeInLeft animated" style="visibility: visible;">
-            </br>
-            </br>
+          </br>
+          </br>
+          <div class="search-div">
+            <%=form_tag({controller: "initial" , action: "do_search" },:format => "js",method: "get" , id:"main_search") do %>
+                <%= text_field_tag :query,nil,placeholder:"جستجوی همه چیز",:style =>"text-align: center; " , autocomplete: :off %>
+                </br></br>
+            <%end%>
+            <ul id="result" class="mylist">
+            </ul>
+          </div>
           <figure>
             <% if @profile.profile_photo.present? %>
                 <%=image_tag @profile.profile_photo_url , :class=>"stretch_img"%>
             <%else %>
-            <%=image_tag "default_profile.png" , :class=>"stretch_img"%>
+                <%=image_tag "default_profile.png" , :class=>"stretch_img"%>
             <%end%>
           </figure>
           <div class="container make_center">
-          <% if can_edit %>
-            <%= link_to 'تنظیمات حساب', edit_profile_path(@profile), :class=>"b_farsi"%> |
-            <%= link_to 'بازگشت', profiles_path, :class=>"b_farsi"%>
-          <% end %>
+            <% if can_edit %>
+                <%= link_to 'تنظیمات حساب', edit_profile_path(@profile), :class=>"b_farsi"%> |
+                <%= link_to 'بازگشت', profiles_path, :class=>"b_farsi"%>
+            <% end %>
           </div>
           <div class="container make_center">
             <h2><%= @profile.first_name%></h2>
-              <% if can_edit %>
-              <%= link_to "ساخت باغچه", new_garden_path , :class => "button btn" %>
-              <%= link_to "اضافه کردن گل جدید", new_plant_path , :class => "button btn" %>
-              <% end %>
-            <br></br>
+            <% if can_edit %>
+                <%= link_to "ساخت باغچه", new_garden_path , :class => "button btn" %>
+                <%= link_to "اضافه کردن گل جدید", new_plant_path , :class => "button btn" %>
+            <% end %>
+            </br>
+            </br>
           </div>
 
         </div>
@@ -63,43 +63,46 @@
           <nav class="tabs">
             <ul>
               <li class="" style="direction: rtl;">
-                  <%if current_user==@profile.user%>
+                <%if current_user==@profile.user%>
                     <%= link_to raw('اطلاعات من'), about_me_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'about_me', :id => "about_me2" %>
-                    <% else %>
+                <% else %>
 
-                  <%= link_to raw("اطلاعات #{@profile.first_name}"), about_me_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'about_me', :id => "about_me2" %>
-                  <% end %>
+                    <%= link_to raw("اطلاعات #{@profile.first_name}"), about_me_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'about_me', :id => "about_me2" %>
+                <% end %>
 
               </li>
               <!-- <li class="active"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#about" title="About me">درباره ی من</a></li>
-               --><li class="">
-               <% if current_user == @profile.user %>
-                  <%= link_to raw('دوستان من'), my_flowers_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
-                  <% else %>
-                  <%= link_to raw('دوستان او'), my_flowers_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
-                  <% end %>
-              </li>
+               -->
+
               <li class="">
-              <% if current_user == @profile.user %>
-                <%= link_to raw('گیاهان مورد علاقه'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
+                <% if current_user == @profile.user %>
+                    <%= link_to raw('گیاهان مورد علاقه'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
                 <% else %>
-                <%= link_to raw('اطلاعات باغچه هایش'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
+                    <%= link_to raw('اطلاعات باغچه هایش'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
                 <% end %>
-              <!-- <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#favorites" title="My favorites">My favorites -->
-              <!-- </a> -->
               </li>
               <li class="">
-               <%= link_to raw('نوشته های من'), my_posts_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'my posts', :id => "posts" %>
-              <!-- <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#favorites" title="My favorites">My favorites -->
-              <!-- </a> -->
+                <% if current_user == @profile.user %>
+                    <%= link_to raw('گل ُگرافی'), my_devices_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
+                <% else %>
+                    <%= link_to raw('گل ُگرافی'), my_devices_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
+                <% end %>
               </li>
+
+              <li class="">
+                <%= link_to raw('حساب ها'), my_accounts_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'my posts', :id => "posts" %>
+                <!-- <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#favorites" title="My favorites">My favorites -->
+                <!-- </a> -->
+              </li>
+            </ul>
           </nav>
 
           <!--about-->
           <!-- <div class="tab-content" id="about_me">
             
           </div>
-           --><div class="tab-content" id="about" style="display: block;">
+           -->
+          <div class="tab-content" id="about" style="display: block;">
             <div class="row">
               <dl class="basic two-third">
 
@@ -139,7 +142,7 @@
             </div>
           </div>
           <!--//about-->
-          <div class="tab-content" id="my_flowers" >
+          <div class="tab-content" id="my_devices" >
           </div>
 
           <div class="tab-content" id="about_me" >
@@ -147,288 +150,248 @@
 
           <div class="tab-content" id="my_gardens" >
           </div>
-          
-          <div class="tab-content" id="my_posts" >
+
+          <div class="tab-content" id="my_accounts" >
           </div>
           <!--my recipes-->
-          <div class="tab-content" id="recipes" style="display: none;">
-            <div class="entries row">
-              <!--item-->
-              <div class="entry one-third">
-                <figure>
-                  <img src="./SocialChef_files/img6.jpg" alt="">
-                  <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-                </figure>
-                <div class="container">
-                  <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Thai fried rice with fruit and vegetables</a></h2> 
-                  <div class="actions">
-                    <div>
-                      <div class="difficulty"><i class="ico i-medium"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">medium</a></div>
-                      <div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>
-                      <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--item-->
+          <!--<div class="tab-content" id="recipes" style="display: none;">-->
+          <!--<div class="entries row">-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--<div class="entry one-third">-->
+          <!--<figure>-->
+          <!--<img src="./SocialChef_files/img6.jpg" alt="">-->
+          <!--<figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>-->
+          <!--</figure>-->
+          <!--<div class="container">-->
+          <!--<h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Thai fried rice with fruit and vegetables</a></h2>-->
+          <!--<div class="actions">-->
+          <!--<div>-->
+          <!--<div class="difficulty"><i class="ico i-medium"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">medium</a></div>-->
+          <!--<div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>-->
+          <!--<div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
 
-              <!--item-->
-              <div class="entry one-third">
-                <figure>
-                  <img src="./SocialChef_files/img5.jpg" alt="">
-                  <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-                </figure>
-                <div class="container">
-                  <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Spicy Morroccan prawns with cherry tomatoes</a></h2> 
-                  <div class="actions">
-                    <div>
-                      <div class="difficulty"><i class="ico i-hard"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">hard</a></div>
-                      <div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>
-                      <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--item-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--<div class="entry one-third">-->
+          <!--<figure>-->
+          <!--<img src="./SocialChef_files/img5.jpg" alt="">-->
+          <!--<figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>-->
+          <!--</figure>-->
+          <!--<div class="container">-->
+          <!--<h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Spicy Morroccan prawns with cherry tomatoes</a></h2>-->
+          <!--<div class="actions">-->
+          <!--<div>-->
+          <!--<div class="difficulty"><i class="ico i-hard"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">hard</a></div>-->
+          <!--<div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>-->
+          <!--<div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
 
-              <!--item-->
-              <div class="entry one-third">
-                <figure>
-                  <img src="./SocialChef_files/img8.jpg" alt="">
-                  <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-                </figure>
-                <div class="container">
-                  <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Super easy blueberry cheesecake</a></h2> 
-                  <div class="actions">
-                    <div>
-                      <div class="difficulty"><i class="ico i-easy"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">easy</a></div>
-                      <div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>
-                      <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--item-->
-            </div>
-          </div>
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--<div class="entry one-third">-->
+          <!--<figure>-->
+          <!--<img src="./SocialChef_files/img8.jpg" alt="">-->
+          <!--<figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>-->
+          <!--</figure>-->
+          <!--<div class="container">-->
+          <!--<h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Super easy blueberry cheesecake</a></h2>-->
+          <!--<div class="actions">-->
+          <!--<div>-->
+          <!--<div class="difficulty"><i class="ico i-easy"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">easy</a></div>-->
+          <!--<div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>-->
+          <!--<div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--</div>-->
+          <!--</div>-->
           <!--//my recipes-->
 
           <!--my favorites-->
-          <div class="tab-content" id="favorites" style="display: none;">
-            <div class="entries row">
-              <!--item-->
-              <div class="entry one-third">
-                <figure>
-                  <img src="./SocialChef_files/img6.jpg" alt="">
-                  <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-                </figure>
-                <div class="container">
-                  <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Thai fried rice with fruit and vegetables</a></h2> 
-                  <div class="actions">
-                    <div>
-                      <div class="difficulty"><i class="ico i-medium"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">medium</a></div>
-                      <div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>
-                      <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--item-->
+          <!--<div class="tab-content" id="favorites" style="display: none;">-->
+          <!--<div class="entries row">-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--<div class="entry one-third">-->
+          <!--<figure>-->
+          <!--<img src="./SocialChef_files/img6.jpg" alt="">-->
+          <!--<figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>-->
+          <!--</figure>-->
+          <!--<div class="container">-->
+          <!--<h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Thai fried rice with fruit and vegetables</a></h2>-->
+          <!--<div class="actions">-->
+          <!--<div>-->
+          <!--<div class="difficulty"><i class="ico i-medium"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">medium</a></div>-->
+          <!--<div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>-->
+          <!--<div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
 
-              <!--item-->
-              <div class="entry one-third">
-                <figure>
-                  <img src="./SocialChef_files/img5.jpg" alt="">
-                  <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-                </figure>
-                <div class="container">
-                  <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Spicy Morroccan prawns with cherry tomatoes</a></h2> 
-                  <div class="actions">
-                    <div>
-                      <div class="difficulty"><i class="ico i-hard"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">hard</a></div>
-                      <div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>
-                      <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--item-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--<div class="entry one-third">-->
+          <!--<figure>-->
+          <!--<img src="./SocialChef_files/img5.jpg" alt="">-->
+          <!--<figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>-->
+          <!--</figure>-->
+          <!--<div class="container">-->
+          <!--<h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Spicy Morroccan prawns with cherry tomatoes</a></h2>-->
+          <!--<div class="actions">-->
+          <!--<div>-->
+          <!--<div class="difficulty"><i class="ico i-hard"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">hard</a></div>-->
+          <!--<div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>-->
+          <!--<div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
 
-              <!--item-->
-              <div class="entry one-third">
-                <figure>
-                  <img src="./SocialChef_files/img8.jpg" alt="">
-                  <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
-                </figure>
-                <div class="container">
-                  <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Super easy blueberry cheesecake</a></h2> 
-                  <div class="actions">
-                    <div>
-                      <div class="difficulty"><i class="ico i-easy"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">easy</a></div>
-                      <div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>
-                      <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--item-->
-            </div>
-          </div>
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--<div class="entry one-third">-->
+          <!--<figure>-->
+          <!--<img src="./SocialChef_files/img8.jpg" alt="">-->
+          <!--<figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>-->
+          <!--</figure>-->
+          <!--<div class="container">-->
+          <!--<h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">Super easy blueberry cheesecake</a></h2>-->
+          <!--<div class="actions">-->
+          <!--<div>-->
+          <!--<div class="difficulty"><i class="ico i-easy"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">easy</a></div>-->
+          <!--<div class="likes"><i class="ico i-likes"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a></div>-->
+          <!--<div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--</div>-->
+          <!--</div>-->
           <!--//my favorites-->
 
           <!--my posts-->
-          <div class="tab-content" id="posts" style="display: none;">
-            <!--entries-->
-            <div class="entries row">
-              <!--item-->
-              <div class="entry one-third">
-                <figure>
-                  <img src="./SocialChef_files/img12.jpg" alt="">
-                  <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html"><i class="ico i-view"></i> <span>View post</span></a></figcaption>
-                </figure>
-                <div class="container">
-                  <h2><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html">Barbeque party</a></h2> 
-                  <div class="actions">
-                    <div>
-                      <div class="date"><i class="ico i-date"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">22 Dec 2014</a></div>
-                      <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html#comments">27</a></div>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod. Lorem ipsum dolor sit amet . . . </p>
-                  </div>
-                </div>
-              </div>
-              <!--item-->
+          <!--<div class="tab-content" id="posts" style="display: none;">-->
+          <!--&lt;!&ndash;entries&ndash;&gt;-->
+          <!--<div class="entries row">-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--<div class="entry one-third">-->
+          <!--<figure>-->
+          <!--<img src="./SocialChef_files/img12.jpg" alt="">-->
+          <!--<figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html"><i class="ico i-view"></i> <span>View post</span></a></figcaption>-->
+          <!--</figure>-->
+          <!--<div class="container">-->
+          <!--<h2><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html">Barbeque party</a></h2>-->
+          <!--<div class="actions">-->
+          <!--<div>-->
+          <!--<div class="date"><i class="ico i-date"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">22 Dec 2014</a></div>-->
+          <!--<div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html#comments">27</a></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="excerpt">-->
+          <!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod. Lorem ipsum dolor sit amet . . . </p>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
 
-              <!--item-->
-              <div class="entry one-third">
-                <figure>
-                  <img src="./SocialChef_files/img11.jpg" alt="">
-                  <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html"><i class="ico i-view"></i> <span>View post</span></a></figcaption>
-                </figure>
-                <div class="container">
-                  <h2><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html">How to make sushi</a></h2> 
-                  <div class="actions">
-                    <div>
-                      <div class="date"><i class="ico i-date"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">22 Dec 2014</a></div>
-                      <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html#comments">27</a></div>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod. Lorem ipsum dolor sit amet . . . </p>
-                  </div>
-                </div>
-              </div>
-              <!--item-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--<div class="entry one-third">-->
+          <!--<figure>-->
+          <!--<img src="./SocialChef_files/img11.jpg" alt="">-->
+          <!--<figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html"><i class="ico i-view"></i> <span>View post</span></a></figcaption>-->
+          <!--</figure>-->
+          <!--<div class="container">-->
+          <!--<h2><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html">How to make sushi</a></h2>-->
+          <!--<div class="actions">-->
+          <!--<div>-->
+          <!--<div class="date"><i class="ico i-date"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">22 Dec 2014</a></div>-->
+          <!--<div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html#comments">27</a></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="excerpt">-->
+          <!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod. Lorem ipsum dolor sit amet . . . </p>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
 
-              <!--item-->
-              <div class="entry one-third">
-                <figure>
-                  <img src="./SocialChef_files/img10.jpg" alt="">
-                  <figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html"><i class="ico i-view"></i> <span>View post</span></a></figcaption>
-                </figure>
-                <div class="container">
-                  <h2><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html">Make your own bread</a></h2> 
-                  <div class="actions">
-                    <div>
-                      <div class="date"><i class="ico i-date"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">22 Dec 2014</a></div>
-                      <div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html#comments">27</a></div>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod. Lorem ipsum dolor sit amet . . . </p>
-                  </div>
-                </div>
-              </div>
-              <!--item-->
-            </div>
-            <!--//entries-->
-          </div>
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--<div class="entry one-third">-->
+          <!--<figure>-->
+          <!--<img src="./SocialChef_files/img10.jpg" alt="">-->
+          <!--<figcaption><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html"><i class="ico i-view"></i> <span>View post</span></a></figcaption>-->
+          <!--</figure>-->
+          <!--<div class="container">-->
+          <!--<h2><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html">Make your own bread</a></h2>-->
+          <!--<div class="actions">-->
+          <!--<div>-->
+          <!--<div class="date"><i class="ico i-date"></i><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">22 Dec 2014</a></div>-->
+          <!--<div class="comments"><i class="ico i-comments"></i><a href="http://www.themeenergy.com/themes/html/social-chef/blog_single.html#comments">27</a></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="excerpt">-->
+          <!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod. Lorem ipsum dolor sit amet . . . </p>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;item&ndash;&gt;-->
+          <!--</div>-->
+          <!--&lt;!&ndash;//entries&ndash;&gt;-->
+          <!--</div>-->
           <!--//my posts-->
         </div>
       </div>
       <div class="entry">
-      <% @profile.gardens.each do |k|  %>
-    <div class = "cwrap gardens_box wow zoomIn animated entry" >
-    <% if can_edit %>
-      <small class="right">
-        <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"btn btn-default btn-xs"%> |
-        <%= link_to 'حذف باغچه', garden_path(k), :class=>"btn btn-warning btn-xs", method: :delete, data: { confirm: 'Are you sure?' }%>
-      </small>
-      <small class="left">
-        <%= link_to " گل جدید", new_plant_path(garden_id: k) , :class => "btn btn-default btn-xs" %>
-      </small>
-      <% end %>
+        <% @profile.gardens.each do |k|  %>
+            <div class = "cwrap gardens_box wow zoomIn animated entry" >
+              <% if can_edit %>
+                  <small class="right">
+                    <%= link_to 'تنظیمات', edit_garden_path(k) , :class=>"btn btn-default btn-xs"%> |
+                    <%= link_to 'حذف باغچه', garden_path(k), :class=>"btn btn-warning btn-xs", method: :delete, data: { confirm: 'Are you sure?' }%>
+                  </small>
+                  <small class="left">
+                    <%= link_to " گل جدید", new_plant_path(garden_id: k) , :class => "btn btn-default btn-xs" %>
+                  </small>
+              <% end %>
 
-
-        <h3 class="garden_name">
-          <%= link_to k.name , k %><br>
-        </h3>
-
-<!---->
-      </br>
-      <% k.plants.each do |p| %>
-      <div class="entry one-fourth">
-        <figure>
-          <% if p.image.present? %>
-            <%=image_tag p.image_url , :width => "270" , :height => "203" %>
-          <% else %>
-          <%= image_tag("img11.jpg", :class=>"") %>
-          <% end %>
-          <figcaption>
-            <%=link_to p ,:class=>"make_bold"  do %>
-            <!-- <a href="recipe.html"> -->
-              <i class="ico i-view"></i>
-                <span><%= p.name %> </span>
-            <!-- </a> -->
-            <% end %>
-          </figcaption>
-        </figure>
-        <div class="container">
-          <p class="make_center"><%= p.name %></p>
-          <p class="ssmal make_right">  :دما <%=p.temperature %></p>
-          <p class="ssmal make_right">  :رطوبت خاک <%=p.humidity_soil %></p>
-          <p class="ssmal make_right">  :رطوبت هوا <%=p.humidity_air %></p>
-          <p class="ssmal make_right">  :نور <%=p.light_degree %></p>
-        </div>
-        <div class="actions #">
-          <div>
-            <div class="difficulty"><i class="ico i-medium"></i><a href="#">medium</a></div>
-            <div class="likes">
-
-            <i class="ico i-likes"></i>
-            <i id=<%="likes_"+p.id.to_s%> >
-                     <%= p.votes_for.size %>
-            </i>
-            <a href="/plants/<%=p.id%>/vote_up" class="<% if current_user.voted_for? p%>lost <%else%> showw <%end%>" data-remote="true" id=<%="vote_up_"+p.id.to_s%>
-             <i class="">like</i>
-            </a>
-
-            <a href="/plants/<%=p.id%>/del_vote_up" class="<% if current_user.voted_for? p %> showw <%else%> lost <%end%>" data-remote="true"  id=<%="del_vote_up_"+p.id.to_s%>
-             <i class="">unlike</i>
-            </a>
-
+              <p style="text-align: center;">
+                گیاهان حاضر در باغچه
+&nbsp;
+              <span class="garden_name">
+                <%= link_to k.name , k %>
+                <br>
+              </span>
+              </p>
+              <!---->
+              </br>
+              <% k.plants.each do |p| %>
+                  <%= render 'plants/sample' , :p => p %>
+              <% end %>
             </div>
-            <div class="comments"><i class="ico i-comments"></i><%= link_to p.comments.count , plant_path(p) %></div>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-      <% end %>
+        <% end %>
       </div>
       <!--//row-->
     </section>
-   
-  <!--//content-->
-</div>
-<!--//wrap-->
+
+    <!--//content-->
+  </div>
+  <!--//wrap-->
 </main>
 <!--//main-->
 
 
 
-</body></html>
+</body>
+</html>
 
 

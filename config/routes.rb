@@ -1,9 +1,26 @@
+
 Rails.application.routes.draw do
 
   get 'store/show'
 
+  devise_for :users, controllers: { registrations: 'user_registrations' }
+  devise_scope :user do
+    root :to =>"initial#home"
+  end
+  
   mount Shoppe::Engine => "/store"
 
+  require 'api_constraints'
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :planters
+      resources :users, :only => [:show, :create, :update, :destroy]
+      resources :sessions, :only => [:create , :destroy]
+    end
+    scope module: :v2, constraints: ApiConstraints.new(version: 2) do
+      resources :planters
+    end
+  end
   resources :comments
 
   resources :data_logs do
@@ -12,10 +29,6 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers: { registrations: 'user_registrations' }
-  devise_scope :user do
-    root :to =>"initial#home"
-  end
 
   resources :images
 
@@ -39,10 +52,10 @@ Rails.application.routes.draw do
 
   resources :profiles do 
     member do
-      get :my_flowers
+      get :my_devices
       get :my_gardens
       get :about_me
-      get :my_posts
+      get :my_accounts
     end
   end
 

@@ -1,4 +1,6 @@
 class PlantsController < ApplicationController
+
+
   before_action :authenticate_user!
 
   before_action :set_plant, only: [:show, :edit, :update, :destroy, :vote_up,:del_vote_up]
@@ -46,16 +48,14 @@ class PlantsController < ApplicationController
   def create
     @plant = Plant.new(plant_params)
     @plant.name = Planter.find(params[:planter_id]).name
-    @plant.humidity_soil = DataLog.last.humidity_soil
-    @plant.humidity_air = DataLog.last.humidity_air
-    @plant.temperature = DataLog.last.temperature
-    @plant.light_degree = DataLog.last.light
-    @plant.save
-    plant_garden = PlantOnGarden.new
-    plant_garden.garden_id = params[:garden_id]
-    plant_garden.plant_id = @plant.id
+    @plant.garden_id = params[:garden_id]
+    # @plant.humidity_soil = DataLog.last.humidity_soil
+    # @plant.humidity_air = DataLog.last.humidity_air
+    # @plant.temperature = DataLog.last.temperature
+    # @plant.light_degree = DataLog.last.light
+
     respond_to do |format|
-      if plant_garden.save
+      if @plant.save
         format.html { redirect_to profile_path(current_user.profile), notice: 'گیاه شما اضافه شد لطفا صحت انرا بررسی کنید' }
         format.json { render :show, status: :created, location: @plant }
       else
@@ -87,9 +87,10 @@ class PlantsController < ApplicationController
   # DELETE /plants/1
   # DELETE /plants/1.json
   def destroy
+    garden = @plant.garden
     @plant.destroy
     respond_to do |format|
-      format.html { redirect_to :back , notice: 'Plant was successfully destroyed.' }
+      format.html { redirect_to garden , notice: 'Plant was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

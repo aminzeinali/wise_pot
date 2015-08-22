@@ -10,13 +10,20 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery-1.11.1.min
 //= require jquery_ujs
 //= require wow.min
-//= require_tree .
+//= require jquery.flexslider
+//= require jquery.slicknav.min
+//= require jquery.uniform.min
+//= require jquery.prettyPhoto
+//= require scripts1
+
+
 
 
 $(document).ready(function() {
+
 	$('#main_search #query').keyup(function (e) {
 		$.get($("#main_search").attr("action"), $("#main_search").serialize(), null, 'script');
 		return false;
@@ -27,4 +34,14 @@ $(document).ready(function() {
 
 	//Hide the menus if visible
 	});
+
+
+	$('.scroll-to-top').click(function () {
+				$('body,html').animate({
+					scrollTop: 0
+				}, 800);
+				return false;
+			});
+
+
 });

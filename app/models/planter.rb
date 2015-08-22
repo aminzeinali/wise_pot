@@ -10,6 +10,10 @@ class Planter < ActiveRecord::Base
 	acts_as_followable
 
 
+	def to_param
+		latin_name
+	end
+
 	validates :name, presence: true
 	validates :brief_desc, presence: true
 	

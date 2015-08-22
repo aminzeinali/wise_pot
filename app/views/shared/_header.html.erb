@@ -26,7 +26,7 @@
                 Amir Mahdi Valeh
               </a></li>
             <li>
-              <a href="#" title="Recipe">
+              <a href="https://ir.linkedin.com/pub/mohammad-amin-zeinali/83/215/b0b" title="Recipe">
                 Mohamad Amin Zeinali
               </a>
             </li>
@@ -47,28 +47,17 @@
         <li>
           <%= link_to services_initial_index_path  do %> <span>خدمات</span> <% end %>
           <ul>
-            <li><a href="left_sidebar.html" title="Left sidebar page">Left sidebar page</a></li>
-            <li><a href="right_sidebar.html" title="Right sidebar page">Right sidebar page</a></li>
-            <li><a href="two_sidebars.html" title="Both sidebars page">Both sidebars page</a></li>
-            <li><a href="full_width.html" title="Full width page">Full width page</a></li>
-            <li><a href="login.html" title="Login page">Login page</a></li><li><a href="register.html" title="Register page">Register page</a></li>
-            <li>
-            <a href="error404.html" title="Error page">Error page</a>
-            </li>
+            <li><%=link_to "پشتیبانی گلینو", services_initial_index_path(:section=>1) , :class=>"make_right"%></li>
+            <li><%=link_to "فروش گل و گیاه و محصولات جانبی", services_initial_index_path(:section=>2) , :class=>"make_right"%></li>
+            <li><%=link_to "خدمات باغیار", services_initial_index_path(:section=>3) , :class=>"make_right"%></li>
+            <li><%=link_to "گلوگرافی", services_initial_index_path(:section=>4) , :class=>"make_right"%></li>
+            <li><%=link_to "تبلیغات", services_initial_index_path(:section=>5) , :class=>"make_right"%></li>
           </ul>
         </li>
-        <li><a href="#" title="Features"><span>وبلاگ</span></a>
-          <ul>
-            <li><a href="animations.html" title="Animations">Animations</a></li>
-            <li><a href="grid.html" title="Grid">Grid</a></li>
-            <li><a href="shortcodes.html" title="Shortcodes">Shortcodes</a></li>
-            <li><a href="pricing.html" title="Pricing tables">Pricing tables</a></li>
-          </ul>
-        </li>
+        
         <li>
         </li>
-        <li>
-          <a href="http://themeforest.net/item/socialchef-social-recipe-html-template/8568727?ref=themeenergy" title="Buy now"><span>ارتباط با ما</span></a></li>
+        <li><%= link_to services_initial_index_path(:section=>6)  do %> <span>ارتباط با ما</span> <% end %></li>
 
       </ul>
     </nav>
@@ -84,17 +73,17 @@
               </span>
 
               <%end%>
-        <% else %>
             </li>
+      <% else %>
         <% end %>
         <li class="medium">
-          <%if user_signed_in? %>
+          <%if user_signed_in? and current_user.profile.present? %>
               <%= link_to profile_path(current_user) do%>
                   <i class="ico i-account"></i>
                   <span>حساب کاربری</span>
               <% end %>
           <%else%>
-              <%= link_to new_registration_path(User.new) do%>
+              <%= link_to new_user_registration_path do%>
                   <i class="ico i-account"></i>
                   <span>عضویت</span>
               <% end %>
@@ -104,6 +93,7 @@
           <a href="/search" title="Search for recipes">
             <i class="ico i-search"></i>
             <span>جستجو</span></a>
+
         </li>
       </ul>
     </nav>
@@ -111,4 +101,3 @@
   <!--//wrap-->
 </header>
 <!--//header-->
-</head>

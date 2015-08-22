@@ -23,7 +23,7 @@
             <article class="two-third wow fadeInLeft animated" style="visibility: visible;">
 
               <!-- Place somewhere in the <body> of your page -->
-              <div style="background: #ffffff;">
+              <div style="background: #ffffff; direction: ltr;">
                 <div class="flexslider">
                   <ul class="slides">
                     <li data-thumb= <%=@planter.image_1_url(:thumb)%> >
@@ -52,17 +52,6 @@
 
             <!--one-third-->
             <article class="one-third wow fadeInDown animated" style="visibility: visible;">
-              <!--               <div class="one-one">
-                
-                <a href="/planters/<%=@planter.id%>/follow" class=" btn btn-info<% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" data-remote="true" id="follow_butt"
-                <i class="">این گیاه را دنبال کن</i>
-                </a>
-
-                <a href="/planters/<%=@planter.id%>/unfollow" class="btn btn-warning <% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" data-remote="true"  id="unfollow_butt"
-                <i class="">این گیاه را دنبال نکن</i>
-                </a>
-              </div> -->
-              <!--make post-->
 
               <br>
               <div style="direction: rtl;">
@@ -73,6 +62,10 @@
 
               <br>
 
+              <% if policy(@planter).edit? %>
+                  <%= link_to "ویرایش" , edit_planter_path(@planter) , :class => "btn btn-block btn-info" %>
+                    </br>
+              <% end %>
               <dl class="basic make_center">
 
                 <% if @planter.latin_name.present? %>
@@ -217,7 +210,7 @@
       <!--//content-->
 
       <!--right sidebar-->
-      <aside class="sidebar one-fourth wow fadeInRight animated" style="visibility: visible;">
+      <aside class="sidebar one-fourth wow fadeInRight animated" style="visibility: visible; direction: ltr">
         <div class="widget nutrition">
           <h3 class="make_center">
             اطلاعات تکمیلی گیاه
@@ -261,12 +254,12 @@
               <a href="#" title="Twitter"><i class="ico i-twitter"></i> <span>Share on Twitter</span></a>
             </li>
             <li class="dark">
-              <a href="/planters/<%=@planter.id%>/follow" class="<% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" title="Favourites">
+              <a href="/planters/<%=@planter.latin_name%>/follow" class="<% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" title="Favourites">
                 <i class="ico i-favourites "></i>
                 <span>اضافه به علاقه ها</span>
               </a>
 
-              <a href="/planters/<%=@planter.id%>/unfollow" class="<% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" title="Favourites">
+              <a href="/planters/<%=@planter.latin_name%>/unfollow" class="<% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" title="Favourites">
                 <i class="ico i-favourites"></i>
                 <span>حذف از علاقه ها</span>
               </a>
@@ -331,7 +324,17 @@
       </aside>
       <!--//right sidebar-->
     </div>
-
   </div>
 </div> <!--end of main-->
 
+
+
+<script type="application/javascript">
+    console.log("ss");
+    $(window).load(function() {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
+</script>
