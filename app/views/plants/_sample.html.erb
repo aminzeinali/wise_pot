@@ -1,0 +1,45 @@
+<div class="entry one-fourth">
+  <figure>
+    <% if p.image.present? %>
+        <%=image_tag p.image_url , :width => "270" , :height => "203" %>
+    <% else %>
+        <%= image_tag("img11.jpg", :class=>"") %>
+    <% end %>
+    <figcaption>
+      <%=link_to p ,:class=>"make_bold"  do %>
+          <!-- <a href="recipe.html"> -->
+          <i class="ico i-view"></i>
+          <span><%= p.name %> </span>
+          <!-- </a> -->
+      <% end %>
+    </figcaption>
+  </figure>
+  <div class="container">
+    <p class="make_center"><%= p.name %></p>
+    <p class="ssmal make_right">  دما <%=p.temperature %></p>
+    <p class="ssmal make_right">  رطوبت خاک <%=p.humidity_soil %></p>
+    <p class="ssmal make_right">  رطوبت هوا <%=p.humidity_air %></p>
+    <p class="ssmal make_right">  نور <%=p.light_degree %></p>
+  </div>
+  <div class="actions #">
+    <div>
+      <div class="difficulty"><i class="ico i-medium"></i><a href="#">medium</a></div>
+      <div class="likes">
+
+        <i class="ico i-likes"></i>
+        <i id=<%="likes_"+p.id.to_s%> >
+          <%= p.votes_for.size %>
+        </i>
+        <a href="/plants/<%=p.id%>/vote_up" class="<% if current_user.voted_for? p%>lost <%else%> showw <%end%>" data-remote="true" id=<%="vote_up_"+p.id.to_s%>
+                <i class="">like</i>
+        </a>
+
+        <a href="/plants/<%=p.id%>/del_vote_up" class="<% if current_user.voted_for? p %> showw <%else%> lost <%end%>" data-remote="true"  id=<%="del_vote_up_"+p.id.to_s%>
+                <i class="">unlike</i>
+        </a>
+
+      </div>
+      <div class="comments"><i class="ico i-comments"></i><%= link_to p.comments.count , plant_path(p) %></div>
+    </div>
+  </div>
+</div>

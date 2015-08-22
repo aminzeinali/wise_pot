@@ -20,7 +20,7 @@ class GardensController < ApplicationController
     @garden = Garden.new
   end
 
-  # GET /gardens/1/edit
+  # GET /gardens/1/edi
   def edit
   end
 

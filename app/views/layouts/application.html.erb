@@ -7,15 +7,10 @@
 
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'flower.png' %>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <meta name="keywords" content="WisePot- Social wise pot" />
-  <meta name="description" content="SocialPot - Social Pot">
-  <meta name="author" content="rasadpot.ir">
 
 
     <%= render 'shared/header' %>
-  <title>
+  <title style ="direction: rtl;">
     رصدپات
 
 |    <%= @page_title %>
@@ -75,13 +70,4 @@
         });
     }
 
-</script>
-
-<script type="application/javascript">
-    $(window).load(function() {
-        $('.flexslider').flexslider({
-            animation: "slide",
-            controlNav: "thumbnails"
-        });
-    });
 </script>

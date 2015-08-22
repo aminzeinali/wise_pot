@@ -1,7 +1,9 @@
 class PlantersController < ApplicationController
-  before_action :authenticate_user!
 
-  before_action :set_planter, only: [:show, :edit, :update, :destroy]
+
+  before_action :authenticate_user!
+  after_action :verify_authorized, :except => [:index , :show, :follow , :unfollow]
+  before_action :set_planter, only: [:show, :edit, :update, :destroy, :follow , :unfollow]
 
   # GET /planters
   # GET /planters.json
@@ -10,7 +12,7 @@ class PlantersController < ApplicationController
   end
 
   def follow
-    @planter = Planter.find(params[:id])
+
     @follow = Follow.new
 
     if not current_user.following?(@planter)
@@ -25,17 +27,16 @@ class PlantersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @planter , notice: 'این باغ به علاقه های شما اضافه شد' }
       format.json { render :show, status: :created, location: @planter }
-      
+      format.js
     end
   end
 
 
   def unfollow
-    @planter = Planter.find(params[:id])
     current_user.stop_following(@planter)
-
     respond_to do |format|
       format.html { redirect_to @planter , notice: 'این باغ از علاقه های شما حذف شد' }
+      format.js
     end
   end
 
@@ -49,16 +50,18 @@ class PlantersController < ApplicationController
   # GET /planters/new
   def new
     @planter = Planter.new
-
+    authorize @planter
   end
 
   # GET /planters/1/edit
   def edit
+    authorize @planter
   end
 
   # POST /planters
   # POST /planters.json
   def create
+    authorize @planter
     @planter = Planter.new(planter_params)
     respond_to do |format|
       if @planter.save
@@ -74,6 +77,7 @@ class PlantersController < ApplicationController
   # PATCH/PUT /planters/1
   # PATCH/PUT /planters/1.json
   def update
+    authorize @planter
     respond_to do |format|
       if @planter.update(planter_params)
         format.html { redirect_to @planter, notice: 'Planter was successfully updated.' }
@@ -88,6 +92,7 @@ class PlantersController < ApplicationController
   # DELETE /planters/1
   # DELETE /planters/1.json
   def destroy
+    authorize @planter
     @planter.destroy
     respond_to do |format|
       format.html { redirect_to planters_url, notice: 'Planter was successfully destroyed.' }
@@ -98,7 +103,7 @@ class PlantersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_planter
-      @planter = Planter.find(params[:id])
+      @planter = Planter.find_by_latin_name(params[:id])
       @page_title = "باغ"
       if @planter.present?
         @page_title = @page_title + " " + @planter.name

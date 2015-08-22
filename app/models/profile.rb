@@ -3,4 +3,9 @@ class Profile < ActiveRecord::Base
 	has_many :gardens
 	mount_uploader :profile_photo, AvatarUploader
 	mount_uploader :cover_photo, AvatarUploader
+
+	def to_param
+		full_name
+	end
+
 end

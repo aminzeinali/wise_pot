@@ -1,0 +1,45 @@
+<div class="entry one-third">
+  <figure>
+    <!-- <img src="/assets/img7.jpg" alt=""> -->
+    <%= image_tag p.image_1.url %>
+    <figcaption>
+      <!-- <a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html"> -->
+      <%= link_to planter_path(p) do  %>
+          <i class="ico i-view"></i> <span><%= p.name %></span>
+      <%end%>
+    </figcaption>
+  </figure>
+  <div class="container make_right">
+    <h2><a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html">\
+      <%= p.brief_desc %>
+    </a></h2>
+    <div class="">
+      <a href="/planters/<%=p.id%>/follow" class="btn btn-info btn-xs<% if current_user.following?(p)%> invis <%else%> visible <%end%>" data-remote="true" id="follow_butt">
+        <i class="">این گیاه را دنبال کن</i>
+      </a>
+
+      <a href="/planters/<%=p.id%>/unfollow" class="btn button btn-xs <% if current_user.following?(p)%> visible <%else%> invis <%end%>" data-remote="true"  id="unfollow_butt" class="button">
+        <i class="">این گیاه را دنبال نکن</i>
+      </a>
+    </div>
+    <div class="actions">
+      <div>
+        <div class="difficulty">
+          <i class="ico i-easy"></i>
+          <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">easy</a>
+        </div>
+        <div class="likes">
+          <i class="ico i-likes"></i>
+          <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#">10</a>
+        </div>
+        <div class="comments">
+          <i class="ico i-comments"></i>
+          <%= link_to planter_path(p) do %>
+              <i> <%= p.comments.count %> </i>
+          <% end %>
+          <!-- <a href="http://www.themeenergy.com/themes/html/social-chef/recipe.html#comments">27</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

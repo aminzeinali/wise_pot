@@ -1,4 +1,4 @@
-<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<section class="content center full-width wow fadeInDown animated" style="visibility: visible">
 <div class="modal container new_forms">
 <%= form_for @plant , html: { multipart: true } do |f| %>
   <% if @plant.errors.any? %>
@@ -16,58 +16,59 @@
 <div class="col-md-7">
   <div class="form-group">
 
-    <p class="make_right">باغچه مورد نظر</p>
     <% if @garden.present?%>
         <%= hidden_field_tag :garden_id , @garden.id %>
-        <span> <%= @garden.name %> </span>
-    <% else %>
-    <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name") %>
+        <p class="make_right">
+این گیاه جدید در باغچه
+        <b> <%= @garden.name %> </b>
+          کاشته خواهد شد
+        </p>
+
+  <% else %>
+        <p class="make_right">
+            انتخاب کنید که گیاه شما در کدام باغچه کاشته شود:
+        </p>
+        <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name"),{ :class => 'selector' }   %>
         <% end %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group make_center">
 
-  <p class="make_right">نام گیاه</p>
-    <%= select_tag :planter_id ,options_from_collection_for_select(Planter.all,"id" , "name") %> 
+  <p class="make_right">
+    گیاه خود را انتخاب کنید:
+  </p>
+    <%= select_tag :planter_id ,options_from_collection_for_select(Planter.all,"id" , "name") ,{ :class => 'selector' }  %>
   </div>
 
   <div class="field">
-    <p class="make_right">سن گیاه</p>
-    <%= f.number_field :age%>
+    <p class="make_right">
+      سن گیاه خود را وارد کنید
+      <small>(به ماه)</small>
+    </p>
+    <%= f.number_field :age %>
   </div>
+  </br>
   <div class="field">
-    <p class="make_right">ارتفاع گیاه</p>
+    <p class="make_right">
+      ارتفاع کنونی گیاه خود را وارد کنید
+    <small>(به سانتی متر)</small>
+    </p>
     <%= f.number_field :height%>
   </div>
-  <!--
-  <div class="field">
-    <%#= f.label :temperature %><br>
-    <%#= f.text_field :temperature%>
-  </div>
-  <div class="field">
-    <%#= f.label :humidity_soil %><br>
-    <%#= f.text_field :humidity_soil%>
-  </div>
-  <div class="field">
-    <%#= f.label :humidity_air %><br>
-    <%#= f.text_field :humidity_air%>
-  </div>
-  <div class="field">
-    <%#= f.label :light_degree %><br>
-    <%#= f.text_field :light_degree%>
-  </div>
-  <div class="field">
-    <%#= f.label :health_factor %><br>
-    <%#= f.text_field :health_factor%>
-  </div>
-  -->
+  </br>
+
 
   <div class="field">
-    <p class="make_right">یک تصویر از گیاه</p>
+    <p class="make_center bold">
+      تصویری خوب برای گیاه خود انتخاب کنید،
+      گیاه شما در اینترنت با این تصویر معرفی خواهد شد
+    :
+    </p>
+
     <form id="form1" runat="server">
       <div style="display:table; margin:0 auto; width:50%; height:auto;">
-          <img id="blah" src="/assets/default_plant.png" alt="your image" />
-          <%= f.file_field :image , :id=>"imgInp"%>  
+        <%= image_tag "default_plant.png" , id: "blah" %>
+          <%= f.file_field :image , :id=>"imgInp"%>
       </div>
     </form>
   <p>

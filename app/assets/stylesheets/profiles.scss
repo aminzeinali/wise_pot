@@ -1,6 +1,13 @@
 // Place all the styles related to the profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.gender_sel{
+	width: 30% !important;
+	background: aliceblue !important;
+}
+
  .img_profile{
  	width:200px;
  	height:200px;
@@ -42,6 +49,7 @@
  	color:#125463;
  	font-weight:bold;
  	text-align:center;
+    font-size: 25px;
  }
  .edit_style{
  	font-weight:bold;
@@ -71,22 +79,17 @@
    min-height: 30px;
  }
 
-
-
  .search-div{
  float: right !important;
-padding-right: 23%;
-width: 70%;
+//padding-right: 23%;
+  width: 100%;
 }
-
 
 .mylist{
 	position: absolute !important;
 	z-index: 100;
-	width: 71% !important;
+	width: 100% !important;
 }
-
-
 
 .myli{
 	padding: 18px;

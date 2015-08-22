@@ -1,4 +1,4 @@
-<section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
+<section class="content center full-width wow fadeInDown animated" style="visibility: visible;">
 <div class="modal container new_forms">
 <%= form_for @profile , html: { multipart: true }  do |f| %>
   <% if @profile.errors.any? %>
@@ -14,24 +14,28 @@
   <% end %>
 
   <div class="field">
-    <p class="make_right"><%= f.label :نام%></p>
+    <p class="make_right">نام</p>
     <%= f.text_field :first_name, :class => "form-control"  %>
   </div>
     <div class="field">
-    <p class="make_right">:نام خانوادگی</p>
+    <p class="make_right">نام خانوادگی</p>
     <%= f.text_field :last_name, :class => "form-control"  %>
   </div>
-  <div class="field">
-    <p class="make_right">:جنسیت</p>
-    <%= f.text_field :gender, :class => "form-control"  %>
+  </br>
+  <div class="field make_center col-md-8">
+    <p class="">جنسیت</p>
+    <%= f.select :gender, options_for_select([['آقا', 0], ['خانم',1]]) , 
+        { :include_blank => true }, 
+    { :class => '' }  %>
   </div>
-
-          <img id="blah1" src="/assets/default_plant.png" alt="your image" />
-          <%= f.file_field :profile_photo , :id=>"imgInp1"%>  
-
-
-          <img id="blah2" src="/assets/default_plant.png" alt="your image" />
-          <%= f.file_field :cover_photo , :id=>"imgInp2"%>  
+  
+  </br>
+  <div class="field make_center col-md-8">
+      <%= f.label "عکس کاربری انتخاب کنید" %>
+      <%= image_tag "gardener.png" , :id => "blah1" %>
+      <%= f.file_field :profile_photo , :id=>"imgInp1" , :class => "make_center" %>  
+  </div>
+          <%#= f.file_field :cover_photo , :id=>"imgInp2"%>  
 
 
   </br>
@@ -40,8 +44,8 @@
   </div>
 
 <% end %>
-</section>
 </div>
+</section>
 
 <script type="text/javascript">
     function readURL1(input) {
