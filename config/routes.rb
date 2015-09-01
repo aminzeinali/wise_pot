@@ -1,4 +1,3 @@
-
 Rails.application.routes.draw do
 
   get 'store/show'
@@ -14,6 +13,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :planters
+      resources :gardens
+      resources :profiles  
       resources :users, :only => [:show, :create, :update, :destroy]
       resources :sessions, :only => [:create , :destroy]
     end
@@ -28,7 +29,6 @@ Rails.application.routes.draw do
       get :reciever
     end
   end
-
 
   resources :images
 
@@ -69,7 +69,9 @@ Rails.application.routes.draw do
       get :services
     end
   end
+
   get '/search' , to: 'initial#search'
+
   # get '/dosearch' , to: 'initial#do_search'
 
 
@@ -136,7 +138,8 @@ Rails.application.routes.draw do
   get 'products/:category_id' => 'products#index', :as => 'products'
   get 'products/:category_id/:product_id' => 'products#show', :as => 'product'
   post 'products/:category_id/:product_id/buy' => 'products#add_to_basket', :as => 'buy_product'
-  
+
+
   #
   # Order status
   #
@@ -167,6 +170,7 @@ Rails.application.routes.draw do
   #
   #compare
   #
+
   match "/compare/new" => "compare#add_object", :as => 'add_object' , :via => :get
   match "compare/show" => "compare#show" , :as => 'show_list' , :via  => :get
 

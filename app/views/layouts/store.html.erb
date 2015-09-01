@@ -75,8 +75,10 @@
         <li class="widget widget-sidebar">
           <h5>محصولات</h5>
           <ul class="product_list_widget">
-            <% x = Shoppe::Product.active.featured.includes(:default_image, :product_categories, :variants).root %>
-                <%= render 'shared/product_list', :products => x.includes(:default_image) %>
+            <% Shoppe::ProductCategory.all.each do |x| %>
+            <%# x = Shoppe::Product.active.featured.includes(:default_image, :product_categories, :variants).root %>
+                <%= render 'shared/product_list', :products => x.products.root.active.first(2) %>
+                <% end %>
           </ul>
         </li>
       </ul>
