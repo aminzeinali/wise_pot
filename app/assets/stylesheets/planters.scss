@@ -15,7 +15,12 @@
 .make_dir_right{
 	float:right;
 }
-
+.righted{
+  float: right !important;
+}
+.lefted{
+  float: left !important;
+}
 
 .bold{
   font-weight: bold;
