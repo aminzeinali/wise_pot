@@ -4,5 +4,6 @@ class Garden < ActiveRecord::Base
 
 	has_many :plants
 
-	has_many :comments , :as => :commentable	
+	has_many :comments , :as => :commentable
+
 end

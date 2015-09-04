@@ -10,7 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require_self
- *= require bootstrap.min
  *= require comments
  *= require gardens
  *= require initial
@@ -18,9 +17,17 @@
  *= require plants
  *= require profiles
  *= require flexslider
- */ 
+ */
 
 
+.cat_item{
+
+  float: right !important;
+  background: white;
+  padding: 20px !important;
+  text-align: center;
+  margin: 10px;
+}
 
 .rtl_dir{
   direction: rtl;
@@ -350,7 +357,7 @@ tr:nth-child(2n+1) td{background:#f6f6f6;}
 .entry .container {width:100%;}
 
 /*BUTTONS*/
-.button 			{border:none;display:inline-block;text-decoration:none !important;position:relative;background:#FF7B74;color:#fff !important;text-align:center;font-size:13px;font-weight:700;padding:11px 14px;min-width:80px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;text-transform:uppercase;}
+.button 			{border:none;display:inline-block;text-decoration:none !important;position:relative;background:#FF7B74;color:#fff !important;text-align:center;font-size:13px;font-weight:700;padding:8px 14px;min-width:80px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;text-transform:uppercase;}
 .button:hover,
 .button:focus 	{background:#F4716A;-webkit-box-shadow:inset 0 0 30px rgba(0,0,0,.2);-moz-box-shadow:inset 0 0 30px rgba(0,0,0,.2);box-shadow:inset 0 0 30px rgba(0,0,0,.2);}
 
@@ -437,7 +444,7 @@ blockquote:before 			{content:"";background:url(/assets/icons.png) -297px -17px 
 .featured.two-third .more 		{padding:10px 0 0 20px !important;}
 .featured.one-third .button		{width:100%;margin:0 0 17px;}
 
-.actions .difficulty			{border-right:0;width:47%;}
+.actions .difficulty			{border-right:0;width:50%;}
 .actions .difficulty .ico 	{margin-bottom:-1px;}
 
 .main .quicklinks 	{float:left;display:block;width:100%;text-align:center;padding:0 0 30px;}
@@ -884,7 +891,7 @@ div.uploader.disabled.active span.action 		{}
 
 
 /*ICONS*/
-.ico 		{display:inline-block;overflow:hidden;background-image:url(/assets/icons.png);background-repeat:no-repeat}
+.ico 		{display:inline-block;overflow:hidden;background-image:asset_url('assets/icons.png');background-repeat:no-repeat}
 .i-search 		{background-position:0 0;width:25px;height:24px;}
 .i-account 		{background-position:-54px 0;width:24px;height:24px;}
 .i-submitrecipe 	{background-position:-106px 0;width:25px;height:24px;}
@@ -924,7 +931,7 @@ div.uploader.disabled.active span.action 		{}
 .i-hard				{background-position:-298px 0;width:14px;height:13px;}
 
 .i-members			{background-position:0 -225px;width:111px;height:95px;}
-.i-recipes			{background-position:-111px -225px;width:80px;height:95px;}
+.i-plants			{background-position:-111px -225px;width:80px;height:95px;}
 .i-photos			{background-position:-192px -225px;width:99px;height:95px;}
 .i-posts			{background-position:0 -323px;width:95px;height:95px;}
 .i-comment			{background-position:-172px -323px;width:106px;height:95px;}

@@ -2,7 +2,6 @@
   <div class="row product type-product status-publish has-post-thumbnail product_cat-clothing product_cat-t-shirts taxable shipping-taxable purchasable product-type-simple product-cat-clothing product-cat-t-shirts instock">
     <div class="one-half">
 
-      <!--<a href="http://www.themeenergy.com/themes/wordpress/social-chef/wp-content/uploads/2013/06/T_7_front.jpg" itemprop="image" class="woocommerce-main-image zoom" title="" data-rel="prettyPhoto[product-gallery]"><img width="600" height="600" src="http://www.themeenergy.com/themes/wordpress/social-chef/wp-content/uploads/2013/06/T_7_front-600x600.jpg" class="attachment-shop_single wp-post-image" alt="T_7_front" title="T_7_front"></a>-->
       <% if @product.default_image %>
           <%= image_tag @product.default_image.path , style: "width: 100%;" %>
       <% end %>
@@ -66,7 +65,6 @@
           <%= @product.description %>
         </p>
       </div>
-
 
 
       <ul class="tabs">
@@ -169,52 +167,53 @@
 
       <div class="panel">
 
-      <ul class="products">
+      <ul class="products" style="direction: rtl;">
         <% cat.products.first(3).each do |prod| %>
             <% if prod != @product %>
-                <div class="entry one-third pull-right">
-                  <figure>
-                    <% if prod.default_image.present? %>
-                        <%= image_tag prod.default_image.path , style: "width: 100%;max-height: 225px; height: 225px;" %>
-                    <% else %>
-                        <img src="/assets/img12.jpg" alt="" />
-                    <% end %>
-                    <figcaption>
-                      <%= link_to product_path(prod.product_category.permalink, prod.permalink) do %>
-                          <i class="ico i-view">
-                          </i>
-                            <span>
-                            <%= prod.name %>
-                            </span>
-                      <% end %>
-                    </figcaption>
-                  </figure>
-                  <div class="container make_center">
-                    <h2>
-                      <%= link_to prod.name , product_path(prod.product_category.permalink, prod.permalink)%>
-                    </h2>
-                    <div class="actions">
-                      <div>
-                        <div class="date">
-                          <i class="ico i-date">
-                          </i>
-                          <b>
-                            <% cat = Shoppe::ProductCategorization.where(:product_id => prod.id).first.product_category %>
-                            <%= link_to cat.name , products_path(cat.permalink) %>
-                          </b>
-                        </div>
-                          <span>
-                            <%=number_to_currency prod.price%>
-                          </span>
-                      </div>
-                    </div>
-                    <div class="make_center">
-                      <p>
-                        <%= prod.description %>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <%= render 'products/product' , :prod => prod , :rel => 3%>
+                <!--<div class="entry one-third pull-right">-->
+                  <!--<figure>-->
+                    <!--<% if prod.default_image.present? %>-->
+                        <!--<%= image_tag prod.default_image.path , style: "width: 100%;max-height: 225px; height: 225px;" %>-->
+                    <!--<% else %>-->
+                        <!--<img src="/assets/img12.jpg" alt="" />-->
+                    <!--<% end %>-->
+                    <!--<figcaption>-->
+                      <!--<%= link_to product_path(prod.product_category.permalink, prod.permalink) do %>-->
+                          <!--<i class="ico i-view">-->
+                          <!--</i>-->
+                            <!--<span>-->
+                            <!--<%= prod.name %>-->
+                            <!--</span>-->
+                      <!--<% end %>-->
+                    <!--</figcaption>-->
+                  <!--</figure>-->
+                  <!--<div class="container make_center">-->
+                    <!--<h2>-->
+                      <!--<%= link_to prod.name , product_path(prod.product_category.permalink, prod.permalink)%>-->
+                    <!--</h2>-->
+                    <!--<div class="actions">-->
+                      <!--<div>-->
+                        <!--<div class="date">-->
+                          <!--<i class="ico i-date">-->
+                          <!--</i>-->
+                          <!--<b>-->
+                            <!--<% cat = Shoppe::ProductCategorization.where(:product_id => prod.id).first.product_category %>-->
+                            <!--<%= link_to cat.name , products_path(cat.permalink) %>-->
+                          <!--</b>-->
+                        <!--</div>-->
+                          <!--<span>-->
+                            <!--<%=number_to_currency prod.price%>-->
+                          <!--</span>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="make_center">-->
+                      <!--<p>-->
+                        <!--<%= prod.description %>-->
+                      <!--</p>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
             <% end %>
         <% end %>
       </ul>

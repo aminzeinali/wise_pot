@@ -19,7 +19,7 @@
   <div class="wrap clearfix make_right">
     <div class="row">
       <article class="one-half">
-        <h5>چرا گلدان هوشمند</h5>
+        <h5>چرا گلوگرافی</h5>
         <p>گلدانی که پیش روی شماست امکان تعامل با گیاه را در هر لحظه فراهم می سازد.شما با این گلدان می توانید شرایط محیط رشد گیاه اعم از نور - دمای محیط  و رطوبت گیاه را رصد کنید .در واقع ما حرف دل گیاه شما را روی گوشی موبایل و یا صفحه ی شخصی شما نمایش خواهیم داد و مزیت این خواهد بود که  قبل از پژمردن گیاه متوجه نا به سامانی شرایط شوید و در نتیجه همیشه گیاهانی شاد و سالم داشته باشید. </p>
       </article>
       <article class="one-fourth">
@@ -27,16 +27,16 @@
         <p class="make_right"><em>تلفن: </em>09368055268<br>nooramin_co@outlook.com<em> :ایمیل</em></p>
       </article>
       <article class="one-fourth">
-        <h5>گلدان هوشمند در شبکه های اجتماعی</h5>
+        <h5>گلوگرافی در شبکه های اجتماعی</h5>
         <ul class="social">
-          <li class="facebook"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="facebook">facebook</a></li>
-          <li class="youtube"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="youtube">youtube</a></li>
-          <li class="rss"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="rss">rss</a></li>
-          <li class="gplus"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="gplus">google plus</a></li>
-          <li class="linkedin"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="linkedin">linkedin</a></li>
-          <li class="twitter"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="twitter">twitter</a></li>
-          <li class="pinterest"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="pinterest">pinterest</a></li>
-          <li class="vimeo"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="vimeo">vimeo</a></li>
+          <li class="facebook"><a href="#" title="facebook">facebook</a></li>
+          <li class="youtube"><a href="#" title="youtube">youtube</a></li>
+          <li class="rss"><a href="#" title="rss">rss</a></li>
+          <li class="gplus"><a href="#" title="gplus">google plus</a></li>
+          <li class="linkedin"><a href="#" title="linkedin">linkedin</a></li>
+          <li class="twitter"><a href="#" title="twitter">twitter</a></li>
+          <li class="pinterest"><a href="#" title="pinterest">pinterest</a></li>
+          <li class="vimeo"><a href="#" title="vimeo">vimeo</a></li>
         </ul>
       </article>
 
@@ -45,12 +45,28 @@
 
         <nav class="foot-nav">
           <ul>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/index.html" title="Home">Home</a></li>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/recipes.html" title="Recipes">Recipes</a></li>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/blog.html" title="Blog">Blog</a></li>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/contact.html" title="Contact">Contact</a></li>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/find_recipe.html" title="Search for recipes">Search for recipes</a></li>
-            <li><a href="http://www.themeenergy.com/themes/html/social-chef/login.html" title="Login">Login</a></li>  <li><a href="http://www.themeenergy.com/themes/html/social-chef/register.html" title="Register">Register</a></li>
+            <li>
+              <%= link_to "خانه" , root_path %>
+            </li>
+
+            <li>
+              <%= link_to "سوالات" , posts_url %>
+            </li>
+            <li>
+              <%= link_to "گیاهان" , planters_path %>
+            </li>
+            <li>
+              <%= link_to "بیشتر بدانید" , services_initial_index_path %>
+            </li>
+            <li>
+              <%= link_to "جستجو در مورد گیاهان" , search_path %>
+            </li>
+            <li>
+              <%= link_to "ورود" , new_user_session_path %>
+            </li>
+            <li>
+              <%= link_to "ثبت نام" , new_user_registration_path %>
+            </li>
           </ul>
         </nav>
       </div>

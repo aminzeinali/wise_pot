@@ -16,12 +16,10 @@
  *= require planters
  *= require plants
  *= require profiles
- *= require style1
  *= require woocommerce
  *= require theme-default
-
- *= require bootstrap.min
- */ 
+ *= require bootstrap
+ */
 
 
 @font-face {
@@ -38,6 +36,85 @@
 body{
 	font-family: Byekan !important;
 }
+
+
+
+.panel-group .panel {
+  border: none;
+}
+.panel-default > .panel-heading {
+  background-color: #00aff0;
+  color: #ffffff;
+  padding: 14px 15px;
+  cursor: pointer;
+}
+.panel-default > .panel-heading a {
+  color: #ffffff;
+}
+.panel-default > .panel-heading a span {
+  padding-right: 10px;
+  font-size: 12px;
+}
+.panel-default > .panel-heading a:hover {
+  text-decoration: none;
+}
+.panel-default > .panel-heading.opened {
+  background-color: #11c0ff;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+.panel-default > .panel-heading.opened:hover {
+  background-color: #FF7B74;
+}
+.panel-default > .panel-heading.closed {
+  background-color:#FF7B74 ;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+.panel-default > .panel-heading.closed:hover {
+  background-color: #F4716A;
+}
+.panel-title {
+  margin: 0;
+}
+.panel-group .panel-heading + .panel-collapse .panel-body {
+  border: none !important;
+}
+.panel-group .panel + .panel {
+  margin-top: 1px !important;
+}
+.panel-group .panel .panel-body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #f5f5f5;
+}
+.panel-group .panel .panel-body ul {
+  margin: 0;
+}
+.panel-group .panel .panel-body ul > li {
+  border-top: 1px #eeeeee solid;
+}
+.panel-group .panel .panel-body ul > li:hover {
+  background-color: #ffffff;
+}
+.panel-group .panel .panel-body ul > .item > a {
+  margin: 0;
+  padding: 12px 37px;
+  display: block;
+  color: #444444;
+}
+.panel-group .panel .panel-body ul > .item > a:hover {
+  text-decoration: none;
+}
+
+
 
 .notification {
   position: absolute;
@@ -510,10 +587,10 @@ dl 			{display:inline-block;width:100%;margin:0 0 22px;}
 .my_account h2 {padding:4px 0 21px;}
 
 /*SIDEBAR*/
-.main .widget	{float:left;width:100%;margin:0 0 30px;background:#fff;-webkit-box-shadow:0 0 1px rgba(0,0,0,.2);-moz-box-shadow:0 0 1px rgba(0,0,0,.2);box-shadow:0 0 1px rgba(0,0,0,.2);}
+.main .widget	{float:left;width:100%;margin:0 0 30px;background:#fff;}
 .widget h3		{font-size:15px;color:#666;padding:16px 20px;}
 .widget h3 span 	{font-size:13px;font-style:italic;color:#999;}
-.widget div 		{padding:0 20px;}
+.widget div 		{padding:1px 0px !important; margin-right: 1px;}
 .widget li div 		{padding:0;}
 .widget button, .widget input[type="button"],.widget input[type="reset"],.widget input[type="submit"] {float:right;}
 .widget ul 		{padding:0;margin:0;}
@@ -4267,3 +4344,41 @@ Copyright (c) 2014 Daniel Eden
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 /////////////////////////////////////////////////////////////////////////
+.pagination a, .pagination span.current, .pagination span.gap {
+  float: left;
+  padding: 0 14px;
+  line-height: 38px;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+}
+
+.pagination {
+  border-left: 1px solid #ddd;
+  .first{
+    padding : 0;
+    float: none;
+    border: none;
+  }
+  .prev {
+    padding : 0;
+    float: none;
+    border: none;
+  }
+  .page{
+    padding : 0;
+    float: none;
+    border: none;
+  }
+  .next{
+    padding : 0;
+    float: none;
+    border: none;
+  }
+  .last{
+    padding : 0;
+    float: none;
+    border: none;
+  }
+}

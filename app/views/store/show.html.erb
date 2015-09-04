@@ -1,32 +1,32 @@
-    <section class="three-fourth make_right">
-      <h1 class="page-title make_right">
-        دسته بندی ها
-      </h1>
-      <div class="">
-        <% for category in Shoppe::ProductCategory.without_parent.ordered  %>
-            <div class="category_item one-fourth wow animated fadeInLeft">
-              <!-- <a href="http://www.themeenergy.com/themes/wordpress/social-chef/product-category/clothing/"> -->
-              <%=link_to products_path(category.permalink) do %>
-                  <% if category.image.present?%>
-                      <%=image_tag category.image.path , width: "300" , height: "300" , class: "make_right"%>
-                  <% else %>
-                      <img src="http://www.themeenergy.com/themes/wordpress/social-chef/wp-content/uploads/2013/06/hoodie_6_front-300x300.jpg" alt="Clothing" width="300" height="300">
-                  <% end %>
-                  <h3>
-                    <%= category.name %>
-                    <mark class="count"></mark>
-                  </h3>
-              <% end %>
-              <!-- </a> -->
-              <tr>
-                <td>
-                  <%#= link_to category.name, products_path(category.permalink) %>
-                  <%= nested_product_category_rows(category) %>
-                </td>
-              </tr>
-            </div>
-        <% end %>
-      </div>
-    </section>
+<section class="three-fourth make_center content">
+
+
+  <div class="cwrap">
+    <h1 class="">
+      فروشگاه باغ گل نسترن
+    </h1>
+
+    <div class="cwrap">
+
+    </div>
   </div>
+
+  <div class="clearfix"></div>
+
+
+    <%= render 'shared/cheapest' %>
+
+  <div class="clearfix"></div>
+
+    <%= render 'shared/latest_products' %>
+  <div class="quicklinks">
+    <a href="#" class="button">
+      صفحه کاربری من
+    </a>
+    <a href="javascript:void(0)" class="button scroll-to-top">بازگشت به بالا</a>
+  </div>
+
+</section>
+
+</div>
 </main>

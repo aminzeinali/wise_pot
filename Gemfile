@@ -14,6 +14,8 @@ gem 'simple_captcha2', require: 'simple_captcha'
 
 gem 'acts_as_votable', '~> 0.10.0'
 
+gem 'kaminari'
+
 #my additional gem
 # gem 'bootstrap-sass', '~> 3.3.4'
 #end my additional gem

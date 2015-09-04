@@ -10,8 +10,15 @@ class ProductsController < ApplicationController
   end
   
   def index
-    @products = @product_category.products.includes(:default_image, :product_categories, :variants).root.active
+    @products = @product_category.products.includes(:default_image, :product_categories, :variants).root.active.page(params[:page]).per(15)
+    @counts = @product_category.products.includes(:default_image, :product_categories, :variants).active.count
   end
+
+
+  def add_comment
+
+  end
+
 
   def compare
   end
@@ -28,6 +35,7 @@ class ProductsController < ApplicationController
     @attributes = @product.product_attributes.publicly_accessible.to_a
     @comment = Comment.new
     @comments = Comment.where(:product_id => @product.id).reverse_order
+    @planter = Planter.find_by_name(@product.name)
   end
   
   def add_to_basket
