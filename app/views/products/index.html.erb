@@ -1,24 +1,14 @@
 <% active_nav_item :catalogue %>
 <% @page_title = @product_category.name %>
 
-<section class="content three-fourth">
-
-
-  <h1 class="page-title make_right">
-    <%= @product_category.name %>
-  </h1>
-
-  <p class="woocommerce-result-count make_right" >
-    نمایش همه موارد
-  </p>
-
+<div class="content three-fourth">
 
   <ul class="" style="float: right; width: 100%">
     <%= render 'shared/product_under_category', :products => @products %>
   </ul>
 
 
-</section>
+</div>
 
 <!--%h2= @product_category.name-->
 <!--- unless @product_category.description.blank?-->

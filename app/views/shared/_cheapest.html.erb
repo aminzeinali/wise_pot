@@ -1,0 +1,15 @@
+<div class="cwrap">
+  <header class="s-title">
+    <h2 class="make_right title_in_middle">
+      ارزان ترین ها
+
+    </h2>
+  </header>
+  <!--entries-->
+  <div class="entries row">
+    <% Shoppe::Product.all.order('price').first(6).each do |prod| %>
+        <%= render 'products/product' , :prod => prod , :rel => 3 %>
+    <% end %>
+  </div>
+  <!--//entries-->
+</div>

@@ -3,7 +3,7 @@ class PlantersController < ApplicationController
 
   before_action :authenticate_user!
   after_action :verify_authorized, :except => [:index , :show, :follow , :unfollow]
-  before_action :set_planter, only: [:show, :edit, :update, :destroy, :follow , :unfollow]
+  before_action :set_planter, only: [:show, :edit, :update, :destroy, :follow , :unfollow, :create]
 
   # GET /planters
   # GET /planters.json
@@ -61,8 +61,8 @@ class PlantersController < ApplicationController
   # POST /planters
   # POST /planters.json
   def create
-    authorize @planter
     @planter = Planter.new(planter_params)
+    authorize @planter
     respond_to do |format|
       if @planter.save
         format.html { redirect_to @planter, notice: 'Planter was successfully created.' }

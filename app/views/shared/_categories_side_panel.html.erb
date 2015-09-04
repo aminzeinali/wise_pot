@@ -1,0 +1,50 @@
+<div class="panel-group" id="blogcategories">
+  <% for category in Shoppe::ProductCategory.without_parent.order('updated_at DESC')  %>
+
+      <% counts = category.products.includes(:default_image, :product_categories, :variants).active.count %>
+      <div class="panel panel-default">
+        <div class="panel-heading closed" data-parent="#blogcategories" data-target= "#<%=category.id%>" data-toggle="collapse">
+          <h6 class="panel-title">
+            <% if category.children.count > 0 %>
+                <%= link_to  "#a" do %>
+                    <span class="fa fa-plus "></span>
+                    <small>
+                      (
+                      <%= counts %>
+                      )
+                    </small>
+                    <%= category.name %>
+                <% end %>
+            <% else %>
+                <%= link_to products_path(category.permalink) do%>
+                    <span class="fa fa-external-link"></span>
+                    <small>
+                      (
+                      <%= counts %>
+                      )
+                    </small>
+                    <%= category.name %>
+                <% end %>
+            <% end %>
+            <div class="pull-right farsi" >
+              <%= link_to products_path(category.permalink)do%>
+              <small style="font-size: 10px; padding-right: 1px;">
+                نمایش
+              </small>
+              <% end %>
+            </div>
+
+          </h6>
+        </div>
+        <% if category.children.count > 0 %>
+            <div class="panel-collapse collapse" id=<%= category.id %> >
+              <div class="panel-body">
+                <ul>
+                  <%= nice_nested_product_category_rows(category) %>
+                </ul>
+              </div>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+</div>

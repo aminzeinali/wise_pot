@@ -15,6 +15,7 @@ class Planter < ActiveRecord::Base
 	end
 
 	validates :name, presence: true
+	validates :latin_name, presence: true
 	validates :brief_desc, presence: true
 	
 end

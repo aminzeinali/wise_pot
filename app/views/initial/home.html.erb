@@ -5,28 +5,32 @@
   <!--intro-->
   <div class="intro">
 
-    <figure class="bg"><img src="/assets/initial_image.jpg" alt="" /></figure>
+    <figure class="bg">
+      <%= image_tag "initial_image.jpg" %>
+    </figure>
     <!--wrap-->
     <div class="wrap clearfix">
       <!--row-->
       <div class="row">
         <article class="three-fourth text wow zoomIn" data-wow-delay=".2s">
 
-          <h3 style="margin-right:21%;text-align:center; color:#C31108;">گلدان هوشمند</h3>
+          <h3 style="margin-right:21%;text-align:center; color:#C31108;">گلوگرافی</h3>
           <p class="bold_main make_right main_text main_text_margin">...این ها احساسات گیاه شماست</p>
           <p class="make_right main_text main_text_margin">   !من تشنه ام</p>
           <p class="make_right main_text main_text_margin">  !نور محیط مناسب من نیست</p>
           <p class="make_right main_text main_text_margin">  !رطوبت خاک ریشه های مرا اذیت می کند</p>
           <p class="make_right main_text main_text_margin">  !در طول شبانه روز تغییرات دما غیر قابل تحمل است</p>
 
-          <a href="users/sign_up" class="button white  medium">!راه حل اینجاست</a>
+          <a href="users/sign_up" class="button white  medium">
+            عضوی از گیاه داران شو
+          </a>
         </article>
         <!--search recipes widget-->
         <% if not user_signed_in? %>
             <div class="one-fourth wow fadeInDown" data-wow-delay=".5s">
               <div class="widget container">
                 <div class="textwrap">
-                  <h3 class="make_center">گلدان هوشمند</h3>
+                  <h3 class="make_center">گلوگرافی</h3>
                   <img src="assets/img11.jpg">
                   </br>
                 </div>
@@ -39,9 +43,9 @@
                     <%#= f.label :remember_me %>
                     <%#= f.check_box :remember_me %>
                     <%= f.submit 'ورود به حساب کاربری', :class=>"b_farsi button sign_in_bt" %>
-                    </br>
                     <div class="forget_text make_center">
-                      </br>								  </br>
+                      </br>
+                      </br>
 
                       <%= link_to "!رمز عبورم را فراموش کرده ام",forgot_password_initial_index_path %>
                     </div>
@@ -84,7 +88,7 @@
             <!--item-->
             <div class="one-sixth">
               <div class="container">
-                <i class="ico i-recipes"></i>
+                <i class="ico i-plants"></i>
 									<span class="title dynamic-number"
                                           data-dnumber="<%= Planter.all.count %>">0</span>
                 <span class="subtitle">گیاهان</span>
@@ -97,8 +101,10 @@
               <div class="container">
                 <i class="ico i-photos"></i>
 									<span class="title dynamic-number"
-                                          data-dnumber="">0</span>
-                <span class="subtitle">تصاویر</span>
+                                          data-dnumber="<%=Shoppe::Product.all.count %>">0</span>
+                <span class="subtitle">
+                  محصولات
+                </span>
               </div>
             </div>
             <!--//item-->
@@ -134,7 +140,7 @@
                 <i class="ico i-articles"></i>
 									<span
                                     class="title dynamic-number"
-                                    data-dnumber="<%=Shoppe::Order.all.count %>">0</span>
+                                    data-dnumber="<%=Shoppe::Order.received.all.count%>">0</span>
                 <span class="subtitle">خرید ها</span>
               </div>
             </div>
@@ -182,6 +188,7 @@
             <!--//featured recipe-->
 
             <!--featured member-->
+            <% guy = User.order("last_sign_in_at DESC").first.profile %>
             <div class="featured one-third wow fadeInLeft" data-wow-delay=".2s">
               <header class="s-title">
                 <h2 class="ribbon star">Featured member</h2>
@@ -190,24 +197,34 @@
                 <h2 class="make_center garden_title">باغچه دار برتر</h2>
               </header>
               <article class="entry">
-                <figure>
-                  <img src="/assets/avatar6.jpg" alt=""  width="100%"/>
-                  <figcaption><a href="my_profile.html">
-                    <i class="ico i-view">
-
-                    </i>
-                    <span>View member</span></a></figcaption>
+                <figure class="make_center">
+                  <% if guy.profile_photo.present?%>
+                      <%= image_tag guy.profile_photo_url %>
+                  <% else %>
+                      <%= image_tag "gardener.png" %>
+                  <% end %>
+                  <figcaption>
+                    <%= link_to profile_path(guy) do %>
+                        <i class="ico i-view">
+                        </i>
+                    <span>
+                      <%= guy.full_name %>
+                    <% end %>
+                    </span>
+                  </figcaption>
                 </figure>
                 <div class="container">
-                  <h2 class="make_right"><a href="my_profile.html">علیرضا پاک نیت</a></h2>
+                  <h2 class="make_center">
+                    <%= link_to guy.full_name ,  profile_path(guy) %>
+                  </h2>
                   <blockquote class="make_right">
                     ...من از گل هام مثل بچه هام مراقبت میکنم
                     </br>
-                    مرسی از گلدان هوشمند
+                    مرسی از گلوگرافی
                   </blockquote>
                   <div class="actions">
                     <div>
-                      <a href="#" class="button">دیدن پروفایل باغچه دار برتر</a>
+                      <%= link_to "دیدن پروفایل باغچه دار برتر" , profile_path(guy) , :class => "button" %>
                       <div class="more"><a href="#">نفرات برتر بعدی</a></div>
                     </div>
                   </div>
@@ -270,7 +287,9 @@
 
             <div class="quicklinks">
               <%= link_to "همه سوالات" , posts_path , class: "button" %>
-              <a href="javascript:void(0)" class="button scroll-to-top">برگشت به بالا</a>
+              <a href="javascript:void(0)" class="button scroll-to-top">
+                برگرد بالا
+              </a>
             </div>
           </div>
           <!--//entries-->
@@ -287,61 +306,15 @@
           </header>
           <!--entries-->
           <div class="entries row">
-            <% Shoppe::Product.all.each do |prod| %>
-                <!--item-->
-                <div class="entry one-fourth wow fadeInLeft">
-                  <figure>
-                    <% if prod.default_image.present? %>
-                        <%= image_tag prod.default_image.path , style: "width: 100%;max-height: 225px; height: 225px;" %>
-                    <% else %>
-                        <img src="/assets/img12.jpg" alt="" />
-                    <% end %>
-                    <figcaption>
-                      <%= link_to product_path(prod.product_category.permalink, prod.permalink) do %>
-                          <i class="ico i-view">'
-                          </i>
-									<span>
-									<%= prod.name %>
-									</span>
-                      <% end %>
-                    </figcaption>
-                  </figure>
-                  <div class="container make_center">
-                    <h2>
-                      <%= link_to prod.name , product_path(prod.product_category.permalink, prod.permalink)%>
-                    </h2>
-                    <div class="actions">
-                      <div>
-                        <div class="date">
-                          <i class="ico i-date">
-                          </i>
-                          <b>
-                            <% cat = Shoppe::ProductCategorization.where(:product_id => prod.id).first.product_category %>
-                            <%= link_to cat.name , products_path(cat.permalink) %>
-                          </b>
-                          <a href="#">
-                          </a>
-                        </div>
-                        <div class="comments">
-                          <i class="ico i-comments"></i>
-                          <%=number_to_currency prod.price%>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="excerpt make_center">
-                      <p></p>
-                      <p>
-                        <%= prod.description %>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+            <% Shoppe::Product.all.first(8).each do |prod| %>
+                <%= render 'products/product' , :prod => prod , :rel => 4 %>
             <% end %>
-            <!--item-->
 
             <div class="quicklinks">
-              <a href="#" class="button">مقالات بیشتر</a>
-              <a href="javascript:void(0)" class="button scroll-to-top">بازگشت به بالا</a>
+              <%= link_to "می خوام گل بخرم"  , store_show_path , :class =>"button" %>
+              <a href="javascript:void(0)" class="button scroll-to-top">
+                برگرد بالا
+              </a>
             </div>
           </div>
           <!--//entries-->

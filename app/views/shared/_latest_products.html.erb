@@ -1,0 +1,16 @@
+<div class="cwrap">
+  <header class="s-title">
+    <h2 class="make_right title_in_middle">
+      محصولات جدید
+      <%= link_to "فروشگاه" , store_show_path%>
+    </h2>
+  </header>
+  <!--entries-->
+  <div class="entries row">
+    <% Shoppe::Product.all.order('created_at DESC').first(9).each do |prod| %>
+       <%= render 'products/product' , :prod=> prod , :rel => 3 %>
+    <% end %>
+    <!--item-->
+  </div>
+  <!--//entries-->
+</div>

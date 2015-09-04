@@ -16,26 +16,24 @@ module ApplicationHelper
   def nested_product_category_spacing_adjusted_for_depth(category, relative_depth)
     depth = category.depth - relative_depth
     spacing = depth < 2 ? 0.8 : 1.5
-    ("<span style=' margin-right:#{50*spacing}px;'></span>"*category.depth).html_safe
+    (""*category.depth).html_safe
   end
 
   def nested_product_category_rows(category, current_category = nil, link_to_current = true, relative_depth = 0)
     if category.present? && category.children.count > 0
       String.new.tap do |s|
         category.children.ordered.each do |child|
-          s << "<tr>"
-          s << "<td>"
+          s << "<div class='cat_item'> <br>"
           if child == current_category
             if link_to_current == false
-              s << "#{nested_product_category_spacing_adjusted_for_depth child, relative_depth} &#8627; #{child.name} (#{t('shoppe.product_category.nesting.current_category')})"
+              s << "#{nested_product_category_spacing_adjusted_for_depth child, relative_depth} #{child.name} (#{t('shoppe.product_category.nesting.current_category')})"
             else
-              s << "#{nested_product_category_spacing_adjusted_for_depth child, relative_depth} &#8627; #{link_to(child.name, products_path(child.permalink)).html_safe} (#{t('shoppe.product_category.nesting.current_category')})"
+              s << "#{nested_product_category_spacing_adjusted_for_depth child, relative_depth} #{link_to(child.name, products_path(child.permalink)).html_safe} #{ image_tag child.image.path if child.image.present?  } (#{t('shoppe.product_category.nesting.current_category')})"
             end
           else
-            s << "#{nested_product_category_spacing_adjusted_for_depth child, relative_depth} &#8627; #{link_to(child.name, products_path(child.permalink)).html_safe}"
+            s << "#{nested_product_category_spacing_adjusted_for_depth child, relative_depth} #{link_to(child.name, products_path(child.permalink)).html_safe} #{image_tag child.image.path if child.image.present?  } "
           end
-          s << "</td>"
-          s << "</tr>"
+          s << "</div>"
           s << nested_product_category_rows(child, current_category, link_to_current, relative_depth)
         end
       end.html_safe
@@ -101,6 +99,38 @@ module ApplicationHelper
       "on " + date.strftime("%A")
     end
   end
-  
+
+
+
+
+
+  def nice_nested_product_category_rows(category, current_category = nil, link_to_current = true, relative_depth = 0)
+    if category.present? && category.children.count > 0
+      String.new.tap do |s|
+        category.children.order('created_at DESC').each do |child|
+          if child == current_category
+            if link_to_current == false
+              s << "<li class='item' >#{nested_product_category_spacing_adjusted_for_depth child, relative_depth}#{child.name} (#{t('shoppe.product_category.nesting.current_category')})</li>"
+            else
+              s << "<li class='item'>#{nested_product_category_spacing_adjusted_for_depth child, relative_depth}#{link_to("(#{count_children(child)})"+child.name, products_path(child.permalink)).html_safe}(#{t('shoppe.product_category.nesting.current_category')})</li>"
+            end
+          else
+            s << "<li class='item'>#{nested_product_category_spacing_adjusted_for_depth child, relative_depth}#{link_to("(#{count_children(child)})"+child.name, products_path(child.permalink)).html_safe}</li>"
+          end
+          s << nice_nested_product_category_rows(child, current_category, link_to_current, relative_depth)
+          # s << "</div>"
+        end
+      end.html_safe
+    else
+      ""
+    end
+  end
+
+
+
+  def count_children(cat)
+    cat.products.includes(:default_image, :product_categories, :variants).active.count
+  end
+
 
 end
