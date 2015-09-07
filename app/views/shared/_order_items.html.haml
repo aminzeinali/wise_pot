@@ -1,4 +1,4 @@
-.woocommerce.make_right
+.col-md-12.col-lg-12.col-sm-12.col-xs-12.hidden-sm
   %table.shop_table.cart
     %thead
       %tr
@@ -9,7 +9,7 @@
         %th.product-price قیمت
         %th= Shoppe.settings.tax_name
         %th.product-subtotal جمع
-    %tbody
+    %tbody.col-lg-12.col-md-12.col-sm-12
       - for item in order.order_items
         %tr.cart_item
           %td.product-remove

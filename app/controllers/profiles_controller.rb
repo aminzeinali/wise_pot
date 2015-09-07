@@ -45,6 +45,13 @@ class ProfilesController < ApplicationController
   def show
     @garden = Garden.new
     @plant = Plant.new
+
+    @plants_count = 0
+
+    current_user.profile.gardens.each do |g|
+      @plants_count += g.plants.count
+    end
+
   end
 
   # GET /profiles/new

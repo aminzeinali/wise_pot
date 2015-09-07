@@ -38,6 +38,11 @@ body{
 }
 
 
+.white_container{
+  background: white;
+  border-radius: 4px;
+  padding: 8px;
+}
 
 .panel-group .panel {
   border: none;
@@ -848,7 +853,7 @@ div.uploader.disabled.active span.action 		{}
 
 
 /*ICONS*/
-.ico 		{display:inline-block;overflow:hidden;background-image:url(/assets/icons.png);background-repeat:no-repeat}
+.ico 		{display:inline-block;overflow:hidden;background-image:asset_url('assets/icons.png');background-repeat:no-repeat}
 .i-search 		{background-position:0 0;width:25px;height:24px;}
 .i-account 		{background-position:-54px 0;width:24px;height:24px;}
 .i-submitrecipe 	{background-position:-106px 0;width:25px;height:24px;}

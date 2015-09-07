@@ -6,9 +6,11 @@
     </h2>
   </header>
   <!--entries-->
-  <div class="entries row">
+  <div class="row">
     <% Shoppe::Product.all.order('created_at DESC').first(9).each do |prod| %>
+        <div class="kooft ">
        <%= render 'products/product' , :prod=> prod , :rel => 3 %>
+        </div>
     <% end %>
     <!--item-->
   </div>

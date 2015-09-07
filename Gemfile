@@ -12,6 +12,7 @@ gem 'mini_magick'
 gem 'simple_captcha2', require: 'simple_captcha'
 #gem 'mysql2'
 
+
 gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'kaminari'

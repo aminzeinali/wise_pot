@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :bluetooth_devices
+
   get 'store/show'
 
   devise_for :users, controllers: { registrations: 'user_registrations' }

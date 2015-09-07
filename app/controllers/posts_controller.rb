@@ -16,7 +16,6 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comment = Comment.new
-    @post_user = @post.user
   end
 
   # GET /posts/new
@@ -37,7 +36,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
-        format.html { redirect_to planter_path(@post.planter_id) }
+        format.html { redirect_to planter_path(@post.planter.latin_name ) }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }

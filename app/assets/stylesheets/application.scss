@@ -17,11 +17,13 @@
  *= require plants
  *= require profiles
  *= require flexslider
+ *= require rel_icons
+ *= require bootstrap.min
  */
 
 
-.cat_item{
 
+.cat_item{
   float: right !important;
   background: white;
   padding: 20px !important;
@@ -40,6 +42,21 @@
 	display: none;
 }
 
+.default_profile_pic{
+  background: white;
+  margin-bottom: 3%;
+  border-radius: 162px;
+
+}
+
+
+.white_container{
+  background: white;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+
 @font-face {
  font-family: 'BYekan';
  src: url('BYekan.eot');
@@ -53,7 +70,7 @@
 }
 body{
 	font-family: Byekan !important;
-  direction: rtl;
+  direction: rtl !important;
 }
 
 .notification {

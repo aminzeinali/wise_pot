@@ -33,14 +33,16 @@
             <ul id="result" class="mylist">
             </ul>
           </div>
-          <figure>
+          <figure class="">
             <% if @profile.profile_photo.present? %>
+                <div class="">
                 <%=image_tag @profile.profile_photo_url , :class=>"stretch_img"%>
+                </div>
             <%else %>
-                <%=image_tag "default_profile.png" , :class=>"stretch_img"%>
+                <%=image_tag "gardener.png" , :class=>"stretch_img default_profile_pic"%>
             <%end%>
           </figure>
-          <div class="container make_center">
+          <div class="container make_center ">
             <% if can_edit %>
                 <%= link_to 'تنظیمات حساب', edit_profile_path(@profile), :class=>"b_farsi"%> |
                 <%= link_to 'بازگشت', profiles_path, :class=>"b_farsi"%>
@@ -73,27 +75,26 @@
               </li>
               <!-- <li class="active"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#about" title="About me">درباره ی من</a></li>
                -->
+              <!--<li class="">-->
+                <!--<% if current_user == @profile.user %>-->
+                    <!--<%= link_to raw('گیاهان مورد علاقه'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>-->
+                <!--<% else %>-->
+                    <!--<%= link_to raw('اطلاعات باغچه هایش'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>-->
+                <!--<% end %>-->
+              <!--</li>-->
+              <!--<li class="">-->
+                <!--<% if current_user == @profile.user %>-->
+                    <!--<%= link_to raw('گل ُگرافی'), my_devices_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>-->
+                <!--<% else %>-->
+                    <!--<%= link_to raw('گل ُگرافی'), my_devices_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>-->
+                <!--<% end %>-->
+              <!--</li>-->
 
-              <li class="">
-                <% if current_user == @profile.user %>
-                    <%= link_to raw('گیاهان مورد علاقه'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
-                <% else %>
-                    <%= link_to raw('اطلاعات باغچه هایش'), my_gardens_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my gardens', :id => "gardens" %>
-                <% end %>
-              </li>
-              <li class="">
-                <% if current_user == @profile.user %>
-                    <%= link_to raw('گل ُگرافی'), my_devices_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
-                <% else %>
-                    <%= link_to raw('گل ُگرافی'), my_devices_profile_path(@profile.user), :class => 'make_bold', :remote => true, :title => 'my flowers', :id => "flowers" %>
-                <% end %>
-              </li>
-
-              <li class="">
-                <%= link_to raw('حساب ها'), my_accounts_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'my posts', :id => "posts" %>
-                <!-- <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#favorites" title="My favorites">My favorites -->
-                <!-- </a> -->
-              </li>
+              <!--<li class="">-->
+                <!--<%= link_to raw('حساب ها'), my_accounts_profile_path(current_user), :class => 'make_bold', :remote => true, :title => 'my posts', :id => "posts" %>-->
+                <!--&lt;!&ndash; <a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#favorites" title="My favorites">My favorites &ndash;&gt;-->
+                <!--&lt;!&ndash; </a> &ndash;&gt;-->
+              <!--</li>-->
             </ul>
           </nav>
 
@@ -102,7 +103,7 @@
             
           </div>
            -->
-          <div class="tab-content" id="about" style="display: block;">
+          <div class="tab-content" id="about" style="display: block; direction: rtl;">
             <div class="row">
               <dl class="basic two-third">
 
@@ -114,29 +115,98 @@
                 </span>
                 </dt>
                 <dd><%= @profile.last_name%></dd>
-                <dt class="make_center">گیاهان مورد علاقه</dt>
-                <dd>Blender, sharp knife</dd>
-                <dt class="make_center">تعداد پست ها</dt>
-                <dd>Chilli, Oregano, Basil</dd>
+                <!--<dt class="make_center">-->
+                  <!--گیاهان مورد علاقه-->
+                <!--</dt>-->
+                <!--<dd>Blender, sharp knife</dd>-->
+                <dt class="make_center">
+                  تعداد سوالات پرسیده
+                </dt>
+                <dd><%= current_user.posts.count %></dd>
                 <dt class="make_center">رتبه بین کاربران</dt>
                 <dd>9</dd>
                 <dt class="make_center">تعداد گیاهان</dt>
-                <dd>9</dd>
+                <dd>
+                  <%= @plants_count %>
+                </dd>
+                <dt class="make_center">
+                  گلینو های فعال
+                </dt>
+                <dd>
+                    <%= current_user.bluetooth_devices.active.count %>
+                </dd>
               </dl>
 
               <div class="one-third">
                 <ul class="boxed gold">
-                  <li class="light"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="Best recipe"><i class="ico i-had_best_recipe"></i> <span>Had a best recipe</span></a></li>
-                  <li class="medium"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="Was featured"><i class="ico i-was_featured"></i> <span>Was featured</span></a></li>
-                  <li class="dark"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="Added a first recipe"><i class="ico i-added_first_recipe"></i> <span>Added a first recipe</span></a></li>
+                  <li class="light">
+                    <!--<a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="Best recipe">-->
+                    <%= link_to new_plant_path do %>
+                        <i class="ico i-simpleflower"></i>
+                    <span>
+                      گیاه جدید من
+                    </span>
+                    <% end %>
+                    <!--</a>-->
+                  </li>
+                  <li class="medium">
+                    <!--<a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="Was featured">-->
+                    <%= link_to "" do %>
+                        <i class="ico i-watering"></i>
+                        <span>آب دهی</span>
+                    <% end %>
+                  </li>
+                  <li class="dark">
+                    <%= link_to "#" do %>
+                        <i class="ico i-flower_in_pot"></i>
+                        <span>
+                          گل بکار
+                        </span>
 
-                  <li class="medium"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="Added 10-20 recipes"><i class="ico i-added_several_recipes"></i> <span>Added 10-20 recipes</span></a></li>
-                  <li class="dark"><a href="http://www.themeenergy.com/themes/html/social-chef/recipes.html" title="Events"><i class="ico i-wrote_blog_post"></i> <span>Wrote a blog post</span></a></li>
-                  <li class="light"><a href="http://www.themeenergy.com/themes/html/social-chef/recipes.html" title="Fish"><i class="ico i-wrote_comment"></i> <span>Wrote a comment</span></a></li>
+                    <% end %>
+                  </li>
 
-                  <li class="dark"><a href="http://www.themeenergy.com/themes/html/social-chef/recipes.html" title="Fish"><i class="ico i-won_contest"></i> <span>Won a contest</span></a></li>
-                  <li class="light"><a href="http://www.themeenergy.com/themes/html/social-chef/recipes.html" title="Healthy"><i class="ico i-shared_recipe"></i> <span>Shared a recipe</span></a></li>
-                  <li class="medium"><a href="http://www.themeenergy.com/themes/html/social-chef/my_profile.html#" title="Was featured"><i class="ico i-was_featured"></i> <span>Was featured</span></a></li>
+                  <li class="medium">
+                    <%= link_to "#" do %>
+                        <i class="ico i-ghonche"></i>
+                        <span>غنچه نو</span>
+                    <% end %>
+                  </li>
+
+                  <li class="dark">
+                    <%= link_to "#" do %>
+                        <i class="ico i-sunning"></i>
+                        <span>نور مناسب</span>
+                    <% end %>
+                  </li>
+                  <li class="light">
+                    <%=link_to "#" do %>
+                        <i class="ico i-bill"></i>
+                        <span>
+                          نحوه بیل زدن
+                        </span>
+                    <% end %>
+                  </li>
+
+                  <li class="dark">
+                    <%= link_to "#" do %>
+                        <i class="ico i-gheichi"></i>
+                        <span>
+                        نحوه هرس کردن
+                        </span>
+                    <% end %>
+                  </li>
+                  <li class="light">
+                    <%= link_to "#" do %>
+                        <i class="ico i-shared_recipe"></i>
+                        <span>تجربه خاصی داری؟</span>
+                    <% end %>
+                  </li>
+                  <li class="medium">
+                    <%= link_to "#" do %>
+                        <i class="ico i-satle_ab"></i> <span>لوازم جانبی</span>
+                    <% end %>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -366,7 +436,7 @@
 
               <p style="text-align: center;">
                 گیاهان حاضر در باغچه
-&nbsp;
+                &nbsp;
               <span class="garden_name">
                 <%= link_to k.name , k %>
                 <br>

@@ -2,7 +2,7 @@
 = render 'checkout_sidebar'
 
 %section.content.three-fourth.make_right
-  %article.container
+  %article.white_container
     %h2 سفارش خود را نهایی کنید
     %p
       بسیار عالی! شما آماده اید تا سفارش خود را نهایی کنید، فقط اطلاعات زیر را تکمیل کنید  تا ما خرید شما را آماده ارسال کنیم
@@ -51,7 +51,7 @@
               %dd= f.text_field :delivery_postcode, :placeholder => "پلاک", :class => 'postcode make_right'
               -#%dd= f.collection_select :delivery_country_id, Shoppe::Country.ordered, :id, :name
 
-        %p.submit= f.submit "ثبت نهایی" , :class => "btn btn-success btn-block"
+        %p.make_center= f.submit "ثبت نهایی" , :class => "button btn-block "
 
     - else
       %p لطفا برای ایجاد این سفارش با ما تماس بگیرید .
