@@ -1363,7 +1363,7 @@ span.wpcf7-form-control-wrap {display:inline-block;width:100%;margin-top:10px;}
 
 
 /*ICONS*/
-.ico 		{display:inline-block;overflow:hidden;background-image:url(../images/ico/icons.png);background-repeat:no-repeat;}
+.ico 		{display:inline-block;overflow:hidden;background-image: background-repeat:no-repeat;}
 [class^="eldorado_"], [class*=" eldorado_"] {font-size:42px;-moz-text-shadow:1px 1px 1px rgba(0,0,0,.2);-webkit-text-shadow:1px 1px 1px rgba(0,0,0,.2);text-shadow:1px 1px 1px rgba(0,0,0,.2);background:none;}
 
 .i-search 		{background-position:0 0;width:25px;height:24px;}

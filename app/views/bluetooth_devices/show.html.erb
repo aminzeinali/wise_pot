@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @bluetooth_device.user_id %>
+</p>
+
+<p>
+  <strong>Sampling times:</strong>
+  <%= @bluetooth_device.sampling_times %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @bluetooth_device.location %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @bluetooth_device.version %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @bluetooth_device.status %>
+</p>
+
+<%= link_to 'Edit', edit_bluetooth_device_path(@bluetooth_device) %> |
+<%= link_to 'Back', bluetooth_devices_path %>

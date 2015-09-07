@@ -1,5 +1,5 @@
 <section class="content center full-width wow fadeInDown animated" style="visibility: visible">
-<div class="modal container new_forms">
+  <div class="modal container new_forms">
 <%= form_for @plant , html: { multipart: true } do |f| %>
   <% if @plant.errors.any? %>
     <div id="error_explanation">
@@ -83,13 +83,19 @@
     <p class="make_right">توضیحاتی مختصر برای گیاه</p>
     <%= f.text_area :description %>
   </div>
-  <div class="actions">
-    <%= f.submit 'اضافه کردن گیاه به باغچه' , :class=>"far_class b_farsi tool_plant_creat"%>
+  <div class="actions make_center">
+    <%= f.submit 'اضافه کردن گیاه به باغچه' , :class=>"button"%>
+
+    <%= link_to 'بازگشت', :back , :class=>"button pull-left"%>
+
   </div>
 <% end %>
 </div>
 </div>
 </section>
+
+
+
 
 
 <script type="text/javascript">
