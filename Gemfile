@@ -10,8 +10,10 @@ gem 'mini_magick'
 #gem 'ancestry'
 #gem 'groupdate'
 gem 'simple_captcha2', require: 'simple_captcha'
+
 gem 'mysql2'
 
+gem 'seed_dump'
 
 gem 'acts_as_votable', '~> 0.10.0'
 
