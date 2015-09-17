@@ -1,0 +1,2 @@
+module SurveyIdeasHelper
+end

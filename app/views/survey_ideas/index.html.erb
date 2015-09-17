@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Survey Ideas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Idea1</th>
+      <th>Idea2</th>
+      <th>Idea3</th>
+      <th>Idea4</th>
+      <th>Idea5</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @survey_ideas.each do |survey_idea| %>
+      <tr>
+        <td><%= survey_idea.gender %></td>
+        <td><%= survey_idea.age %></td>
+        <td><%= survey_idea.idea1 %></td>
+        <td><%= survey_idea.idea2 %></td>
+        <td><%= survey_idea.idea3 %></td>
+        <td><%= survey_idea.idea4 %></td>
+        <td><%= survey_idea.idea5 %></td>
+        <td><%= link_to 'Show', survey_idea %></td>
+        <td><%= link_to 'Edit', edit_survey_idea_path(survey_idea) %></td>
+        <td><%= link_to 'Destroy', survey_idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Survey idea', new_survey_idea_path %>

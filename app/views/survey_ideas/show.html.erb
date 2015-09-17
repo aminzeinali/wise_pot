@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @survey_idea.gender %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @survey_idea.age %>
+</p>
+
+<p>
+  <strong>Idea1:</strong>
+  <%= @survey_idea.idea1 %>
+</p>
+
+<p>
+  <strong>Idea2:</strong>
+  <%= @survey_idea.idea2 %>
+</p>
+
+<p>
+  <strong>Idea3:</strong>
+  <%= @survey_idea.idea3 %>
+</p>
+
+<p>
+  <strong>Idea4:</strong>
+  <%= @survey_idea.idea4 %>
+</p>
+
+<p>
+  <strong>Idea5:</strong>
+  <%= @survey_idea.idea5 %>
+</p>
+
+<%= link_to 'Edit', edit_survey_idea_path(@survey_idea) %> |
+<%= link_to 'Back', survey_ideas_path %>

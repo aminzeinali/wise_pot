@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :survey_ideas
+
   resources :bluetooth_devices
 
   get 'store/show'
