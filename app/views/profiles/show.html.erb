@@ -42,12 +42,13 @@
                 <%=image_tag "gardener.png" , :class=>"stretch_img default_profile_pic"%>
             <%end%>
           </figure>
-          <div class="container make_center ">
+          <div class="container make_center">
             <% if can_edit %>
-                <%= link_to 'تنظیمات حساب', edit_profile_path(@profile), :class=>"b_farsi"%> |
-                <%= link_to 'بازگشت', profiles_path, :class=>"b_farsi"%>
+                <%= link_to 'تنظیمات حساب', edit_profile_path(@profile), :class=>"b_farsi "%> |
+                <%= link_to 'خروج از حساب' , destroy_user_session_path ,:method => :delete%>
             <% end %>
           </div>
+
           <div class="container make_center">
             <h2><%= @profile.first_name%></h2>
             <% if can_edit %>
@@ -57,7 +58,16 @@
             </br>
             </br>
           </div>
-
+          <div class="container make_center">
+            <div style="direction: rtl;">
+              <%=link_to "سوال، مطلب یا نکته ای بنویسید .." , new_post_path, :class=>"btn btn-warning btn-block"%>
+            <br><small>
+              اگر سوالی در مورد نگهداری گیاه خود دارید می توانید آنرا در باغ گل گیاه مطرح کنید،
+و پاسخ خود را بیابید
+            </small>
+            </div>
+            </br>
+          </div>
         </div>
         <!--//profile left part-->
 
@@ -103,6 +113,8 @@
             
           </div>
            -->
+
+
           <div class="tab-content" id="about" style="display: block; direction: rtl;">
             <div class="row">
               <dl class="basic two-third">
@@ -463,5 +475,4 @@
 
 </body>
 </html>
-
 

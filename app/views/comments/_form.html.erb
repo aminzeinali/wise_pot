@@ -1,7 +1,3 @@
-</br>
-
-<div class="modal container new_forms">
-
 <%= form_for(@comment) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
@@ -15,19 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.hidden_field :commentable_id %>
+    <div class="field">
+    <%= f.hidden_field :commentable_id , :value => commentable.id%>
   </div>
   <div class="field">
-    <%= f.hidden_field :commentable_type %>
+    <%= f.hidden_field :commentable_type , :value => commentable.class.name %>
   </div>
-  <div class="field">
-    <%= f.label :content %><br>
+  <div class="field make_right">
+    <%= f.label "متن" %><br>
     <%= f.text_area :content %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "بنویس!" %>
   </div>
 <% end %>
-</div>
-</section>

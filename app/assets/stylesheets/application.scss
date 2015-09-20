@@ -19,6 +19,7 @@
  *= require flexslider
  *= require rel_icons
  *= require bootstrap.min
+ *= require image-picker
  */
 
 
@@ -670,9 +671,9 @@ dl 			{display:inline-block;width:100%;margin:0 0 22px;}
 .searchform input[type="submit"] 	{margin:20px 0 0;}
 
 .articles_latest li 		{padding:0 !important;float:left;width:100%;}
-.articles_latest li a 				{color:#777;font-weight:600 !important;display:table;width:100%;height:100%;padding:0 10px 0 0;text-align:left;}
+.articles_latest li a 				{text-decoration: none; color:#777;font-weight:600 !important;display:table;width:100%;height:100%;text-align:left;}
 .articles_latest li a:hover		{background:#FF7B74;color:#fff;}
-.articles_latest li img 	{max-width:90px;float:left;margin:0 15px 0 0;width:auto !important;}
+.articles_latest li img 	{max-width:90px;float:left;width:auto !important;}
 .articles_latest li h6		{padding:0;width:70%;display:table-cell;vertical-align:middle;}
 
 

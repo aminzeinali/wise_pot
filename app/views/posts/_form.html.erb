@@ -1,52 +1,82 @@
-<section class="content center full-width wow fadeInRight animated style="visibility: visible;"">
-<div class="modal container new_forms">
+<section class="content center full-width wow fadeInRight animated" style="visibility: visible;">
+  <%= form_for @post , html: { multipart: true } do |f|  %>
+      <% if @post.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-<%= form_for @post , html: { multipart: true } do |f|  %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+              <% @post.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <% if @planter_id.present? %>
+          <div class="container modal new_forms">
+            <%= f.hidden_field :planter_id , :value=>@planter_id %>
+      <% else %>
+          <div class="container new_forms">
+            <div class="one-half pull-right">
+              <p class="make_right">
+                گیاهی که میخواهید در مورد آن سوال بپرسید را انتخاب کنید:
 
-  <div class="field">
-    <%#= f.label :user_id %><br>
-    <%#= f.hidden_field :user_id%>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :planter_id , :value=>@planter_id %>
-  </div>
-  <div class="field">
-    <p class="make_right">عنوان</p>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <p class="make_right">متن پست</p>
-    <%= f.text_area :content %>
-  </div>
-  
-  <div class="field">
-    <p class="make_right">یک تصویر برای ارسال</p>
-    <form id="form1" runat="server">
-      <div style="display:table; margin:0 auto; width:50%; height:auto;">
-          <img id="blah" src="/assets/default_plant.png" alt="your image" />
-          <%= f.file_field :image , :id=>"imgInp"%>
-          <%= f.submit 'پست', :class=>"b_farsi button sign_in_bt" %>  
+              </p>
+              <!--<%#= f.select(:planter_id , options_from_collection_for_select(Planter.all,"id" ,:image_1),{},{:class=>"image-picker"} )%>-->
+              <%= f.select :planter_id , Planter.all.map { |f| [f.name, f.id, { 'data-img-src' => f.image_1_url(:medium)} ] }, { :prompt => "با دقت انتخاب کنید:"}, { :class=>"image-picker show-html" } %>
+            </div>
+            <div class="one-half pull-left">
+      <% end %>
+
+      <div class="field">
+        <%#= f.label :user_id %><br>
+        <%#= f.hidden_field :user_id%>
       </div>
-    </form>
+
+      <div class="field">
+        <p class="make_right">موضوع سوال</p>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <p class="make_right">متن سوال</p>
+        <%= f.text_area :content %>
+      </div>
+
+      <div class="field">
+        <p class="make_right">یک تصویر برای ارسال
+        </p>
+        <small class="make_right">
+          (اجباری: برای اینکه سوال شما برای دیگران واضح تر مطرح شود عکسی از موضوع خود انتخاب کنید و در اینجا قرار دهید:)
+        </small>
+        <div id="form1" runat="server">
+          <div style="display:table; margin:0 auto; width:50%; height:auto;">
+            <img id="blah" src="/assets/default_plant.png" alt="your image" />
+            <%= f.file_field :image , :id=>"imgInp"%>
+          </div>
+        </div>
+        <br>
+      </div>
+
+      <div class="field make_center">
+        <%= f.submit 'پست', :class=>"b_farsi button sign_in_bt" %>
+      </div>
+
+      <div class="field">
+        <%= link_to 'بازگشت', :back , :class => "pull-left btn-warning btn-sm" %>
+      </div>
+
+  <% end %>
   </div>
-
-<% end %>
-
-</div>
+  </div>
+  </div>
 </section>
 
 <script type="text/javascript">
+    $("select").imagepicker({
+        hide_select : false,
+        show_label  : true
+    })
+
+
     function readURL(input) {
 
         if (input.files && input.files[0]) {

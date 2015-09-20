@@ -4,4 +4,15 @@ class Post < ActiveRecord::Base
 	has_many :comments
 	belongs_to :user
 	has_many :comments , :as => :commentable
+
+
+
+	def to_param
+		title
+	end
+
+	validates :title, presence: true
+	validates :content, presence: true
+	validates :image , presence: true
+
 end
