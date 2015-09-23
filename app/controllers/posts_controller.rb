@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post , :alert => "سوال شما با موفقیت اضافه شد" }
+        format.html { redirect_to @post , :notice => t('alerts.posts.create') }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
