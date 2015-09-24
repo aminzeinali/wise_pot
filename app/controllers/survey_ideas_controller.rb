@@ -69,6 +69,6 @@ class SurveyIdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_idea_params
-      params.require(:survey_idea).permit(:gender, :age, :idea1, :idea2, :idea3, :idea4, :idea5)
+      params.require(:survey_idea).permit(:phonenumber, :email , :gender, :age, :idea1, :idea2, :idea3, :idea4, :idea5)
     end
 end
