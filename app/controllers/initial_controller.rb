@@ -18,6 +18,15 @@ class InitialController < ApplicationController
   end
     
   def home
+    users = User.order("sign_in_count DESC")
+
+    for x in users do
+      if x.profile.present?
+        @guy = x.profile
+        break
+      end
+    end
+
   end
 
   def shop

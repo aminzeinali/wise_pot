@@ -1,10 +1,11 @@
 class PlantersController < ApplicationController
 
 
-  before_action :authenticate_user!
+  before_action :authenticate_user! , :except => :show
   after_action :verify_authorized, :except => [:index , :show, :follow , :unfollow]
 
   before_action :set_planter, only: [:show, :edit, :update, :destroy, :follow , :unfollow, :create]
+
 
   # GET /planters
   # GET /planters.json

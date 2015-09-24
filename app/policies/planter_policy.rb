@@ -3,7 +3,7 @@ class PlanterPolicy
 
 
   def initialize(user,planter)
-    raise Pundit::NotAuthorizedError, "شما باید ابتدا عضوی از گیاهداران باشید" unless user
+    # raise Pundit::NotAuthorizedError, "شما باید ابتدا عضوی از گیاهداران باشید" unless user
     @user = user
     @planter = planter
   end
@@ -18,15 +18,17 @@ class PlanterPolicy
   end
 
   def create?
+
     user.admin?
   end
 
-
   def destroy?
+
     user.admin?
   end
 
   def update?
+
     user.admin?
   end
 

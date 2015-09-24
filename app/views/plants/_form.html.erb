@@ -28,7 +28,7 @@
         <p class="make_right">
             انتخاب کنید که گیاه شما در کدام باغچه کاشته شود:
         </p>
-        <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name"),{ :class => 'selector' }   %>
+        <%= select_tag :garden_id ,options_from_collection_for_select(current_user.profile.gardens,"id" , "name")   %>
         <% end %>
   </div>
 
@@ -37,7 +37,7 @@
   <p class="make_right">
     گیاه خود را انتخاب کنید:
   </p>
-    <%= select_tag :planter_id ,options_from_collection_for_select(Planter.all,"id" , "name") ,{ :class => 'selector' }  %>
+    <%= select_tag :planter_id ,options_from_collection_for_select(Planter.all,"id" , "name")  %>
   </div>
 
   <div class="field">

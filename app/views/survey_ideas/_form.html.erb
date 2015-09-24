@@ -1,0 +1,90 @@
+<section class="content center full-width wow fadeInDown animated" style="visibility: visible">
+  <div class="modal container new_forms">
+<%= form_for(@survey_idea) do |f| %>
+  <% if @survey_idea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@survey_idea.errors.count, "error") %> prohibited this survey_idea from being saved:</h2>
+
+      <ul>
+      <% @survey_idea.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <p class="make_right">جنسیت</p>
+    <%#= f.text_field :gender %>
+    <%= f.select :gender, options_for_select([['آقا', 'male'], ['خانم','female']]) , 
+            { :include_blank => true }, 
+        { :class => 'make_right' }  %>
+  </div>
+  <div class="field">
+    <p class="make_right">سن</p>
+    <%= f.number_field :age %>
+  </div>
+
+  <br>
+
+  <div class="field" style="border:solid 1px #FF7B74; padding:2%;">
+    <p dir="rtl" class="make_center" style="color:#FF7B74;font-weight:bold;">
+      دستگاهی با امکان اندازه گیری رطوبت خاک، نور و دما و نمایش میزان این ویژگی ها بر روی LCD دستگاه به صورت کیفی، به همراه دفترچه راهنما حاوی میزان مناسب هر کدام از ویژگی ها برای گیاهان مختلف.
+    </p>
+
+    <p class="make_center" style="font-weight:bold; color:#890000">امتیاز طرح اول از نگاه شما</p>
+    <%= f.number_field :idea1 %>
+  </div>
+
+  <br>
+
+  <div class="field" style="border:solid 1px #FF7B74; padding:2%;">
+    <p dir="rtl" class="make_center" style="color:#FF7B74;font-weight:bold;">
+    دستگاهی با قابلیت اتصال به تلفن همراه و ارسال وضعیت سلامت گیاه به کاربر به همراه اطلاعات تحلیلی قابل استفاده بر روی کامپیوترهای شخصی و همچنین گوشی های هوشمند موبایل. حداکثر فاصله کاربر برای بهره مندی از سرویس های در لحظه، ۳۰ متر با گیاه است.
+    </p>
+
+    <p class="make_center" style="font-weight:bold; color:#890000">امتیاز طرح دوم از نگاه شما</p>
+    <%= f.number_field :idea2 %>
+  </div>
+
+  <br>
+
+  <div class="field" style="border:solid 1px #FF7B74; padding:2%;">
+    <p dir="rtl" class="make_center" style="color:#FF7B74;font-weight:bold;">
+    دستگاهی با قابلیت اتصال مستقیم به اینترنت و ارسال وضعیت سلامت گیاه به کاربر به همراه اطلاعات تحلیلی قابل استفاده بر روی کامپیوترهای شخصی و همچنین گوشی های هوشمند موبایل. کاربر در صورت اتصال به اینترنت در هر مکان و زمان قادر به استفاده از سرویس ها خواهد بود.
+    </p>
+
+    <p class="make_center" style="font-weight:bold; color:#890000">امتیاز طرح سوم از نگاه شما</p>
+    <%= f.number_field :idea3 %>
+    
+  </div>
+  
+  <br>
+
+  <div class="field" style="border:solid 1px #FF7B74; padding:2%;">
+    <p dir="rtl" class="make_center" style="color:#FF7B74;font-weight:bold;">
+    گلدانی با قابلیت اتصال به تلفن همراه و ارسال وضعیت سلامت گیاه به کاربر بر روی LCD روی گلدان، به همراه اطلاعات تحلیلی قابل استفاده بر روی کامپیوترهای شخصی و همچنین گوشی های هوشمند موبایل. حداکثر فاصله کاربر برای بهره مندی از سرویس های در لحظه، ۳۰ متر با گیاه است.
+    </p>
+
+    <p class="make_center" style="font-weight:bold; color:#890000">امتیاز طرح چهارم از نگاه شما</p>
+    <%= f.number_field :idea4 %>
+  </div>
+
+  <br>
+
+  <div class="field" style="border:solid 1px #FF7B74; padding:2%;">
+    <p dir="rtl" class="make_center" style="color:#FF7B74;font-weight:bold;">
+    یک دستگاه مرکزی شامل یک LCD برای نمایش اطلاعات ارسال شده از دستگاه های نظارت گننده به گیاهان دیگر در باغچه برای ارایه ی وضعیت سلامت گیاهان به همراه سرویس های تحلیلی بر روی برنامه ی کاربردی تلفن هوشمند و سامانه ی اینترنتی.
+    </p>
+
+
+    <p class="make_center" style="font-weight:bold; color:#890000">امتیاز طرح پنجم از نگاه شما</p>
+    <%= f.number_field :idea5 %>
+  </div>
+  <br>
+  <div class="actions make_center">
+    <%= f.submit 'ثبت نظرات' %>
+  </div>
+<% end %>
+</div>
+</section>

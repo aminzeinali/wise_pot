@@ -12,6 +12,17 @@ module ApplicationHelper
     current_user.id == post.user_id
   end
 
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
 	
   def nested_product_category_spacing_adjusted_for_depth(category, relative_depth)
     depth = category.depth - relative_depth

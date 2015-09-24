@@ -14,12 +14,12 @@
       <div class="row">
         <article class="three-fourth text wow zoomIn" data-wow-delay=".2s">
 
-          <h3 style="margin-right:21%;text-align:center; color:#C31108;">گلوگرافی</h3>
-          <p class="bold_main make_right main_text main_text_margin">...این ها احساسات گیاه شماست</p>
-          <p class="make_right main_text main_text_margin">   !من تشنه ام</p>
-          <p class="make_right main_text main_text_margin">  !نور محیط مناسب من نیست</p>
-          <p class="make_right main_text main_text_margin">  !رطوبت خاک ریشه های مرا اذیت می کند</p>
-          <p class="make_right main_text main_text_margin">  !در طول شبانه روز تغییرات دما غیر قابل تحمل است</p>
+          <h3 style="margin-right:21%;text-align:center; color:#C31108;" dir="rtl">گلوگرافی</h3>
+          <p class="bold_main make_right main_text main_text_margin" dir="rtl">این ها احساسات گیاه شماست...</p>
+          <p class="make_right main_text main_text_margin" dir="rtl">   من تشنه ام!</p>
+          <p class="make_right main_text main_text_margin" dir="rtl">  نور محیط مناسب من نیست!</p>
+          <p class="make_right main_text main_text_margin" dir="rtl">  رطوبت خاک ریشه های مرا اذیت می کند!</p>
+          <p class="make_right main_text main_text_margin" dir="rtl">  در طول شبانه روز تغییرات دما غیر قابل تحمل است!</p>
 
           <a href="users/sign_up" class="button white  medium">
             عضوی از گیاه داران شو
@@ -187,8 +187,8 @@
             </div>
             <!--//featured recipe-->
 
+<% if @guy.present? %>
             <!--featured member-->
-            <% guy = User.order("last_sign_in_at DESC").first.profile %>
             <div class="featured one-third wow fadeInLeft" data-wow-delay=".2s">
               <header class="s-title">
                 <h2 class="ribbon star">Featured member</h2>
@@ -198,24 +198,24 @@
               </header>
               <article class="entry">
                 <figure class="make_center">
-                  <% if guy.profile_photo.present?%>
-                      <%= image_tag guy.profile_photo_url %>
+                  <% if  @guy.profile_photo.present?%>
+                      <%= image_tag @guy.profile_photo_url %>
                   <% else %>
                       <%= image_tag "gardener.png" %>
                   <% end %>
                   <figcaption>
-                    <%= link_to profile_path(guy) do %>
+                    <%= link_to profile_path(@guy) do %>
                         <i class="ico i-view">
                         </i>
                     <span>
-                      <%= guy.full_name %>
+                      <%= @guy.full_name %>
                     <% end %>
                     </span>
                   </figcaption>
                 </figure>
                 <div class="container">
                   <h2 class="make_center">
-                    <%= link_to guy.full_name ,  profile_path(guy) %>
+                    <%= link_to @guy.full_name ,  profile_path(@guy) %>
                   </h2>
                   <blockquote class="make_right">
                     ...من از گل هام مثل بچه هام مراقبت میکنم
@@ -224,7 +224,7 @@
                   </blockquote>
                   <div class="actions">
                     <div>
-                      <%= link_to "دیدن پروفایل باغچه دار برتر" , profile_path(guy) , :class => "button" %>
+                      <%= link_to "دیدن پروفایل باغچه دار برتر" , profile_path(@guy) , :class => "button" %>
                       <div class="more"><a href="#">نفرات برتر بعدی</a></div>
                     </div>
                   </div>
@@ -232,6 +232,7 @@
               </article>
             </div>
             <!--//featured member-->
+            <% end %>
           </div>
           <!--//entries-->
         </div>
@@ -249,39 +250,7 @@
           <div class="entries row">
             <!--item-->
             <% Post.all.each do |post| %>
-                <div class="entry one-fourth wow fadeInLeft">
-                  <figure>
-                    <!-- <img src="/assets/img6.jpg" alt="" /> -->
-                    <% if post.image.present? %>
-                        <%= image_tag post.image_url , style: "width: 100%;max-height: 225px; height: 225px;" %>
-                    <% else %>
-                        <img src="/assets/default_plant.png" alt="" />
-                    <% end %>
-                    <figcaption>
-                      <%= link_to post do %>
-                          <i class="ico i-view"></i> <span>
-									<%= post.title %>
-									</span>
-                      <% end %>
-                    </figcaption>
-                  </figure>
-                  <div class="container make_right">
-                    <h2>
-                      <%= link_to post do %>
-                          <%= post.content %>
-                      <% end %>
-                    </h2>
-                    <div class="actions">
-                      <div>
-                        <div class="difficulty"><i class="ico i-medium"></i><a href="#">medium</a></div>
-                        <div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
-                        <div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">
-                          <%= post.comments.count %>
-                        </a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+               <%= render 'posts/post' , :post=> post %>
             <% end %>
             <!--item-->
 

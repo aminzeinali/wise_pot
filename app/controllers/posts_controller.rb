@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
 
-
-  before_action :authenticate_user!, except: :show
-
+  before_action :authenticate_user!, except: [:show,:index]
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
@@ -21,7 +19,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @planter_id = params[:planter_id]
+    @planter_id = params[:planter_id] if params[:planter_id].present?
   end
 
   # GET /posts/1/edit
@@ -36,7 +34,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
-        format.html { redirect_to planter_path(@post.planter.latin_name ) }
+        format.html { redirect_to @post , :notice => t('alerts.posts.create') }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -72,7 +70,7 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find_by_title(params[:id])
         @page_title = "نوشته"
       if @post.present?
         @page_title = @page_title + " " + @post.title

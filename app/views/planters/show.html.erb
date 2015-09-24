@@ -26,17 +26,17 @@
               <div style="background: #ffffff; direction: ltr;">
                 <div class="flexslider">
                   <ul class="slides">
-                    <li data-thumb= <%=@planter.image_1_url(:thumb)%> >
+                    <li data-thumb= <%=@planter.image_1_url(:medium)%> >
                       <%=image_tag @planter.image_1_url%>
                     </li>
-                    <li data-thumb= <%=@planter.image_2_url(:thumb)%>>
+                    <li data-thumb= <%=@planter.image_2_url(:medium)%>>
                       <%=image_tag @planter.image_2_url%>
 
                     </li>
-                    <li data-thumb=<%=@planter.image_3_url(:thumb)%>>
+                    <li data-thumb=<%=@planter.image_3_url(:medium)%>>
                       <%=image_tag @planter.image_3_url%>
                     </li>
-                    <li data-thumb=<%=@planter.image_4_url(:thumb)%>>
+                    <li data-thumb=<%=@planter.image_4_url(:medium)%>>
                       <%=image_tag @planter.image_4_url%>
                     </li>
                   </ul>
@@ -55,16 +55,20 @@
 
               <br>
               <div style="direction: rtl;">
-                <%=link_to "سوال، مطلب یا نکته ای بنویسید .." , new_post_path(:planter_id=>@planter.id), :class=>"btn btn-default btn-block", :remote=>true%>
+                <% if user_signed_in? %>
+                    <%=link_to "سوال، مطلب یا نکته ای بنویسید .." , new_post_path(:planter_id=>@planter.id), :class=>"btn btn-default btn-block", :remote=>true%>
+                <% else %>
+                    <%= link_to "عضوی از گیاهدارن شو.." ,  new_user_registration_path, :class => "btn btn-success btn-block" %>
+                <% end %>
               </div>
 
-              <!--//make post-->
 
+              <!--//make post-->
               <br>
 
-              <% if policy(@planter).edit? %>
+              <% if user_signed_in? and policy(@planter).edit? %>
                   <%= link_to "ویرایش" , edit_planter_path(@planter) , :class => "btn btn-block btn-info" %>
-                    </br>
+                  </br>
               <% end %>
               <dl class="basic make_center">
 
@@ -253,18 +257,20 @@
             <li class="medium">
               <a href="#" title="Twitter"><i class="ico i-twitter"></i> <span>Share on Twitter</span></a>
             </li>
-            <li class="dark">
-              <a href="/planters/<%=@planter.latin_name%>/follow" class="<% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" title="Favourites">
-                <i class="ico i-favourites "></i>
-                <span>اضافه به علاقه ها</span>
-              </a>
+            <% if user_signed_in? %>
+                <li class="dark">
+                  <a href="/planters/<%=@planter.latin_name%>/follow" class="<% if current_user.following?(@planter)%> invis <%else%> visible <%end%>" title="Favourites">
+                    <i class="ico i-favourites "></i>
+                    <span>اضافه به علاقه ها</span>
+                  </a>
 
-              <a href="/planters/<%=@planter.latin_name%>/unfollow" class="<% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" title="Favourites">
-                <i class="ico i-favourites"></i>
-                <span>حذف از علاقه ها</span>
-              </a>
+                  <a href="/planters/<%=@planter.latin_name%>/unfollow" class="<% if current_user.following?(@planter)%> visible <%else%> invis <%end%>" title="Favourites">
+                    <i class="ico i-favourites"></i>
+                    <span>حذف از علاقه ها</span>
+                  </a>
 
-            </li>
+                </li>
+            <% end %>
           </ul>
         </div>
 
@@ -293,21 +299,20 @@
           <!--cwrap-->
           <div class="cwrap">
             <h3 class="make_center" style="direction: rtl;">
-            سوالات و مطالب در مورد <%= @planter.name %>
+              سوالات و مطالب در مورد <%= @planter.name %>
             </h3>
-            <%@planter.posts.each do |pos|%>
+            <%@planter.posts.order("created_at DESC").each do |pos|%>
                 <ul class="articles_latest">
                   <li style="direction: rtl;">
                     <%=link_to  pos do%>
                         <%if pos.image_url.present?%>
-                            <%=image_tag(pos.image_url)%>
+                            <%=image_tag(pos.image_url(:thumb))%>
                         <%else%>
                             <%=image_tag("img11.jpg")%>
                         <%end%>
                         <p class="make_right">
-                          <%= pos.user.profile.first_name %>:
-
-                        </br>
+                          <%= pos.user.profile.first_name if pos.user.present?%>:
+                          </br>
                           <small>
                             <%= pos.title %>
                           </small>
