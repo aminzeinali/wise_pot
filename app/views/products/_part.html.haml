@@ -43,6 +43,6 @@
   %table.attributes
     - for attribute in @attributes
       %tr
-        %th= attribute.key
         %td= link_to attribute.value, product_filter_path(:key => attribute.key, :value => attribute.value)
+        %th= attribute.key
 

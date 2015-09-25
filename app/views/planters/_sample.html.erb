@@ -14,11 +14,11 @@
       <%= p.brief_desc %>
     </a></h2>
     <div class="">
-      <a href="/planters/<%=p.id%>/follow" class="btn btn-info btn-xs<% if current_user.following?(p)%> invis <%else%> visible <%end%>" data-remote="true" id="follow_butt">
+      <a href="/planters/<%=p.latin_name%>/follow" class="btn-info btn-xs<% if current_user.following?(p)%> invis <%else%> visible <%end%>" data-remote="true" id=<%="follow_butt"+p.latin_name%>>
         <i class="">این گیاه را دنبال کن</i>
       </a>
 
-      <a href="/planters/<%=p.id%>/unfollow" class="btn button btn-xs <% if current_user.following?(p)%> visible <%else%> invis <%end%>" data-remote="true"  id="unfollow_butt" class="button">
+      <a href="/planters/<%=p.latin_name%>/unfollow" class="button btn-xs <% if current_user.following?(p)%> visible <%else%> invis <%end%>" data-remote="true"  id=<%="unfollow_butt"+p.latin_name%> class="button">
         <i class="">این گیاه را دنبال نکن</i>
       </a>
     </div>

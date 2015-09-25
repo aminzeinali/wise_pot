@@ -135,79 +135,129 @@
         <!--//pot-->
 
         <!--comments-->
-        <section class="modal wow one-one fadeInLeft animated" style="visibility: visible; display:table; margin:0 auto;">
-          <div class=" container new_forms">
-            <p class="make_bold" style="color:#f4716a;">نظرات کاربران</p>
+        <div class="comments wow fadeIn animated" id="comments" itemprop="interactionCount" content="UserComments:0">
+          <% if @planter.comments.any? %>
+              <% @planter.comments.each do |cmnt| %>
+                  <!---->
+                  <ol class="commetn-list ">
+                    <!--/-->
+                    <!--<li class="comment byuser comment-author-test99899 even thread-even depth-1 clearfix">-->
+                    <!--&lt;!&ndash;&ndash;&gt;-->
+                    <!--<div class="avatar">-->
+                    <!--&lt;!&ndash; user profile picture must set in here &ndash;&gt;-->
+                    <!--<% if cmnt.user.profile.profile_photo.present?%>-->
+                        <!--<%= link_to profile_path(cmnt.user.profile) do %>-->
+                            <!--<%=image_tag cmnt.user.profile.profile_photo_url%>-->
+                            <!--<% end %>-->
+                        <!--<%else %>-->
+                        <!--<%= link_to profile_path(cmnt.user.profile) do %>-->
+                            <!--<%=image_tag "default_plant.png"%>-->
+                            <!--<% end %>-->
+                        <!--<%end%>-->
+                    <!--</div>-->
 
-            <%= form_for(@comment) do |f| %>
-                <% if @comment.errors.any? %>
-                    <div id="error_explanation">
-                      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+                    <!--<div class="comment-box" style="padding:1%">-->
+                    <!--&lt;!&ndash;&ndash;&gt;-->
+                    <!--<div class="comment-author meta make_right">-->
+                    <!--&lt;!&ndash; info about commenter&ndash;&gt;-->
+                    <!--<%= cmnt.user.profile.first_name %>-->
+                    <!--<%= cmnt.user.profile.last_name %>-->
+                    <!--<%if user_signed_in? and has_auth(cmnt)%>-->
+                        <!--<%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>-->
+                        <!--<%end%>-->
+                    <!--<p class="make_right"><%= cmnt.created_at %></p>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;&ndash;&gt;-->
+                    <!--<div class="comment-text">-->
+                    <!--&lt;!&ndash; comment content must set here&ndash;&gt;-->
+                    <!--<p><%= cmnt.content %></p>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;&ndash;&gt;-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;&ndash;&gt;-->
+                    <!--</li>-->
+                    <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 clearfix" id="article-comment-23">
 
-                      <ul>
-                        <% @comment.errors.full_messages.each do |message| %>
-                            <li><%= message %></li>
-                        <% end %>
-                      </ul>
-                    </div>
-                <% end %>
+                      <div class="comment-box">
+                        <div class="comment-author meta make_center">
+                          <a rel="nofollow" class="comment-reply-link pull-right" href="#" onclick="return addComment.moveForm( &quot;comment-23&quot;, &quot;23&quot;, &quot;respond&quot;, &quot;125&quot; )" aria-label="Reply to admin">
+                            جواب بده
+                          </a>
+                          <strong>
+                            <!--<a href="http://www.themeenergy.com/themes/wordpress/social-chef/members/admin/" rel="external nofollow" class="url">-->
+                            <!--admin-->
+                            <!--</a>-->
+                            <%= link_to cmnt.user.profile.full_name , profile_path(cmnt.user.profile) %>
+                          </strong>
 
-                <div class="field">
-                  <%= f.hidden_field :commentable_id , :value => @planter.id %>
-                </div>
-                <div class="field">
-                  <%= f.hidden_field :commentable_type  , :value =>"Planter"%>
-                </div>
-                <div class="field  make_center">
-                  <%= f.text_area :content %>
-                </div>
-                <div class="actions">
-                  <%= f.submit  'ثبت نظر' , :class=>"cm_bt button" %>
-                </div>
-            <% end %>
-          </div>
-        </section>
+                          <!--said on December 5, 2014-->
+                          در تاریخ
+                          <% time = cmnt.created_at.to_parsi %><%= time.strftime "%A %d %B %Y" %>
+                          گفت:
 
-        <div class="comments">
-          <br>
-          <% @planter.comments.each do |cmnt| %>
+                        </div>
+                        <div class="comment-text">
+                          <%= cmnt.content %>
+                        </div>
+                      </div>
+                      <div class="avatar">
+                        <!--<img src="http://www.themeenergy.com/themes/wordpress/social-chef/wp-content/uploads/avatars/1/66244049ec442247c05ab60c29b6ecbe-bpthumb.jpg" class="avatar user-1-avatar avatar-90 photo" width="90" height="90" alt="Profile photo of admin">-->
+                        <% if cmnt.user.profile.profile_photo.present?%>
+                            <%= link_to profile_path(cmnt.user.profile) do %>
+                                <%=image_tag cmnt.user.profile.profile_photo_url, :class => "avatar user-1-avatar avatar-90 photo"%>
+                            <% end %>
+                        <%else %>
+                            <%= link_to profile_path(cmnt.user.profile) do %>
+                                <%=image_tag "default_plant.png"  , :class => "avatar user-1-avatar avatar-90 photo"%>
+                            <% end %>
+                        <%end%>
+                        <div class="comment-meta commentmetadata"></div>
+                      </div>
+                    </li>
+                    <!---->
+                  </ol>
+              <% end %>
 
-              <ol class="commetn-list three-fourth">
+          <% else %>
 
-                <li class="comment byuser comment-author-test99899 even thread-even depth-1 clearfix">
-
-                  <div class="avatar">
-                    <!-- user profile picture must set in here -->
-                    <% if cmnt.user.profile.profile_photo.present?%>
-                        <%=image_tag cmnt.user.profile.profile_photo_url%>
-                    <%else %>
-                        <%=image_tag "default_plant.png"%>
-                    <%end%>
-                  </div>
-                  <div class="comment-box" style="padding:1%">
-
-                    <div class="comment-author meta make_right">
-                      <!-- info about commenter-->
-                      <%= cmnt.user.profile.first_name %>
-                      <%= cmnt.user.profile.last_name %>
-                      <%if has_auth(cmnt)%>
-                          <%= link_to 'حذف نظر', cmnt, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"b_farsi btn btn-danger btn-xs" %>
-                      <%end%>
-                      <p class="make_right"><%= cmnt.created_at %></p>
-                    </div>
-
-                    <div class="comment-text">
-                      <!-- comment content must set here-->
-                      <p><%= cmnt.content %></p>
-                    </div>
-
-                  </div>
-
-                </li>
-
-              </ol>
+              <p class="zerocomments make_right">
+                در این باغچه نظری داده نشده است، شما اولین نفر باشید!
+              </p>
+              <!-- If comments are open, but there are no comments. -->
           <% end %>
+
+          <div id="respond" class="comment-respond">
+            <h3 id="reply-title" class="comment-reply-title make_right">
+              نظر بدهید
+            </h3>
+            <div class="container" style="direction: rtl;">
+              <p style="direction: rtl; float: right" class="make_right">
+                <strong class="make_right">توجه:</strong>
+                نظرات کاربران نشان دهنده دیدگاه شخصی نویسنده آنها است، و نه لزوما دیدگاه رصدپات، به منظور خود داری از اهانت ، بی تربیتی و بیان مبتذل نظرات بدون اطلاع قبلی حذف می شوند.
+              </p>
+
+              <%= render 'comments/form' , {:object => @comment , :commentable => @planter} %>
+
+
+              <% if not user_signed_in? %>
+                  <p class="make_right">
+                    شما عضوی از گیاه داران نیستید، برای اینکه نظر بدهید، اینجا عضو شوید:
+                  </p>
+                  <p>
+                    <%= render "devise/registrations/form" , :resource => User.new %>
+              <% end %>
+            </div>
+
+            <input type="hidden" id="ak_js" name="ak_js" value="1441730086571">
+            </form>
+          </div><!-- #respond -->
+
+          <!--//post comment form-->
+
+
         </div>
+
+
         <!--//comments-->
 
       </section>
