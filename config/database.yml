@@ -28,7 +28,7 @@ production:
  encoding: utf8
  database: rasadpot_db
  username: root
- password: password
+ password: rasadpotdb
  host: 127.0.0.1
 
 
