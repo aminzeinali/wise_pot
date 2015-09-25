@@ -1,0 +1,29 @@
+<% active_nav_item :catalogue %>
+<% @page_title = "#{params[:value]} - محصولات" %>
+
+<section class="content three-fourth">
+  <div class="rtl_dir row product type-product status-publish has-post-thumbnail product_cat-clothing product_cat-t-shirts taxable shipping-taxable purchasable product-type-simple product-cat-clothing product-cat-t-shirts instock">
+
+    <p class="make_right">
+      نمایش محصولاتی که  <b><%=params[:key]%>&nbsp; <%=params[:value]%></b> </b> می باشد<b>
+            </b>
+
+    </p>
+
+    <% if @products.empty? %>
+        <p>
+          هیچ محصولی در این جستجو نیست
+        </p>
+    <% else %>
+
+        <div class="entries row make_right">
+          <% @products.each do |prod| %>
+              <%= render 'products/product' , :prod => prod , :rel => 3 %>
+          <% end %>
+        </div>
+
+    <% end %>
+
+    <%= render 'shared/random_recommend' %>
+  </div>
+</section>

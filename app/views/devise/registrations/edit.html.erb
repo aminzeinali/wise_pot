@@ -1,40 +1,45 @@
 <section class="content center full-width wow fadeInDown animated style="visibility: visible;"">
 <div class="modal container new_forms">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div class="field">
-    <p class="make_right"><%= f.label :ایمیل%></p>
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+      <div class="field">
+        <p class="make_right"><%= f.label :ایمیل%></p>
+        <%= f.email_field :email, autofocus: true %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+
+      <br>
+      <div class="field">
+        <p class="make_right">رمز عبور فعلی</p>
+        <p class="make_right">(برای تغییر رمز عبور به رمز عبور فعلی شما نیاز داریم)</p>
+        <%= f.password_field :current_password, autocomplete: "off" %>
+      </div>
+
+
+      <div class="field">
+        <p class="make_right">رمز عبور جدید</p>
+        <p class="make_right">(اگر تمایلی به تغییر رمز عبور ندارید این قسمت را خالی بگذارید.)</p>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <p class="make_right">تایید رمز عبور جدید</p>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+
+      <br>
+      <div class="content_center">
+        <%= f.submit "تغییر رمز عبور" %>
+      </div>
   <% end %>
 
-  <div class="field">
-    <p class="make_right">رمز عبور جدید</p>
-    <p class="make_right">(اگر تمایلی به تغییر رمز عبور ندارید این قسمت را خالی بگذارید.)</p>
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <p class="make_right">تایید رمز عبور جدید</p>
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <p class="make_right">رمز عبور فعلی</p>
-    <p class="make_right">(برای تغییر رمز عبور به رمز عبور فعلی شما نیاز داریم)</p>
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-  <br>
-  <div class="content_center">
-    <%= f.submit "تغییر رمز عبور" %>
-  </div>
-<% end %>
-
-<!-- <h3>Cancel my account</h3>
+  <!-- <h3>Cancel my account</h3>
 
 <p>Unhappy? <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 

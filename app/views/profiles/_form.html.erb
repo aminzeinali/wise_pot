@@ -1,50 +1,61 @@
 <section class="content center full-width wow fadeInDown animated" style="visibility: visible;">
-<div class="modal container new_forms">
-<%= form_for @profile , html: { multipart: true }  do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+  <div class="modal container new_forms">
+    <%= form_for @profile , html: { multipart: true }  do |f| %>
+        <% if @profile.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-      <ul>
-      <% @profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <p class="make_right">نام</p>
-    <%= f.text_field :first_name, :class => "form-control"  %>
-  </div>
-    <div class="field">
-    <p class="make_right">نام خانوادگی</p>
-    <%= f.text_field :last_name, :class => "form-control"  %>
-  </div>
-  </br>
-  <div class="field make_center col-md-8">
-    <p class="">جنسیت</p>
-    <%= f.select :gender, options_for_select([['آقا', 0], ['خانم',1]]) , 
-        { :include_blank => true }, 
-    { :class => '' }  %>
-  </div>
-  
-  </br>
-  <div class="field make_center col-md-8">
-      <%= f.label "عکس کاربری انتخاب کنید" %>
-      <%= image_tag "gardener.png" , :id => "blah1" %>
-      <%= f.file_field :profile_photo , :id=>"imgInp1" , :class => "make_center" %>  
-  </div>
-          <%#= f.file_field :cover_photo , :id=>"imgInp2"%>  
+              <ul>
+                <% @profile.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
 
 
-  </br>
-  <div class="actions">
-    <%= f.submit 'ساخت پروفایل',:class=>"b_farsi button make_dir_right"%>
-  </div>
+        <div class="field col-md-12 text-primary pull-left">
+          <%= link_to "میخواهم رمز عبورم را تغییر دهم.." , edit_user_registration_path , :class=>"btn btn-primary b-farsi pull-left" %>
+        </div>
 
-<% end %>
-</div>
+        <br><br>
+
+        <div class="field">
+          <p class="make_right">نام</p>
+          <%= f.text_field :first_name, :class => "form-control"  %>
+        </div>
+        <div class="field">
+          <p class="make_right">نام خانوادگی</p>
+          <%= f.text_field :last_name, :class => "form-control"  %>
+        </div>
+        </br>
+        <div class="field make_center col-md-8">
+          <p class="">جنسیت</p>
+          <%= f.select :gender, options_for_select([['آقا', 0], ['خانم',1]]) ,
+                       { :include_blank => true },
+                       { :class => '' }  %>
+        </div>
+
+        </br>
+
+        <div class="field make_center col-md-12">
+          <%= f.label "عکس کاربری انتخاب کنید" %>
+          <%= image_tag "gardener.png" , :id => "blah1" , :style => "margin: 0 auto;" %>
+          <%= f.file_field :profile_photo , :id=>"imgInp1" , :class => "make_center" %>
+        </div>
+        <%#= f.file_field :cover_photo , :id=>"imgInp2"%>
+        <br>
+        </br>
+
+
+
+        </br>
+        <div class="actions make_center">
+          <%= f.submit 'ساخت پروفایل',:class=>"b_farsi button "%>
+        </div>
+
+    <% end %>
+  </div>
 </section>
 
 <script type="text/javascript">

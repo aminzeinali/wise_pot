@@ -1,0 +1,22 @@
+<div class="woocommerce-tabs">
+  <ul class="tabs">
+
+    <li class="description_tab active righted">
+      <a href="#tab-description">
+        شاید از این ها هم خوشت بیاید:
+      </a>
+    </li>
+  </ul>
+
+  <% cat = Shoppe::ProductCategorization.order("RANDOM()").first.product_category %>
+
+  <div class="panel">
+    <ul class="products" style="direction: rtl;">
+      <% cat.products.first(3).each do |prod| %>
+          <% if prod != @product %>
+              <%= render 'products/product' , :prod => prod , :rel => 3%>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

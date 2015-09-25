@@ -275,7 +275,7 @@
           </header>
           <!--entries-->
           <div class="entries row">
-            <% Shoppe::Product.all.first(8).each do |prod| %>
+            <% Shoppe::Product.all.active.featured.first(8).each do |prod| %>
                 <%= render 'products/product' , :prod => prod , :rel => 4 %>
             <% end %>
 
