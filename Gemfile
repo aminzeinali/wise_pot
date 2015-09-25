@@ -11,7 +11,9 @@ gem 'mini_magick'
 #gem 'groupdate'
 gem 'simple_captcha2', require: 'simple_captcha'
 
-gem 'mysql2'
+# gem 'mysql2'
+
+gem 'mysql2', '~> 0.3.18'
 
 gem 'acts_as_votable', '~> 0.10.0'
 
