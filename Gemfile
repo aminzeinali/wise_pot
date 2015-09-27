@@ -21,9 +21,13 @@ gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'kaminari'
 
+
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+
 #my additional gem
 # gem 'bootstrap-sass', '~> 3.3.4'
 #end my additional gem
+
 gem "acts_as_follower", :git => 'git://github.com/tcocca/acts_as_follower.git', :branch => 'rails_3'
 
 # Use Uglifier as compressor for JavaScript assets

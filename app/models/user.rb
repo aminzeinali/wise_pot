@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   acts_as_followable
   apply_simple_captcha
 
+
   def admin?
     self.role == 1
   end

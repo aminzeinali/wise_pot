@@ -39,8 +39,8 @@
     <div class="f-row make_right">
       <span class="posted_in">
         <% cat = Shoppe::ProductCategorization.where(:product_id => @product.id).first.product_category %>
+        دسته بندی:
         <%=link_to cat.name , products_path(cat.permalink) %>
-        :دسته بندی
 
       </span>
     </div>
@@ -82,7 +82,6 @@
           <div id="comments">
 
             <% if @planter.present? %>
-
 
                 <p class="make_right">
                   اگر می خواهی بیشتر بدانی سری به باغ
@@ -156,7 +155,12 @@
     <div class="woocommerce-tabs">
 
 
+
+
+
+
       <ul class="tabs">
+
 
         <li class="description_tab active righted">
           <a href="#tab-description">
@@ -171,49 +175,6 @@
         <% cat.products.first(3).each do |prod| %>
             <% if prod != @product %>
                 <%= render 'products/product' , :prod => prod , :rel => 3%>
-                <!--<div class="entry one-third pull-right">-->
-                  <!--<figure>-->
-                    <!--<% if prod.default_image.present? %>-->
-                        <!--<%= image_tag prod.default_image.path , style: "width: 100%;max-height: 225px; height: 225px;" %>-->
-                    <!--<% else %>-->
-                        <!--<img src="/assets/img12.jpg" alt="" />-->
-                    <!--<% end %>-->
-                    <!--<figcaption>-->
-                      <!--<%= link_to product_path(prod.product_category.permalink, prod.permalink) do %>-->
-                          <!--<i class="ico i-view">-->
-                          <!--</i>-->
-                            <!--<span>-->
-                            <!--<%= prod.name %>-->
-                            <!--</span>-->
-                      <!--<% end %>-->
-                    <!--</figcaption>-->
-                  <!--</figure>-->
-                  <!--<div class="container make_center">-->
-                    <!--<h2>-->
-                      <!--<%= link_to prod.name , product_path(prod.product_category.permalink, prod.permalink)%>-->
-                    <!--</h2>-->
-                    <!--<div class="actions">-->
-                      <!--<div>-->
-                        <!--<div class="date">-->
-                          <!--<i class="ico i-date">-->
-                          <!--</i>-->
-                          <!--<b>-->
-                            <!--<% cat = Shoppe::ProductCategorization.where(:product_id => prod.id).first.product_category %>-->
-                            <!--<%= link_to cat.name , products_path(cat.permalink) %>-->
-                          <!--</b>-->
-                        <!--</div>-->
-                          <!--<span>-->
-                            <!--<%=number_to_currency prod.price%>-->
-                          <!--</span>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="make_center">-->
-                      <!--<p>-->
-                        <!--<%= prod.description %>-->
-                      <!--</p>-->
-                    <!--</div>-->
-                  <!--</div>-->
-                <!--</div>-->
             <% end %>
         <% end %>
       </ul>

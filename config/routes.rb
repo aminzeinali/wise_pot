@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     root :to =>"initial#home"
   end
-  
-  mount Shoppe::Engine => "/store"
+
 
   require 'api_constraints'
   namespace :api, defaults: {format: 'json'} do
@@ -175,6 +174,10 @@ Rails.application.routes.draw do
   #compare
   #
 
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount Shoppe::Engine => "/store"
+  
   match "/compare/new" => "compare#add_object", :as => 'add_object' , :via => :get
   match "compare/show" => "compare#show" , :as => 'show_list' , :via  => :get
 

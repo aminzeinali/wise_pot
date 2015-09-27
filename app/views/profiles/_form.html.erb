@@ -13,7 +13,6 @@
             </div>
         <% end %>
 
-
         <div class="field col-md-12 text-primary pull-left">
           <%= link_to "میخواهم رمز عبورم را تغییر دهم.." , edit_user_registration_path , :class=>"btn btn-primary b-farsi pull-left" %>
         </div>
@@ -28,7 +27,16 @@
           <p class="make_right">نام خانوادگی</p>
           <%= f.text_field :last_name, :class => "form-control"  %>
         </div>
+
+        <div class="field">
+          <p class="make_right">
+            شماره موبایل
+          </p>
+          <%= f.text_field :mobile_number, :class => "form-control", :placeholder =>"09*********"  %>
+        </div>
+
         </br>
+
         <div class="field make_center col-md-8">
           <p class="">جنسیت</p>
           <%= f.select :gender, options_for_select([['آقا', 0], ['خانم',1]]) ,
@@ -46,7 +54,6 @@
         <%#= f.file_field :cover_photo , :id=>"imgInp2"%>
         <br>
         </br>
-
 
 
         </br>

@@ -131,6 +131,6 @@ class ProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:profile).permit(:user_id, :profile_photo, :cover_photo ,
-       :first_name , :last_name , :gender , :remove_cover_photo , :remove_profile_photo,:full_name )
+       :first_name , :last_name , :gender , :remove_cover_photo , :remove_profile_photo,:full_name, :mobile_number)
     end
 end

@@ -14,12 +14,12 @@
       <div class="row">
         <article class="three-fourth text wow zoomIn" data-wow-delay=".2s">
 
-          <h3 style="margin-right:21%;text-align:center; color:#C31108;" dir="rtl">گلوگرافی</h3>
+          <!--<h3 style="margin-right:21%;text-align:center; color:#C31108;" dir="rtl">گلوگرافی</h3>-->
           <p class="bold_main make_right main_text main_text_margin" dir="rtl">این ها احساسات گیاه شماست...</p>
           <p class="make_right main_text main_text_margin" dir="rtl">   من تشنه ام!</p>
           <p class="make_right main_text main_text_margin" dir="rtl">  نور محیط مناسب من نیست!</p>
           <p class="make_right main_text main_text_margin" dir="rtl">  رطوبت خاک ریشه های مرا اذیت می کند!</p>
-          <p class="make_right main_text main_text_margin" dir="rtl">  در طول شبانه روز تغییرات دما غیر قابل تحمل است!</p>
+          <p class="make_right main_text main_text_margin" dir="rtl"> من نیاز به نگهداری و مراقبت بیشتری دارم! </p>
 
           <a href="users/sign_up" class="button white  medium">
             عضوی از گیاه داران شو
@@ -28,11 +28,10 @@
         <!--search recipes widget-->
         <% if not user_signed_in? %>
             <div class="one-fourth wow fadeInDown" data-wow-delay=".5s">
-              <div class="widget container">
-                <div class="textwrap">
+              <div class="widget container" style="padding-bottom: 4%">
+                <div class="textwrap make_center">
                   <h3 class="make_center">گلوگرافی</h3>
-                  <img src="assets/img11.jpg">
-                  </br>
+                  <%= image_tag "glography.jpg"%>
                 </div>
                 <%= form_for("user", :url => user_session_path) do |f| %>
                     <%= f.text_field :email , :placeholder => "ایمیل"  , class: "make_center" %>
@@ -40,18 +39,16 @@
                     <%= f.password_field :password , :placeholder => "رمز عبور", class: "make_center" %>
                     </br>
                     </br>
-                    <%#= f.label :remember_me %>
-                    <%#= f.check_box :remember_me %>
                     <%= f.submit 'ورود به حساب کاربری', :class=>"b_farsi button sign_in_bt" %>
-                    <div class="forget_text make_center">
-                      </br>
-                      </br>
-
-                      <%= link_to "!رمز عبورم را فراموش کرده ام",forgot_password_initial_index_path %>
-                    </div>
                 <% end %>
+                <br>
+                <br>
+                <br>
+                <%= link_to "رمز عبورم را فراموش کرده ام!",forgot_password_initial_index_path , :class => "btn btn-default btn-sm pull-right"%>
+                <%= link_to "عضویت" , new_user_registration_path , :class => "btn btn-info btn-sm pull-left" %>
+                </div>
                 </br>
-
+                <br>
               </div>
             </div>
         <% end %>
@@ -160,78 +157,98 @@
         <div class="cwrap">
           <!--entries-->
           <div class="entries row">
-            <!--featured recipe-->
-            <div class="featured two-third wow fadeInLeft">
+            <!--featured garden-->
+            <% if @guy.present? %>
+
+          <div class="featured two-third wow fadeInLeft">
               <header class="s-title">
-                <h2 class="make_center garden_title">باغچه برتر هفته</h2>
+                <h2 class="make_center garden_title">
+                  تکنولوژی گلوگرافی
+                </h2>
               </header>
               <article class="entry">
                 <figure>
-                  <img src="/assets/img2.jpg" alt="" />
-                  <figcaption><a href="recipe.html"><i class="ico i-view"></i> <span>View recipe</span></a></figcaption>
+                  <%= image_tag "idea2.PNG" , :width => "100%" %>
+                  <figcaption>
+                    <%= link_to profile_path(@guy) do %>
+                      <i class="ico i-view"></i> <span>
+                    مشاهده اطلاعات
+                  </span></figcaption>
+                        <% end %>
                 </figure>
                 <div class="container">
-                  <h2 class="make_right"><a href="recipe.html">بونسای</a></h2>
+                  <h2 class="make_right">
+                    به زودی
+                  </h2>
                   <p class="make_right">
-                    .در این باغچه سه بونسای پرورش داده می شود که شامل: ۱- بونسای ختمی ۲- بونسای پیچ گلیسین ۳- افرا پالماتوم دیسکویو (بونسای) است
-                    <a href="#">ضریب  سلامت</a> هرکدام از این بونسای ها به ترتیب ۸۰٪ - ۸۵٪ و ۹۵٪ است
+                    با استفاده از تکنولوژی گلوگرافی می توانید
+                    خیلی ساده تر از وضعیت محیطی گیاهان خود با خبر شوید
+                    و اگر میزان آب آنها مناسب نیست،
+                    کود آنها کم است یا نیاز به نور بیشتر دارند،
+                    شرایط لازم رو برای گیاهتون فراهم کنید.
+                    اگر موفق بشید در
+                    <a href="#">ضریب  سلامت</a>
+                    تعیین شده برای گیاهان خود نفر اول باشید،
+                    برنده جایزه هفتگی گیاه داران خواهید بود..
                   </p>
                   <div class="actions">
                     <div>
-                      <a href="#" class="button">نمایش باغچه برتر</a>
-                      <div class="more"><a href="recipes2.html">باغچه های برتر بعدی</a></div>
+                      <%= link_to new_user_registration_path , :class => "btn btn-success " do%>
+                      افرادی که قبل از تجاری شدن محصول عضو رصدپات باشند
+                      در خرید محصول ۱۰٪ تخفیف خواهند گرفت..
+                    <% end %>
+                      <!--<div class="more"><a href="#">باغچه های برتر </a></div>-->
                     </div>
                   </div>
                 </div>
               </article>
             </div>
-            <!--//featured recipe-->
+            <!--//featured garden-->
 
-<% if @guy.present? %>
-            <!--featured member-->
-            <div class="featured one-third wow fadeInLeft" data-wow-delay=".2s">
-              <header class="s-title">
-                <h2 class="ribbon star">Featured member</h2>
-              </header>
-              <header class="s-title">
-                <h2 class="make_center garden_title">باغچه دار برتر</h2>
-              </header>
-              <article class="entry">
-                <figure class="make_center">
-                  <% if  @guy.profile_photo.present?%>
-                      <%= image_tag @guy.profile_photo_url %>
-                  <% else %>
-                      <%= image_tag "gardener.png" %>
-                  <% end %>
-                  <figcaption>
-                    <%= link_to profile_path(@guy) do %>
-                        <i class="ico i-view">
-                        </i>
+                <!--featured member-->
+                <div class="featured one-third wow fadeInLeft" data-wow-delay=".2s">
+                  <header class="s-title">
+                    <h2 class="ribbon star">Featured member</h2>
+                  </header>
+                  <header class="s-title">
+                    <h2 class="make_center garden_title">باغچه دار برتر</h2>
+                  </header>
+                  <article class="entry">
+                    <figure class="make_center">
+                      <% if  @guy.profile_photo.present?%>
+                          <%= image_tag @guy.profile_photo_url %>
+                      <% else %>
+                          <%= image_tag "gardener.png" %>
+                      <% end %>
+                      <figcaption>
+                        <%= link_to profile_path(@guy) do %>
+                            <i class="ico i-view">
+                            </i>
                     <span>
                       <%= @guy.full_name %>
-                    <% end %>
-                    </span>
-                  </figcaption>
-                </figure>
-                <div class="container">
-                  <h2 class="make_center">
-                    <%= link_to @guy.full_name ,  profile_path(@guy) %>
-                  </h2>
-                  <blockquote class="make_right">
-                    ...من از گل هام مثل بچه هام مراقبت میکنم
-                    </br>
-                    مرسی از گلوگرافی
-                  </blockquote>
-                  <div class="actions">
-                    <div>
-                      <%= link_to "دیدن پروفایل باغچه دار برتر" , profile_path(@guy) , :class => "button" %>
-                      <div class="more"><a href="#">نفرات برتر بعدی</a></div>
+                        <% end %>
+                        </span>
+                      </figcaption>
+                    </figure>
+                    <div class="container">
+                      <h2 class="make_center">
+                        <%= link_to @guy.full_name ,  profile_path(@guy) %>
+                      </h2>
+                      <blockquote class="make_right">
+                        ...من از گل هام مثل بچه هام مراقبت میکنم
+                        </br>
+                        مرسی از گلوگرافی
+                      </blockquote>
+                      <div class="actions">
+                        <div>
+                          <%= link_to "دیدن پروفایل باغچه دار برتر" , profile_path(@guy) , :class => "button" %>
+                          <div class="more"><a href="#">نفرات برتر بعدی</a></div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </article>
                 </div>
-              </article>
-            </div>
-            <!--//featured member-->
+                <!--//featured member-->
             <% end %>
           </div>
           <!--//entries-->
@@ -250,7 +267,7 @@
           <div class="entries row">
             <!--item-->
             <% Post.all.each do |post| %>
-               <%= render 'posts/post' , :post=> post %>
+                <%= render 'posts/post' , :post=> post %>
             <% end %>
             <!--item-->
 
