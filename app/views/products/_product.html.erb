@@ -11,7 +11,7 @@
           <i class="ico i-view">'
           </i>
             <span>
-            <%= prod.name %>
+            <%= truncate(prod.short_description, :length => 70)  %>
             </span>
       <% end %>
     </figcaption>
@@ -20,7 +20,7 @@
     <div style="height: 40px;">
       <b>
         <%= link_to product_path(prod.product_category.permalink, prod.permalink) do %>
-            <%= truncate(prod.short_description, :length => 50)  %>
+            <%= prod.name %>
         <% end %>
       </b>
     </div>
