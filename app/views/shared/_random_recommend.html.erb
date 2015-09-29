@@ -8,7 +8,7 @@
     </li>
   </ul>
 
-  <% cat = Shoppe::ProductCategorization.order("RANDOM()").first.product_category %>
+  <% cat = Shoppe::ProductCategorization.order("RAND()").first.product_category %>
 
   <div class="panel">
     <ul class="products" style="direction: rtl;">
@@ -18,5 +18,5 @@
           <% end %>
       <% end %>
     </ul>
-  </div>
+  </div>    
 </div>
