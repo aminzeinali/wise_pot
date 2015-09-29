@@ -7,7 +7,7 @@
   </header>
   <!--entries-->
   <div class="row">
-    <% Shoppe::Product.all.order('created_at DESC').first(9).each do |prod| %>
+    <% Shoppe::Product.all.active.order('created_at DESC').first(9).each do |prod| %>
         <div class="kooft ">
        <%= render 'products/product' , :prod=> prod , :rel => 3 %>
         </div>

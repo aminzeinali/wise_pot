@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
   
   def index
-    @products = @product_category.products.includes(:default_image, :product_categories, :variants).root.active.page(params[:page]).per(15)
+    @products = @product_category.products.includes(:default_image, :product_categories, :variants).root.active.page(params[:page]).per(30)
     @counts = @product_category.products.includes(:default_image, :product_categories, :variants).active.count
   end
 

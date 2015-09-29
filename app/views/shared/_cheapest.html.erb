@@ -7,7 +7,7 @@
   </header>
   <!--entries-->
   <div class="entries row">
-    <% Shoppe::Product.all.order('price').first(6).each do |prod| %>
+    <% Shoppe::Product.all.active.order('price').first(6).each do |prod| %>
         <%= render 'products/product' , :prod => prod , :rel => 3 %>
     <% end %>
   </div>
