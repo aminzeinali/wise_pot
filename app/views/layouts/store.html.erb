@@ -65,12 +65,11 @@
 
           <li class="widget widget-sidebar">
             <h5 style="text-align:center">
-                پیشنهاد برای شما
+              به اینها هم یه سر بزن
             </h5>
             <ul class="product_list_widget">
               <% Shoppe::ProductCategory.all.each do |x| %>
-                  <%# x = Shoppe::Product.active.featured.includes(:default_image, :product_categories, :variants).root %>
-                  <%= render 'shared/product_list', :products => x.products.order('price DESC').active.first(2) %>
+                  <%= render 'shared/product_list', :products => x.products.order("RAND()").active.first(2) %>
               <% end %>
             </ul>
           </li>
