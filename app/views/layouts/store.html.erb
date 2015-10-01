@@ -81,7 +81,7 @@ height: 42px;border-radius: 0px;"%>
             </h5>
             <ul class="product_list_widget">
               <% Shoppe::ProductCategory.all.each do |x| %>
-                  <%= render 'shared/product_list', :products => x.products.order("RANDOM()").active.first(2) %>
+                  <%= render 'shared/product_list', :products => x.products.order("RAND()").active.first(2) %>
               <% end %>
             </ul>
           </li>
