@@ -7,20 +7,18 @@
 
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'flower.png' %>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <meta name="keywords" content="WisePot- Social wise pot" />
   <meta name="description" content="SocialPot - Social Pot">
   <meta name="author" content="rasadpot.ir">
 
-  <!--<title>-->
-  <!--فروشگاه گل و گیاه-->
-  <!--</title>-->
-
   <title>
     <%= @page_title %> - <%=Shoppe.settings.store_name %>
   </title>
   <%= render 'shared/header' %>
+
 
 </head>
 
@@ -36,12 +34,26 @@
   <!--wrap-->
   <div class="wrap clearfix">
 
+
+    <div class="content full-width ">
+      <div class="one-half pull-right make_right">
+      </div>
+    </div>
+
     <!--breadcrumbs-->
     <nav class="breadcrumbs">
       <ul>
+        <li class="pull-right animated fadeInRight" style="width: 50%;margin-right: 22%;">
 
+          <%=form_tag({controller: "/search" , action: "shop_search" },method: "get" ) do%>
+              <%=text_field_tag :query,nil,placeholder: "جستجوی گیاهان، گلدان ها" ,  autocomplete: :off , :class => "pull-right make_center",:style=>"width: 80% !important;width: 80% !important;
+height: 42px;border-radius: 0px;"%>
+              <%= button_tag"جستجو" , :class=>"btn btn-primary pull-left search_commit" %>
+          <% end %>
+        </li>
         <li><a href="#" title="Home">خانه</a></li>
         <li>فروشگاه</li>
+
       </ul>
     </nav>
 
@@ -69,7 +81,7 @@
             </h5>
             <ul class="product_list_widget">
               <% Shoppe::ProductCategory.all.each do |x| %>
-                  <%= render 'shared/product_list', :products => x.products.order("RAND()").active.first(2) %>
+                  <%= render 'shared/product_list', :products => x.products.order("RANDOM()").active.first(2) %>
               <% end %>
             </ul>
           </li>

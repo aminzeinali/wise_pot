@@ -31,14 +31,6 @@
 </div>
 
 
-<div class="wrap" style="direction:  rtl; margin-bottom: 10px">
-  <div class="pagination">
-    <%= paginate @products %>
-  </div>
-</div>
-
-
-
 <div class="full-width" style="margin-top: 15px; margin-bottom: 15px;">
 
   <% for product in products.includes(:default_image, :product_categories) %>
@@ -50,8 +42,10 @@
 
 
 
+
 <div class="wrap" style="direction:  rtl; margin-bottom: 10px">
   <div class="pagination">
     <%= paginate @products %>
   </div>
 </div>
+

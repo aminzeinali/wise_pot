@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :search do
+    collection do
+      get :shop_search
+    end
+  end
+
+
+
   resources :survey_ideas
 
   resources :bluetooth_devices
@@ -17,7 +25,7 @@ Rails.application.routes.draw do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :planters
       resources :gardens
-      resources :profiles  
+      resources :profiles
       resources :users, :only => [:show, :create, :update, :destroy]
       resources :sessions, :only => [:create , :destroy]
     end
@@ -44,7 +52,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :plants do 
+  resources :plants do
     member do
       get :vote_up
       get :del_vote_up
@@ -53,7 +61,7 @@ Rails.application.routes.draw do
 
   resources :gardens
 
-  resources :profiles do 
+  resources :profiles do
     member do
       get :my_devices
       get :my_gardens
@@ -62,7 +70,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :initial do 
+  resources :initial do
     collection do
       get :do_search
       get :forgot_password
@@ -73,7 +81,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/search' , to: 'initial#search'
+  # get '/search' , to: 'initial#search'
 
   # get '/dosearch' , to: 'initial#do_search'
 
@@ -133,7 +141,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-   #
+  #
   # Product browising
   #
   get 'products' => 'products#categories', :as => 'catalogue'
@@ -156,7 +164,7 @@ Rails.application.routes.draw do
   post 'basket/:order_item_id' => 'orders#change_item_quantity', :as => 'adjust_basket_item_quantity'
   delete 'basket/:order_item_id' => 'orders#change_item_quantity'
   delete 'basket/delete/:order_item_id' => 'orders#remove_item', :as => 'remove_basket_item'
-  
+
   #
   # Checkout
   #
@@ -164,7 +172,7 @@ Rails.application.routes.draw do
   match 'checkout/delivery' => 'orders#change_delivery_service', :as => 'change_delivery_service', :via => [:post]
   match 'checkout/pay' => 'orders#payment', :as => 'checkout_payment', :via => [:get, :patch]
   match 'checkout/confirm' => 'orders#confirmation', :as => 'checkout_confirmation', :via => [:get, :patch]
-  
+
   #
   # Static pages
   #
@@ -177,7 +185,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Shoppe::Engine => "/store"
-  
+
   match "/compare/new" => "compare#add_object", :as => 'add_object' , :via => :get
   match "compare/show" => "compare#show" , :as => 'show_list' , :via  => :get
 

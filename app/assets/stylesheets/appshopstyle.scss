@@ -37,12 +37,24 @@ body{
 	font-family: Byekan !important;
 }
 
+.search_width{
+  width: 80% !important;
+}
+
+.search_commit{
+  width: 20% !important;
+}
 
 .white_container{
   background: white;
   border-radius: 4px;
   padding: 8px;
 }
+
+.color2 {
+  color: #e65a4b;
+}
+
 
 .panel-group .panel {
   border: none;
@@ -317,7 +329,7 @@ tr:nth-child(2n+1) td{background:#f6f6f6;}
 .slicknav_menu {display:none;}
 
 /*CONTENT*/
-.breadcrumbs			{float:left;width:100%;max-width:100%;margin:0 0 70px;}
+.breadcrumbs			{float:left;width:100%;max-width:100%;margin:0 0 20px;}
 .breadcrumbs ul 			{float:left;width:100%;padding:0 0 6px;border-bottom:1px solid rgba(0,0,0,.15);-webkit-box-shadow:0 1px 0 rgba(255,255,255,1);-moz-box-shadow:0 1px 0 rgba(255,255,255,1);box-shadow:0 1px 0 rgba(255,255,255,1);}
 .breadcrumbs li 			{float:left;font-weight:700;color:#666;white-space:nowrap;-webkit-text-shadow:0 1px 0 rgba(255,255,255,.4);-moz-text-shadow:0 1px 0 rgba(255,255,255,.4);text-shadow:0 1px 0 rgba(255,255,255,.4);}
 .breadcrumbs li a 			{position:relative;color:#666;font-weight:400;}

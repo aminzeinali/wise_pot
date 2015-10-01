@@ -1,0 +1,40 @@
+<% @page_title = "نمایش نتایج جستجو برای #{params[:query]}" %>
+
+<div class="content three-fourth">
+  <h3 class="make_right">
+    نمایش نتایج جستجو برای
+    &nbsp;
+      <span class="color2">
+        <%= params[:query] %>
+      </span>
+
+  </h3>
+  <div class="row make_right">*
+    <% if @result2.empty? and @result.empty? %>
+        !        هیچ کالایی مطابق با جستجوی شما یافت نشد
+    <% else %>
+        <div class="row">
+
+          <% @result2.each do |res| %>
+              <div class="one-third pull-right">
+                <%=image_tag "cactus.JPG" , style: "width: 100% !important" %>
+                <%= link_to(products_path(res.permalink), {:class => "button full-width"}) do %>
+                    دسته بندی
+                    <%=res.name%>
+                <%end%>
+              </div>
+          <% end %>
+        </div>
+
+        <div class="row">
+          .
+          <% for product in @result.includes(:default_image) %>
+              <%= render 'products/product' , :prod => product , :rel=>3 %>
+          <% end %>
+        </div>
+    <% end %>
+
+  </div>
+
+
+</div>
