@@ -56,7 +56,7 @@ class PlantsController < ApplicationController
 
     respond_to do |format|
       if @plant.save
-        format.html { redirect_to profile_path(current_user.profile), notice: 'گیاه شما اضافه شد لطفا صحت انرا بررسی کنید' }
+        format.html { redirect_to profile_path(current_user.profile), :notice => t('alerts.plants.create') }
         format.json { render :show, status: :created, location: @plant }
       else
         format.html { render :new }
@@ -75,7 +75,7 @@ class PlantsController < ApplicationController
   end
     respond_to do |format|
       if @plant.update(plant_params)
-        format.html { redirect_to @plant, notice: 'Plant was successfully updated.' }
+        format.html { redirect_to @plant, :notice => t('alerts.plants.update') }
         format.json { render :show, status: :ok, location: @plant }
       else
         format.html { render :edit }
@@ -90,7 +90,7 @@ class PlantsController < ApplicationController
     garden = @plant.garden
     @plant.destroy
     respond_to do |format|
-      format.html { redirect_to garden , notice: 'Plant was successfully destroyed.' }
+      format.html { redirect_to garden , :notice => t('alerts.plants.destroy') }
       format.json { head :no_content }
     end
   end

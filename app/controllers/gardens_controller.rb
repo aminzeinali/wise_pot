@@ -32,7 +32,7 @@ class GardensController < ApplicationController
 
     respond_to do |format|
       if @garden.save
-        format.html { redirect_to profile_path(current_user.profile), notice: 'Garden was successfully created.' }
+        format.html { redirect_to profile_path(current_user.profile), :notice =>  t('alerts.gardens.create') }
         format.json { render :show, status: :created, location: @garden }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class GardensController < ApplicationController
   def update
     respond_to do |format|
       if @garden.update(garden_params)
-        format.html { redirect_to current_user.profile, notice: 'Garden was successfully updated.' }
+        format.html { redirect_to current_user.profile, :notice => t('alerts.gardens.update') }
         format.json { render :show, status: :ok, location: @garden }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class GardensController < ApplicationController
     end
     @garden.destroy
     respond_to do |format|
-      format.html { redirect_to profile_path(current_user.profile), notice: 'Garden was successfully destroyed.' }
+      format.html { redirect_to profile_path(current_user.profile), :notice => t('alerts.gardens.destroy') }
       format.json { head :no_content }
     end
   end

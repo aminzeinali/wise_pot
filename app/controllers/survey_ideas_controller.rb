@@ -28,7 +28,7 @@ class SurveyIdeasController < ApplicationController
 
     respond_to do |format|
       if @survey_idea.save
-        format.html { redirect_to new_survey_idea_path(), notice: 'Survey idea was successfully created.' }
+        format.html { redirect_to new_survey_idea_path(), :notice => t('alerts.survey_ideas.create') }
         format.json { render :show, status: :created, location: @survey_idea }
       else
         format.html { render :new }
