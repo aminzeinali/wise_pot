@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     current_order.destroy
     session[:order_id] = nil
     respond_to do |wants|
-      wants.html { redirect_to root_path , :notice => "Your basket has been emptied successfully."}
+      wants.html { redirect_to root_path , :notice => t("alerts.orders.destroy")}
       wants.json do
         flash[:notice] = "Your shopping bag is now empty."
         render :json => {:status => 'complete', :redirect => root_path}
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
     else
       item.remove
       respond_to do |wants|
-        wants.html { redirect_to request.referer, :notice => "کالای مورد نظر از سبد خرید حذف شد"}
+        wants.html { redirect_to request.referer, :notice => t("alerts.orders.remove_item")}
         wants.json do
           current_order.reload
           render :json => {:status => 'complete', :items => render_to_string(:partial => 'shared/order_items.html', :locals => {:order => current_order})}
@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     item = current_order.order_items.find(params[:order_item_id])
     request.delete? ? item.decrease! : item.increase!
     respond_to do |wants|
-      wants.html { redirect_to request.referer || root_path, :notice => "Quantity has been updated successfully." }
+      wants.html { redirect_to request.referer || root_path, :notice => t("alerts.orders.quantity") }
       wants.json do
         current_order.reload
         if current_order.empty?
@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
     end    
   rescue Shoppe::Errors::NotEnoughStock => e
     respond_to do |wants|
-      wants.html { redirect_to request.referer, :alert => "Unfortunately, we don't have enough stock. We only have #{e.available_stock} items available at the moment. Please get in touch though, we're always receiving new stock." }
+      wants.html { redirect_to request.referer, :notice => t("alerts.products.not_enough_1 #{e.available_stock} alerts.products.not_enough_2") }
       wants.json { render :json => {:status => 'error', :message => "Unfortunateley, we don't have enough stock to add more items."} }
     end
   end

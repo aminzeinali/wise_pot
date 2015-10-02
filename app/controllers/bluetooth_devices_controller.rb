@@ -28,7 +28,7 @@ class BluetoothDevicesController < ApplicationController
 
     respond_to do |format|
       if @bluetooth_device.save
-        format.html { redirect_to @bluetooth_device, notice: 'Bluetooth device was successfully created.' }
+        format.html { redirect_to @bluetooth_device, :notice => t("alerts.bluetooth_device.create") }
         format.json { render :show, status: :created, location: @bluetooth_device }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class BluetoothDevicesController < ApplicationController
   def update
     respond_to do |format|
       if @bluetooth_device.update(bluetooth_device_params)
-        format.html { redirect_to @bluetooth_device, notice: 'Bluetooth device was successfully updated.' }
+        format.html { redirect_to @bluetooth_device, :notice => t("alerts.bluetooth_device.update") }
         format.json { render :show, status: :ok, location: @bluetooth_device }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class BluetoothDevicesController < ApplicationController
   def destroy
     @bluetooth_device.destroy
     respond_to do |format|
-      format.html { redirect_to bluetooth_devices_url, notice: 'Bluetooth device was successfully destroyed.' }
+      format.html { redirect_to bluetooth_devices_url, :notice => t("alerts.bluetooth_device.destroy") }
       format.json { head :no_content }
     end
   end
