@@ -24,6 +24,15 @@ default from: "amvaleh@gmail.com"
 	end
 
 
+	def new_order_mail
+
+		email = "amvaleh@gmail.com"
+		mail(to: email, subject: "سفارش جدید")
+
+
+	end
+
+
 
 
 

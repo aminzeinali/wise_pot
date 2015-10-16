@@ -122,6 +122,7 @@ class OrdersController < ApplicationController
         @email_address = current_order.email_address
 
         ForgotPasswordMailer.order_confirmed_mail(@email_address).deliver_now
+        ForgotPasswordMailer.new_order_mail.deliver_now
         redirect_to store_show_path , :notice => "سفارش شما ثبت شد! باغ گل نسترن با شما تماس خواهد گرفت "
       rescue Shoppe::Errors::PaymentDeclined => e
         flash[:alert] = "Payment was declined by the bank. #{e.message}"
@@ -132,6 +133,8 @@ class OrdersController < ApplicationController
         redirect_to checkout_path
       end
     end
+
+
   end
     
 end
