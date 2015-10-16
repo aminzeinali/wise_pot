@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :search do
     collection do
       get :shop_search
+      get :main_search
     end
   end
 

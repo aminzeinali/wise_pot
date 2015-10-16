@@ -119,6 +119,9 @@ class OrdersController < ApplicationController
         # we are adding a payment to the order straight away.
         #current_order.payments.create(:method => "Credit Card", :amount => current_order.total, :reference => rand(10000) + 10000, :refundable => true)
         session[:order_id] = nil
+        @email_address = current_order.email_address
+
+        ForgotPasswordMailer.order_confirmed_mail(@email_address).deliver_now
         redirect_to store_show_path , :notice => "سفارش شما ثبت شد! باغ گل نسترن با شما تماس خواهد گرفت "
       rescue Shoppe::Errors::PaymentDeclined => e
         flash[:alert] = "Payment was declined by the bank. #{e.message}"

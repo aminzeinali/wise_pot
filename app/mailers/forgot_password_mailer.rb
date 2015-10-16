@@ -11,4 +11,21 @@ default from: "amvaleh@gmail.com"
 			puts email.to_s
 			mail(to: email, subject: 'تغیر رمز عبور')
 	end
+
+
+
+
+	def order_confirmed_mail(email)
+
+		puts email.to_s
+
+		mail(to: email, subject: 'سفارش در گلوگرام')
+
+	end
+
+
+
+
+
+
 end

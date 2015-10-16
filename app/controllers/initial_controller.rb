@@ -13,7 +13,7 @@ class InitialController < ApplicationController
       if User.find_by_email(@email_address).present?
         ForgotPasswordMailer.forgot_mail_sender(@email_address).deliver
       else
-        redirect_to new_user_registration_path , :alert => "شما قبلا ثبت نام نکرده اید، از طریق فورم زیر عضو گلایت شوید"
+        redirect_to new_user_registration_path , :alert => "شما قبلا ثبت نام نکرده اید، از طریق فورم زیر عضو گلوگرام شوید"
       end
   end
     

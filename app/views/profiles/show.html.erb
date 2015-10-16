@@ -23,16 +23,15 @@
       <div class="row">
         <!--profile left part-->
         <div class="my_account one-fourth wow fadeInLeft animated" style="visibility: visible;">
-          </br>
-          </br>
-          <div class="search-div">
-            <%=form_tag({controller: "initial" , action: "do_search" },:format => "js",method: "get" , id:"main_search") do %>
-                <%= text_field_tag :query,nil,placeholder:"جستجوی همه چیز",:style =>"text-align: center; " , autocomplete: :off %>
-                </br></br>
-            <%end%>
-            <ul id="result" class="mylist">
-            </ul>
-          </div>
+          <!--</br>-->
+          <!--<div class="search-div">-->
+            <!--<%=form_tag({controller: "initial" , action: "do_search" },:format => "js",method: "get" , id:"main_search") do %>-->
+                <!--<%= text_field_tag :query,nil,placeholder:"جستجوی همه چیز",:style =>"text-align: center; " , autocomplete: :off %>-->
+                <!--</br></br>-->
+            <!--<%end%>-->
+            <!--<ul id="result" class="mylist">-->
+            <!--</ul>-->
+          <!--</div>-->
           <figure class="">
             <% if @profile.profile_photo.present? %>
                 <div class="">

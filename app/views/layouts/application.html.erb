@@ -24,6 +24,22 @@
     </div>
 <% end %>
 
+    <!--breadcrumbs-->
+    <% if user_signed_in? %>
+    <nav class="row">
+      <ul>
+        <li class="pull-right " style="width: 50%;margin-right: 26%;">
+          <%=form_tag({controller: "/search" , action: "main_search" },method: "get" ) do%>
+              <%=text_field_tag :query,nil,placeholder: "جستجوی گلوگرام" ,  autocomplete: :off , :class => "pull-right make_center",:style=>"width: 80% !important;width: 80% !important;
+height: 42px;border-radius: 0px;"%>
+              <%= button_tag"جستجو" , :class=>"button search_commit" %>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+
+<% end %>
+
 
 <%= yield %>
 
