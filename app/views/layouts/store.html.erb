@@ -75,14 +75,14 @@ height: 42px;border-radius: 0px;"%>
           </li>
 
           <li class="widget widget-sidebar">
+            <%= image_tag "delivery_logo.png" %>
+          </li>
+
+          <li class="widget widget-sidebar">
             <h5 style="text-align:center">
               به اینها هم یه سر بزن
             </h5>
-            <ul class="product_list_widget">
-              <% Shoppe::ProductCategory.all.each do |x| %>
-                  <%= render 'shared/product_list', :products => x.products.order("RAND()").active.first(2) %>
-              <% end %>
-            </ul>
+
           </li>
         </ul>
       </div>
