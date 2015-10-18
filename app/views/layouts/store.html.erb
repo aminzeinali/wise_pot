@@ -83,6 +83,26 @@ height: 42px;border-radius: 0px;"%>
               به اینها هم یه سر بزن
             </h5>
 
+            <div class="widget_shopping_cart_content">
+            <ul class="product_list_widget">
+              <% Shoppe::Product.all.order("RAND()").first(6).each do |p| %>
+              <li>
+              <%= link_to product_path(p.product_category.permalink, p.permalink), :class=>"attachment-shop_thumbnail wp-post-image" , :width => "90" , :height => "90" do %>
+                <%= image_tag p.default_image.path %>
+                <span class="product-title">
+                <%= p.name %>
+                </span>                
+               <% end %>
+               <ins>
+               <span class="">
+          <%=number_to_currency p.price%>
+               </span>
+               </ins>
+               </li>
+               <% end %>
+             </ul>
+            </div>
+
           </li>
         </ul>
       </div>
