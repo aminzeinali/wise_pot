@@ -1,0 +1,38 @@
+<div class="entry one-third pull-right">
+  <figure class="make_center">
+    <% if profile.profile_photo.present? %>
+      <%= image_tag profile.profile_photo.url %>
+      <% else %>
+      <%= image_tag "gardener.png" , :style => "margin: 0 auto;" %>
+      <% end %>
+    <figcaption >
+      <%= link_to profile_path(profile) do  %>
+          <i class="ico i-view"></i> <span><%= profile.full_name %></span>
+      <%end%>
+    </figcaption>
+  </figure>
+  <div class="container make_right">
+    <p class="make_center">
+          <%= link_to profile.full_name ,  profile_path(profile)%>
+    </p>
+
+    <div class="actions">
+      <div>
+        <div class="difficulty">
+          <% nums=0%>
+          <% profile.gardens.each do |x| %>
+            <% nums = nums + x.plants.count %>
+              <% end %>
+          <%= nums %>  گیاه
+        </div>
+        <div class="likes">
+          <%= profile.gardens.count %> باغچه
+        </div>
+        <div class="comments">
+          <i class="ico i-comments"></i>
+          <%= profile.user.posts.count %> نوشته
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

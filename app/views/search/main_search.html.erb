@@ -1,0 +1,28 @@
+<% @page_title = "نمایش نتایج جستجو برای #{params[:query]}" %>
+
+<div class="row " >
+
+  <div class="row make_right rtl_dir">
+    <h3 class="make_center ">
+    <% if @result.empty? %>
+    نتیجه ای برای جستجوی شما یافت نشد!
+    <% else %>
+        
+  آنچه که در گلوگرام موجود است از 
+    &nbsp;
+      <span class="color2">
+        <%= params[:query] %>
+        :
+      </span>
+  </h3>
+        <div class="wrap">
+          <% for p in @result%>
+              <%= render 'profiles/profile' , :profile => p %>
+          <% end %>
+        </div>
+    <% end %>
+
+  </div>
+
+
+</div>
